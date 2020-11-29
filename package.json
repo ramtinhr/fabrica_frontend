@@ -2,6 +2,8 @@
   "name": "fabrica",
   "version": "1.0.0",
   "private": true,
+  "description": "fabrica awesome website",
+  "author": "ramtin heydarrezaei",
   "scripts": {
     "dev": "nuxt",
     "build": "nuxt build",
@@ -13,8 +15,19 @@
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.12.2",
+    "@nuxtjs/toast": "^3.3.0",
     "core-js": "^3.6.5",
-    "nuxt": "^2.14.6"
+    "nuxt": "^2.14.6",
+    "@fortawesome/fontawesome-svg-core": "^1.2.27",
+    "@fortawesome/free-brands-svg-icons": "^5.15.1",
+    "@fortawesome/free-solid-svg-icons": "^5.12.1",
+    "@fortawesome/vue-fontawesome": "^2.0.0",
+    "node-sass": "^4.14.1",
+    "nuxt-i18n": "^6.5.0",
+    "sass-loader": "^8.0.2",
+    "moment": "^2.24.0",
+    "vuex": "latest",
+    "flexboxgrid-sass": "^8.0.5"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^3.1.0",

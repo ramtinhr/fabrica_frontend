@@ -1,0 +1,78 @@
+.pagination {
+  font-family: IRANSansMedium;
+
+  ul {
+    padding: 0;
+    li {
+      padding: 5px 16px;
+      display: inline-block;
+      cursor: pointer;
+      margin: 10px 5px;
+      font-size: 14px;
+      font-family: IRANSansLightPersian;
+      border-radius: 4px;
+      background: #f5f5f5;
+      color: #495463;
+      text-align: center;
+      transition: .3s;
+    }
+  }
+
+  li:hover {
+    background: #f7f7f7;
+  }
+
+  .disable-page {
+    cursor: not-allowed;
+    background-color: $blueSilver;
+    color: $softBlue;
+    text-align: center;
+  }
+
+  .current-page {
+    border-radius: 7px;
+    font-weight: bold;
+    color: white;
+    background: $violet;
+    box-shadow: 0 2px 6px 0 rgba(0,118,255,0.39);
+    &:hover {
+      background: $violet !important;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .main-container {
+      margin: 0;
+      .content {
+        border-radius: 0 !important;
+        margin-right: 0 !important;
+      }
+    }
+  }
+
+  @media (max-width: 767px) {
+    .pagination-style {
+      justify-content: center;
+    }
+  }
+
+  @media (min-width: 768px)  and (max-width: 991px) {
+    .pagination-style{
+      justify-content: center;
+    }
+  }
+
+  @media (min-width: 992px)  and (max-width: 1199px) {
+    .pagination-style {
+      justify-content: right;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .pagination-style {
+      justify-content: right;
+      margin: auto;
+    }
+  }
+
+}
