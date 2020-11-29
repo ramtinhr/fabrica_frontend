@@ -1,0 +1,135 @@
+.table {
+  &-title {
+    font-size: 14px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #486186;
+  }
+
+  &-column {
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: right;
+  }
+
+  &-detail {
+    border: solid 1px #e6effb;
+    background-color: #e6effb;
+    padding: 7px;
+    line-height: 0;
+    border-radius: 4px;
+    vertical-align: middle;
+    cursor: pointer;
+
+    &-border {
+      border-radius: 4px;
+      border: 1px solid #d0dbe7;
+      margin: 10px 0;
+
+      &-left {
+        border-left: 1px solid #d0dbe7;
+      }
+
+      &-bottom {
+        border-bottom: 1px solid #d0dbe7;
+      }
+    }
+
+    &-title {
+      font-weight: bold;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: normal;
+      letter-spacing: normal;
+      text-align: right;
+      color: $themeDetailColor;
+      padding-top: 10px;
+    }
+
+    &-value  {
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: normal;
+      letter-spacing: normal;
+      text-align: right;
+      color: $midnightBlue;
+      padding: 15px 0 10px 0;
+      word-wrap: break-word;
+    }
+  }
+
+  &-border-bottom {
+    border-bottom: solid 1px #e6effb;
+    width: 100%;
+  }
+  .single-table{
+    div:nth-child(odd){
+      background-color: #e1e4e970;
+    }
+  }
+}
+.search {
+  .input-search {
+    width: 90%;
+  }
+
+  svg {
+    cursor: pointer;
+  }
+}
+.bg-row {
+  background-color: #f9f9f9;
+}
+// Extra small
+@media (max-width: 767px) {
+  .table {
+    &-title {
+      font-size: 9px
+    }
+
+    &-detail {
+      &-border {
+        margin: 10px 0;
+      }
+    }
+  }
+}
+
+.badge-outline-ACTIVE, .badge-outline-NEW, .badge-outline-PAID, .badge-outline-DONE , .badge-outline-SUPPORT_ANSWER, .badge-outline-PUBLISHED, .badge-outline-ACCEPTED {
+  @extend .badge-outline-success
+}
+
+.badge-outline-WITHDRAW , .badge-outline-CLOSED{
+  @extend .badge-outline-primary
+}
+
+.badge-outline-REJECTED, .badge-outline-FAILED, .badge-outline-ILLEGAL, .badge-outline-PROBLEM, .badge-outline-EXPIRED, .badge-outline-WITHDRAW_PROBLEM, .badge-outline-INVALID, .badge-outline-IN_ACTIVE, .circle-IN_ACTIVE {
+  @extend .badge-outline-danger
+}
+
+.badge-outline-NEED_EDIT, .badge-outline-DOING, .badge-outline-PENDING, .badge-outline-PENDING_SELLER, .badge-outline-PENDING_VERIFY_DEPOSIT, badge-outline-PENDING, .badge-outline-PENDING_RECONCILE, .badge-outline-PENDING_WITHDRAW {
+  @extend .badge-outline-warning
+}
+
+.text-BUY, .text-ACTIVE, .text-PAID, .text-DONE, .text-PENDING_WITHDRAW, .circle-ACTIVE {
+  color: $themeGreen
+}
+
+.text-SELL {
+  color: $blue
+}
+
+.text-REJECTED, .text-FAILED, .text-ILLEGAL, .text-PROBLEM, .text-EXPIRED, .text-WITHDRAW_PROBLEM, .text-INVALID, .text-IN_ACTIVE, .text-WITHDRAW {
+  color: $lightSalmon
+}
+
+.text-yellow, .text-NEED_EDIT, .text-DOING, .text-PENDING, .text-PENDING_SELLER, .text-PENDING_VERIFY_DEPOSIT, .text-PENDING_RECONCILE, .text-PENDING, .circle-PENDING  {
+  color: $gold
+}
