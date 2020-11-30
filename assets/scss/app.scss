@@ -1,5 +1,6 @@
 @import "fonts";
 @import "~flexboxgrid-sass";
+@import "icons";
 @import "./global/variables";
 @import "./global/animation";
 @import "./global/switch";
@@ -17,6 +18,8 @@
 @import "./partials/modal";
 @import "./partials/pagination";
 @import "./partials/loading";
-@import "./partials/header";
-
+@import "components/header";
+@import "components/footer";
+// components
+@import "components/home";
 

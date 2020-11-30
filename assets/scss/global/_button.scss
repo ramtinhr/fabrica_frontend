@@ -35,6 +35,12 @@
     }
   }
 
+  &-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   &-fabrica {
     @include button($primaryColor, white, $primaryColor);
     transition: all .4s;

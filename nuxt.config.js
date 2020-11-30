@@ -104,7 +104,7 @@ export default {
     retry: {
       retries: 0,
     },
-    baseURL: 'https://api.fabrica.ir/ads/search',
+    baseURL: 'https://api.fabrica.ir',
     headers: {
       Accept: 'application/json',
     },

@@ -920,6 +920,10 @@ input:invalid {
   color: $white;
 }
 
+.text-yellow {
+  color: $primaryColor;
+}
+
 .text-green {
   color: #2bc9b4;
 }
@@ -1160,6 +1164,10 @@ input:invalid {
   .line-height-em-#{$j} {
     line-height: (0px + $j) * 2 !important;
   }
+}
+
+.line-height-1 {
+  line-height: 1;
 }
 
 .m-h-auto {

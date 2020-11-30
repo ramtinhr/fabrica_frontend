@@ -1,4 +1,9 @@
 {
   "semi": false,
-  "singleQuote": true
+  "singleQuote": true,
+  "prettier/prettier": ["error", {
+       ..
+      "endOfLine":"auto"
+       ..
+    }],
 }

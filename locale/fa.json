@@ -1,9 +1,19 @@
 {
+  "aboutUs": "درباره ما",
+  "termsAndConditions": "قوانین و مقررات",
+  "enterYourEmail": "ایمیل خود را وارد کنید",
   "header": {
     "mainPage": "صفحه اصلی",
     "latestAdvertises": "آخرین آگهی ها",
     "login": "ورود",
     "register": "عضویت",
     "advertisementRegistration": "ثبت آگهی"
+  },
+  "footer": {
+    "quickAccess": "دسترسی سریع",
+    "customMenu": "منو دلخواه",
+    "subscribeToNewsletter": "عضویت در خبرنامه",
+    "contact": "اطلاعات تماس",
+    "symbols": "نماد ها"
   }
 }

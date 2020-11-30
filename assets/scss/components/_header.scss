@@ -1,0 +1,55 @@
+.header {
+  background-color: $accentColor;
+  padding: 8px 0;
+
+  &__logo {
+    width: 70px;
+    height: 70px;
+
+    & img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &__navbar {
+    & ul {
+      display: flex;
+      align-items: center;
+      margin-right: 0;
+
+      & li {
+        transition: all .4s;
+        padding: 0 18px;
+        &:hover {
+          -webkit-box-shadow: 0 3px 0 $primaryColor;
+          -moz-box-shadow: 0 3px 0 $primaryColor;
+          box-shadow: 0 3px 0 $primaryColor;
+        }
+      }
+    }
+  }
+
+  &__actions {
+    &.btn-fabrica {
+      &:hover {
+        & i {
+          color: $primaryColor !important;
+        }
+      }
+    }
+    &.btn-outline-fabrica i {
+      transition: all .2s;
+      color: $primaryColor;
+      margin-left: 10px;
+    }
+    &.btn-outline-fabrica {
+      &:hover {
+        & i {
+          color: #fff !important;
+        }
+      }
+    }
+  }
+  }
+
