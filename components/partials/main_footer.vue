@@ -1,14 +1,14 @@
 <template>
   <footer class="footer">
     <div class="footer__top">
-      <div class="container margin-auto p-v-30">
-        <div class="row">
+      <div class="fabrica-container p-v-40">
+        <div class="row justify-content-between">
           <div class="col-md-3">
             <div class="display-flex flex-direction-column">
               <span class="text-white font-size-20 font-sans-bold m-b-30">
                 {{ $t('footer.quickAccess') }}
               </span>
-              <ul class="footer__quick-access">
+              <ul class="footer__top-quick-access">
                 <li>{{ $t('aboutUs') }}</li>
                 <li>{{ $t('termsAndConditions') }}</li>
               </ul>
@@ -33,7 +33,7 @@
                   name="email"
                   :placeholder="$t('enterYourEmail')"
                 />
-                <i class="o-icon o-email-83 footer__email-btn"></i>
+                <i class="o-icon o-email-83 footer__top-email-btn"></i>
               </div>
               <span class="text-white font-size-20 font-sans-bold">
                 {{ $t('footer.symbols') }}
@@ -45,10 +45,8 @@
               <span class="text-white font-size-20 font-sans-bold m-b-30">
                 {{ $t('footer.contact') }}
               </span>
-              <div class="display-flex align-center m-b-25">
-                <div class="display-flex align-center">
-                  <i class="o-icon o-phone-2 footer__icon"></i>
-                </div>
+              <div class="display-flex m-b-25">
+                <i class="o-icon o-phone-2 footer__top-icon"></i>
                 <div class="display-flex flex-direction-column">
                   <span class="font-size-18 text-white line-height-1"
                     >۰۲۱۷۷۹۸۵۱۸۸</span
@@ -60,7 +58,7 @@
               </div>
               <div class="display-flex align-center m-b-25">
                 <div class="display-flex align-center">
-                  <i class="o-icon o-pin-3 footer__icon"></i>
+                  <i class="o-icon o-pin-3 footer__top-icon"></i>
                 </div>
                 <span class="font-size-18 text-white">
                   تهران پیروزی خ مقداد ک رنجبران پ ۱۳,واحد۸
@@ -68,7 +66,7 @@
               </div>
               <div class="display-flex">
                 <div class="display-flex align-center">
-                  <i class="o-icon o-email-83 footer__icon"></i>
+                  <i class="o-icon o-email-83 footer__top-icon"></i>
                 </div>
                 <div class="display-flex align-center">
                   <span class="font-size-18 text-white line-height-1">
@@ -76,6 +74,24 @@
                   </span>
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <div class="fabrica-container">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="display-flex justify-content-between align-center">
+                <i class="g-icon g-logo-whatsapp"></i>
+                <i class="g-icon g-logo-google-plus"></i>
+                <i class="g-icon g-logo-instagram"></i>
+                <i class="g-icon g-icon g-send"></i>
+              </div>
+            </div>
+            <div class="col-md-8 text-left">
+              <span class="m-l-5"> © </span>
+              <span> {{ $t('footer.copyright') }}</span>
             </div>
           </div>
         </div>

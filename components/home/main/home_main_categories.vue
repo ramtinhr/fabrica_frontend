@@ -17,7 +17,7 @@ export default {
   computed: {
     ...mapGetters(['getResource']),
     categories() {
-      return this.getResource('categories')
+      return this.getResource('home', 'categories')
     },
   },
 }

@@ -65,6 +65,10 @@ export default {
   // Auto import components (https://go.nuxtjs.dev/config-components)
   components: true,
 
+  plugins: [
+    { src: './plugins/vue-awesome-swiper.js', mode: 'client', ssr: true },
+    { src: './plugins/vue-select.js', ssr: true },
+  ],
   // Modules for dev and build (recommended) (https://go.nuxtjs.dev/config-modules)
   buildModules: [
     // https://go.nuxtjs.dev/eslint

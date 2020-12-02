@@ -18,14 +18,17 @@
     @include button ($blue, $white, $blue)
   }
   &-primary:hover {
-    background-color: $royalBlue!important;
+    background-color: $royalBlue !important;
   }
 
   &-secondary {
-    @include button ($navy, $white, $navy)
+    @include button ($accentColor, $dimlightGray, $accentColor);
+    border: 2px solid $accentColor !important;
+    transition: all .3s;
   }
   &-secondary:hover {
-    background-color: $midnightlightBlue!important;
+    font-family: 'IRANSansBold';
+    background-color: transparent !important;
   }
 
   &-success {
@@ -46,9 +49,9 @@
     transition: all .4s;
     font-family: 'IRANSansBold';
     font-size: 14px;
+    border: 2px solid $primaryColor !important;
     &:hover {
-      background-color: $accentColor !important;
-      border: 1px solid $primaryColor !important;
+      background-color: transparent !important;
       color: $primaryColor !important;
       font-weight: bold;
     }
@@ -59,9 +62,9 @@
     font-family: 'IRANSansBold';
     font-size: 14px;
     font-weight: bold;
+    border: 2px solid $primaryColor !important;
     &:hover {
       background-color: $primaryColor !important;
-      border: 1px solid $primaryColor !important;
       color: white !important;
     }
   }

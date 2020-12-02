@@ -1,6 +1,9 @@
 @import "fonts";
 @import "~flexboxgrid-sass";
+@import '~swiper/swiper';
+@import "~vue-select/src/scss/vue-select.scss";
 @import "icons";
+@import "social_icons";
 @import "./global/variables";
 @import "./global/animation";
 @import "./global/switch";
@@ -22,4 +25,3 @@
 @import "components/footer";
 // components
 @import "components/home";
-

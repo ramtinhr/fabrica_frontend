@@ -1,8 +1,12 @@
 export const state = () => ({
   offset: 0,
   resource: {
-    pagination: {},
-    data: [],
+    categories: {
+      data: [],
+    },
+    states: {
+      data: [],
+    },
   },
   loading: false,
 })

@@ -1,6 +1,6 @@
 <template>
   <header class="header">
-    <div class="container margin-auto">
+    <div class="fabrica-container">
       <div class="row align-center">
         <div class="col-sm-1 col-xs-6">
           <div class="header__logo">
@@ -10,7 +10,10 @@
         <div class="col-sm-6 hidden-xs">
           <nav class="header__navbar">
             <ul>
-              <li class="font-size-16">{{ $t('header.mainPage') }}</li>
+              <li class="font-size-16">
+                <i class="o-icon o-home-51 m-l-5"></i>
+                {{ $t('header.mainPage') }}
+              </li>
               <li class="font-size-16">{{ $t('header.latestAdvertises') }}</li>
             </ul>
           </nav>

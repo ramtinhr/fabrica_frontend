@@ -1,34 +1,52 @@
 .footer {
   &__top {
     background-color: #292929;
-  }
-  &__quick-access {
-    padding-right: 0;
-    & li {
-      transition: all .3s;
-      display: flex;
-      margin-bottom: 15px;
+    &-quick-access {
+      padding-right: 0;
+      & li {
+        transition: all .3s;
+        display: flex;
+        margin-bottom: 15px;
+        color: #fff;
+        &:hover {
+          color: $primaryColor;
+        }
+      }
+    }
+    &-email-btn {
+      background-color: $primaryColor;
       color: #fff;
-      &:hover {
-        color: $primaryColor;
+      position: absolute;
+      left: 5px;
+      top: 50%;
+      transform: translateY(-50%);
+      padding: 8px;
+      border-radius: 50%;
+    }
+    &-icon {
+      color: $primaryColor;
+      margin-left: 10px;
+      &:before {
+        font-size: 30px;
       }
     }
   }
-  &__email-btn {
-    background-color: $primaryColor;
-    color: #fff;
-    position: absolute;
-    left: 5px;
-    top: 50%;
-    transform: translateY(-50%);
-    padding: 8px;
-    border-radius: 50%;
-  }
-  &__icon {
-    color: $primaryColor;
-    margin-left: 10px;
-    &:before {
-      font-size: 30px;
+  &__bottom {
+    background-color: #363636;
+    padding: 15px 0;
+    & i {
+      color: #c5c5c5;
+      vertical-align: middle;
+      transition: .2s ease;
+      &:hover {
+        color: $primaryColor;
+      }
+      &:before {
+        font-size: 30px;
+      }
+    }
+    & span {
+      color: #c5c5c5;
     }
   }
 }

@@ -2,6 +2,7 @@
   "aboutUs": "درباره ما",
   "termsAndConditions": "قوانین و مقررات",
   "enterYourEmail": "ایمیل خود را وارد کنید",
+  "search": "جستجو",
   "header": {
     "mainPage": "صفحه اصلی",
     "latestAdvertises": "آخرین آگهی ها",
@@ -14,6 +15,14 @@
     "customMenu": "منو دلخواه",
     "subscribeToNewsletter": "عضویت در خبرنامه",
     "contact": "اطلاعات تماس",
-    "symbols": "نماد ها"
+    "symbols": "نماد ها",
+    "copyright": "تمامی حقوق نزد فابریکا محفوظ می باشد "
+  },
+  "home": {
+    "selectCity": "انتخاب شهر",
+    "selectPriority": "انتخاب اولویت",
+    "selectSubCategory": "انتخاب زیر دسته",
+    "advancedSearch": "جستجوی پیشرفته",
+   "search": "نام محصول ، قطعه یا مشخصه دستگاه مورد نظر خود را وارد نمایید..."
   }
 }

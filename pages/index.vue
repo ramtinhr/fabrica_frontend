@@ -1,20 +1,34 @@
 <template>
   <div class="home">
-    <home-states-picker />
+    <home-main />
+    <home-first-content />
   </div>
 </template>
 
 <script>
 export default {
   name: 'HomePage',
-  asyncData({ store }) {
-    return store
+  async asyncData({ store }) {
+    await store
       .dispatch('get', {
         url: 'https://api.fabrica.ir/categories',
         config: { params: { section: 'home' } },
       })
       .then((resp) => {
-        store.commit('FILL', { storeName: 'categories', data: resp.data.data })
+        store.commit('FILL', {
+          storeName: 'home',
+          resourceName: 'categories',
+          data: resp.data.data,
+        })
+      })
+    await store
+      .dispatch('get', { url: 'https://api.fabrica.ir/cities/state' })
+      .then((resp) => {
+        store.commit('FILL', {
+          storeName: 'home',
+          resourceName: 'states',
+          data: resp.data.data,
+        })
       })
   },
 }

@@ -24,6 +24,9 @@
     "nuxt": "^2.14.6",
     "nuxt-i18n": "^6.5.0",
     "sass-loader": "^8.0.2",
+    "swiper": "^6.3.5",
+    "vue-awesome-swiper": "^3.1.3",
+    "vue-select": "^3.10.8",
     "vuex": "latest"
   },
   "devDependencies": {
