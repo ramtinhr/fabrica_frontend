@@ -7,6 +7,9 @@ export const state = () => ({
     states: {
       data: [],
     },
+    firstAdvertises: {
+      data: [],
+    },
   },
   loading: false,
 })

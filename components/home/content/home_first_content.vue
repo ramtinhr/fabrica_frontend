@@ -1,44 +1,31 @@
 <template>
-  <div class="home__first-content"></div>
+  <div class="home__first-content">
+    <div class="fabrica-container">
+      <div class="row">
+        <advertise
+          v-for="advertise in advertises"
+          :key="advertise.id"
+          :img="advertise.image_url"
+          :title="advertise.title"
+          :price="advertise.price"
+          :created-at="advertise.created_at_jalali_date"
+        />
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
-
 export default {
   name: 'HomeFirstContent',
-  data() {
-    return {
-      advertises: [],
-    }
-  },
   computed: {
     ...mapGetters(['getResource']),
     categories() {
       return this.getResource('home', 'categories')
     },
-  },
-  async created() {
-    await this.getAdvertises()
-    console.log(this.advertises)
-  },
-  methods: {
-    getAdvertises() {
-      this.$store
-        .dispatch('get', {
-          url: '/ads/search',
-          config: {
-            params: {
-              category_ids: this.categories.find(
-                (category) => category.title === 'خودرو سنگین'
-              ).id,
-              limit: 3,
-            },
-          },
-        })
-        .then((resp) => {
-          this.advertises = resp.data.data
-        })
+    advertises() {
+      return this.getResource('home', 'firstAdvertises')
     },
   },
 }
