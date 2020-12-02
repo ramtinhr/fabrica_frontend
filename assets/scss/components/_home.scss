@@ -132,7 +132,7 @@
       margin: 30px;
       position: relative;
       & input {
-        box-shadow: 2px 2px 5px $lightGray;
+        box-shadow: 0 0 10px hsla(0,0%,64.7%,.2);
         padding: 15px 35px;
         color: #000;
         font-size: 18px;
@@ -155,7 +155,7 @@
       .vs__dropdown-toggle {
         border: none;
         border-radius: 15px;
-        box-shadow: 2px 2px 5px $lightGray;
+        box-shadow: 0 0 10px hsla(0,0%,64.7%,.2);
         background: #fff;
         padding: 10px;
       }
