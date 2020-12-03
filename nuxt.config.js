@@ -66,6 +66,8 @@ export default {
   components: true,
 
   plugins: [
+    '~/plugins/helpers/number.js',
+    '~/plugins/helpers/string.js',
     { src: './plugins/vue-awesome-swiper.js', mode: 'client', ssr: true },
     { src: './plugins/vue-select.js', ssr: true },
   ],

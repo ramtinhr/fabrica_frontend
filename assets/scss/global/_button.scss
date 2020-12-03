@@ -22,7 +22,7 @@
   }
 
   &-secondary {
-    @include button ($accentColor, $dimlightGray, $accentColor);
+    @include button ($accentColor, $dimLightGray, $accentColor);
     border: 2px solid $accentColor !important;
     transition: all .3s;
   }
@@ -34,7 +34,7 @@
   &-success {
     @include button ($themeGreen, $white, $violet);
     &:hover {
-      background-color: $dimlightGray !important;
+      background-color: $dimLightGray !important;
     }
   }
 

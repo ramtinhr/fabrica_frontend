@@ -7,15 +7,27 @@
       </div>
       <div class="advertise__content">
         <div class="advertise__content-title">
-          <span class="font-size-14 font-sans-bold">
-            {{ title }}
+          <span class="font-size-14 font-sans-medium">
+            {{ $strLimit(title, 45) }}
           </span>
         </div>
-        <div class="advertise__content-price">
-          {{ price }}
-        </div>
-        <div class="advertise__content-created">
-          {{ createdAt }}
+        <div class="advertise__content-detail">
+          <div class="advertise__content-detail-price">
+            <span class="text-dimLightGray font-size-12">
+              {{ $t('advertise.price') }}
+            </span>
+            <span class="text-dimLightGray font-size-12">
+              {{ $numberFormat($decimalNumber(price)) }}
+            </span>
+          </div>
+          <div class="advertise__content-detail-created">
+            <span class="text-dimLightGray font-size-12">
+              {{ $t('advertise.createdAt') }}
+            </span>
+            <span class="text-dimLightGray font-size-12">
+              {{ createdAt }}
+            </span>
+          </div>
         </div>
       </div>
     </div>
@@ -35,7 +47,7 @@ export default {
       default: null,
     },
     price: {
-      type: String,
+      type: Number,
       default: null,
     },
     createdAt: {

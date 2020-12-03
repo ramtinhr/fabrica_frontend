@@ -31,14 +31,14 @@ export default {
         })
       })
     const categories = store.getters.getResource('home', 'categories')
+    const id = categories.find((category) => category.title === 'خودرو سنگین')
+      .id
     await store
       .dispatch('get', {
         url: 'https://api.fabrica.ir/ads/search',
         config: {
           params: {
-            category_ids: categories.find(
-              (category) => category.title === 'خودرو سنگین'
-            ).id,
+            category_ids: id,
             limit: 3,
           },
         },
@@ -47,7 +47,7 @@ export default {
         store.commit('FILL', {
           storeName: 'home',
           resourceName: 'firstAdvertises',
-          data: resp.data.data,
+          data: resp.data,
         })
       })
   },

@@ -3,6 +3,8 @@
   "termsAndConditions": "قوانین و مقررات",
   "enterYourEmail": "ایمیل خود را وارد کنید",
   "search": "جستجو",
+  "number": "عدد",
+  "seeMore": "مشاهده بیش تر",
   "header": {
     "mainPage": "صفحه اصلی",
     "latestAdvertises": "آخرین آگهی ها",
@@ -24,5 +26,11 @@
     "selectSubCategory": "انتخاب زیر دسته",
     "advancedSearch": "جستجوی پیشرفته",
    "search": "نام محصول ، قطعه یا مشخصه دستگاه مورد نظر خود را وارد نمایید..."
+  },
+  "advertise": {
+    "price": "قیمت",
+    "createdAt": "تاریخ",
+    "theLatestFeaturesOfTheLightCarCategory": "آخرین ویژه های دسته خودرو سبک",
+    "numberOfActiveAds": "تعداد آگهی های فعال"
   }
 }
