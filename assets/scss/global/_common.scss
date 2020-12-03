@@ -788,12 +788,6 @@ input:invalid {
   border: none !important;
 }
 
-.avatar {
-  height: 35px;
-  width: 35px;
-  border-radius: 50px;
-}
-
 //height in precent
 @for $j from 0 through 100 {
   .h-#{$j} {

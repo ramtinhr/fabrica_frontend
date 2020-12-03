@@ -1,12 +1,12 @@
 <template>
-  <div class="home__first-content">
-    <div class="home__first-content-img hidden-xs hidden-sm"></div>
+  <div class="home__third-content">
+    <div class="home__third-content-img hidden-xs hidden-sm"></div>
     <div class="fabrica-container">
       <div class="home__info">
         <div class="m-b-xs-20">
           <div class="home__info-title">
             <span class="font-size-24 font-sans-medium">
-              {{ $t('advertise.theLatestFeaturesOfTheLightCarCategory') }}
+              {{ $t('advertise.theLatestFeaturesOfTheHeavyVehicleCategory') }}
             </span>
           </div>
           <div class="home__info-count">
@@ -41,14 +41,14 @@
 <script>
 import { mapGetters } from 'vuex'
 export default {
-  name: 'HomeFirstContent',
+  name: 'HomeThirdContent',
   computed: {
     ...mapGetters(['getResource']),
     categories() {
       return this.getResource('home', 'categories')
     },
     advertises() {
-      return this.getResource('home', 'firstAdvertises')
+      return this.getResource('home', 'thirdAdvertises')
     },
   },
 }

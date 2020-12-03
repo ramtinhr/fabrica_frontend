@@ -3,7 +3,7 @@
     <div class="footer__top">
       <div class="fabrica-container p-v-40">
         <div class="row justify-content-between">
-          <div class="col-md-3">
+          <div class="col-md-3 col-sm-3 col-xs-12">
             <div class="display-flex flex-direction-column">
               <span class="text-white font-size-20 font-sans-bold m-b-30">
                 {{ $t('footer.quickAccess') }}
@@ -14,33 +14,39 @@
               </ul>
             </div>
           </div>
-          <div class="col-md-3">
+          <div class="col-md-3 col-sm-3 col-xs-12">
             <div class="display-flex flex-direction-column">
-              <span class="text-white font-size-20 font-sans-bold">
+              <span class="text-white font-size-20 font-sans-bold m-b-30">
                 {{ $t('footer.customMenu') }}
               </span>
             </div>
           </div>
-          <div class="col-md-3">
+          <div class="col-md-3 col-sm-3 col-xs-12">
             <div class="display-flex flex-direction-column">
               <span class="text-white font-size-20 font-sans-bold m-b-30">
                 {{ $t('footer.subscribeToNewsletter') }}
               </span>
               <div class="position-relative m-b-20">
                 <input
-                  class="border-radius-30 border-none"
+                  class="hidden-sm"
                   type="email"
                   name="email"
                   :placeholder="$t('enterYourEmail')"
                 />
+                <input
+                  class="hidden-lg hidden-md hidden-xs"
+                  type="email"
+                  name="email"
+                  :placeholder="$t('email')"
+                />
                 <i class="o-icon o-email-83 footer__top-email-btn"></i>
               </div>
-              <span class="text-white font-size-20 font-sans-bold">
+              <span class="text-white font-size-20 font-sans-bold m-b-30">
                 {{ $t('footer.symbols') }}
               </span>
             </div>
           </div>
-          <div class="col-md-3">
+          <div class="col-md-3 col-sm-3 col-xs-12">
             <div class="display-flex flex-direction-column">
               <span class="text-white font-size-20 font-sans-bold m-b-30">
                 {{ $t('footer.contact') }}
@@ -81,7 +87,7 @@
       <div class="footer__bottom">
         <div class="fabrica-container">
           <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-4 col-sm-4 col-xs-12">
               <div class="display-flex justify-content-between align-center">
                 <i class="g-icon g-logo-whatsapp"></i>
                 <i class="g-icon g-logo-google-plus"></i>
@@ -89,7 +95,7 @@
                 <i class="g-icon g-icon g-send"></i>
               </div>
             </div>
-            <div class="col-md-8 text-left">
+            <div class="col-md-8 col-sm-8 col-xs-12">
               <span class="m-l-5"> © </span>
               <span> {{ $t('footer.copyright') }}</span>
             </div>

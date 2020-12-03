@@ -1,12 +1,12 @@
 <template>
-  <div class="home__first-content">
-    <div class="home__first-content-img hidden-xs hidden-sm"></div>
+  <div class="home__fourth-content">
+    <div class="home__fourth-content-img hidden-xs hidden-sm"></div>
     <div class="fabrica-container">
       <div class="home__info">
         <div class="m-b-xs-20">
           <div class="home__info-title">
-            <span class="font-size-24 font-sans-medium">
-              {{ $t('advertise.theLatestFeaturesOfTheLightCarCategory') }}
+            <span class="font-size-24 font-sans-medium text-dimGray">
+              {{ $t('advertise.theLatestFeaturesOfScrapSndMetalsCategory') }}
             </span>
           </div>
           <div class="home__info-count">
@@ -23,7 +23,7 @@
           {{ $t('seeMore') }}
         </button>
       </div>
-      <div class="row">
+      <div class="row justify-content-flex-end">
         <advertise
           v-for="advertise in advertises.data"
           :key="advertise.id"
@@ -41,14 +41,14 @@
 <script>
 import { mapGetters } from 'vuex'
 export default {
-  name: 'HomeFirstContent',
+  name: 'HomeFourthContent',
   computed: {
     ...mapGetters(['getResource']),
     categories() {
       return this.getResource('home', 'categories')
     },
     advertises() {
-      return this.getResource('home', 'firstAdvertises')
+      return this.getResource('home', 'fourthAdvertises')
     },
   },
 }

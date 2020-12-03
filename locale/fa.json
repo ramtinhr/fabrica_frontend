@@ -5,6 +5,7 @@
   "search": "جستجو",
   "number": "عدد",
   "seeMore": "مشاهده بیش تر",
+  "email": "ایمیل",
   "header": {
     "mainPage": "صفحه اصلی",
     "latestAdvertises": "آخرین آگهی ها",
@@ -25,12 +26,18 @@
     "selectPriority": "انتخاب اولویت",
     "selectSubCategory": "انتخاب زیر دسته",
     "advancedSearch": "جستجوی پیشرفته",
-   "search": "نام محصول ، قطعه یا مشخصه دستگاه مورد نظر خود را وارد نمایید..."
+    "search": "نام محصول ، قطعه یا مشخصه دستگاه مورد نظر خود را وارد نمایید...",
+    "searchResp": "جستجوی محصول ، قطعه و دستگاه ..."
   },
   "advertise": {
     "price": "قیمت",
     "createdAt": "تاریخ",
     "theLatestFeaturesOfTheLightCarCategory": "آخرین ویژه های دسته خودرو سبک",
-    "numberOfActiveAds": "تعداد آگهی های فعال"
+    "theLatestFeaturesOfTheHeavyVehicleCategory": "آخرین ویژه های دسته خودرو سنگین",
+    "theLatestFeaturesOfTheRoadConstructionCategory": "آخرین ویژه های دسته راه سازی",
+    "theLatestFeaturesOfScrapSndMetalsCategory": "آخرین ویژه های دسته ضایعات و فلزات",
+    "theLatestFeaturesOfTheMotorcycleCategory": "آخرین ویژه های دسته موتور سیکلت",
+    "numberOfActiveAds": "تعداد آگهی های فعال",
+    "call": "تماس بگیرید"
   }
 }

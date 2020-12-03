@@ -142,7 +142,7 @@ export const actions = {
       this.$axios.get(url, config)
         .then((response) => {
           if (storeName) {
-            commit('FILL', { storeName, resourceName: resourceName, data: response.data.data })
+            commit('FILL', { storeName, resourceName: resourceName, data: response.data })
           }
           resolve(response)
         })

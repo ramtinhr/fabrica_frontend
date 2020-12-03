@@ -10,6 +10,18 @@ export const state = () => ({
     firstAdvertises: {
       data: [],
     },
+    secondAdvertises: {
+      data: [],
+    },
+    thirdAdvertises: {
+      data: [],
+    },
+    fourthAdvertises: {
+      data: [],
+    },
+    fifthAdvertises: {
+      data: [],
+    },
   },
   loading: false,
 })

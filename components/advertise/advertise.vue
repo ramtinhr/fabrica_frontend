@@ -1,9 +1,9 @@
 <template>
-  <div class="col-md-3 col-sm-6 col-xs-12 p-r-10 p-l-10">
+  <div class="col-md-3 col-sm-4 col-xs-12 p-r-10 p-l-10">
     <div class="advertise">
       <div class="advertise__img-wrapper">
         <img v-if="img" :src="img" alt="آگهی" />
-        <img v-else src="/images/placeholder.png" alt="آگهی" />
+        <div v-else class="advertise__img-placeholder"></div>
       </div>
       <div class="advertise__content">
         <div class="advertise__content-title">
@@ -16,8 +16,11 @@
             <span class="text-dimLightGray font-size-12">
               {{ $t('advertise.price') }}
             </span>
-            <span class="text-dimLightGray font-size-12">
+            <span v-if="price !== 0" class="text-dimLightGray font-size-12">
               {{ $numberFormat($decimalNumber(price)) }}
+            </span>
+            <span v-else class="text-dimLightGray font-size-12">
+              {{ $t('advertise.call') }}
             </span>
           </div>
           <div class="advertise__content-detail-created">

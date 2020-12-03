@@ -3,7 +3,7 @@
     <div class="fabrica-container">
       <div class="row align-center">
         <div class="col-sm-1 col-xs-6">
-          <div class="header__logo">
+          <div class="header__logo hidden-xs">
             <img src="/images/logo.png" alt="logo" />
           </div>
         </div>
@@ -18,7 +18,7 @@
             </ul>
           </nav>
         </div>
-        <div class="col-sm-5 col-xs-6 text-left">
+        <div class="col-sm-5 col-xs-6 text-left hidden-xs">
           <div class="header__actions">
             <button class="btn btn-fabrica border-radius-30 font-size-14">
               <i class="o-icon o-single-01 m-l-5"></i>
