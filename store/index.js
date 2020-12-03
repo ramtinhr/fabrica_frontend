@@ -134,14 +134,16 @@ export const actions = {
     commit('REMOVE_ITEM', { storeName, resourceName, filter })
   },
   //  Requests
-  get ({ commit }, { storeName = null, resourceName, url, config }) {
+  get ({ commit }, { storeName = null, resourceName,  fillData = true , url,  config }) {
     if (storeName) {
       commit('LOADING', { storeName: storeName, resourceName: resourceName })
     }
     return new Promise((resolve, reject) => {
       this.$axios.get(url, config)
         .then((response) => {
-          if (storeName) {
+          if (storeName && fillData) {
+            commit('FILL', { storeName, resourceName: resourceName, data: response.data.data })
+          } else if (storeName && !fillData) {
             commit('FILL', { storeName, resourceName: resourceName, data: response.data })
           }
           resolve(response)

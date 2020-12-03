@@ -16,38 +16,35 @@ export default {
     await store.dispatch('get', {
       storeName: 'home',
       resourceName: 'categories',
-      url: 'https://api.fabrica.ir/categories',
+      url: '/categories',
       config: { params: { section: 'home' } },
     })
-    await store
-      .dispatch('get', { url: 'https://api.fabrica.ir/cities/state' })
-      .then((resp) => {
-        store.commit('FILL', {
-          storeName: 'home',
-          resourceName: 'states',
-          data: resp.data.data,
-        })
-      })
+    await store.dispatch('get', {
+      url: '/cities/state',
+      storeName: 'home',
+      resourceName: 'states',
+    })
     const categories = store.getters.getResource('home', 'categories')
-    const firstId = categories.data.find(
+    const firstId = categories.find(
       (category) => category.title === 'خودرو سبک'
     ).id
-    const secondId = categories.data.find(
+    const secondId = categories.find(
       (category) => category.title === 'راه سازی'
     ).id
-    const thirdId = categories.data.find(
+    const thirdId = categories.find(
       (category) => category.title === 'خودرو سنگین'
     ).id
-    const fourthId = categories.data.find(
+    const fourthId = categories.find(
       (category) => category.title === 'ضایعات و فلزات'
     ).id
-    const fifthId = categories.data.find(
+    const fifthId = categories.find(
       (category) => category.title === 'موتور سیکلت'
     ).id
     await store.dispatch('get', {
       url: '/ads/search',
       storeName: 'home',
       resourceName: 'firstAdvertises',
+      fillData: false,
       config: {
         params: {
           category_ids: firstId,
@@ -59,6 +56,7 @@ export default {
       url: '/ads/search',
       storeName: 'home',
       resourceName: 'secondAdvertises',
+      fillData: false,
       config: {
         params: {
           category_ids: secondId,
@@ -70,6 +68,7 @@ export default {
       url: '/ads/search',
       storeName: 'home',
       resourceName: 'thirdAdvertises',
+      fillData: false,
       config: {
         params: {
           category_ids: thirdId,
@@ -81,13 +80,25 @@ export default {
       url: '/ads/search',
       storeName: 'home',
       resourceName: 'fourthAdvertises',
-      config: { params: { category_ids: fourthId, limit: 3 } },
+      fillData: false,
+      config: {
+        params: {
+          category_ids: fourthId,
+          limit: 3,
+        },
+      },
     })
     await store.dispatch('get', {
       url: '/ads/search',
       storeName: 'home',
       resourceName: 'fifthAdvertises',
-      config: { params: { category_ids: fifthId, limit: 3 } },
+      fillData: false,
+      config: {
+        params: {
+          category_ids: fifthId,
+          limit: 3,
+        },
+      },
     })
   },
 }

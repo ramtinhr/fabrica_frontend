@@ -1,7 +1,7 @@
 <template>
   <div class="home__main-categories col-xs-12">
     <ul>
-      <li v-for="(category, i) in categories.data" :key="i">
+      <li v-for="(category, i) in categories" :key="i">
         <img :src="category.icon_image_url" alt="icon" />
         <p>{{ category.title }}</p>
       </li>
