@@ -17,7 +17,43 @@
           <div class="col-md-3 col-sm-3 col-xs-12">
             <div class="display-flex flex-direction-column">
               <span class="text-white font-size-20 font-sans-bold m-b-30">
-                {{ $t('footer.customMenu') }}
+                {{ $t('footer.contact') }}
+              </span>
+              <div class="display-flex m-b-25">
+                <i class="o-icon o-phone-2 footer__top-icon"></i>
+                <div class="display-flex flex-direction-column">
+                  <span class="font-size-18 text-white line-height-1"
+                    >۰۲۱۷۷۹۸۵۱۸۸</span
+                  >
+                  <span class="font-size-18 text-white line-height-1"
+                    >۰۹۱۲۲۴۶۸۹۲۰</span
+                  >
+                </div>
+              </div>
+              <div class="display-flex align-center m-b-25">
+                <div class="display-flex align-center">
+                  <i class="o-icon o-pin-3 footer__top-icon"></i>
+                </div>
+                <span class="font-size-18 text-white">
+                  تهران پیروزی خ مقداد ک رنجبران پ ۱۳,واحد۸
+                </span>
+              </div>
+              <div class="display-flex m-b-xs-25">
+                <div class="display-flex align-center">
+                  <i class="o-icon o-email-83 footer__top-icon"></i>
+                </div>
+                <div class="display-flex align-center">
+                  <span class="font-size-18 text-white line-height-1">
+                    info@fabrica.ir
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 col-sm-3 col-xs-12">
+            <div class="display-flex flex-direction-column">
+              <span class="text-white font-size-20 font-sans-bold m-b-30">
+                {{ $t('footer.symbols') }}
               </span>
             </div>
           </div>
@@ -40,45 +76,6 @@
                   :placeholder="$t('email')"
                 />
                 <i class="o-icon o-email-83 footer__top-email-btn"></i>
-              </div>
-              <span class="text-white font-size-20 font-sans-bold m-b-30">
-                {{ $t('footer.symbols') }}
-              </span>
-            </div>
-          </div>
-          <div class="col-md-3 col-sm-3 col-xs-12">
-            <div class="display-flex flex-direction-column">
-              <span class="text-white font-size-20 font-sans-bold m-b-30">
-                {{ $t('footer.contact') }}
-              </span>
-              <div class="display-flex m-b-25">
-                <i class="o-icon o-phone-2 footer__top-icon"></i>
-                <div class="display-flex flex-direction-column">
-                  <span class="font-size-18 text-white line-height-1"
-                    >۰۲۱۷۷۹۸۵۱۸۸</span
-                  >
-                  <span class="font-size-18 text-white line-height-1"
-                    >۰۹۱۲۲۴۶۸۹۲۰</span
-                  >
-                </div>
-              </div>
-              <div class="display-flex align-center m-b-25">
-                <div class="display-flex align-center">
-                  <i class="o-icon o-pin-3 footer__top-icon"></i>
-                </div>
-                <span class="font-size-18 text-white">
-                  تهران پیروزی خ مقداد ک رنجبران پ ۱۳,واحد۸
-                </span>
-              </div>
-              <div class="display-flex">
-                <div class="display-flex align-center">
-                  <i class="o-icon o-email-83 footer__top-icon"></i>
-                </div>
-                <div class="display-flex align-center">
-                  <span class="font-size-18 text-white line-height-1">
-                    info@fabrica.ir
-                  </span>
-                </div>
               </div>
             </div>
           </div>

@@ -212,7 +212,7 @@
     &-img {
       background: url('/images/ghate.png') no-repeat;
       background-size: 100% 100%;
-      width: 27%;
+      width: 25%;
       height: 70%;
       position: absolute;
       right: 0;
@@ -267,7 +267,35 @@
     }
   }
 }
-
+@media only screen and (max-width: 1200px) {
+  .home {
+    &__first-content {
+      &-img {
+        height: 55%;
+      }
+    }
+    &__second-content {
+      &-img {
+        height: 60%;
+      }
+    }
+    &__third-content {
+      &-img {
+        height: 65%;
+      }
+    }
+    &__fourth-content {
+      &-img {
+        height: 60%;
+      }
+    }
+    &__fifth-content {
+      &-img {
+        height: 65%;
+      }
+    }
+  }
+}
 @media only screen and (max-width: 768px ) {
   .home {
     &__main {
