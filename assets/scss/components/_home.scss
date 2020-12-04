@@ -18,6 +18,13 @@
       padding: 30px 30px 0 30px;
       position: relative;
     }
+    &-active-category {
+      color: #fff;
+      background-color: $primaryColor;
+      & img {
+        filter: brightness(0.0) invert(1);
+      }
+    }
     &-categories {
       overflow: auto;
       & ul {
@@ -35,7 +42,6 @@
           transition: all .3s;
           margin-left: 15px;
           flex: 1;
-          padding: 20px 0;
           font-size: 14px;
           text-align: center;
           border-radius: 15px;
@@ -74,12 +80,6 @@
             filter: saturate(1);
           }
         }
-        &.active{
-          img {
-            filter: saturate(1);
-          }
-        }
-
         img {
           margin-bottom: 20px;
           filter: saturate(4%);
@@ -90,6 +90,11 @@
           font-size: 20px;
           color: #454545;
           font-weight: 300;
+        }
+      }
+      &-active{
+        img {
+          filter: saturate(1);
         }
       }
       .swiper-button-next {
@@ -134,7 +139,7 @@
       & input {
         box-shadow: 0 0 10px hsla(0,0%,64.7%,.2);
         padding: 15px 25px 15px 130px;
-        color: #000;
+        color: $dimLightGray;
         font-weight: 300;
         border-radius: 15px;
         border: none;
@@ -151,26 +156,52 @@
     }
     &-select-boxes {
       margin: 30px auto;
-      .vs__dropdown-toggle {
-        border: none;
-        border-radius: 15px;
-        box-shadow: 0 0 10px hsla(0,0%,64.7%,.2);
-        background: #fff;
-        padding: 10px;
-      }
-      .vs__search {
-        font-size: 14px;
-        color: $dimLightGray;
-      }
-      .vs__open-indicator {
-        display: none;
-      }
-      .vs__dropdown-menu {
-        top: 50px;
-        border: none;
-        border-radius: 15px;
-        background: #fff;
-        padding: 10px;
+      .vs {
+        &__dropdown-menu {
+          top: 55px;
+          border: none;
+          border-radius: 15px;
+          background: #fff;
+          padding: 0;
+        }
+        &__no-options {
+          padding: 10px;
+          font-size: 14px;
+          color: $dimGray;
+        }
+        &__dropdown-option {
+          font-family: 'IRANSansMedium';
+          transition: all .4s;
+          padding: 10px;
+          font-size: 14px;
+          color: $dimGray;
+          border-bottom: 1px solid $cleanGray;
+          &:hover {
+            background-color: $lightGray;
+            color: #fff;
+          }
+          &--highlight {
+            background-color: $lightGray;
+            color: #fff;
+          }
+        }
+        &__dropdown-option:last-child {
+          border: none;
+        }
+        &__dropdown-toggle {
+          border: none;
+          border-radius: 15px;
+          box-shadow: 0 0 10px hsla(0,0%,64.7%,.2);
+          background: #fff;
+          padding: 10px;
+        }
+        &__search {
+          font-size: 14px;
+          color: $dimLightGray;
+        }
+        &__open-indicator {
+          display: none;
+        }
       }
     }
     &-advanced-search {
@@ -227,7 +258,7 @@
     &-img {
       background: url('/images/build.png') no-repeat;
       background-size: 100% 100%;
-      width: 28%;
+      width: 25%;
       height: 70%;
       position: absolute;
       left: 0;

@@ -16,6 +16,7 @@
   "dependencies": {
     "@nuxtjs/axios": "^5.12.2",
     "@nuxtjs/toast": "^3.3.0",
+    "@riophae/vue-treeselect": "^0.4.0",
     "core-js": "^3.6.5",
     "flexboxgrid-sass": "^8.0.5",
     "moment": "^2.24.0",

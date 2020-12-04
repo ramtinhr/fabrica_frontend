@@ -27,7 +27,6 @@
     transition: all .3s;
   }
   &-secondary:hover {
-    font-family: 'IRANSansBold';
     background-color: transparent !important;
   }
 
@@ -53,7 +52,6 @@
     &:hover {
       background-color: transparent !important;
       color: $primaryColor !important;
-      font-weight: bold;
     }
   }
   &-outline-fabrica {

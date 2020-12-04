@@ -1,6 +1,6 @@
 @import "fonts";
-@import "~flexboxgrid-sass";
 @import '~swiper/swiper';
+@import "~flexboxgrid-sass";
 @import "~vue-select/src/scss/vue-select.scss";
 @import "icons";
 @import "social_icons";
@@ -26,3 +26,4 @@
 // components
 @import "components/home";
 @import "components/advertise";
+@import "components/auth";

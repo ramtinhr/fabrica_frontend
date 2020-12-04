@@ -39,7 +39,7 @@
 
 <script>
 export default {
-  name: 'Advertise',
+  name: 'VerticalAdvertise',
   props: {
     img: {
       type: String,

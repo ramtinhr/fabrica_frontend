@@ -1,0 +1,53 @@
+.auth {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 0 40px 40px 40px;
+  &__steps {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  &__otp {
+    &-code-box {
+      display: flex;
+      align-items: center;
+      flex-direction: row-reverse;
+      margin-top: 30px;
+    }
+    &-input {
+      box-sizing: border-box;
+      height: 45px;
+      width: 45px;
+      border: 1px solid $dimLightGray;
+      border-radius: 10px;
+      background-color: #fff;
+      margin: auto 5px;
+      padding: 5px 5px 5px 10px;
+      font-size: 20px;
+      text-align: center;
+    }
+  }
+  &__phone-number-box {
+    margin: 30px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    & span {
+      margin-right: 10px;
+    }
+    & input {
+      direction: ltr;
+      border-top: none;
+      border-left: none;
+      border-right: none;
+      border-bottom: 1px solid $lightGray;
+      border-radius: 0;
+    }
+  }
+  & button {
+    border-radius: 30px;
+  }
+}

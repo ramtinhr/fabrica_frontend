@@ -4,7 +4,16 @@ export const state = () => ({
     categories: {
       data: [],
     },
+    parentCategories: {
+      data: [],
+    },
+    childCategories: {
+      data: [],
+    },
     states: {
+      data: [],
+    },
+    cities: {
       data: [],
     },
     firstAdvertises: {

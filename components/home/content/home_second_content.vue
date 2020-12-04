@@ -26,7 +26,7 @@
         </button>
       </div>
       <div class="row justify-content-flex-end">
-        <advertise
+        <advertise-vertical
           v-for="advertise in advertises.data"
           :key="advertise.id"
           :img="advertise.featured_image"
