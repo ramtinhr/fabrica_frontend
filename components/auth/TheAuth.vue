@@ -1,5 +1,5 @@
 <template>
-  <modal :is-open="isOpen" @close="closeModal()">
+  <TheModal :is-open="isOpen" @close="closeModal()">
     <div slot="body">
       <div class="auth">
         <div class="auth__mobile-img">
@@ -17,31 +17,32 @@
             <span class="text-dimLightGray text-center font-size-14">
               {{ $t('auth.text') }}
             </span>
-            <div class="auth__phone-number-box">
-              <ValidationProvider
-                v-slot="{ errors }"
-                name="mobile"
-                username="mobile"
-                rules="required|max:10"
-              >
-                <input-number
+            <ValidationProvider
+              v-slot="{ errors }"
+              name="mobile"
+              username="mobile"
+              rules="required|max:10"
+            >
+              <div class="auth__phone-number-box">
+                <InputNumber
                   v-model="mobileNumber"
                   :name="'mobile'"
                   :max-lenght="10"
                   :number-format="false"
-                  :placeholder="'912833341'"
+                  :placeholder="'9128333410'"
                   :type="'tel'"
                 />
-                <span>98+</span>
-                <div class="m-t-10">
-                  <span v-if="errors[0]" class="text-danger">{{
-                    errors[0]
-                  }}</span>
-                </div>
-              </ValidationProvider>
-            </div>
-            <button class="btn btn-fabrica" @click="sendOtp">
+                <label>98+</label>
+              </div>
+              <div>
+                <span v-if="errors[0]" class="text-danger">{{
+                  errors[0]
+                }}</span>
+              </div>
+            </ValidationProvider>
+            <button :disabled="isLoading" class="btn btn-fabrica m-t-30">
               {{ $t('auth.sendCode') }}
+              <TheLoading v-if="isLoading" :color="'#fff'" :size="'22px'" />
             </button>
           </form>
         </ValidationObserver>
@@ -64,7 +65,7 @@
               {{ $t('auth.changePhoneNumber') }}
             </p>
             <div class="auth__otp-code-box">
-              <otp-input
+              <OtpInput
                 ref="otpInput"
                 input-classes="otp-input"
                 separator=""
@@ -76,18 +77,22 @@
             </div>
             <div class="font-size-14 m-t-10 m-b-30">
               <span>{{ $t('auth.dontReceiveCode') }}</span>
-              <span class="text-dimLightGray font-size-12">
+              <span
+                class="text-dimLightGray font-size-12 cursor-pointer"
+                @click="loginInit"
+              >
                 {{ $t('auth.resendCode') }}
               </span>
             </div>
-            <button class="btn btn-fabrica p-h-45">
+            <button :disabled="isLoading" class="btn btn-fabrica p-h-45">
               {{ $t('auth.login') }}
+              <TheLoading v-if="isLoading" :color="'#fff'" :size="'22px'" />
             </button>
           </form>
         </ValidationObserver>
       </div>
     </div>
-  </modal>
+  </TheModal>
 </template>
 
 <script>
@@ -103,7 +108,8 @@ export default {
     return {
       step: 1,
       mobileNumber: null,
-      otpCode: [],
+      smsCode: null,
+      isLoading: false,
     }
   },
   watch: {
@@ -112,15 +118,51 @@ export default {
         this.step = 1
       }
     },
+    smsCode(val) {
+      if (val && val.length === 4) {
+        this.authenticate()
+      }
+    },
   },
   methods: {
-    sendOtp() {
-      this.step = 2
+    onCompleteHandler(value) {
+      this.smsCode = value
+    },
+    async loginInit() {
+      try {
+        this.isLoading = true
+        const response = await this.$store.dispatch('auth/loginInit', {
+          mobileNumber: `0${this.mobileNumber}`,
+        })
+        if (response.data.message.status === 200) {
+          this.step = 2
+        }
+        this.$message(response)
+      } catch (e) {
+        this.$toast.error(e)
+      } finally {
+        this.isLoading = false
+      }
+    },
+    async authenticate() {
+      try {
+        this.isLoading = true
+        const response = await this.$store.dispatch('auth/authenticate', {
+          code: this.smsCode,
+        })
+        this.$message(response)
+        if (response.data.message.status === 1002) {
+          this.isOpen = false
+        }
+      } catch (e) {
+        this.$toast.error(e)
+      } finally {
+        this.isLoading = false
+      }
     },
     closeModal() {
       this.$emit('closeModal')
     },
-    onCompleteHandler() {},
   },
 }
 </script>

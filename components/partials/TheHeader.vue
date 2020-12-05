@@ -36,7 +36,7 @@
         </div>
       </div>
     </div>
-    <auth :is-open="isOpen" @closeModal="isOpen = false" />
+    <TheAuth :is-open="isOpen" @closeModal="isOpen = false" />
   </header>
 </template>
 

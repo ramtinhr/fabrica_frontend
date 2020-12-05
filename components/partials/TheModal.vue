@@ -4,7 +4,7 @@
       <div class="modal-backdrop" />
     </transition>
     <transition name="fade-in">
-      <div v-if="isOpen" id="myModal" class="modal">
+      <div v-if="isOpen" id="modal" class="modal">
         <div class="modal-dialog">
           <div class="modal-container">
             <div class="modal-head">
@@ -70,7 +70,7 @@ export default {
   },
   methods: {
     checkAndClose() {
-      const modal = document.getElementById('myModal')
+      const modal = document.getElementById('modal')
       window.onclick = (e) => {
         if (e.target === modal) {
           this.close()

@@ -788,6 +788,16 @@ input:invalid {
   border: none !important;
 }
 
+.toasted.toasted-primary.error {
+  padding: 15px 30px;
+  border-radius: 15px;
+}
+
+.toasted.toasted-primary.success {
+  padding: 15px 30px;
+  border-radius: 15px;
+}
+
 //height in precent
 @for $j from 0 through 100 {
   .h-#{$j} {

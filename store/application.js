@@ -14,35 +14,16 @@ export const getters = {
   appDefaultLang: (state) => {
     return state.lang
   },
-  activeCurrency: (state) => {
-    return state.currency
-  },
-  activeTeam: (state) => {
-    return state.team
-  }
 }
 
 export const mutations = {
   APPLICATION_LOADING (state, status = false) {
     state.loading = status
   },
-  SET_SIDEBAR (state, sidebarKeys) {
-    state.sidebar = sidebarKeys
-  },
-  SET_CURRENCY (state, currencyCode) {
-    state.currency = currencyCode
-  }
 }
 
 export const actions = {
   // change application currency
-  setCurrency ({ commit }, currencyCode) {
-    commit('SET_CURRENCY', currencyCode)
-  },
-  // Determine which sidebar visible
-  setSidebar ({ commit }, sidebarKey) {
-    commit('SET_SIDEBAR', sidebarKey)
-  },
   apiResponse ({ app, commit }, response) {
     // This is api success or error message
 

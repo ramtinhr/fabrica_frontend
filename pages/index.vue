@@ -1,11 +1,11 @@
 <template>
   <div class="home">
-    <home-main />
-    <home-first-content />
-    <home-second-content />
-    <home-third-content />
-    <home-fourth-content />
-    <home-fifth-content />
+    <HomeMain />
+    <HomeFirstContent />
+    <HomeSecondContent />
+    <HomeThirdContent />
+    <HomeFourthContent />
+    <HomeFifthContent />
   </div>
 </template>
 

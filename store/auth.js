@@ -34,11 +34,15 @@ export const actions = {
   loginInit({ commit }, { mobileNumber }) {
     return new Promise((resolve, reject) => {
       this.$axios
-        .post('/users/register', {
-          mobileNumber,
+        .get('/users/register', {
+          params: {
+            mobile_number: mobileNumber,
+          },
         })
         .then((response) => {
-          commit('SET_ID', response.data.data)
+          if (response.data.message.status === 1002) {
+            commit('SET_ID', response.data.data)
+          }
           resolve(response)
         })
         .catch((error) => {
@@ -50,7 +54,7 @@ export const actions = {
     return new Promise((resolve, reject) => {
       this.$axios
         .post(`/users/register/${state.id}`, {
-          code,
+          sms_code: code,
         })
         .then((res) => {
           localStorage.setItem('access_token', res.data.data.access_token)

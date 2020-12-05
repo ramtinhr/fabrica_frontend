@@ -77,6 +77,7 @@ export default {
   plugins: [
     '~/plugins/helpers/number.js',
     '~/plugins/helpers/string.js',
+    '~/plugins/helpers/api-message.js',
     { src: '~plugins/vee-validate.js', mode: 'client' },
     { src: './plugins/vue-awesome-swiper.js', mode: 'client', ssr: true },
     { src: './plugins/vue-select.js', ssr: true },
@@ -101,7 +102,7 @@ export default {
 
   toast: {
     position: 'bottom-center',
-    duration: 6000,
+    duration: 8000,
   },
   i18n: {
     locale: 'fa',

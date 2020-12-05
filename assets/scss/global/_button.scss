@@ -52,6 +52,9 @@
     &:hover {
       background-color: transparent !important;
       color: $primaryColor !important;
+      .v-spinner .v-clip {
+        border-color: $primaryColor $primaryColor transparent !important;
+      }
     }
   }
   &-outline-fabrica {

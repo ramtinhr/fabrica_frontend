@@ -8,7 +8,7 @@
       type="text"
       style="display: none"
     />
-    <single-otp-input
+    <SingleOtpInput
       v-for="(item, i) in numInputs"
       :key="i"
       :focus="activeInput === i"
