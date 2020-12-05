@@ -5,7 +5,8 @@ export default {
       lang: 'fa-IR',
       dir: 'rtl',
     },
-    title: 'فابریکا',
+    title:
+      'فابریکا  - نیازمندی‌ های رایگان، آگهی‌های خرید، فروش  نو و دست دوم و کارکرده',
     meta: [
       { charset: 'utf-8' },
       // { name: 'enamad', content: '382221' },
@@ -55,6 +56,14 @@ export default {
       { name: 'msapplication-TileColor', content: '#ffc40d' },
       { name: 'theme-color', content: '#f1c446' },
     ],
+    link: [
+      {
+        rel: 'icon',
+        type: 'image/png',
+        sizes: '16x16',
+        href: '/images/logo.png',
+      },
+    ],
   },
 
   // Global CSS (https://go.nuxtjs.dev/config-css)
@@ -68,6 +77,7 @@ export default {
   plugins: [
     '~/plugins/helpers/number.js',
     '~/plugins/helpers/string.js',
+    { src: '~plugins/vee-validate.js', mode: 'client' },
     { src: './plugins/vue-awesome-swiper.js', mode: 'client', ssr: true },
     { src: './plugins/vue-select.js', ssr: true },
   ],
@@ -91,7 +101,7 @@ export default {
 
   toast: {
     position: 'bottom-center',
-    duration: 8000,
+    duration: 6000,
   },
   i18n: {
     locale: 'fa',

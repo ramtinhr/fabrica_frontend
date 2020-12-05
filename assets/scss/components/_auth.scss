@@ -5,6 +5,7 @@
   flex-direction: column;
   padding: 0 40px 40px 40px;
   &__steps {
+    animation: fade 1s;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -16,18 +17,6 @@
       align-items: center;
       flex-direction: row-reverse;
       margin-top: 30px;
-    }
-    &-input {
-      box-sizing: border-box;
-      height: 45px;
-      width: 45px;
-      border: 1px solid $dimLightGray;
-      border-radius: 10px;
-      background-color: #fff;
-      margin: auto 5px;
-      padding: 5px 5px 5px 10px;
-      font-size: 20px;
-      text-align: center;
     }
   }
   &__phone-number-box {

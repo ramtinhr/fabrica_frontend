@@ -263,20 +263,31 @@ input[type=number] {
   }
 }
 
-.otp-input {
-  text-align: center;
-  letter-spacing: 22px;
-  direction: ltr;
-  font-size: 27px !important;
-  background-color: #ffffff;
-  width: 100%;
-  border-radius: 4px;
-  border: solid 1px #d0dbe7;
-  font-family: IRANSansMedium;
-  &:focus {
-    border: solid 1px #3f4156;
+.otp {
+  &-input {
+    &-box {
+      display: flex;
+      align-items: center;
+      flex-direction: row-reverse;
+    }
+    margin: auto 10px;
+    text-align: center;
+    letter-spacing: 2px;
+    direction: ltr;
+    font-size: 24px !important;
+    background-color: #ffffff;
+    width: 45px;
+    height: 45px;
+    border-radius: 4px;
+    border: solid 1px #d0dbe7;
+    font-family: IRANSansLightPersian;
+    &:focus {
+      border: solid 1px #3f4156;
+    }
+
   }
 }
+
 .input-bordered {
   border-radius: 4px;
   border: 1px solid #d2dde9;
