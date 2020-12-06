@@ -27,9 +27,11 @@ export const state = () => ({
     },
     fourthAdvertises: {
       data: [],
+      isLoading: false,
     },
     fifthAdvertises: {
       data: [],
+      isLoading: false,
     },
   },
   loading: false,

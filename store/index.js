@@ -1,11 +1,17 @@
 /* eslint-disable */
+import CookieParser from "cookieparser";
+
 export const state = () => ({
   limit: 10,
   category: null,
-  state: null
+  state: null,
+  token: null,
 })
 
 export const mutations = {
+  SET_TOKEN(state, token) {
+    state.token = token
+  },
   ADD_DATA(rootState, { storeName, resourceName, data }) {
     if (resourceName) {
       rootState[storeName].resource[resourceName].data.push(...data)
@@ -138,6 +144,11 @@ export const mutations = {
 }
 
 export const actions = {
+  nuxtServerInit({ commit }, { req }) {
+    const cookies = CookieParser.parse(req.headers.cookie)
+    const token = cookies['token']
+    commit('SET_TOKEN', token)
+  },
   fill({ commit }, { storeName, resourceName, data, pagination }) {
     commit('FILL', { storeName, resourceName, data, pagination })
   },
@@ -301,6 +312,9 @@ export const getters = {
   },
   getSelectedState: (state) => {
     return state.state
+  },
+  isAuthenticated(state) {
+    return state.token != null
   },
   isRequesting: (rootState) => (storeName, resourceName = null) => {
     if (!resourceName) {

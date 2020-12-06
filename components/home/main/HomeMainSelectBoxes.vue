@@ -1,7 +1,7 @@
 <template>
   <div class="home__main-select-boxes">
     <div class="row">
-      <div class="col-md-3 col-sm-6 col-xs-12 m-b-xs-15">
+      <div class="col-md-3 col-sm-6 col-xs-12 m-b-xs-15 m-b-sm-15">
         <v-select
           :options="categories"
           :placeholder="$t('home.selectSubCategory')"
@@ -17,7 +17,7 @@
           </span>
         </v-select>
       </div>
-      <div class="col-md-3 col-sm-6 col-xs-12 m-b-xs-15">
+      <div class="col-md-3 col-sm-6 col-xs-12 m-b-xs-15 m-b-sm-15">
         <v-select
           :options="orderBy"
           :placeholder="$t('orderBy')"

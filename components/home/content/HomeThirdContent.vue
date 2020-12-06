@@ -24,7 +24,7 @@
         </button>
       </div>
       <div class="row">
-        <advertise-vertical
+        <VerticalAdvertise
           v-for="advertise in advertises.data"
           :key="advertise.id"
           :img="advertise.featured_image"

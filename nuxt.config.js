@@ -98,11 +98,25 @@ export default {
         strategy: 'prefix_except_default',
       },
     ],
+    [
+      'nuxt-mq',
+      {
+        // Default breakpoint for SSR
+        defaultBreakpoint: 'default',
+        breakpoints: {
+          xs: 576,
+          sm: 768,
+          md: 992,
+          lg: 1200,
+          xl: Infinity,
+        },
+      },
+    ],
   ],
 
   toast: {
     position: 'bottom-center',
-    duration: 8000,
+    duration: 6000,
   },
   i18n: {
     locale: 'fa',

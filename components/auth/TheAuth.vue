@@ -59,8 +59,8 @@
               {{ $t('auth.registerText') }}
             </span>
             <p
-              class="font-size-14 text-center text-yellow cursor-pointer"
-              @click="step = 1"
+              class="font-size-14 font-sans-medium text-center text-yellow cursor-pointer"
+              @click="changeNumber"
             >
               {{ $t('auth.changePhoneNumber') }}
             </p>
@@ -110,6 +110,7 @@ export default {
       mobileNumber: null,
       smsCode: null,
       isLoading: false,
+      id: null,
     }
   },
   watch: {
@@ -135,11 +136,15 @@ export default {
           mobileNumber: `0${this.mobileNumber}`,
         })
         if (response.data.message.status === 200) {
+          this.id = response.data.data._id
           this.step = 2
         }
         this.$message(response)
       } catch (e) {
-        this.$toast.error(e)
+        /*
+          because of unlikely api and 200 status code for requests
+          error handling will be failed and give user bad UX
+         */
       } finally {
         this.isLoading = false
       }
@@ -149,16 +154,24 @@ export default {
         this.isLoading = true
         const response = await this.$store.dispatch('auth/authenticate', {
           code: this.smsCode,
+          id: this.id,
         })
         this.$message(response)
-        if (response.data.message.status === 1002) {
-          this.isOpen = false
+        if (response.data.message.status === 200) {
+          this.closeModal()
         }
       } catch (e) {
-        this.$toast.error(e)
+        /*
+         because of unlikely api and 200 status code for requests
+         error handling will be failed and give user bad UX
+        */
       } finally {
         this.isLoading = false
       }
+    },
+    changeNumber() {
+      this.step = 1
+      this.smsCode = null
     },
     closeModal() {
       this.$emit('closeModal')
@@ -166,5 +179,3 @@ export default {
   },
 }
 </script>
-
-<style scoped></style>

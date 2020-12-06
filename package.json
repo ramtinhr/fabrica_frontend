@@ -16,6 +16,7 @@
   "dependencies": {
     "@nuxtjs/axios": "^5.12.2",
     "@nuxtjs/toast": "^3.3.0",
+    "cookieparser": "^0.1.0",
     "core-js": "^3.6.5",
     "flexboxgrid-sass": "^8.0.5",
     "js-cookie": "^2.2.1",
@@ -24,6 +25,7 @@
     "node-sass": "^4.14.1",
     "nuxt": "^2.14.6",
     "nuxt-i18n": "^6.5.0",
+    "nuxt-mq": "^2.0.1",
     "sass-loader": "^8.0.2",
     "swiper": "^6.3.5",
     "vee-validate": "^3.2.5",

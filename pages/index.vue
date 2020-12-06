@@ -34,12 +34,6 @@ export default {
     const thirdId = categories.find(
       (category) => category.title === 'خودرو سنگین'
     ).id
-    const fourthId = categories.find(
-      (category) => category.title === 'ضایعات و فلزات'
-    ).id
-    const fifthId = categories.find(
-      (category) => category.title === 'موتور سیکلت'
-    ).id
     await store.dispatch('get', {
       url: '/ads/search',
       storeName: 'home',
@@ -72,30 +66,6 @@ export default {
       config: {
         params: {
           category_ids: thirdId,
-          limit: 3,
-        },
-      },
-    })
-    await store.dispatch('get', {
-      url: '/ads/search',
-      storeName: 'home',
-      resourceName: 'fourthAdvertises',
-      fillData: false,
-      config: {
-        params: {
-          category_ids: fourthId,
-          limit: 3,
-        },
-      },
-    })
-    await store.dispatch('get', {
-      url: '/ads/search',
-      storeName: 'home',
-      resourceName: 'fifthAdvertises',
-      fillData: false,
-      config: {
-        params: {
-          category_ids: fifthId,
           limit: 3,
         },
       },

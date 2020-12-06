@@ -1,19 +1,11 @@
+import Cookie from 'js-cookie'
 export const state = () => ({
   resource: [],
   permissions: [],
   alerts: [],
   role: null,
-  id: null,
+  token: null,
 })
-
-export const getters = {
-  user: (state) => {
-    return state.resource
-  },
-  alerts: (state) => {
-    return state.alerts
-  },
-}
 
 export const mutations = {
   STORE_PERMISSION(state, data) {
@@ -22,11 +14,11 @@ export const mutations = {
   STORE_ROLE(state, data) {
     state.role = data
   },
-  SET_ID(state, data) {
-    state.id = data._id
-  },
   STORE_USER_INFO(state, data) {
     state.resource = data
+  },
+  SET_TOKEN(state, token) {
+    state.token = token
   },
 }
 
@@ -40,9 +32,6 @@ export const actions = {
           },
         })
         .then((response) => {
-          if (response.data.message.status === 1002) {
-            commit('SET_ID', response.data.data)
-          }
           resolve(response)
         })
         .catch((error) => {
@@ -50,22 +39,18 @@ export const actions = {
         })
     })
   },
-  authenticate({ dispatch, commit, state }, { code }) {
+  authenticate({ dispatch, commit, state }, { code, id }) {
     return new Promise((resolve, reject) => {
       this.$axios
-        .post(`/users/register/${state.id}`, {
+        .post(`/users/register/${id}`, {
           sms_code: code,
         })
         .then((res) => {
-          localStorage.setItem('access_token', res.data.data.access_token)
-          console.log(localStorage.getItem('access_token'))
-          dispatch('fetchMe')
-            .then((resp) => {
-              resolve(resp)
-            })
-            .catch((err) => {
-              reject(err)
-            })
+          resolve(res)
+          const token = res.data.data.access_token
+          localStorage.setItem('access_token', token)
+          Cookie.set('token', token)
+          commit('SET_TOKEN', token)
         })
         .catch((error) => {
           reject(error)
@@ -74,8 +59,9 @@ export const actions = {
   },
   fetchMe({ dispatch, commit }) {
     return new Promise((resolve, reject) => {
+      this.$axios.setToken(`Bearer ${localStorage.getItem('access_token')}`)
       this.$axios
-        .get('/user/me')
+        .get('/users/me')
         .then((response) => {
           const data = response.data.data
           commit('STORE_USER_INFO', data)
@@ -88,8 +74,36 @@ export const actions = {
         })
     })
   },
+  initAuth({ commit }) {
+    if (process.client) {
+      const accessToken = localStorage.getItem('access_token')
+      const jwt = Cookie.get('token')
+      if (accessToken != null) {
+        commit('SET_TOKEN', accessToken)
+      } else if (jwt != null) {
+        commit('SET_TOKEN', jwt)
+      }
+    }
+  },
   logout({ commit }) {
     commit('STORE_USER_INFO', [])
+    Cookie.remove('token')
     localStorage.removeItem('access_token')
+    if (process.client) {
+      localStorage.removeItem('token')
+      localStorage.removeItem('tokenExpiration')
+    }
+  },
+}
+
+export const getters = {
+  user(state) {
+    return state.resource
+  },
+  alerts(state) {
+    return state.alerts
+  },
+  clientSideIsAuthenticated(state) {
+    return state.token != null
   },
 }

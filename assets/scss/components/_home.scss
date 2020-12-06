@@ -2,7 +2,7 @@
   &__main {
     background-image: url('/images/back_states.jpg');
     width: 100%;
-    height: 800px;
+    padding: 60px 0;
     background-size: cover;
     background-position-y: top;
     display: -webkit-box;
@@ -212,6 +212,13 @@
       }
     }
   }
+  &__loading {
+    min-height: 250px;
+    padding-bottom: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+  }
   &__info {
     display: flex;
     justify-content: space-between;
@@ -330,7 +337,6 @@
 @media only screen and (max-width: 768px ) {
   .home {
     &__main {
-      height: 870px;
       &-content {
         padding: 30px 15px 0 15px;
       }
