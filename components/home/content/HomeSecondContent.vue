@@ -33,7 +33,6 @@
           :title="advertise.title"
           :price="advertise.price"
           :created-at="advertise.created_at_jalali_date"
-          class="m-b-xs-30"
         />
       </div>
       <div class="row justify-content-flex-end hidden-xs">
@@ -44,7 +43,6 @@
           :title="advertise.title"
           :price="advertise.price"
           :created-at="advertise.created_at_jalali_date"
-          class="m-b-xs-30"
         />
       </div>
     </div>

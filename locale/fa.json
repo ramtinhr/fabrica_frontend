@@ -8,6 +8,9 @@
   "email": "ایمیل",
   "orderBy": "مرتب سازی بر اساس",
   "noResultFound": "نتیجه ای یافت نشد",
+  "filters": "فیلتر ها",
+  "priceRange": "محدود قیمت",
+  "toman": "تومان",
   "header": {
     "mainPage": "صفحه اصلی",
     "latestAdvertises": "آخرین آگهی ها",

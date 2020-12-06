@@ -1,9 +1,15 @@
 <template>
-  <div class="col-md-3 col-sm-4 col-xs-12 p-r-10 p-l-10">
+  <div
+    :class="
+      isListPage
+        ? 'col-md-4 col-sm-6 col-xs-12 p-h-10 m-t-15 m-b-15 m-b-xs-30'
+        : 'col-md-3 col-sm-4 col-xs-12 p-h-10 m-b-xs-30'
+    "
+  >
     <div class="advertise__vertical">
       <div class="advertise__vertical-img-wrapper">
         <img v-if="img" :src="img" alt="آگهی" />
-        <div v-else class="advertise__vertical-img-placeholder"></div>
+        <img v-else src="/images/placeholder.png" alt="عکس جایگزین" />
       </div>
       <div class="advertise__vertical-content">
         <div class="advertise-content-title">
@@ -41,6 +47,10 @@
 export default {
   name: 'VerticalAdvertise',
   props: {
+    isListPage: {
+      type: Boolean,
+      default: false,
+    },
     img: {
       type: String,
       default: null,

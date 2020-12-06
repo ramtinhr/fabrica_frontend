@@ -79,9 +79,10 @@ export default {
     '~/plugins/helpers/string.js',
     '~/plugins/helpers/api-message.js',
     { src: '~plugins/vee-validate.js', mode: 'client' },
-    { src: './plugins/vue-awesome-swiper.js', mode: 'client', ssr: true },
-    { src: './plugins/vue-select.js', ssr: true },
-    { src: '~/plugins/application.js', ssr: false },
+    { src: '~/plugins/vue-awesome-swiper.js', mode: 'client', ssr: true },
+    { src: '~plugins/vue-slider.js', ssr: false },
+    { src: '~plugins/vue-select.js', ssr: true },
+    { src: '~plugins/application.js', ssr: false },
   ],
   // Modules for dev and build (recommended) (https://go.nuxtjs.dev/config-modules)
   buildModules: [

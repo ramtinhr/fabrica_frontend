@@ -1,0 +1,17 @@
+.sidebar {
+  text-align: center;
+  background-color: #fff;
+  border-radius: 20px;
+  -webkit-box-shadow: 0 10px 40px hsla(0,0%,64.7%,.2);
+  box-shadow: 0 10px 40px hsla(0,0%,64.7%,.2);
+  padding: 25px 20px;
+  &__head {
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid $lightGray;
+  }
+  &__body {
+    display: flex;
+    flex-direction: column;
+  }
+}

@@ -76,7 +76,7 @@ export default {
       if (this.otp.join('').length === this.numInputs) {
         return this.$emit('on-complete', this.otp.join(''))
       }
-      return 'Wait until the user enters the required number of characters'
+      return 'تا موقعی که کاربر کد را وارد می کند صبر کنید'
     },
     // Focus on input by index
     focusInput(input) {
@@ -107,7 +107,7 @@ export default {
         .slice(0, this.numInputs - this.activeInput)
         .split('')
       if (this.inputType === 'number' && !pastedData.join('').match(/^\d+$/)) {
-        return 'Invalid pasted data'
+        return 'پسورد نا معتبر است'
       }
       // Paste data from focused input onwards
       const currentCharsInOtp = this.otp.slice(0, this.activeInput)

@@ -1,0 +1,15 @@
+.list {
+  &__filter-box {
+    &-head {
+      .v-select {
+        margin-bottom: 20px;
+      }
+    }
+    &-body {
+      padding-top: 20px;
+    }
+  }
+  &__advertises {
+    display: flex;
+  }
+}
