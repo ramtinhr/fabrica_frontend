@@ -81,6 +81,7 @@ export default {
     { src: '~plugins/vee-validate.js', mode: 'client' },
     { src: './plugins/vue-awesome-swiper.js', mode: 'client', ssr: true },
     { src: './plugins/vue-select.js', ssr: true },
+    { src: '~/plugins/application.js', ssr: false },
   ],
   // Modules for dev and build (recommended) (https://go.nuxtjs.dev/config-modules)
   buildModules: [
@@ -98,6 +99,7 @@ export default {
         strategy: 'prefix_except_default',
       },
     ],
+    'cookie-universal-nuxt',
     [
       'nuxt-mq',
       {
@@ -153,5 +155,17 @@ export default {
         redirect: '/404',
       })
     },
+  },
+
+  messages: {
+    server_error: 'مشکل سیستم',
+    nuxtjs: ' ',
+    back_to_home: 'داشبورد',
+    server_error_details: 'مشکلی به وجود آمده است',
+  },
+
+  env: {
+    BASE_URl: 'https://siglive.ir/api',
+    IS_APPLICATION: false,
   },
 }

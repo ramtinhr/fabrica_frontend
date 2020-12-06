@@ -9,15 +9,6 @@
     display: flex;
     &:hover {
       box-shadow: 0 10px 40px hsla(0,0%,64.7%,.2);
-      .advertise__img-wrapper {
-        height: 45%;
-      }
-      .advertise__content {
-        height: 55%;
-        &-detail-price {
-          margin-bottom: 10px;
-        }
-      }
     }
     &-img {
       &-placeholder {
@@ -75,10 +66,10 @@
     position: relative;
     &:hover {
       box-shadow: 0 10px 40px hsla(0,0%,64.7%,.2);
-      .advertise__img-wrapper {
+      .advertise__vertical-img-wrapper {
         height: 45%;
       }
-      .advertise__content {
+      .advertise__vertical-content {
         height: 55%;
         &-detail-price {
           margin-bottom: 10px;

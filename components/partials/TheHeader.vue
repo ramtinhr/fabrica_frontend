@@ -3,16 +3,21 @@
     <div class="fabrica-container">
       <div class="row align-center">
         <div class="col-md-1 col-sm-2">
-          <div class="header__logo">
+          <nuxt-link :to="{ name: 'index___' }" class="header__logo" tag="div">
             <img src="/images/logo.png" alt="logo" />
-          </div>
+          </nuxt-link>
         </div>
         <div class="col-md-6 col-sm-5">
           <nav class="header__navbar">
             <ul>
               <li class="font-size-16">
-                <i class="o-icon o-home-51 m-l-5"></i>
-                {{ $t('header.mainPage') }}
+                <nuxt-link
+                  :to="{ name: 'index___' + $cookies.get('lang') }"
+                  tag="a"
+                >
+                  <i class="o-icon o-home-51 m-l-5"></i>
+                  {{ $t('header.mainPage') }}
+                </nuxt-link>
               </li>
               <li class="font-size-16">{{ $t('header.latestAdvertises') }}</li>
             </ul>

@@ -59,7 +59,7 @@ export const actions = {
   },
   fetchMe({ dispatch, commit }) {
     return new Promise((resolve, reject) => {
-      this.$axios.setToken(`Bearer ${localStorage.getItem('access_token')}`)
+      this.$axios.setToken(localStorage.getItem('access_token'), 'Bearer')
       this.$axios
         .get('/users/me')
         .then((response) => {

@@ -172,6 +172,11 @@ export const actions = {
     if (storeName) {
       commit('LOADING', { storeName, resourceName })
     }
+    if (process.client) {
+      if (localStorage.getItem('access_token') !== null) {
+        this.$axios.setToken(localStorage.getItem('access_token'), 'Bearer')
+      }
+    }
     return new Promise((resolve, reject) => {
       this.$axios
         .get(url, config)
@@ -197,6 +202,11 @@ export const actions = {
     })
   },
   post({ state, commit }, { url, data, config }) {
+    if (process.client) {
+      if (localStorage.getItem('access_token') !== null) {
+        this.$axios.setToken(localStorage.getItem('access_token'), 'Bearer')
+      }
+    }
     return new Promise((resolve, reject) => {
       this.$axios
         .post(url, data, config)
@@ -209,6 +219,11 @@ export const actions = {
     })
   },
   put({ state, commit }, { url, data, config }) {
+    if (process.client) {
+      if (localStorage.getItem('access_token') !== null) {
+        this.$axios.setToken(localStorage.getItem('access_token'), 'Bearer')
+      }
+    }
     return new Promise((resolve, reject) => {
       this.$axios
         .put(url, data, config)
@@ -238,6 +253,11 @@ export const actions = {
         params.limit = rootState[storeName].resource[resourceName].limit
       } else {
         params.limit = rootState[storeName].resource.limit
+      }
+      if (process.client) {
+        if (localStorage.getItem('access_token') !== null) {
+          this.$axios.setToken(localStorage.getItem('access_token'), 'Bearer')
+        }
       }
       this.$axios
         .get(url, { params })
@@ -271,6 +291,11 @@ export const actions = {
         params.limit = limit
       } else {
         params.limit = rootState.limit
+      }
+      if (process.client) {
+        if (localStorage.getItem('access_token') !== null) {
+          this.$axios.setToken(localStorage.getItem('access_token'), 'Bearer')
+        }
       }
       this.$axios
         .get(url, { params })
