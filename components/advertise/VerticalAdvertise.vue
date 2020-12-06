@@ -1,18 +1,18 @@
 <template>
   <div class="col-md-3 col-sm-4 col-xs-12 p-r-10 p-l-10">
-    <div class="advertise">
-      <div class="advertise__img-wrapper">
+    <div class="advertise__vertical">
+      <div class="advertise__vertical-img-wrapper">
         <img v-if="img" :src="img" alt="آگهی" />
-        <div v-else class="advertise__img-placeholder"></div>
+        <div v-else class="advertise__vertical-img-placeholder"></div>
       </div>
-      <div class="advertise__content">
-        <div class="advertise__content-title">
+      <div class="advertise__vertical-content">
+        <div class="advertise-content-title">
           <span class="font-size-14 font-sans-medium">
             {{ $strLimit(title, 45) }}
           </span>
         </div>
-        <div class="advertise__content-detail">
-          <div class="advertise__content-detail-price">
+        <div class="advertise__vertical-content-detail">
+          <div class="advertise__vertical-content-detail-price">
             <span class="text-dimLightGray font-size-12">
               {{ $t('advertise.price') }}
             </span>
@@ -23,7 +23,7 @@
               {{ $t('advertise.call') }}
             </span>
           </div>
-          <div class="advertise__content-detail-created">
+          <div class="advertise__vertical-content-detail-created">
             <span class="text-dimLightGray font-size-12">
               {{ $t('advertise.createdAt') }}
             </span>

@@ -23,7 +23,18 @@
           {{ $t('seeMore') }}
         </button>
       </div>
-      <div class="row">
+      <div v-if="this.$mq === 'xs' || this.$mq === 'sm'" class="row">
+        <HorizontalAdvertise
+          v-for="advertise in advertises.data"
+          :key="advertise.id"
+          :img="advertise.featured_image"
+          :title="advertise.title"
+          :price="advertise.price"
+          :created-at="advertise.created_at_jalali_date"
+          class="m-b-xs-30"
+        />
+      </div>
+      <div class="row hidden-xs">
         <VerticalAdvertise
           v-for="advertise in advertises.data"
           :key="advertise.id"

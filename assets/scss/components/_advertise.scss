@@ -1,65 +1,133 @@
 .advertise {
-  box-shadow: 0 0 10px hsla(0,0%,64.7%,.2);
-  border-radius: 15px;
-  height: 290px;
-  transition: all .4s ease;
-  cursor: pointer;
-  position: relative;
-  &:hover {
-    box-shadow: 0 10px 40px hsla(0,0%,64.7%,.2);
-    .advertise__img-wrapper {
-      height: 45%;
-    }
-    .advertise__content {
-      height: 55%;
-      &-detail-price {
-        margin-bottom: 10px;
-      }
-    }
-  }
-  &__img {
-    &-placeholder {
-      background: url("/images/placeholder.png") no-repeat;
-      width: 100%;
-      height: 100%;
-      background-size: 100% 100%;
-      border-radius: 15px 15px 0 0;
-    }
-    &-wrapper {
-      position: relative;
-      height: 35%;
-      border-radius: 15px 15px 0 0;
-      transition: height .5s ease;
-      background-color: rgba(0,0,0,.3);
-      & img {
-        border-radius: 15px 15px 0 0;
-        height: 100%;
-        width: 100%;
-      }
-    }
-  }
-
-  &__content {
-    padding: 20px;
+  &__horizontal {
+    box-shadow: 0 0 10px hsla(0,0%,64.7%,.2);
+    border-radius: 15px;
+    height: 100%;
+    transition: all .4s ease;
+    cursor: pointer;
+    position: relative;
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 65%;
-    transition: height .5s ease;
-    background-color: #fff;
-    border-radius: 0 0 15px 15px;
-    &-detail {
-      &-price {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 15px;
-        transition: all .5s ease;
+    &:hover {
+      box-shadow: 0 10px 40px hsla(0,0%,64.7%,.2);
+      .advertise__img-wrapper {
+        height: 45%;
       }
-      &-created {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+      .advertise__content {
+        height: 55%;
+        &-detail-price {
+          margin-bottom: 10px;
+        }
+      }
+    }
+    &-img {
+      &-placeholder {
+        background: url("/images/placeholder.png") no-repeat;
+        width: 100%;
+        height: 100%;
+        background-size: 100% 100%;
+        border-radius: 0 15px 15px 0;
+      }
+      &-wrapper {
+        position: relative;
+        width: 200px;
+        height: auto;
+        border-radius: 0 15px 15px 0;
+        transition: height .5s ease;
+        background-color: rgba(0,0,0,.3);
+        & img {
+          border-radius: 0 15px 15px 0;
+          height: 100%;
+          width: 100%;
+        }
+      }
+    }
+    &-content {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: height .5s ease;
+      background-color: #fff;
+      border-radius: 15px 0 0 15px;
+      width: 100%;
+      &-detail {
+        &-price {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 15px;
+          transition: all .5s ease;
+        }
+        &-created {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+      }
+    }
+  }
+  &__vertical {
+    box-shadow: 0 0 10px hsla(0,0%,64.7%,.2);
+    border-radius: 15px;
+    height: 290px;
+    transition: all .4s ease;
+    cursor: pointer;
+    position: relative;
+    &:hover {
+      box-shadow: 0 10px 40px hsla(0,0%,64.7%,.2);
+      .advertise__img-wrapper {
+        height: 45%;
+      }
+      .advertise__content {
+        height: 55%;
+        &-detail-price {
+          margin-bottom: 10px;
+        }
+      }
+    }
+    &-img {
+      &-placeholder {
+        background: url("/images/placeholder.png") no-repeat;
+        width: 100%;
+        height: 100%;
+        background-size: 100% 100%;
+        border-radius: 15px 15px 0 0;
+      }
+      &-wrapper {
+        position: relative;
+        height: 35%;
+        border-radius: 15px 15px 0 0;
+        transition: height .5s ease;
+        background-color: rgba(0,0,0,.3);
+        & img {
+          border-radius: 15px 15px 0 0;
+          height: 100%;
+          width: 100%;
+        }
+      }
+    }
+    &-content {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 65%;
+      transition: height .5s ease;
+      background-color: #fff;
+      border-radius: 0 0 15px 15px;
+      &-detail {
+        &-price {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 15px;
+          transition: all .5s ease;
+        }
+        &-created {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
       }
     }
   }
