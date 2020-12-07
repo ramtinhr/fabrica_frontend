@@ -10,6 +10,8 @@
   "noResultFound": "نتیجه ای یافت نشد",
   "filters": "فیلتر ها",
   "priceRange": "محدود قیمت",
+  "numberOfResults": "تعداد نتایج",
+  "item": "مورد",
   "toman": "تومان",
   "header": {
     "mainPage": "صفحه اصلی",
@@ -58,5 +60,10 @@
     "dontReceiveCode": "کد را دریافت نکرده اید؟",
     "resendCode": "ارسال مجدد کد",
     "changePhoneNumber": "تغییر شماره موبایل"
+  },
+  "list": {
+    "selectState": "انتخاب استان",
+    "setFilters": "اعمال فیلتر ها",
+    "cancelFilters": "حذف فیلتر ها"
   }
 }

@@ -4,9 +4,6 @@ export const state = () => ({
     categories: {
       data: [],
     },
-    subCategories: {
-      data: [],
-    },
   },
   loading: false,
 })

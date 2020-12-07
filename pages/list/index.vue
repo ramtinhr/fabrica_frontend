@@ -20,6 +20,11 @@ export default {
       url: '/ads/search',
       storeName: 'list',
       fillData: false,
+      config: {
+        params: {
+          limit: 21,
+        },
+      },
     })
   },
   data() {

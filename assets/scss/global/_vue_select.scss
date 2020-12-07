@@ -43,6 +43,11 @@
   &__search {
     font-size: 14px;
     color: $dimLightGray;
+    line-height: 1;
+    &:focus {
+      font-size: 14px;
+      line-height: 1;
+    }
   }
   &__open-indicator {
     display: none;

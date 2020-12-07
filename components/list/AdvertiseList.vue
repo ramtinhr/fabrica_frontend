@@ -1,6 +1,26 @@
 <template>
   <div class="col-md-9 col-sm-8 col-xs-12">
-    <div class="row p-v-15 hidden-xs">
+    <div class="display-flex justify-content-between align-center">
+      <div>
+        <span>{{ $t('numberOfResults') }}</span>
+        <span class="text-dimLightGray m-r-10"
+          >{{ advertises.count }} {{ $t('item') }}</span
+        >
+      </div>
+      <div class="list__change-view">
+        <i
+          :class="{ 'list__change-view-active': isHorizontalView }"
+          class="o-icon o-menu-to-close-2"
+          @click="isHorizontalView = true"
+        ></i>
+        <i
+          :class="{ 'list__change-view-active': !isHorizontalView }"
+          class="o-icon o-grid-to-list"
+          @click="isHorizontalView = false"
+        ></i>
+      </div>
+    </div>
+    <div v-if="!isHorizontalView" class="row p-v-15 hidden-xs">
       <VerticalAdvertise
         v-for="advertise in advertises.data"
         :key="advertise.id"
@@ -11,7 +31,10 @@
         :created-at="advertise.created_at_jalali_date"
       />
     </div>
-    <div v-if="this.$mq === 'xs' || this.$mq === 'sm'" class="row p-v-15">
+    <div
+      v-if="this.$mq === 'xs' || this.$mq === 'sm' || isHorizontalView"
+      class="row p-v-15"
+    >
       <HorizontalAdvertise
         v-for="advertise in advertises.data"
         :key="advertise.id"
@@ -29,6 +52,11 @@
 import { mapGetters } from 'vuex'
 export default {
   name: 'AdvertiseList',
+  data() {
+    return {
+      isHorizontalView: false,
+    }
+  },
   computed: {
     ...mapGetters(['getResource']),
     advertises() {

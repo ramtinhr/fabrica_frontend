@@ -15,6 +15,7 @@
             </span>
           </v-select>
           <v-select
+            v-model="selectedSubCategory"
             :options="subCategories"
             :placeholder="$t('home.selectSubCategory')"
             label="title"
@@ -48,6 +49,38 @@
               v-bind="options"
             ></vue-slider>
           </div>
+          <v-select
+            v-model="selectedState"
+            :options="states"
+            :placeholder="$t('list.selectState')"
+            label="title"
+            dir="rtl"
+          >
+            <span slot="no-options">
+              {{ $t('noResultFound') }}
+            </span>
+          </v-select>
+          <v-select
+            v-model="selectedCity"
+            :options="cities"
+            :placeholder="$t('home.selectCity')"
+            label="title"
+            dir="rtl"
+          >
+            <span slot="no-options">
+              {{
+                selectedState
+                  ? $t('noResultFound')
+                  : $t('home.selectStateFirst')
+              }}
+            </span>
+          </v-select>
+          <div class="list__filter-box-actions">
+            <button class="btn btn-fabrica">{{ $t('list.setFilters') }}</button>
+            <button class="btn btn-secondary">
+              {{ $t('list.cancelFilters') }}
+            </button>
+          </div>
         </div>
       </div>
     </TheSidebar>
@@ -62,6 +95,11 @@ export default {
   data() {
     return {
       selectedCategory: null,
+      selectedState: null,
+      selectedSubCategory: null,
+      selectedCity: null,
+      cities: [],
+      subCategories: [],
       value: [0, 20],
       options: {
         eventType: 'auto',
@@ -79,6 +117,7 @@ export default {
         tooltipStyle: {
           backgroundColor: '#f2c200',
           borderColor: '#f2c200',
+          color: '#707070',
         },
         processStyle: {
           backgroundColor: '#f2c200',
@@ -91,19 +130,29 @@ export default {
     categories() {
       return this.getResource('list', 'categories')
     },
-    subCategories() {
-      return this.getResource('list', 'subCategories')
+    states() {
+      return this.getResource('home', 'states')
     },
   },
   watch: {
     selectedCategory(val) {
       if (val != null) {
         this.getSubCategories(val.id)
+      } else {
+        this.selectedCategory = null
+      }
+    },
+    selectedState(val) {
+      if (val != null) {
+        this.getCities()
+      } else {
+        this.selectedCity = null
       }
     },
   },
   created() {
     this.getCategories()
+    this.getState()
   },
   methods: {
     async getCategories() {
@@ -115,16 +164,35 @@ export default {
       })
     },
     async getSubCategories(id) {
-      await this.$store.dispatch('get', {
-        storeName: 'list',
-        resourceName: 'subCategories',
-        url: '/categories',
-        config: {
-          params: {
-            parent_id: id,
+      await this.$store
+        .dispatch('get', {
+          url: '/categories',
+          config: {
+            params: {
+              parent_id: id,
+            },
           },
-        },
+        })
+        .then((resp) => (this.subCategories = resp.data.data))
+    },
+    async getState() {
+      await this.$store.dispatch('get', {
+        url: '/cities/state',
+        storeName: 'home',
+        resourceName: 'states',
       })
+    },
+    async getCities() {
+      await this.$store
+        .dispatch('get', {
+          url: '/cities',
+          config: {
+            params: {
+              state: this.selectedState,
+            },
+          },
+        })
+        .then((resp) => (this.cities = resp.data.data))
     },
   },
 }

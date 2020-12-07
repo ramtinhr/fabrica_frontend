@@ -22,12 +22,13 @@
   }
 
   &-secondary {
-    @include button ($accentColor, $dimLightGray, $accentColor);
+    @include button ($accentColor, $white, $accentColor);
     border: 2px solid $accentColor !important;
     transition: all .3s;
   }
   &-secondary:hover {
     background-color: transparent !important;
+    color: $accentColor !important;
   }
 
   &-success {
