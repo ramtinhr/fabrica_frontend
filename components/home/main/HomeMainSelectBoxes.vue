@@ -3,6 +3,7 @@
     <div class="row">
       <div class="col-md-3 col-sm-6 col-xs-12 m-b-xs-15 m-b-sm-15">
         <v-select
+          v-model="selectedSubCategory"
           :options="categories"
           :placeholder="$t('home.selectSubCategory')"
           label="title"
@@ -19,6 +20,7 @@
       </div>
       <div class="col-md-3 col-sm-6 col-xs-12 m-b-xs-15 m-b-sm-15">
         <v-select
+          v-model="selectedOrder"
           :options="orderBy"
           :placeholder="$t('orderBy')"
           label="title"
@@ -39,6 +41,7 @@
       </div>
       <div class="col-md-3 col-sm-6 col-xs-12">
         <v-select
+          v-model="selectedCity"
           :options="cities"
           :placeholder="$t('home.selectCity')"
           label="title"
@@ -60,6 +63,9 @@ export default {
   name: 'HomeMainSelectBoxes',
   data() {
     return {
+      selectedSubCategory: null,
+      selectedOrder: null,
+      selectedCity: null,
       orderBy: [
         {
           title: 'صعودی قیمت',
@@ -101,7 +107,7 @@ export default {
   computed: {
     ...mapGetters(['getResource', 'getSelectedCategory', 'getSelectedState']),
     categories() {
-      return this.getResource('home', 'parentCategories')
+      return this.getResource('home', 'subCategories')
     },
     cities() {
       return this.getResource('home', 'cities')
@@ -111,6 +117,23 @@ export default {
     },
     selectedState() {
       return this.getSelectedState
+    },
+  },
+  watch: {
+    selectedSubCategory(val) {
+      if (val != null) {
+        this.$store.commit('SELECT_SUBCATEGORY', { subCategory: val.id })
+      }
+    },
+    selectedCity(val) {
+      if (val != null) {
+        this.$store.commit('SELECT_CITY', val.id)
+      }
+    },
+    selectedOrder(val) {
+      if (val != null) {
+        this.$store.commit('SELECT_ORDER', val.key)
+      }
     },
   },
 }

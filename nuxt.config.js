@@ -66,14 +66,11 @@ export default {
     ],
   },
 
+  loading: false,
   // Global CSS (https://go.nuxtjs.dev/config-css)
   css: ['@/assets/scss/app.scss'],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
-
-  // Auto import components (https://go.nuxtjs.dev/config-components)
-  components: true,
-
   plugins: [
     '~/plugins/helpers/number.js',
     '~/plugins/helpers/string.js',
@@ -84,6 +81,9 @@ export default {
     { src: '~plugins/vue-select.js', ssr: true },
     { src: '~plugins/application.js', ssr: false },
   ],
+  // Auto import components (https://go.nuxtjs.dev/config-components)
+  components: true,
+
   // Modules for dev and build (recommended) (https://go.nuxtjs.dev/config-modules)
   buildModules: [
     // https://go.nuxtjs.dev/eslint

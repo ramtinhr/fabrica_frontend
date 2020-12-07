@@ -43,7 +43,7 @@ export default {
       this.$store.dispatch('get', {
         url: '/categories',
         storeName: 'home',
-        resourceName: 'parentCategories',
+        resourceName: 'subCategories',
         config: {
           params: {
             parent_id: categoryId,

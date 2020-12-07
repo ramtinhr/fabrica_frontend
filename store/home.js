@@ -1,10 +1,11 @@
 export const state = () => ({
   offset: 0,
+  selectedCategory: null,
   resource: {
     categories: {
       data: [],
     },
-    parentCategories: {
+    subCategories: {
       data: [],
     },
     childCategories: {

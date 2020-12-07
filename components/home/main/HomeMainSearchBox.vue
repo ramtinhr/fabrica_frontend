@@ -19,5 +19,8 @@
 <script>
 export default {
   name: 'HomeSearchBox',
+  methods: {
+    search() {},
+  },
 }
 </script>

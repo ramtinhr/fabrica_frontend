@@ -5,6 +5,9 @@ export const state = () => ({
   limit: 21,
   category: null,
   state: null,
+  subCategory: null,
+  city: null,
+  order: null,
   token: null,
 })
 
@@ -81,6 +84,15 @@ export const mutations = {
   },
   SELECT_CATEGORY(state, payload) {
     state.category = payload.category
+  },
+  SELECT_SUBCATEGORY(state, payload) {
+    state.subCategory = payload.subCategory
+  },
+  SELECT_CITY(state, payload) {
+    state.city = payload.city
+  },
+  SELECT_ORDER(state, payload) {
+    state.order = payload.order
   },
   SELECT_STATE(state, payload) {
     state.state = payload.state
@@ -247,8 +259,17 @@ export const getters = {
   getSelectedCategory: (state) => {
     return state.category
   },
+  getSelectedSubCategory: (state) => {
+    return state.subCategory
+  },
   getSelectedState: (state) => {
     return state.state
+  },
+  getSelectedCity: (state) => {
+    return state.city
+  },
+  getSelectedOrder: (state) => {
+    return state.order
   },
   isAuthenticated(state) {
     return state.token != null
