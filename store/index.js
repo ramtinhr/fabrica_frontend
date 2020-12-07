@@ -2,7 +2,7 @@
 import CookieParser from "cookieparser";
 
 export const state = () => ({
-  limit: 10,
+  limit: 21,
   category: null,
   state: null,
   token: null,
@@ -12,12 +12,15 @@ export const mutations = {
   SET_TOKEN(state, token) {
     state.token = token
   },
-  ADD_DATA(rootState, { storeName, resourceName, data }) {
-    if (resourceName) {
+  ADD_DATA(rootState, { storeName, resourceName, data, isData = false }) {
+    if (resourceName && isData === false) {
       rootState[storeName].resource[resourceName].data.push(...data)
       rootState[storeName].requesting = false
-    } else {
+    } else if (isData === false) {
       rootState[storeName].resource.data.push(...data)
+      rootState[storeName].requesting = false
+    } else {
+      rootState[storeName].resource.data.data.push(...data)
       rootState[storeName].requesting = false
     }
   },
@@ -124,13 +127,6 @@ export const mutations = {
       )
     }
   },
-  INCREASE_OFFSET(rootState, { storeName, resourceName, offset }) {
-    if (resourceName) {
-      rootState[storeName].resource[resourceName].offset = offset
-    } else {
-      rootState[storeName].resource.offset = offset
-    }
-  },
   REQUESTING(rootState, { storeName }) {
     rootState[storeName].requesting = true
   },
@@ -152,8 +148,8 @@ export const actions = {
   fill({ commit }, { storeName, resourceName, data, pagination }) {
     commit('FILL', { storeName, resourceName, data, pagination })
   },
-  add({ commit }, { storeName, resourceName, data }) {
-    commit('ADD_DATA', { storeName, resourceName, data })
+  add({ commit }, { storeName, resourceName, data, isData }) {
+    commit('ADD_DATA', { storeName, resourceName, data, isData })
   },
   update({ commit }, { storeName, resourceName, filter, set }) {
     commit('UPDATE_ITEM', { storeName, resourceName, filter, set })
@@ -235,90 +231,6 @@ export const actions = {
         })
     })
   },
-  lazyLoad(
-    { rootState, commit },
-    { storeName, resourceName, url, page, limit = null, params }
-  ) {
-    commit('REQUESTING', { storeName, resourceName })
-    return new Promise((resolve, reject) => {
-      if (resourceName) {
-        params.offset =
-          (page - 1) * rootState[storeName].resource[resourceName].limit
-      } else {
-        params.offset = (page - 1) * rootState[storeName].resource.limit
-      }
-      if (limit) {
-        params.limit = limit
-      } else if (resourceName) {
-        params.limit = rootState[storeName].resource[resourceName].limit
-      } else {
-        params.limit = rootState[storeName].resource.limit
-      }
-      if (process.client) {
-        if (localStorage.getItem('access_token') !== null) {
-          this.$axios.setToken(localStorage.getItem('access_token'), 'Bearer')
-        }
-      }
-      this.$axios
-        .get(url, { params })
-        .then((response) => {
-          commit('INCREASE_OFFSET', {
-            storeName,
-            resourceName,
-            offset: params.offset,
-          })
-          commit('ADD_DATA', {
-            storeName,
-            resourceName,
-            data: response.data.data,
-          })
-          resolve(response)
-        })
-        .catch((error) => {
-          reject(error)
-          rootState[storeName].requesting = false
-        })
-    })
-  },
-  paginate(
-    { rootState, commit },
-    { storeName, resourceName, url, page, limit = null, params }
-  ) {
-    commit('LOADING', { storeName, resourceName })
-    return new Promise((resolve, reject) => {
-      params.offset = (page - 1) * rootState.limit
-      if (limit) {
-        params.limit = limit
-      } else {
-        params.limit = rootState.limit
-      }
-      if (process.client) {
-        if (localStorage.getItem('access_token') !== null) {
-          this.$axios.setToken(localStorage.getItem('access_token'), 'Bearer')
-        }
-      }
-      this.$axios
-        .get(url, { params })
-        .then((response) => {
-          commit('FILL', {
-            storeName,
-            resourceName,
-            data: response.data.data,
-            pagination: response.data.meta.pagination,
-          })
-          commit('INCREASE_OFFSET', {
-            storeName,
-            resourceName,
-            offset: params.offset,
-          })
-          resolve(response)
-        })
-        .catch((error) => {
-          rootState[storeName].resource.loading = false
-          reject(error)
-        })
-    })
-  },
 }
 
 export const getters = {
@@ -360,16 +272,6 @@ export const getters = {
     } else {
       return rootState[storeName].resource.data
     }
-  },
-  getPagination: (rootState) => (storeName, resourceName = null) => {
-    if (resourceName) {
-      return rootState[storeName].resource[resourceName].pagination.last || 1
-    }
-
-    return rootState[storeName].resource.pagination.last || 1
-  },
-  getVersion: (rootState) => (storeName) => {
-    return rootState[storeName].version
   },
   findById: (rootState) => (storeName, id, resourceName = null) => {
     if (resourceName) {

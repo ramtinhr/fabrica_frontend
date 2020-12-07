@@ -1,6 +1,8 @@
 <template>
-  <div class="col-md-9 col-sm-8 col-xs-12">
-    <div class="display-flex justify-content-between align-center">
+  <div id="list" class="col-md-9 col-sm-8 col-xs-12">
+    <ListSearchBox />
+    <ListSelectBoxes />
+    <div class="display-flex justify-content-between align-center m-t-30">
       <div>
         <span>{{ $t('numberOfResults') }}</span>
         <span class="text-dimLightGray m-r-10"
@@ -45,6 +47,9 @@
         :created-at="advertise.created_at_jalali_date"
       />
     </div>
+    <div v-if="isLoading" class="list__loading">
+      <TheLoading :color="'#707070'" :size="'40px'" />
+    </div>
   </div>
 </template>
 
@@ -55,12 +60,56 @@ export default {
   data() {
     return {
       isHorizontalView: false,
+      page: 1,
+      isLoading: false,
     }
   },
   computed: {
-    ...mapGetters(['getResource']),
+    ...mapGetters(['getResource', 'getLimit']),
     advertises() {
       return this.getResource('list')
+    },
+    limit() {
+      return this.getLimit('list')
+    },
+  },
+  mounted() {
+    this.lazyLoad()
+  },
+  methods: {
+    lazyLoad() {
+      const list = document.getElementById('list')
+      if (list != null) {
+        window.onscroll = () => {
+          if (window.innerHeight + window.scrollY >= list.scrollHeight) {
+            if (
+              this.advertises.data.length >= this.limit * this.page &&
+              !this.isLoading
+            ) {
+              this.isLoading = true
+              this.page++
+              this.$store
+                .dispatch('get', {
+                  url: '/ads/search',
+                  config: {
+                    params: {
+                      limit: this.limit,
+                      page: this.page,
+                    },
+                  },
+                })
+                .then((resp) => {
+                  this.$store.dispatch('add', {
+                    storeName: 'list',
+                    data: resp.data.data,
+                    isData: true,
+                  })
+                  this.isLoading = false
+                })
+            }
+          }
+        }
+      }
     },
   },
 }

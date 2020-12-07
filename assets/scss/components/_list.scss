@@ -29,6 +29,40 @@
       }
     }
   }
+  &__search-box {
+    margin-bottom: 15px;
+    position: relative;
+    & input {
+      box-shadow: 0 0 10px hsla(0,0%,64.7%,.2);
+      padding: 15px 25px 15px 130px;
+      color: $dimLightGray;
+      font-weight: 300;
+      border-radius: 15px;
+      border: none;
+      outline: none;
+    }
+    & button {
+      position: absolute;
+      left: 5px;
+      top: 50%;
+      transform: translateY(-50%);
+      border-radius: 15px;
+      padding: 10px 40px;
+    }
+  }
+  &__select-boxes {
+    padding-bottom: 30px;
+    border-bottom: 1px solid $lightGray;
+    button {
+      width: 100%;
+      border-radius: 15px;
+      padding: 9px;
+    }
+  }
+  &__loading {
+    text-align: center;
+    min-height: 100px;
+  }
   &__advertises {
     display: flex;
   }

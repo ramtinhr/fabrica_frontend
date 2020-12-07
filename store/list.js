@@ -1,6 +1,7 @@
 export const state = () => ({
-  offset: 0,
+  limit: 21,
   resource: {
+    data: [],
     categories: {
       data: [],
     },
