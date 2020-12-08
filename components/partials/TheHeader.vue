@@ -50,6 +50,7 @@
             </button>
             <button
               class="btn btn-outline-fabrica border-radius-30 font-size-14 p-v-sm-5 p-h-sm-10"
+              @click="onClickHandler"
             >
               {{ $t('header.advertisementRegistration') }}
             </button>
@@ -77,6 +78,15 @@ export default {
       isAuthenticated: 'isAuthenticated',
       clientSideIsAuthenticated: 'auth/clientSideIsAuthenticated',
     }),
+  },
+  methods: {
+    onClickHandler() {
+      if (!this.isAuthenticated && !this.clientSideIsAuthenticated) {
+        this.isOpen = true
+      } else {
+        this.$router.push({ name: 'list___' + this.$cookies.get('lang') })
+      }
+    },
   },
 }
 </script>

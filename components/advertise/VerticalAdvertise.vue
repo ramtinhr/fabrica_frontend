@@ -14,7 +14,7 @@
       <div class="advertise__vertical-content">
         <div class="advertise-content-title">
           <span class="font-size-14 font-sans-medium">
-            {{ $strLimit(title, 45) }}
+            {{ $strLimit(title, 50) }}
           </span>
         </div>
         <div class="advertise__vertical-content-detail">

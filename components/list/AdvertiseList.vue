@@ -92,9 +92,9 @@ export default {
           if (window.innerHeight + window.scrollY >= list.scrollHeight) {
             if (
               this.advertises.data.length >= this.limit * this.page &&
-              !this.isLoading
+              !this.isLoading2
             ) {
-              this.isLoading = true
+              this.isLoading2 = true
               this.page++
               const query = this.$route.query
               this.$store
@@ -116,7 +116,7 @@ export default {
                     data: resp.data.data,
                     isData: true,
                   })
-                  this.isLoading = false
+                  this.isLoading2 = false
                 })
             }
           }
