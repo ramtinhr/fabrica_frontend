@@ -121,20 +121,30 @@ export default {
   },
   watch: {
     selectedSubCategory(val) {
-      if (val != null) {
+      if (val) {
         this.$store.commit('SELECT_SUBCATEGORY', { subCategory: val.id })
       }
     },
     selectedCity(val) {
-      if (val != null) {
-        this.$store.commit('SELECT_CITY', val.id)
+      if (val) {
+        this.$store.commit('SELECT_CITY', { city: val._id })
       }
     },
     selectedOrder(val) {
-      if (val != null) {
-        this.$store.commit('SELECT_ORDER', val.key)
+      if (val) {
+        this.$store.commit('SELECT_ORDER', { order: val.key })
       }
     },
+  },
+  beforeDestroy() {
+    this.$store.dispatch('empty', {
+      storeName: 'home',
+      resourceName: 'subCategories',
+    })
+    this.$store.commit('SELECT_CITY', {
+      storeName: 'home',
+      resourceName: 'cities',
+    })
   },
 }
 </script>

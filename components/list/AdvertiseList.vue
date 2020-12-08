@@ -23,8 +23,12 @@
       </div>
     </div>
     <div v-if="!isHorizontalView" class="row p-v-15 hidden-xs">
+      <div v-if="isLoading('list')" class="list__loading">
+        <TheLoading :color="'#707070'" :size="'60px'" />
+      </div>
       <VerticalAdvertise
         v-for="advertise in advertises.data"
+        v-else
         :key="advertise.id"
         :is-list-page="true"
         :img="advertise.featured_image"
@@ -37,9 +41,13 @@
       v-if="this.$mq === 'xs' || this.$mq === 'sm' || isHorizontalView"
       class="row p-v-15"
     >
+      <div v-if="isLoading('list')" class="list__loading">
+        <TheLoading :color="'#707070'" :size="'60px'" />
+      </div>
       <HorizontalAdvertise
         v-for="advertise in advertises.data"
         :key="advertise.id"
+        else
         :is-list-page="true"
         :img="advertise.featured_image"
         :title="advertise.title"
@@ -47,7 +55,7 @@
         :created-at="advertise.created_at_jalali_date"
       />
     </div>
-    <div v-if="isLoading" class="list__loading">
+    <div v-if="isLoading2" class="list__lazyload">
       <TheLoading :color="'#707070'" :size="'40px'" />
     </div>
   </div>
@@ -61,11 +69,11 @@ export default {
     return {
       isHorizontalView: false,
       page: 1,
-      isLoading: false,
+      isLoading2: false,
     }
   },
   computed: {
-    ...mapGetters(['getResource', 'getLimit']),
+    ...mapGetters(['getResource', 'getLimit', 'isLoading']),
     advertises() {
       return this.getResource('list')
     },
@@ -79,7 +87,7 @@ export default {
   methods: {
     lazyLoad() {
       const list = document.getElementById('list')
-      if (list != null) {
+      if (list) {
         window.onscroll = () => {
           if (window.innerHeight + window.scrollY >= list.scrollHeight) {
             if (
@@ -88,6 +96,7 @@ export default {
             ) {
               this.isLoading = true
               this.page++
+              const query = this.$route.query
               this.$store
                 .dispatch('get', {
                   url: '/ads/search',
@@ -95,6 +104,9 @@ export default {
                     params: {
                       limit: this.limit,
                       page: this.page,
+                      q: query.q || null,
+                      sort: query.order,
+                      city_id: query.city,
                     },
                   },
                 })

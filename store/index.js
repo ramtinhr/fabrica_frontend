@@ -163,6 +163,9 @@ export const actions = {
   add({ commit }, { storeName, resourceName, data, isData }) {
     commit('ADD_DATA', { storeName, resourceName, data, isData })
   },
+  empty({ commit }, { storeName, resourceName }) {
+    commit('EMPTY_DATA', { storeName, resourceName })
+  },
   update({ commit }, { storeName, resourceName, filter, set }) {
     commit('UPDATE_ITEM', { storeName, resourceName, filter, set })
   },

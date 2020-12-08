@@ -60,8 +60,14 @@
     }
   }
   &__loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  &__lazyload {
     text-align: center;
-    min-height: 100px;
+    min-height: 120px;
   }
   &__advertises {
     display: flex;

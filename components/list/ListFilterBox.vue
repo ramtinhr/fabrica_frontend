@@ -76,9 +76,13 @@
             </span>
           </v-select>
           <div class="list__filter-box-actions">
-            <button class="btn btn-fabrica">{{ $t('list.setFilters') }}</button>
-            <button class="btn btn-secondary">
+            <button class="btn btn-fabrica" @click="getFilteredData">
+              {{ $t('list.setFilters') }}
+              <TheLoading v-if="isLoading" :color="'#fff'" :size="'22px'" />
+            </button>
+            <button class="btn btn-secondary" @click="resetFilters">
               {{ $t('list.cancelFilters') }}
+              <TheLoading v-if="isLoading" :color="'#fff'" :size="'22px'" />
             </button>
           </div>
         </div>
@@ -100,16 +104,17 @@ export default {
       selectedCity: null,
       cities: [],
       subCategories: [],
-      value: [0, 20],
+      value: [null, null],
+      isLoading: false,
       options: {
         eventType: 'auto',
         width: 'auto',
         height: 5,
         dotSize: 16,
         min: 0,
-        max: 1000000000,
-        minRange: 100000,
-        maxRange: 1000000000,
+        max: 1000000,
+        minRange: 1000,
+        maxRange: 1000000,
         interval: 1,
         show: true,
         speed: 1,
@@ -136,14 +141,14 @@ export default {
   },
   watch: {
     selectedCategory(val) {
-      if (val != null) {
+      if (val) {
         this.getSubCategories(val.id)
       } else {
         this.selectedCategory = null
       }
     },
     selectedState(val) {
-      if (val != null) {
+      if (val) {
         this.getCities()
       } else {
         this.selectedCity = null
@@ -194,8 +199,68 @@ export default {
         })
         .then((resp) => (this.cities = resp.data.data))
     },
+    async getFilteredData() {
+      if (
+        !this.selectedCategory &&
+        !this.selectedSubCategory &&
+        !this.selectedCity &&
+        !this.value[0]
+      ) {
+        return
+      }
+      this.isLoading = true
+      const ids =
+        this.selectedSubCategory || this.selectedCategory
+          ? [this.selectedCategory.id, this.selectedSubCategory.id]
+          : null
+      const params = {
+        limit: this.$store.getters.getLimit('list'),
+        city_id: this.selectedCity ? this.selectedCity._id : null,
+        category_ids: ids ? ids.join(',') : null,
+        price_min: this.value[0] || null,
+        price_max: this.value[1] || null,
+      }
+      await this.$router.push({
+        query: {
+          city: this.selectedCity ? this.selectedCity._id : null,
+          category: this.selectedCategory || null,
+          subCategory: this.selectedSubCategory || null,
+          min: this.value[0] || null,
+          max: this.value[1] || null,
+        },
+      })
+      await this.$store
+        .dispatch('get', {
+          url: '/ads/search',
+          storeName: 'list',
+          fillData: false,
+          config: {
+            params,
+          },
+        })
+        .then(() => (this.isLoading = false))
+    },
+    async resetFilters() {
+      this.value[0] = null
+      this.value[1] = null
+      this.selectedCity = null
+      this.selectedCategory = null
+      this.selectedSubCategory = null
+      this.selectedState = null
+      this.isLoading = true
+      await this.$store
+        .dispatch('get', {
+          url: '/ads/search',
+          storeName: 'list',
+          fillData: false,
+          config: {
+            params: {
+              limit: this.$store.getters.getLimit('list'),
+            },
+          },
+        })
+        .then(() => (this.isLoading = false))
+    },
   },
 }
 </script>
-
-<style scoped></style>

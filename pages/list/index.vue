@@ -2,7 +2,7 @@
   <div class="list">
     <TheBreadcrumb :navs="navs" />
     <div class="fabrica-container">
-      <div class="p-t-50">
+      <div class="p-v-50">
         <div class="row">
           <ListFilterBox />
           <AdvertiseList />
@@ -15,15 +15,25 @@
 <script>
 export default {
   name: 'List',
-  async asyncData({ store }) {
+  async asyncData({ store, route }) {
+    const query = route.query
+    const ids =
+      query.category && query.subCategory
+        ? [query.category, query.subCategory]
+        : null
+    const params = {
+      limit: store.getters.getLimit('list'),
+      q: query.q || null,
+      sort: query.order || null,
+      city_id: query.city || null,
+      category_ids: ids ? ids.join(',') : null,
+    }
     await store.dispatch('get', {
       url: '/ads/search',
       storeName: 'list',
       fillData: false,
       config: {
-        params: {
-          limit: 21,
-        },
+        params,
       },
     })
   },

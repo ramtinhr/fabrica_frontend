@@ -78,9 +78,9 @@ export const actions = {
     if (process.client) {
       const accessToken = localStorage.getItem('access_token')
       const jwt = Cookie.get('token')
-      if (accessToken != null) {
+      if (accessToken) {
         commit('SET_TOKEN', accessToken)
-      } else if (jwt != null) {
+      } else if (jwt) {
         commit('SET_TOKEN', jwt)
       }
     }

@@ -3,7 +3,11 @@
     <div class="fabrica-container">
       <div class="row align-center">
         <div class="col-md-1 col-sm-2">
-          <nuxt-link :to="{ name: 'index___' }" class="header__logo" tag="div">
+          <nuxt-link
+            :to="{ name: 'index___' + $cookies.get('lang') }"
+            class="header__logo"
+            tag="div"
+          >
             <img src="/images/logo.png" alt="logo" />
           </nuxt-link>
         </div>

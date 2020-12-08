@@ -8,7 +8,7 @@
   >
     <div class="advertise__horizontal">
       <div class="advertise__horizontal-img-wrapper">
-        <img v-if="img" :src="img" alt="فابریکا" />
+        <img v-if="img" :src="img" alt="فابریکا" @error="img = null" />
         <img v-else src="/images/placeholder.png" alt="عکس جایگزین" />
       </div>
       <div class="advertise__horizontal-content">
