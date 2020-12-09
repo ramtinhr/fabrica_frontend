@@ -1,6 +1,6 @@
 body {
   background-color: #F2F4F4;
-  font-family: IRANSansLightPersian, sans-serif;
+  font-family: IRANSans, sans-serif;
   padding: 0;
   direction: rtl;
   margin: 0; //TODO: if scroll in vertical maybe for this
@@ -149,19 +149,6 @@ button {
 
 .border-left-vermillion {
   border-left: 1px solid $vermillion;
-}
-
-.font-sans-medium {
-  font-family: IRANSansMedium;
-}
-
-.font-sans-bold {
-  font-family: IRANSansBold;
-}
-
-.font-sans-persian {
-  font-weight: 500;
-  font-family: IRANSansLightPersian !important;
 }
 
 .bottom-unset {

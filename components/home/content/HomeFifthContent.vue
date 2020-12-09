@@ -8,7 +8,7 @@
       <div class="home__info">
         <div class="m-b-xs-20">
           <div class="home__info-title">
-            <span class="font-size-24 font-sans-medium">
+            <span class="font-size-24 text-medium">
               {{ $t('advertise.theLatestFeaturesOfTheMotorcycleCategory') }}
             </span>
           </div>
@@ -22,7 +22,7 @@
             </span>
           </div>
         </div>
-        <button class="btn btn-fabrica">
+        <button class="btn btn-fabrica" @click="onClickHandler">
           {{ $t('seeMore') }}
         </button>
       </div>
@@ -74,7 +74,7 @@ export default {
   methods: {
     async getAdvertises() {
       this.isLoading = true
-      const fifthId = this.categories.find(
+      const id = this.categories.find(
         (category) => category.title === 'موتور سیکلت'
       ).id
       await this.$store
@@ -85,12 +85,18 @@ export default {
           fillData: false,
           config: {
             params: {
-              category_ids: fifthId,
+              category_ids: id,
               limit: 3,
             },
           },
         })
         .then(() => (this.isLoading = false))
+    },
+    onClickHandler() {
+      const id = this.categories.find(
+        (category) => category.title === 'موتور سیکلت'
+      ).id
+      this.$emit('onClickHandler', id)
     },
   },
 }

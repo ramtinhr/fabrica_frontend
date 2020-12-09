@@ -11,7 +11,7 @@
           v-slot="{ passes }"
         >
           <form class="auth__steps" @submit.prevent="passes(loginInit)">
-            <span class="font-size-18 font-sans-medium">
+            <span class="font-size-18 text-medium">
               {{ $t('auth.enterYourMobileNumber') }}
             </span>
             <span class="text-dimLightGray text-center font-size-14">
@@ -52,14 +52,14 @@
           v-slot="{ passes }"
         >
           <form class="auth__steps" @submit.prevent="passes(authenticate)">
-            <span class="font-size-18 font-sans-medium">
+            <span class="font-size-18 text-medium">
               {{ $t('auth.InitialRegistration') }}
             </span>
             <span class="text-dimLightGray text-center font-size-14">
               {{ $t('auth.registerText') }}
             </span>
             <p
-              class="font-size-14 font-sans-medium text-center text-yellow cursor-pointer"
+              class="font-size-14 text-medium text-center text-yellow cursor-pointer"
               @click="changeNumber"
             >
               {{ $t('auth.changePhoneNumber') }}

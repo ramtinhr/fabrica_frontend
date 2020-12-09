@@ -8,7 +8,7 @@
       <div class="home__info">
         <div class="m-b-xs-20">
           <div class="home__info-title">
-            <span class="font-size-24 font-sans-medium text-dimGray">
+            <span class="font-size-24 text-medium text-dimGray">
               {{ $t('advertise.theLatestFeaturesOfScrapSndMetalsCategory') }}
             </span>
           </div>
@@ -22,7 +22,7 @@
             </span>
           </div>
         </div>
-        <button class="btn btn-fabrica">
+        <button class="btn btn-fabrica" @click="onClickHandler">
           {{ $t('seeMore') }}
         </button>
       </div>
@@ -91,6 +91,12 @@ export default {
           },
         })
         .then(() => (this.isLoading = false))
+    },
+    onClickHandler() {
+      const id = this.categories.find(
+        (category) => category.title === 'ضایعات و فلزات'
+      ).id
+      this.$emit('onClickHandler', id)
     },
   },
 }

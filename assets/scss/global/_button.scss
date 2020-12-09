@@ -5,7 +5,7 @@
 }
 
 .btn {
-  font-family: IRANSansMedium;
+  font-weight: 400;
   border-radius: 4px;
   border: none;
   cursor: pointer;
@@ -47,7 +47,7 @@
   &-fabrica {
     @include button($primaryColor, white, $primaryColor);
     transition: all .4s;
-    font-family: 'IRANSansBold';
+    font-width: 500;
     font-size: 14px;
     border: 2px solid $primaryColor !important;
     &:hover {
@@ -61,7 +61,7 @@
   &-outline-fabrica {
     @include button(transparent, $primaryColor, $primaryColor);
     transition: all .4s;
-    font-family: 'IRANSansBold';
+    font-weight: 500;
     font-size: 14px;
     font-weight: bold;
     border: 2px solid $primaryColor !important;

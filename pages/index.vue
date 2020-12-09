@@ -1,11 +1,23 @@
 <template>
   <div class="home">
-    <HomeMain />
-    <HomeFirstContent />
-    <HomeSecondContent />
-    <HomeThirdContent />
-    <HomeFourthContent />
-    <HomeFifthContent />
+    <section id="main">
+      <HomeMain />
+    </section>
+    <section id="first-content">
+      <HomeFirstContent @onClickHandler="onClickHandler" />
+    </section>
+    <section id="second-content">
+      <HomeSecondContent @onClickHandler="onClickHandler" />
+    </section>
+    <section id="third-content">
+      <HomeThirdContent @onClickHandler="onClickHandler" />
+    </section>
+    <section id="fourth-content">
+      <HomeFourthContent @onClickHandler="onClickHandler" />
+    </section>
+    <section id="fifth-content">
+      <HomeFifthContent @onClickHandler="onClickHandler" />
+    </section>
   </div>
 </template>
 
@@ -70,6 +82,16 @@ export default {
         },
       },
     })
+  },
+  methods: {
+    onClickHandler(id) {
+      this.$router.push({
+        name: 'list___' + this.$cookies.get('lang'),
+        query: {
+          category: id,
+        },
+      })
+    },
   },
 }
 </script>

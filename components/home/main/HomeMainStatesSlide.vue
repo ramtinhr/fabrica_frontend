@@ -11,7 +11,7 @@
             @click="setState(state)"
           >
             <img :src="`/images/states/${index + 1}.png`" alt="استان" />
-            <span class="font-size-16 font-sans-bold">{{ state }}</span>
+            <span class="font-size-16 text-bold">{{ state }}</span>
           </div>
         </swiper-slide>
       </swiper>

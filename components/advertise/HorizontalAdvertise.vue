@@ -13,7 +13,7 @@
       </div>
       <div class="advertise__horizontal-content">
         <div class="advertise__content-title">
-          <span class="font-size-14 font-sans-medium">
+          <span class="font-size-14 text-medium">
             {{ $strLimit(title, 50) }}
           </span>
         </div>

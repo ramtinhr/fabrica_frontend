@@ -97,6 +97,13 @@ export default {
               this.isLoading2 = true
               this.page++
               const query = this.$route.query
+              const ids = []
+              if (query.category) {
+                ids.push(query.category)
+              }
+              if (query.subCategory) {
+                ids.push(query.subCategory)
+              }
               this.$store
                 .dispatch('get', {
                   url: '/ads/search',
@@ -107,6 +114,7 @@ export default {
                       q: query.q || null,
                       sort: query.order,
                       city_id: query.city,
+                      category_ids: ids ? ids.join(',') : null,
                     },
                   },
                 })

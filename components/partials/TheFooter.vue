@@ -5,7 +5,7 @@
         <div class="row justify-content-between">
           <div class="col-md-3 col-sm-3 col-xs-12">
             <div class="display-flex flex-direction-column">
-              <span class="text-white font-size-20 font-sans-bold m-b-30">
+              <span class="text-white font-size-20 text-bold m-b-30">
                 {{ $t('footer.quickAccess') }}
               </span>
               <ul class="footer__top-quick-access">
@@ -16,7 +16,7 @@
           </div>
           <div class="col-md-3 col-sm-3 col-xs-12">
             <div class="display-flex flex-direction-column">
-              <span class="text-white font-size-20 font-sans-bold m-b-30">
+              <span class="text-white font-size-20 text-bold m-b-30">
                 {{ $t('footer.contact') }}
               </span>
               <div class="display-flex m-b-25">
@@ -52,14 +52,14 @@
           </div>
           <div class="col-md-3 col-sm-3 col-xs-12">
             <div class="display-flex flex-direction-column">
-              <span class="text-white font-size-20 font-sans-bold m-b-30">
+              <span class="text-white font-size-20 text-bold m-b-30">
                 {{ $t('footer.symbols') }}
               </span>
             </div>
           </div>
           <div class="col-md-3 col-sm-3 col-xs-12">
             <div class="display-flex flex-direction-column">
-              <span class="text-white font-size-20 font-sans-bold m-b-30">
+              <span class="text-white font-size-20 text-bold m-b-30">
                 {{ $t('footer.subscribeToNewsletter') }}
               </span>
               <div class="position-relative m-b-20">

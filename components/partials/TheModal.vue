@@ -39,12 +39,16 @@ export default {
   watch: {
     isOpen() {
       if (this.isOpen) {
-        document.body.style.overflow = 'hidden'
-        document.body.style.paddingRight = '12px'
         document.body.style.backgroundColor = '#f8f6f8'
+        document.body.style.overflow = 'hidden'
+        if (navigator.userAgent.toLowerCase().includes('firefox')) {
+          document.body.style.paddingRight = '12px'
+        } else {
+          document.body.style.paddingRight = '15px'
+        }
       } else {
-        document.body.style.paddingRight = '0'
         document.body.style.overflow = 'auto'
+        document.body.style.paddingRight = '0'
       }
     },
     $route() {

@@ -17,10 +17,13 @@ export default {
   name: 'List',
   async asyncData({ store, route }) {
     const query = route.query
-    const ids =
-      query.category && query.subCategory
-        ? [query.category, query.subCategory]
-        : null
+    const ids = []
+    if (query.category) {
+      ids.push(query.category)
+    }
+    if (query.subCategory) {
+      ids.push(query.subCategory)
+    }
     const params = {
       limit: store.getters.getLimit('list'),
       q: query.q || null,

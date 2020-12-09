@@ -5,7 +5,7 @@
       <div class="home__info">
         <div class="m-b-xs-20">
           <div class="home__info-title">
-            <span class="font-size-24 font-sans-medium">
+            <span class="font-size-24 text-medium">
               {{ $t('advertise.theLatestFeaturesOfTheLightCarCategory') }}
             </span>
           </div>
@@ -19,7 +19,7 @@
             </span>
           </div>
         </div>
-        <button class="btn btn-fabrica">
+        <button class="btn btn-fabrica" @click="onClickHandler">
           {{ $t('seeMore') }}
         </button>
       </div>
@@ -58,6 +58,14 @@ export default {
     },
     advertises() {
       return this.getResource('home', 'firstAdvertises')
+    },
+  },
+  methods: {
+    onClickHandler() {
+      const id = this.categories.find(
+        (category) => category.title === 'خودرو سبک'
+      ).id
+      this.$emit('onClickHandler', id)
     },
   },
 }
