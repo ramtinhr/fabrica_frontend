@@ -1,5 +1,10 @@
 <template>
-  <div
+  <nuxt-link
+    v-if="advertise"
+    :to="{
+      name: 'single-id___' + $cookies.get('lang'),
+      params: { id: advertise.id },
+    }"
     :class="
       isListPage
         ? 'col-md-4 col-sm-6 col-xs-12 p-h-10 m-t-15 m-b-15 m-b-xs-30'
@@ -8,13 +13,17 @@
   >
     <div class="advertise__vertical">
       <div class="advertise__vertical-img-wrapper">
-        <img v-if="img" :src="img" alt="فابریکا" />
+        <img
+          v-if="advertise.featured_image"
+          :src="advertise.featured_image"
+          alt="فابریکا"
+        />
         <img v-else src="/images/placeholder.png" alt="عکس جایگزین" />
       </div>
       <div class="advertise__vertical-content">
         <div class="advertise-content-title">
           <span class="font-size-14 text-medium">
-            {{ $strLimit(title, 50) }}
+            {{ $strLimit(advertise.title, 50) }}
           </span>
         </div>
         <div class="advertise__vertical-content-detail">
@@ -22,8 +31,11 @@
             <span class="text-dimLightGray font-size-12">
               {{ $t('advertise.price') }}
             </span>
-            <span v-if="price !== 0" class="text-dimLightGray font-size-12">
-              {{ $numberFormat($decimalNumber(price)) }}
+            <span
+              v-if="advertise.price !== 0"
+              class="text-dimLightGray font-size-12"
+            >
+              {{ $numberFormat($decimalNumber(advertise.price)) }}
             </span>
             <span v-else class="text-dimLightGray font-size-12">
               {{ $t('advertise.call') }}
@@ -34,13 +46,13 @@
               {{ $t('advertise.createdAt') }}
             </span>
             <span class="text-dimLightGray font-size-12">
-              {{ createdAt }}
+              {{ advertise.created_at_jalali_date }}
             </span>
           </div>
         </div>
       </div>
     </div>
-  </div>
+  </nuxt-link>
 </template>
 
 <script>
@@ -51,20 +63,8 @@ export default {
       type: Boolean,
       default: false,
     },
-    img: {
-      type: String,
-      default: null,
-    },
-    title: {
-      type: String,
-      default: null,
-    },
-    price: {
-      type: Number,
-      default: null,
-    },
-    createdAt: {
-      type: String,
+    advertise: {
+      type: Object,
       default: null,
     },
   },

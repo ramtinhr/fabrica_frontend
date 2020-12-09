@@ -9,3 +9,9 @@
     <TheFooter />
   </div>
 </template>
+
+<script>
+export default {
+  name: 'Fabrica',
+}
+</script>

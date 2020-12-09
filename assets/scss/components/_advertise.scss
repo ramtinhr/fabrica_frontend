@@ -115,4 +115,23 @@
       }
     }
   }
+  &__single {
+    &-sidebar {
+      &-specifications {
+        margin-top: 25px;
+        & div {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 10px;
+          &:last-child {
+            margin-bottom: 0;
+          }
+        }
+        & span:nth-child(even) {
+          color: $dimLightGray;
+        }
+      }
+    }
+  }
 }

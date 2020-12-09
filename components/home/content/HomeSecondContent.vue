@@ -29,20 +29,14 @@
         <HorizontalAdvertise
           v-for="advertise in advertises.data"
           :key="advertise.id"
-          :img="advertise.featured_image"
-          :title="advertise.title"
-          :price="advertise.price"
-          :created-at="advertise.created_at_jalali_date"
+          :advertise="advertise"
         />
       </div>
       <div class="row justify-content-flex-end hidden-xs">
         <VerticalAdvertise
           v-for="advertise in advertises.data"
           :key="advertise.id"
-          :img="advertise.featured_image"
-          :title="advertise.title"
-          :price="advertise.price"
-          :created-at="advertise.created_at_jalali_date"
+          :advertise="advertise"
         />
       </div>
     </div>

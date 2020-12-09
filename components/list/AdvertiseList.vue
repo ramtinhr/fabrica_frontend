@@ -28,13 +28,9 @@
       </div>
       <VerticalAdvertise
         v-for="advertise in advertises.data"
-        v-else
         :key="advertise.id"
         :is-list-page="true"
-        :img="advertise.featured_image"
-        :title="advertise.title"
-        :price="advertise.price"
-        :created-at="advertise.created_at_jalali_date"
+        :advertise="advertise"
       />
     </div>
     <div
@@ -47,12 +43,8 @@
       <HorizontalAdvertise
         v-for="advertise in advertises.data"
         :key="advertise.id"
-        else
         :is-list-page="true"
-        :img="advertise.featured_image"
-        :title="advertise.title"
-        :price="advertise.price"
-        :created-at="advertise.created_at_jalali_date"
+        :advertise="advertise"
       />
     </div>
     <div v-if="isLoading2" class="list__lazyload">

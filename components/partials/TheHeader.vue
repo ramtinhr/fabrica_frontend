@@ -31,6 +31,14 @@
                   {{ $t('header.latestAdvertises') }}
                 </nuxt-link>
               </li>
+              <li class="font-size-16">
+                <nuxt-link
+                  :to="{ name: 'list___' + $cookies.get('lang') }"
+                  tag="a"
+                >
+                  {{ $t('header.myAdvertises') }}
+                </nuxt-link>
+              </li>
             </ul>
           </nav>
         </div>

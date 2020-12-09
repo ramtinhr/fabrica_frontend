@@ -11,6 +11,7 @@
   "filters": "فیلتر ها",
   "priceRange": "محدود قیمت",
   "numberOfResults": "تعداد نتایج",
+  "normal": "عادی",
   "item": "مورد",
   "toman": "تومان",
   "header": {
@@ -19,7 +20,8 @@
     "login": "ورود",
     "register": "عضویت",
     "advertisementRegistration": "ثبت آگهی",
-    "myFabrica": "فابریکای من"
+    "myFabrica": "فابریکای من",
+    "myAdvertises": "آگهی های من"
   },
   "footer": {
     "quickAccess": "دسترسی سریع",
@@ -48,7 +50,14 @@
     "theLatestFeaturesOfScrapSndMetalsCategory": "آخرین ویژه های دسته ضایعات و فلزات",
     "theLatestFeaturesOfTheMotorcycleCategory": "آخرین ویژه های دسته موتور سیکلت",
     "numberOfActiveAds": "تعداد آگهی های فعال",
-    "call": "تماس بگیرید"
+    "call": "تماس بگیرید",
+    "specifications": "مشخصات آگهی",
+    "advertiser": "آگهی دهنده",
+    "created": "تاریخ آگهی",
+    "state": "استان",
+    "city": "شهر",
+    "mobileNumber": "شماره موبایل",
+    "type": "نوع آگهی"
   },
   "auth": {
     "enterYourMobileNumber": "شماره موبایل خود را وارد کنید",
