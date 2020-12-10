@@ -5,11 +5,11 @@
       <div class="home__info">
         <div class="m-b-xs-20">
           <div class="home__info-title">
-            <span class="font-size-24 text-medium text-dimGray">
+            <h2 class="font-size-24 text-dimGray">
               {{
                 $t('advertise.theLatestFeaturesOfTheRoadConstructionCategory')
               }}
-            </span>
+            </h2>
           </div>
           <div class="home__info-count">
             <span class="text-dimLightGray font-size-16 m-l-10">

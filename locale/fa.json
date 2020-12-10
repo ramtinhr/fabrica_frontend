@@ -57,7 +57,10 @@
     "state": "استان",
     "city": "شهر",
     "mobileNumber": "شماره موبایل",
-    "type": "نوع آگهی"
+    "type": "نوع آگهی",
+    "category": "دسته بندی",
+    "description": "توضیحات",
+    "emptyDescription": "توضیحات برای این آگهی ثبت نشده است"
   },
   "auth": {
     "enterYourMobileNumber": "شماره موبایل خود را وارد کنید",

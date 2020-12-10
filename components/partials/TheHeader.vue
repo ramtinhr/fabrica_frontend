@@ -31,7 +31,10 @@
                   {{ $t('header.latestAdvertises') }}
                 </nuxt-link>
               </li>
-              <li class="font-size-16">
+              <li
+                v-if="isAuthenticated || clientSideIsAuthenticated"
+                class="font-size-16"
+              >
                 <nuxt-link
                   :to="{ name: 'list___' + $cookies.get('lang') }"
                   tag="a"

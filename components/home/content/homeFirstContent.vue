@@ -5,14 +5,14 @@
       <div class="home__info">
         <div class="m-b-xs-20">
           <div class="home__info-title">
-            <span class="font-size-24 text-medium">
+            <span class="font-size-24">
               {{ $t('advertise.theLatestFeaturesOfTheLightCarCategory') }}
             </span>
           </div>
           <div class="home__info-count">
-            <span class="text-dimLightGray font-size-16 m-l-10">
+            <h2 class="text-dimLightGray font-size-16 m-l-10">
               {{ $t('advertise.numberOfActiveAds') }}
-            </span>
+            </h2>
             <span class="text-dimLightGray font-size-16">
               {{ advertises.count }}
               {{ $t('number') }}

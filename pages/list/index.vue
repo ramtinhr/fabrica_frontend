@@ -50,6 +50,7 @@ export default {
         {
           title: this.$t('header.latestAdvertises'),
           link: 'list',
+          color: 'lightgray',
         },
       ],
     }

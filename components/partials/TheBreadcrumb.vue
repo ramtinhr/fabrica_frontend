@@ -6,6 +6,7 @@
           <nuxt-link
             :to="{ name: `${nav.link}___` + $cookies.get('lang') }"
             class="font-size-16"
+            :class="nav.color ? `text-${nav.color}` : ''"
             tag="a"
           >
             {{ nav.title }}
