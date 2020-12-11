@@ -8,87 +8,87 @@
         <ValidationObserver
           v-show="step === 1"
           ref="mobileNumberForm"
-          v-slot="{ passes }"
+          tag="form"
+          class="auth__steps"
+          @submit.prevent="loginInit"
         >
-          <form class="auth__steps" @submit.prevent="passes(loginInit)">
-            <span class="font-size-18 text-medium">
-              {{ $t('auth.enterYourMobileNumber') }}
-            </span>
-            <span class="text-dimLightGray text-center font-size-14">
-              {{ $t('auth.text') }}
-            </span>
-            <ValidationProvider
-              v-slot="{ errors }"
-              name="mobile"
-              username="mobile"
-              rules="required|max:10"
-            >
-              <div class="auth__phone-number-box">
-                <InputNumber
-                  v-model="mobileNumber"
-                  :name="'mobile'"
-                  :max-lenght="10"
-                  :number-format="false"
-                  :placeholder="'9128333410'"
-                  :type="'tel'"
-                />
-                <label>98+</label>
-              </div>
-              <div>
-                <span v-if="errors[0]" class="text-danger">{{
-                  errors[0]
-                }}</span>
-              </div>
-            </ValidationProvider>
-            <button :disabled="isLoading" class="btn btn-fabrica m-t-30">
-              {{ $t('auth.sendCode') }}
-              <TheLoading v-if="isLoading" :color="'#fff'" :size="'22px'" />
-            </button>
-          </form>
+          <span class="font-size-18 text-medium">
+            {{ $t('auth.enterYourMobileNumber') }}
+          </span>
+          <span class="text-dimLightGray text-center font-size-14">
+            {{ $t('auth.text') }}
+          </span>
+          <ValidationProvider
+            v-slot="{ errors }"
+            name="mobile"
+            username="mobile"
+            rules="required|max:10"
+          >
+            <div class="auth__phone-number-box">
+              <InputNumber
+                v-model="mobileNumber"
+                :name="'mobile'"
+                :max-lenght="10"
+                :number-format="false"
+                :placeholder="'9128333410'"
+                :type="'tel'"
+              />
+              <label>98+</label>
+            </div>
+            <div>
+              <span v-if="errors[0]" class="text-danger">
+                {{ errors[0] }}
+              </span>
+            </div>
+          </ValidationProvider>
+          <button :disabled="isLoading" class="btn btn-fabrica m-t-30">
+            {{ $t('auth.sendCode') }}
+            <TheLoading v-if="isLoading" :color="'#fff'" :size="'22px'" />
+          </button>
         </ValidationObserver>
         <ValidationObserver
           v-show="step === 2"
           ref="otpForm"
-          v-slot="{ passes }"
+          tag="form"
+          class="auth__steps"
+          @submit.prevent="authenticate"
         >
-          <form class="auth__steps" @submit.prevent="passes(authenticate)">
-            <span class="font-size-18 text-medium">
-              {{ $t('auth.InitialRegistration') }}
-            </span>
-            <span class="text-dimLightGray text-center font-size-14">
-              {{ $t('auth.registerText') }}
-            </span>
-            <p
-              class="font-size-14 text-medium text-center text-yellow cursor-pointer"
-              @click="changeNumber"
+          <span class="font-size-18 text-medium">
+            {{ $t('auth.InitialRegistration') }}
+          </span>
+          <span class="text-dimLightGray text-center font-size-14">
+            {{ $t('auth.registerText') }}
+          </span>
+          <p
+            class="font-size-14 text-medium text-center text-yellow cursor-pointer"
+            @click="changeNumber"
+          >
+            {{ $t('auth.changePhoneNumber') }}
+          </p>
+          <div class="auth__otp-code-box">
+            <OtpInput
+              ref="otpInput"
+              input-classes="otp-input"
+              separator=""
+              :num-inputs="4"
+              :should-auto-focus="true"
+              :is-input-num="true"
+              @on-complete="onCompleteHandler"
+            />
+          </div>
+          <div class="font-size-14 m-t-10 m-b-30">
+            <span>{{ $t('auth.dontReceiveCode') }}</span>
+            <span
+              class="text-dimLightGray font-size-12 cursor-pointer"
+              @click="loginInit"
             >
-              {{ $t('auth.changePhoneNumber') }}
-            </p>
-            <div class="auth__otp-code-box">
-              <OtpInput
-                ref="otpInput"
-                input-classes="otp-input"
-                separator=""
-                :num-inputs="4"
-                :should-auto-focus="true"
-                :is-input-num="true"
-                @on-complete="onCompleteHandler"
-              />
-            </div>
-            <div class="font-size-14 m-t-10 m-b-30">
-              <span>{{ $t('auth.dontReceiveCode') }}</span>
-              <span
-                class="text-dimLightGray font-size-12 cursor-pointer"
-                @click="loginInit"
-              >
-                {{ $t('auth.resendCode') }}
-              </span>
-            </div>
-            <button :disabled="isLoading" class="btn btn-fabrica p-h-45">
-              {{ $t('auth.login') }}
-              <TheLoading v-if="isLoading" :color="'#fff'" :size="'22px'" />
-            </button>
-          </form>
+              {{ $t('auth.resendCode') }}
+            </span>
+          </div>
+          <button :disabled="isLoading" class="btn btn-fabrica p-h-45">
+            {{ $t('auth.login') }}
+            <TheLoading v-if="isLoading" :color="'#fff'" :size="'22px'" />
+          </button>
         </ValidationObserver>
       </div>
     </div>
@@ -143,7 +143,7 @@ export default {
       } catch (e) {
         /*
           because of unlikely api and 200 status code for requests
-          error handling will be failed and give user bad UX
+          error handling will be fail and give a user bad UX
          */
       } finally {
         this.isLoading = false
@@ -163,7 +163,7 @@ export default {
       } catch (e) {
         /*
          because of unlikely api and 200 status code for requests
-         error handling will be failed and give user bad UX
+         error handling will be fail and give a user bad UX
         */
       } finally {
         this.isLoading = false

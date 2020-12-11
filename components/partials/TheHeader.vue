@@ -95,7 +95,7 @@ export default {
       if (!this.isAuthenticated && !this.clientSideIsAuthenticated) {
         this.isOpen = true
       } else {
-        this.$router.push({ name: 'list___' + this.$cookies.get('lang') })
+        this.$router.push({ name: 'createAd___' + this.$cookies.get('lang') })
       }
     },
   },
