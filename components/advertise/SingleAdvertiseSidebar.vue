@@ -76,7 +76,7 @@
       </div>
     </TheSidebar>
     <AdvertiseChatModal
-      :id="advertise.id"
+      :id="advertise._id"
       :is-open="isOpen"
       @closeModal="isOpen = false"
     />

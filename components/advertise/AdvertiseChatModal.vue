@@ -69,12 +69,17 @@ export default {
         ad_id: this.id,
         text: this.text,
       }
+      this.isLoading = true
       this.$store
         .dispatch('post', {
           url: '/chats/messages/new',
           data,
         })
-        .then(() => (this.isOpen = false))
+        .then(() => {
+          this.isLoading = false
+          this.isOpen = false
+          this.$toast.success('پیام با موفقیت ارسال شد')
+        })
     },
     closeModal() {
       this.$emit('closeModal')
@@ -82,5 +87,3 @@ export default {
   },
 }
 </script>
-
-<style scoped></style>
