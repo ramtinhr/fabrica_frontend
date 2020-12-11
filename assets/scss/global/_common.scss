@@ -904,11 +904,11 @@ input:invalid {
 
 //TODO change this
 .text-warning {
-  color: $themeOrange !important;
+  color: $warning !important;
 }
 
 .text-white {
-  color: $white;
+  color: $white !important;
 }
 
 .text-yellow {

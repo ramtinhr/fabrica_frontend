@@ -1,8 +1,17 @@
 <template>
-  <div class="col-md-9 col-sm-8 col-xs-12">
+  <div class="col-md-9 col-sm-8 col-xs-12 m-t-xs-10">
     <div class="advertise__single-detail">
       <div class="advertise__single-detail-head">
-        <h3>{{ advertise.title }}</h3>
+        <div v-if="isAuthenticated">
+          <h3>{{ advertise.title }}</h3>
+          <font-awesome-icon
+            v-if="advertise.is_favored || isFavorite"
+            :icon="['fas', 'bookmark']"
+            class="font-size-26"
+            @click="toggleFavorite"
+          />
+          <img v-else src="/icons/bookmark.svg" @click="toggleFavorite" />
+        </div>
         <div class="m-b-15">
           <span class="font-size-16 text-dimLightGray"
             >{{ $t('advertise.category') }}:</span
@@ -15,18 +24,14 @@
           </span>
         </div>
       </div>
-      <div class="advertise__single-detail-slide">
+      <div class="advertise__single-detail-slider">
         <img
           v-if="!advertise.image_urls"
           src="/images/big_placeholder.png"
           alt="عکس جایگزین"
         />
         <client-only v-else>
-          <swiper
-            :options="swiperOption"
-            :auto-update="true"
-            :auto-destroy="true"
-          >
+          <swiper ref="swiperTop" :options="swiperOption">
             <swiper-slide
               v-for="(img, index) in advertise.image_urls"
               :key="index"
@@ -38,6 +43,21 @@
         <div slot="pagination" class="swiper-pagination"></div>
         <div slot="button-next" class="swiper-button-next"></div>
         <div slot="button-prev" class="swiper-button-prev"></div>
+      </div>
+      <div
+        v-if="advertise.image_urls"
+        class="advertise__single-detail-slider-thumbs"
+      >
+        <client-only>
+          <swiper ref="swiperThumbs" :options="swiperOptionThumbs">
+            <swiper-slide
+              v-for="(img, index) in advertise.image_urls"
+              :key="index"
+            >
+              <img :src="img" />
+            </swiper-slide>
+          </swiper>
+        </client-only>
       </div>
     </div>
     <div class="advertise__single-description">
@@ -58,32 +78,76 @@ export default {
   name: 'SingleAdvertiseDetail',
   data() {
     return {
+      isFavorite: false,
       swiperOption: {
-        slidesPerView: 1,
+        spaceBetween: 10,
+        loop: true,
+        effect: 'slide',
+        loopedSlides: 1,
+        centeredSlides: true,
         pagination: {
           el: '.swiper-pagination',
+          clickable: true,
         },
+      },
+      swiperOptionThumbs: {
+        spaceBetween: 20,
+        slideToClickedSlide: true,
+        touchRatio: 0.2,
+        centeredSlides: true,
+        loop: true,
+        loopedSlides: 2,
         breakpoints: {
-          991: {
-            slidesPerView: 1,
+          1200: {
+            slidesPerView: 8,
           },
-          767: {
-            slidesPerView: 1,
+          992: {
+            slidesPerView: 5,
           },
-          425: {
-            slidesPerView: 1,
+          547: {
+            slidesPerView: 4,
           },
-          340: {
-            slidesPerView: 1,
+          320: {
+            slidesPerView: 3,
           },
         },
       },
     }
   },
   computed: {
-    ...mapGetters(['getResource']),
+    ...mapGetters(['getResource', 'isAuthenticated']),
     advertise() {
       return this.getResource('advertise')
+    },
+  },
+  mounted() {
+    if (this.advertise.image_urls) {
+      this.$nextTick(() => {
+        const swiperTop = this.$refs.swiperTop.$swiper
+        const swiperThumbs = this.$refs.swiperThumbs.$swiper
+        swiperTop.controller.control = swiperThumbs
+        swiperThumbs.controller.control = swiperTop
+      })
+    }
+  },
+  methods: {
+    toggleFavorite() {
+      if (!this.advertise.is_favored && !this.isFavorite) {
+        this.$store
+          .dispatch('post', {
+            url: `/ads/${this.$route.params.id}/favorite`,
+          })
+          .then(() => (this.isFavorite = true))
+      } else {
+        this.$store
+          .dispatch('delete', {
+            url: `/ads/${this.$route.params.id}/favorite`,
+          })
+          .then(() => {
+            this.isFavorite = false
+            this.advertise.is_favored = false
+          })
+      }
     },
   },
 }

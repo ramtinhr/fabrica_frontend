@@ -223,8 +223,8 @@ export default {
       await this.$router.push({
         query: {
           city: this.selectedCity ? this.selectedCity._id : null,
-          category: this.selectedCategory || null,
-          subCategory: this.selectedSubCategory || null,
+          category: this.selectedCategory.id || null,
+          subCategory: this.selectedSubCategory.id || null,
           min: this.value[0] || null,
           max: this.value[1] || null,
         },

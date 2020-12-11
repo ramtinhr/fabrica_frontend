@@ -177,7 +177,7 @@ export const actions = {
   },
   //  Requests
   get(
-    { commit },
+    { commit, state },
     { storeName = null, resourceName, fillData = true, url, config }
   ) {
     if (storeName) {
@@ -187,6 +187,8 @@ export const actions = {
       if (localStorage.getItem('access_token') !== null) {
         this.$axios.setToken(localStorage.getItem('access_token'), 'Bearer')
       }
+    } else {
+      this.$axios.setToken(state.token, 'Bearer')
     }
     return new Promise((resolve, reject) => {
       this.$axios
@@ -238,6 +240,23 @@ export const actions = {
     return new Promise((resolve, reject) => {
       this.$axios
         .put(url, data, config)
+        .then((response) => {
+          resolve(response)
+        })
+        .catch((error) => {
+          reject(error)
+        })
+    })
+  },
+  delete({ state, commit }, { url, config }) {
+    if (process.client) {
+      if (localStorage.getItem('access_token') !== null) {
+        this.$axios.setToken(localStorage.getItem('access_token'), 'Bearer')
+      }
+    }
+    return new Promise((resolve, reject) => {
+      this.$axios
+        .delete(url, config)
         .then((response) => {
           resolve(response)
         })

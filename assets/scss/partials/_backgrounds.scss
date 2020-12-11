@@ -3,7 +3,7 @@
 }
 
 .bg-warning {
-  background-color: $themeOrange;
+  background-color: $warning;
 }
 
 .bg-success {
@@ -16,4 +16,8 @@
 
 .bg-yellow {
   background-color: $primaryColor;
+}
+
+.bg-orange {
+  background-color: $orange;
 }

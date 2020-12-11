@@ -28,6 +28,7 @@
       </div>
       <VerticalAdvertise
         v-for="advertise in advertises.data"
+        v-else
         :key="advertise.id"
         :is-list-page="true"
         :advertise="advertise"
@@ -42,6 +43,7 @@
       </div>
       <HorizontalAdvertise
         v-for="advertise in advertises.data"
+        v-else
         :key="advertise.id"
         :is-list-page="true"
         :advertise="advertise"
@@ -61,6 +63,7 @@ export default {
     return {
       isHorizontalView: false,
       page: 1,
+      isGetAll: false,
       isLoading2: false,
     }
   },
@@ -84,7 +87,8 @@ export default {
           if (window.innerHeight + window.scrollY >= list.scrollHeight) {
             if (
               this.advertises.data.length >= this.limit * this.page &&
-              !this.isLoading2
+              !this.isLoading2 &&
+              !this.isGetAll
             ) {
               this.isLoading2 = true
               this.page++
@@ -117,6 +121,9 @@ export default {
                     isData: true,
                   })
                   this.isLoading2 = false
+                  if (resp.data.data.length <= this.limit) {
+                    this.isGetAll = true
+                  }
                 })
             }
           }

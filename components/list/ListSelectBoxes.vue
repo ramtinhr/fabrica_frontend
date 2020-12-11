@@ -98,6 +98,7 @@ export default {
   },
   methods: {
     async search() {
+      const q = this.$route.query.q || null
       await this.$store
         .dispatch('get', {
           url: '/ads/search',
@@ -107,10 +108,13 @@ export default {
             params: {
               limit: this.limit,
               sort: this.selectedOrder ? this.selectedOrder.key : null,
+              q,
             },
           },
         })
-        .then(() => this.$router.push({ query: { sort: this.selectedOrder } }))
+        .then(() =>
+          this.$router.push({ query: { sort: this.selectedOrder, q } })
+        )
     },
   },
 }

@@ -60,6 +60,18 @@
       height: 55px;
       margin-right: 5px;
     }
+    &__navbar {
+      & ul {
+        & li {
+          padding: 0 10px;
+        }
+      }
+    }
+    &__actions {
+      & button {
+        padding: 5px 10px;
+      }
+    }
   }
 }
 

@@ -73,7 +73,7 @@
 
 
   &-warning {
-    @include button ($themeOrange, $white, $themeOrange)
+    @include button ($warning, $white, $warning)
   }
   &-warning:hover {
     background-color: $darkOrange!important;

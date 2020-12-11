@@ -131,6 +131,14 @@
         & span:nth-child(even) {
           color: $dimLightGray;
         }
+        & i {
+          color: #989898;
+        }
+        & button {
+          width: 100%;
+          border-radius: 15px;
+          margin-bottom: 15px;
+        }
       }
     }
     &-detail {
@@ -141,19 +149,43 @@
       &-head {
         display: flex;
         flex-direction: column;
+        position: relative;
+        & div:first-child {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
         & h3 {
-          margin-bottom: 15px;
+          margin-bottom: 10px;
         }
         border-bottom: 1px solid $lightGray;
+        & i {
+          color: $dimLightGray;
+          &:before {
+            font-size: 25px;
+            margin-left: -4px;
+          }
+        }
+        & img {
+          width: 19px;
+          height: 28px;
+          filter: invert(55%) sepia(66%) saturate(1352%) hue-rotate(90deg) brightness(96%) contrast(119%) grayscale(10);
+        }
+        & svg {
+          filter: invert(55%) sepia(66%) saturate(1352%) hue-rotate(90deg) brightness(96%) contrast(119%) grayscale(10);
+        }
       }
-      &-slide {
+      &-slider {
         padding-top: 20px;
-        min-height: 450px;
+        min-height: 430px;
+        max-height: 450px;
+        overflow: hidden;
         position: relative;
         cursor: pointer;
         & img {
           width: 100%;
-          height: 450px;
+          min-height: 430px;
+          max-height: 450px;
           object-fit: cover;
           background-color: $dimLightGray;
           border-radius: 15px;
@@ -167,7 +199,7 @@
             border-radius: 15px;
           }
           &-pagination {
-            bottom: 15px;
+            bottom: 0;
             left: 50%;
             transform: translateX(-50%);
             &-bullet {
@@ -176,6 +208,19 @@
               background: $lightGray;
               margin: 0 6px;
             }
+          }
+        }
+        &-thumbs {
+          margin-top: 20px;
+          cursor: pointer;
+          overflow: hidden;
+          position: relative;
+          &-container {
+            width: 100%;
+          }
+          & img {
+            width: 90px;
+            border-radius: 15px;
           }
         }
       }
@@ -191,6 +236,18 @@
       & h3 {
         margin-bottom: 15px;
       }
+    }
+  }
+  &__chat {
+    padding: 0 20px 20px 20px;
+    & textarea {
+      border-radius: 10px;
+      margin-top: 10px;
+    }
+    & button {
+      border-radius: 30px;
+      padding: 10px 40px;
+      margin: auto;
     }
   }
 }
