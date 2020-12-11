@@ -16,6 +16,7 @@
   "toman": "تومان",
   "send": "ارسال",
   "price": "فیمت",
+  "description": "توضیحات",
   "header": {
     "mainPage": "صفحه اصلی",
     "latestAdvertises": "آخرین آگهی ها",
@@ -66,8 +67,9 @@
     "sendMessage": "ارسال پیام",
     "messageText": "متن پیام",
     "title": "عنوان آگهی",
-    "priority": "اولویت"
-
+    "priority": "اولویت",
+    "selectType": "انتخاب نوع",
+    "submit": "ثبت آگهی"
   },
   "auth": {
     "enterYourMobileNumber": "شماره موبایل خود را وارد کنید",

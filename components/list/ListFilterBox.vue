@@ -136,7 +136,7 @@ export default {
       return this.getResource('list', 'categories')
     },
     states() {
-      return this.getResource('home', 'states')
+      return this.getResource('list', 'states')
     },
   },
   watch: {
@@ -183,7 +183,7 @@ export default {
     async getState() {
       await this.$store.dispatch('get', {
         url: '/cities/state',
-        storeName: 'home',
+        storeName: 'list',
         resourceName: 'states',
       })
     },

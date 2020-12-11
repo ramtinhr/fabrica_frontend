@@ -1,7 +1,7 @@
 <template>
   <div class="list__select-boxes">
     <div class="row">
-      <div class="col-md-4 col-sm-12 col-xs-12 m-b-xs-15 m-b-sm-15">
+      <div class="col-md-6 col-sm-12 col-xs-12 m-b-xs-15 m-b-sm-15">
         <v-select
           v-model="selectedOrder"
           :options="orderBy"
@@ -12,7 +12,7 @@
           <span slot="no-options"> {{ $t('noResultFound') }}</span>
         </v-select>
       </div>
-      <div class="col-md-4 col-sm-12 col-xs-12 m-b-xs-15">
+      <div class="col-md-6 col-sm-12 col-xs-12 m-b-xs-15">
         <v-select
           v-model="selectedPriority"
           :options="priority"
@@ -22,11 +22,6 @@
         >
           <span slot="no-options"> {{ $t('noResultFound') }}</span>
         </v-select>
-      </div>
-      <div class="col-md-4 col-sm-12 col-xs-12">
-        <button class="btn btn-secondary font-size-14">
-          {{ $t('home.advancedSearch') }}
-        </button>
       </div>
     </div>
   </div>

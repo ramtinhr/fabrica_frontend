@@ -6,6 +6,12 @@ export const state = () => ({
     categories: {
       data: [],
     },
+    states: {
+      data: [],
+    },
+    cities: {
+      data: [],
+    },
   },
   loading: false,
 })
