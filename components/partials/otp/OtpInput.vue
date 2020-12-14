@@ -37,6 +37,7 @@ export default {
   name: 'OtpInput',
   props: {
     numInputs: {
+      type: Number,
       default: 4,
     },
     separator: {
@@ -45,12 +46,14 @@ export default {
     },
     inputClasses: {
       type: String,
+      default: null,
     },
     inputType: {
       type: String,
       validator(value) {
         return ['number', 'tel', 'password'].includes(value)
       },
+      default: null,
     },
     shouldAutoFocus: {
       type: Boolean,

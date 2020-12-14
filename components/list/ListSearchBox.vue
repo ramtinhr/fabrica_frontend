@@ -45,8 +45,8 @@ export default {
         this.search()
       }
     },
-    async search() {
-      await this.$store
+    search() {
+      this.$store
         .dispatch('get', {
           url: '/ads/search',
           storeName: 'list',

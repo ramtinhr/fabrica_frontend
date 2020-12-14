@@ -12,31 +12,38 @@
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
+
     &-content {
-      background-color: hsla(0,0%,100%,.93);
+      background-color: hsla(0, 0%, 100%, .93);
       margin-top: 35px;
       border-radius: 15px;
       padding: 35px;
       position: relative;
     }
+
     &-active-category {
       color: #fff;
       background-color: $primaryColor;
+
       & img {
         filter: brightness(0.0) invert(1);
       }
     }
+
     &-categories {
       overflow: auto;
+
       & ul {
         min-width: 1000px;
         padding-right: 0;
         display: flex;
         justify-content: center;
         align-items: center;
+
         & li:last-child {
           margin-left: 0;
         }
+
         & li {
           font-weight: bold;
           cursor: pointer;
@@ -47,13 +54,16 @@
           text-align: center;
           border-radius: 15px;
           background-color: #fff;
+
           & img {
             width: 45px;
             height: 45px;
           }
+
           &:hover {
             color: #fff;
             background-color: $primaryColor;
+
             & img {
               filter: brightness(0.0) invert(1);
             }
@@ -61,13 +71,16 @@
         }
       }
     }
+
     &-states-slide {
       position: relative;
       direction: ltr !important;
       min-height: 187px;
+
       .swiper-slide {
         height: auto;
       }
+
       &-back {
         display: flex;
         flex-direction: column;
@@ -81,6 +94,7 @@
             filter: saturate(1);
           }
         }
+
         img {
           margin-bottom: 20px;
           filter: saturate(4%);
@@ -93,11 +107,13 @@
           font-weight: 300;
         }
       }
-      &-active{
+
+      &-active {
         img {
           filter: saturate(1);
         }
       }
+
       .swiper-button-next {
         background-size: 30px 30px;
         position: absolute;
@@ -114,9 +130,11 @@
           right: -20px;
         }
       }
+
       .swiper-button-disabled {
         opacity: 0.3;
       }
+
       .swiper-button-prev {
         background-size: 30px 30px;
         position: absolute;
@@ -134,11 +152,13 @@
         }
       }
     }
+
     &-search-box {
       margin: 35px 30px;
       position: relative;
+
       & input {
-        box-shadow: 0 0 10px hsla(0,0%,64.7%,.2);
+        box-shadow: 0 0 10px hsla(0, 0%, 64.7%, .2);
         padding: 15px 25px 15px 130px;
         color: $dimLightGray;
         font-weight: 300;
@@ -146,6 +166,7 @@
         border: none;
         outline: none;
       }
+
       & button {
         position: absolute;
         left: 5px;
@@ -155,10 +176,12 @@
         padding: 10px 40px;
       }
     }
+
     &-select-boxes {
       margin: 35px 30px 0 30px;
     }
   }
+
   &__loading {
     min-height: 250px;
     padding-bottom: 40px;
@@ -166,19 +189,23 @@
     justify-content: center;
     align-items: flex-end;
   }
+
   &__info {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 80px;
+
     & button {
       border-radius: 30px;
     }
   }
+
   &__first-content {
     background-color: #f5f5f7;
     padding: 80px 0 180px 0;
     position: relative;
+
     &-img {
       background: url('/images/tractor_back.png') no-repeat;
       width: 36%;
@@ -189,6 +216,7 @@
       bottom: 20px;
     }
   }
+
   &__second-content {
     background-color: #d8d8d8;
     padding: 80px 0 180px 0;
@@ -204,6 +232,7 @@
       bottom: 20px;
     }
   }
+
   &__third-content {
     background-color: #f5f5f7;
     padding: 80px 0 180px 0;
@@ -252,6 +281,7 @@
     }
   }
 }
+
 @media only screen and (max-width: 1200px) {
   .home {
     &__first-content {
@@ -259,21 +289,25 @@
         height: 55%;
       }
     }
+
     &__second-content {
       &-img {
         height: 60%;
       }
     }
+
     &__third-content {
       &-img {
         height: 65%;
       }
     }
+
     &__fourth-content {
       &-img {
         height: 60%;
       }
     }
+
     &__fifth-content {
       &-img {
         height: 65%;
@@ -281,17 +315,21 @@
     }
   }
 }
-@media only screen and (max-width: 768px ) {
+
+@media only screen and (max-width: 768px) {
   .home {
     &__main {
       &-content {
         padding: 30px 15px 0 15px;
       }
+
       &-search-box {
         margin: 30px 0 30px 0;
+
         & input {
           padding: 15px 25px 15px 0;
         }
+
         & button {
           position: unset;
           transform: unset;
@@ -300,18 +338,23 @@
         }
       }
     }
+
     &__first-content {
       padding-bottom: 80px;
     }
+
     &__second-content {
       padding-bottom: 80px;
     }
+
     &__third-content {
       padding-bottom: 80px;
     }
+
     &__fourth-content {
       padding-bottom: 80px;
     }
+
     &__info {
       flex-direction: column;
     }

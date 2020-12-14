@@ -13,26 +13,28 @@
   font-size: 13px;
 
 
-
   &-primary {
-    @include button ($blue, $white, $blue)
+    @include button($blue, $white, $blue)
   }
+
   &-primary:hover {
     background-color: $royalBlue !important;
   }
 
   &-secondary {
-    @include button ($accentColor, $white, $accentColor);
+    @include button($accentColor, $white, $accentColor);
     border: 2px solid $accentColor !important;
     transition: all .3s;
   }
+
   &-secondary:hover {
     background-color: transparent !important;
     color: $accentColor !important;
   }
 
   &-success {
-    @include button ($themeGreen, $white, $violet);
+    @include button($themeGreen, $white, $violet);
+
     &:hover {
       background-color: $dimLightGray !important;
     }
@@ -50,14 +52,17 @@
     font-width: 500;
     font-size: 14px;
     border: 2px solid $primaryColor !important;
+
     &:hover {
       background-color: transparent !important;
       color: $primaryColor !important;
+
       .v-spinner .v-clip {
         border-color: $primaryColor $primaryColor transparent !important;
       }
     }
   }
+
   &-outline-fabrica {
     @include button(transparent, $primaryColor, $primaryColor);
     transition: all .4s;
@@ -65,6 +70,7 @@
     font-size: 14px;
     font-weight: bold;
     border: 2px solid $primaryColor !important;
+
     &:hover {
       background-color: $primaryColor !important;
       color: white !important;
@@ -73,139 +79,157 @@
 
 
   &-warning {
-    @include button ($warning, $white, $warning)
+    @include button($warning, $white, $warning)
   }
+
   &-warning:hover {
-    background-color: $darkOrange!important;
+    background-color: $darkOrange !important;
   }
 
   &-danger {
-    @include button ($tomato, $white, $tomato)
+    @include button($tomato, $white, $tomato)
   }
+
   &-danger:hover {
-    background-color: $red!important;
+    background-color: $red !important;
   }
+
   &-orangeYellow {
-    @include button ($orangeYellow, $darkBlack, $orangeYellow);
+    @include button($orangeYellow, $darkBlack, $orangeYellow);
     border: none;
-    background-image: linear-gradient(180deg,#FFE251 0%,#EDC423 100%);
+    background-image: linear-gradient(180deg, #FFE251 0%, #EDC423 100%);
   }
 
   &-alt-primary {
-    @include button ($skyBlue, $blue, $skyBlue)
+    @include button($skyBlue, $blue, $skyBlue)
   }
+
   &-alt-primary:hover {
-    background-color: $blue!important;
+    background-color: $blue !important;
     color: $white !important;
   }
 
   &-alt-secondary {
-    @include button ($cornflowerBlue, $midnightBlue, $cornflowerBlue)
+    @include button($cornflowerBlue, $midnightBlue, $cornflowerBlue)
   }
+
   &-alt-secondary:hover {
-    background-color: $navy!important;
+    background-color: $navy !important;
     color: $white !important;
   }
 
   &-alt-success {
-    @include button ($honeydew, $grassy, $honeydew)
+    @include button($honeydew, $grassy, $honeydew)
   }
+
   &-alt-success:hover {
-    background-color: $springGreen!important;
+    background-color: $springGreen !important;
     color: $white !important;
   }
 
   &-alt-warning {
-    @include button ($lemonChiffon, $darkOrange, $lemonChiffon)
+    @include button($lemonChiffon, $darkOrange, $lemonChiffon)
   }
+
   &-alt-warning:hover {
-    background-color: $gold!important;
+    background-color: $gold !important;
     color: $white !important;
   }
 
   &-alt-danger {
-    @include button ($peachPuff, $tomato, $peachPuff)
+    @include button($peachPuff, $tomato, $peachPuff)
   }
+
   &-alt-danger:hover {
-    background-color: $tomato!important;
+    background-color: $tomato !important;
     color: $white !important;
   }
 
   &-outline-light {
-    @include button ($white, $dimGray, $dimgrayWhite);
+    @include button($white, $dimGray, $dimgrayWhite);
     border: 1px solid;
   }
+
   &-outline-light:hover {
-    border-color: $dimgrayWhite!important;
+    border-color: $dimgrayWhite !important;
   }
 
   &-outline-lighter {
-    @include button ($white, $darkGray, $dimgrayWhite);
+    @include button($white, $darkGray, $dimgrayWhite);
     border: 1px solid;
   }
+
   &-outline-lighter:hover {
-    border-color: $linen!important;
+    border-color: $linen !important;
   }
+
   &-outline-orangeYellow {
-    @include button ( $white, $orangeYellow, $orangeYellow);
-    border: 1px solid ;
+    @include button($white, $orangeYellow, $orangeYellow);
+    border: 1px solid;
   }
+
   &-outline-orangeYellow:hover {
-    border-color: $darkBlack!important;
-    color: $darkBlack!important;
+    border-color: $darkBlack !important;
+    color: $darkBlack !important;
   }
 
   &-outline-dark {
-    @include button ($white, $darkGray, $whiteSmoke);
+    @include button($white, $darkGray, $whiteSmoke);
     border: 1px solid;
   }
+
   &-outline-dark:hover {
-    border-color: $dimgrayWhite!important;
+    border-color: $dimgrayWhite !important;
   }
 
   &-outline-primary {
-    @include button ($white, $blue, $blue);
+    @include button($white, $blue, $blue);
     border: 1px solid;
   }
+
   &-outline-primary:hover {
-    border-color: $royalBlue!important;
-    color: $royalBlue!important;
+    border-color: $royalBlue !important;
+    color: $royalBlue !important;
   }
 
   &-outline-secondary {
-    @include button ($white, $navy, $navy);
+    @include button($white, $navy, $navy);
     border: 1px solid;
   }
+
   &-outline-secondary:hover {
-    border-color:$lightBlack!important;
-    color: $lightBlack!important;
+    border-color: $lightBlack !important;
+    color: $lightBlack !important;
   }
 
   &-outline-success {
-    @include button ($white, $springGreen, $springGreen);
+    @include button($white, $springGreen, $springGreen);
     border: 1px solid;
   }
+
   &-outline-success:hover {
-    border-color: $mediumseaGreen!important;
-    color: $mediumseaGreen!important;
+    border-color: $mediumseaGreen !important;
+    color: $mediumseaGreen !important;
   }
 
   &-outline-warning {
-    @include button ($white, $gold, $gold);
+    @include button($white, $gold, $gold);
     border: 1px solid;
   }
+
   &-outline-warning:hover {
-    border-color: $darkOrange!important;
-    color: $darkOrange!important;
+    border-color: $darkOrange !important;
+    color: $darkOrange !important;
   }
 
   &-outline-danger {
-    @include button ($white, $tomato, $tomato);
+    @include button($white, $tomato, $tomato);
     border: 1px solid;
   }
+
   &-outline-danger:hover {
-    border-color: $red!important;
-    color: $red!important;
+    border-color: $red !important;
+    color: $red !important;
   }
 
   &-xl {

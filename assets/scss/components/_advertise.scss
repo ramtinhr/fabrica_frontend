@@ -1,15 +1,17 @@
 .advertise {
   &__horizontal {
-    box-shadow: 0 0 10px hsla(0,0%,64.7%,.2);
+    box-shadow: 0 0 10px hsla(0, 0%, 64.7%, .2);
     border-radius: 15px;
     height: 100%;
     transition: all .4s ease;
     cursor: pointer;
     position: relative;
     display: flex;
+
     &:hover {
-      box-shadow: 0 10px 40px hsla(0,0%,64.7%,.2);
+      box-shadow: 0 10px 40px hsla(0, 0%, 64.7%, .2);
     }
+
     &-img {
       &-wrapper {
         position: relative;
@@ -19,6 +21,7 @@
         transition: height .5s ease;
         background-color: rgba(0, 0, 0, 0.3);
         object-fit: cover;
+
         & img {
           border-radius: 0 15px 15px 0;
           height: 100%;
@@ -29,6 +32,7 @@
         }
       }
     }
+
     &-content {
       padding: 20px;
       display: flex;
@@ -38,6 +42,7 @@
       background-color: #fff;
       border-radius: 15px 0 0 15px;
       width: 100%;
+
       &-detail {
         &-price {
           display: flex;
@@ -46,6 +51,7 @@
           margin-bottom: 15px;
           transition: all .5s ease;
         }
+
         &-created {
           display: flex;
           justify-content: space-between;
@@ -54,33 +60,40 @@
       }
     }
   }
+
   &__vertical {
-    box-shadow: 0 0 10px hsla(0,0%,64.7%,.2);
+    box-shadow: 0 0 10px hsla(0, 0%, 64.7%, .2);
     border-radius: 15px;
     height: 290px;
     transition: all .4s ease;
     cursor: pointer;
     position: relative;
+
     &:hover {
-      box-shadow: 0 10px 40px hsla(0,0%,64.7%,.2);
+      box-shadow: 0 10px 40px hsla(0, 0%, 64.7%, .2);
+
       .advertise__vertical-img-wrapper {
         height: 45%;
       }
+
       .advertise__vertical-content {
         height: 55%;
+
         &-detail-price {
           margin-bottom: 10px;
         }
       }
     }
+
     &-img {
       &-wrapper {
         position: relative;
         height: 35%;
         border-radius: 15px 15px 0 0;
         transition: height .5s ease;
-        background-color: rgba(0,0,0,.3);
+        background-color: rgba(0, 0, 0, .3);
         object-fit: cover;
+
         & img {
           border-radius: 15px 15px 0 0;
           height: 100%;
@@ -90,6 +103,7 @@
         }
       }
     }
+
     &-content {
       padding: 20px;
       display: flex;
@@ -99,6 +113,7 @@
       transition: height .5s ease;
       background-color: #fff;
       border-radius: 0 0 15px 15px;
+
       &-detail {
         &-price {
           display: flex;
@@ -107,6 +122,7 @@
           margin-bottom: 15px;
           transition: all .5s ease;
         }
+
         &-created {
           display: flex;
           justify-content: space-between;
@@ -115,30 +131,37 @@
       }
     }
   }
+
   &__single {
     &-sidebar {
       &-specifications {
         margin-top: 25px;
+
         & div {
           display: flex;
           justify-content: space-between;
           align-items: center;
           margin-bottom: 15px;
+
           &:last-child {
             margin-bottom: 0;
           }
         }
+
         & span:nth-child(even) {
           color: $dimLightGray;
         }
+
         & i {
           color: #989898;
           transition: all .3s;
           cursor: pointer;
+
           &:hover {
             color: $primaryColor;
           }
         }
+
         & button {
           width: 100%;
           border-radius: 15px;
@@ -146,42 +169,52 @@
         }
       }
     }
+
     &-detail {
       padding: 20px;
       background-color: #fff;
-      box-shadow: 0 0 10px hsla(0,0%,64.7%,.2);
+      box-shadow: 0 0 10px hsla(0, 0%, 64.7%, .2);
       border-radius: 20px;
+
       &-head {
         display: flex;
         flex-direction: column;
         position: relative;
+
         & div:first-child {
           display: flex;
           justify-content: space-between;
           align-items: center;
         }
+
         & h3 {
           margin-bottom: 10px;
         }
+
         border-bottom: 1px solid $lightGray;
+
         & i {
           color: $dimLightGray;
+
           &:before {
             font-size: 25px;
             margin-left: -4px;
           }
         }
+
         & img {
           cursor: pointer;
           width: 19px;
           height: 28px;
           filter: invert(55%) sepia(66%) saturate(1352%) hue-rotate(90deg) brightness(96%) contrast(119%) grayscale(10);
         }
+
         & svg {
           cursor: pointer;
           filter: invert(55%) sepia(66%) saturate(1352%) hue-rotate(90deg) brightness(96%) contrast(119%) grayscale(10);
         }
       }
+
       &-slider {
         padding-top: 20px;
         min-height: 430px;
@@ -189,6 +222,7 @@
         overflow: hidden;
         position: relative;
         cursor: pointer;
+
         & img {
           width: 100%;
           min-height: 430px;
@@ -197,18 +231,22 @@
           background-color: $dimLightGray;
           border-radius: 15px;
         }
+
         .swiper {
           &-button-prev:after, &-button-next:after {
             font-size: 30px !important;
             color: $lightGray;
           }
+
           &-container {
             border-radius: 15px;
           }
+
           &-pagination {
             bottom: 0;
             left: 50%;
             transform: translateX(-50%);
+
             &-bullet {
               width: 12px;
               height: 12px;
@@ -217,14 +255,17 @@
             }
           }
         }
+
         &-thumbs {
           margin-top: 20px;
           cursor: pointer;
           overflow: hidden;
           position: relative;
+
           &-container {
             width: 100%;
           }
+
           & img {
             width: 90px;
             border-radius: 15px;
@@ -232,33 +273,40 @@
         }
       }
     }
+
     &-description {
       margin-top: 20px;
-      box-shadow: 0 0 10px hsla(0,0%,64.7%,.2);
+      box-shadow: 0 0 10px hsla(0, 0%, 64.7%, .2);
       border-radius: 20px;
       padding: 20px;
       display: flex;
       flex-direction: column;
       background-color: #fff;
+
       & h3 {
         margin-bottom: 10px;
       }
     }
   }
+
   &__chat {
     padding: 0 20px 20px 20px;
+
     & textarea {
       border-radius: 10px;
       margin-top: 10px;
     }
+
     & button {
       border-radius: 30px;
       padding: 10px 40px;
       margin: auto;
     }
   }
+
   &__create {
     margin: 50px auto;
+    min-height: 50vh;
     & button {
       border-radius: 10px;
     }

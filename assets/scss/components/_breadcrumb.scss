@@ -1,6 +1,7 @@
 .breadcrumb {
   background-color: #111;
   padding: 15px 0;
+
   ul {
     padding-right: 0;
     display: flex;
@@ -15,6 +16,7 @@
       -webkit-box-align: center;
       -ms-flex-align: center;
       align-items: center;
+
       &:after {
         content: "/";
         font-size: 18px;
@@ -22,11 +24,13 @@
         vertical-align: middle;
         margin-right: 15px;
       }
+
       &:last-child {
         &:after {
           display: none;
         }
       }
+
       & a {
         color: #666;
       }

@@ -1,39 +1,47 @@
 .form {
   &-group {
     margin-bottom: 15px;
+
     & label {
       display: block;
       margin-bottom: 8px;
     }
+
     & input {
       padding: 13px 10px;
       border-radius: 10px;
       border: none;
-      box-shadow: 0 0 10px hsla(0,0%,64.7%,.2);
+      box-shadow: 0 0 10px hsla(0, 0%, 64.7%, .2);
       color: $dimLightGray;
       font-size: 14px;
     }
+
     & textarea {
       color: $dimLightGray;
       font-size: 14px;
       border: none;
       border-radius: 10px;
-      box-shadow: 0 0 10px hsla(0,0%,64.7%,.2);
+      box-shadow: 0 0 10px hsla(0, 0%, 64.7%, .2);
     }
   }
+
   &-group2 {
     margin-bottom: 15px;
+
     & label {
       display: block;
       margin-bottom: 8px;
     }
+
     & input {
       color: $dimLightGray;
     }
+
     .vs {
       &__dropdown-toggle {
         border-radius: 10px !important;
       }
+
       &__dropdown-menu {
         border-radius: 10px;
       }
@@ -53,7 +61,7 @@ input[type=number] {
   -moz-appearance: textfield;
 }
 
-input, select,textarea {
+input, select, textarea {
   background-color: #ffffff;
   width: 100%;
   border-radius: 4px;
@@ -64,6 +72,7 @@ input, select,textarea {
   font-family: IRANSans;
   font-size: 16px;
   text-indent: 5px;
+
   &-warning {
     border: solid 1px $tomato !important;
     animation: fadein 1s both;
@@ -87,6 +96,7 @@ input, select,textarea {
     padding: 5px;
     font-size: 20px;
     text-align: center;
+
     &-box {
       display: flex;
       flex-direction: row-reverse;

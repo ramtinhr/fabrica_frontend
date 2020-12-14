@@ -17,6 +17,7 @@
   "send": "ارسال",
   "price": "فیمت",
   "description": "توضیحات",
+  "lastStep": "مرحله قبل",
   "header": {
     "mainPage": "صفحه اصلی",
     "latestAdvertises": "آخرین آگهی ها",
@@ -69,7 +70,8 @@
     "title": "عنوان آگهی",
     "priority": "اولویت",
     "selectType": "انتخاب نوع",
-    "submit": "ثبت آگهی"
+    "submit": "ثبت آگهی",
+    "abilityToSuggest": "قابلیت پیشنهاد دادن"
   },
   "auth": {
     "enterYourMobileNumber": "شماره موبایل خود را وارد کنید",

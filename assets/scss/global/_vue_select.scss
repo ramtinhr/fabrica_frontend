@@ -6,14 +6,17 @@
     background: #fff;
     padding: 0;
   }
+
   &__selected {
     font-size: 14px;
   }
+
   &__no-options {
     padding: 10px;
     font-size: 14px;
     color: $dimGray;
   }
+
   &__dropdown-option {
     font-weight: 500;
     transition: all .4s;
@@ -21,34 +24,41 @@
     font-size: 12px;
     color: $dimGray;
     border-bottom: 1px solid $cleanGray;
+
     &:hover {
       background-color: $lightGray;
       color: #fff;
     }
+
     &--highlight {
       background-color: $lightGray;
       color: #fff;
     }
   }
+
   &__dropdown-option:last-child {
     border: none;
   }
+
   &__dropdown-toggle {
     border: none;
     border-radius: 15px !important;
-    box-shadow: 0 0 10px hsla(0,0%,64.7%,.2);
+    box-shadow: 0 0 10px hsla(0, 0%, 64.7%, .2);
     background: #fff;
     padding: 10px;
   }
+
   &__search {
     font-size: 14px;
     color: $dimLightGray;
     line-height: 1;
+
     &:focus {
       font-size: 14px;
       line-height: 1;
     }
   }
+
   &__open-indicator {
     display: none;
   }

@@ -14,12 +14,22 @@
   >
     <div class="advertise__horizontal">
       <div class="advertise__horizontal-img-wrapper">
-        <img
-          v-if="advertise.featured_image"
-          :src="advertise.featured_image"
-          alt="فابریکا"
-        />
-        <img v-else src="/images/placeholder.png" alt="عکس جایگزین" />
+        <transition name="fade">
+          <img
+            v-if="advertise.featured_image"
+            v-show="isLoaded"
+            :src="advertise.featured_image"
+            alt="فابریکا"
+            @load="onLoaded"
+          />
+          <img
+            v-show="isLoaded"
+            v-else
+            src="/images/placeholder.png"
+            alt="عکس جایگزین"
+            @load="onLoaded"
+          />
+        </transition>
       </div>
       <div class="advertise__horizontal-content">
         <div class="advertise__content-title">
@@ -67,6 +77,16 @@ export default {
     advertise: {
       type: Object,
       default: null,
+    },
+  },
+  data() {
+    return {
+      isLoaded: false,
+    }
+  },
+  methods: {
+    onLoaded() {
+      this.isLoaded = true
     },
   },
 }

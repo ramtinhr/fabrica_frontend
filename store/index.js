@@ -97,6 +97,13 @@ export const mutations = {
   SELECT_STATE(state, payload) {
     state.state = payload.state
   },
+  EMPTY_SEARCH_DATA(state) {
+    state.category = null
+    state.subCategory = null
+    state.city = null
+    state.order = null
+    state.state = null
+  },
   UPDATE_ITEM_FIELDS(rootState, { storeName, resourceName, filter, data }) {
     if (resourceName) {
       if (

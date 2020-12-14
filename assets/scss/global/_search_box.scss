@@ -1,5 +1,6 @@
 .search-box {
   width: 100%;
+
   & input {
     background-color: #fff;
     border-radius: 4px;
@@ -10,10 +11,12 @@
     padding: 14px 14px 14px 0;
     font-size: 18px;
     text-indent: 5px;
+
     &:focus {
       border-color: #fff;
     }
   }
+
   & input:first-child {
     border-right: none;
     border-top: none;
@@ -21,12 +24,14 @@
     border-bottom: none;
     width: 85%;
   }
+
   & input:nth-child(2) {
     border-top: none;
     border-bottom: none;
     border-radius: 0;
     width: 85%;
   }
+
   & input:nth-child(3) {
     border-top: none;
     border-bottom: none;
@@ -34,12 +39,14 @@
     border-radius: 15px 0 0 15px;
     padding-left: 135px;
   }
+
   & button {
     position: absolute;
     left: 5px;
     top: 50%;
     transform: translateY(-50%);
     min-width: 130px;
+
     & span {
       font-family: IRANSans !important;
     }

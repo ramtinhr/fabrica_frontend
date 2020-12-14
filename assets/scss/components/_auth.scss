@@ -4,6 +4,7 @@
   align-items: center;
   flex-direction: column;
   padding: 0 40px 40px 40px;
+
   &__steps {
     animation: fade 1s;
     display: flex;
@@ -17,9 +18,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
     & span {
       margin-right: 10px;
     }
+
     & input {
       direction: ltr;
       border-top: none;
@@ -29,6 +32,7 @@
       border-radius: 0;
     }
   }
+
   & button {
     border-radius: 30px;
   }

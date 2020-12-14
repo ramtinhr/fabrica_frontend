@@ -22,6 +22,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
+
 export default {
   name: 'HomeSearchBox',
   data() {
@@ -56,6 +57,7 @@ export default {
           q: this.searchString,
         },
       })
+      this.$store.commit('EMPTY_SEARCH_DATA')
     },
   },
 }
