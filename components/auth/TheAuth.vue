@@ -65,7 +65,7 @@
           >
             {{ $t('auth.changePhoneNumber') }}
           </p>
-          <div class="auth__otp-code-box">
+          <div class="m-t-30">
             <OtpInput
               ref="otpInput"
               input-classes="otp-input"
@@ -158,7 +158,7 @@ export default {
         })
         this.$message(response)
         if (response.data.message.status === 200) {
-          this.closeModal()
+          this.isOpen = false
         }
       } catch (e) {
         /*

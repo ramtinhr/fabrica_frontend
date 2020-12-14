@@ -69,9 +69,7 @@
         </div>
       </div>
     </div>
-    <div v-if="!isAuthenticated && !clientSideIsAuthenticated">
-      <TheAuth :is-open="isOpen" @closeModal="isOpen = false" />
-    </div>
+    <TheAuth :is-open="isOpen" @closeModal="isOpen = false" />
   </header>
 </template>
 
