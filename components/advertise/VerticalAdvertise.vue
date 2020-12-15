@@ -23,7 +23,6 @@
           />
           <img
             v-show="isLoaded"
-            v-else
             src="/images/placeholder.png"
             alt="عکس جایگزین"
             @load="onLoaded"
@@ -37,6 +36,17 @@
           </span>
         </div>
         <div class="advertise__vertical-content-detail">
+          <div
+            v-if="advertise.ad_status"
+            class="advertise__vertical-content-detail-status"
+          >
+            <span class="text-dimLightGray font-size-12">
+              {{ $t('advertise.status') }}
+            </span>
+            <span class="text-dimLightGray font-size-12">
+              {{ advertise.ad_status }}
+            </span>
+          </div>
           <div class="advertise__vertical-content-detail-price">
             <span class="text-dimLightGray font-size-12">
               {{ $t('advertise.price') }}

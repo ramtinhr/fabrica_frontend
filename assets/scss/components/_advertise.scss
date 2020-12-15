@@ -72,15 +72,29 @@
     &:hover {
       box-shadow: 0 10px 40px hsla(0, 0%, 64.7%, .2);
 
-      .advertise__vertical-img-wrapper {
-        height: 45%;
-      }
+      .advertise__vertical {
+        &-img {
+          &-wrapper {
+            height: 45%;
+          }
 
-      .advertise__vertical-content {
-        height: 55%;
+          &-shadow {
+            opacity: 0;
+          }
+        }
 
-        &-detail-price {
-          margin-bottom: 10px;
+        &-content {
+          height: 55%;
+
+          &-detail {
+            &-price {
+              margin-bottom: 10px;
+            }
+
+            &-status {
+              margin-bottom: 10px;
+            }
+          }
         }
       }
     }
@@ -101,6 +115,16 @@
           object-fit: cover;
           color: #fff;
         }
+      }
+
+      &-shadow {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, .3);
+        border-radius: 20px 20px 0 0;
+        -webkit-transition: opacity .4s ease-in-out;
+        transition: opacity .4s ease-in-out;
       }
     }
 
@@ -127,6 +151,14 @@
           display: flex;
           justify-content: space-between;
           align-items: center;
+        }
+
+        &-status {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 15px;
+          transition: all .5s ease;
         }
       }
     }
@@ -307,6 +339,7 @@
   &__create {
     margin: 50px auto;
     min-height: 50vh;
+
     & button {
       border-radius: 10px;
     }

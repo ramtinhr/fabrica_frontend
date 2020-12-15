@@ -78,6 +78,10 @@ export default {
       type: Object,
       default: null,
     },
+    isUserAd: {
+      type: Boolean,
+      default: false,
+    },
   },
   data() {
     return {

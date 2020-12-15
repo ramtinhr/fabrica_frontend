@@ -36,7 +36,7 @@
                 class="font-size-16"
               >
                 <nuxt-link
-                  :to="{ name: 'list___' + $cookies.get('lang') }"
+                  :to="{ name: 'my-ads___' + $cookies.get('lang') }"
                   tag="a"
                 >
                   {{ $t('header.myAdvertises') }}
@@ -93,7 +93,7 @@ export default {
       if (!this.isAuthenticated && !this.clientSideIsAuthenticated) {
         this.isOpen = true
       } else {
-        this.$router.push({ name: 'createAd___' + this.$cookies.get('lang') })
+        this.$router.push({ name: 'create-ad___' + this.$cookies.get('lang') })
       }
     },
   },

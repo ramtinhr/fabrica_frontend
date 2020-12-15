@@ -71,6 +71,7 @@
                 <label for="type">{{ $t('advertise.type') }}</label>
                 <v-select
                   id="type"
+                  v-model="selectedType"
                   :options="types"
                   :placeholder="$t('advertise.selectType')"
                   label="title"
@@ -185,6 +186,34 @@
                 </div>
               </div>
             </div>
+          </div>
+          <transition name="fade">
+            <div v-if="selectedCategory" class="row m-t-10 m-b-10">
+              <div class="col-xs-12 m-b-20">
+                <div class="display-flex align-center">
+                  <font-awesome-icon
+                    :icon="['fas', 'exclamation-circle']"
+                    class="text-warning font-size-20 m-l-5"
+                  />
+                  <span class="font-size-14 text-dimLightGray">{{
+                    $t('advertise.warning')
+                  }}</span>
+                </div>
+              </div>
+              <div v-for="(img, i) in 5" :key="i" class="col-md-2">
+                <TheUpload
+                  :image-url="
+                    images[i] ? images[i].url : '/images/add_image.png'
+                  "
+                  field="image"
+                  :index="i"
+                  :name="'advertiseImage'"
+                  @getFile="getImage"
+                />
+              </div>
+            </div>
+          </transition>
+          <div class="row">
             <div class="col-xs-12">
               <div class="form-group">
                 <label for="description">{{ $t('description') }}</label>
@@ -202,6 +231,7 @@
               <div class="text-left">
                 <button class="btn btn-fabrica">
                   {{ $t('advertise.submit') }}
+                  <TheLoading v-if="isLoading" :color="'#fff'" :size="'22px'" />
                 </button>
               </div>
             </div>
@@ -222,11 +252,13 @@ export default {
       isOpen: false,
       selectedCategory: null,
       selectedState: null,
-      selectedSubCategory: null,
       selectedCity: null,
       searchString: null,
+      selectedType: null,
+      selectedCategories: [],
       title: null,
       price: null,
+      images: [],
       description: null,
       selectedPriority: null,
       isPriceSuggestionEnabled: false,
@@ -309,16 +341,33 @@ export default {
       this.categoriesBackup = this.categories
       if (!category.is_leaf) {
         this.categories[index].isLoading = true
+        this.selectedCategories.push(category.id)
         await this.getCategories(category.id)
         this.categories[index].isLoading = false
       } else {
+        this.selectedCategories.push(category.id)
         this.selectedCategory = category
         this.isOpen = false
       }
     },
     prevCat() {
+      this.selectedCategories.pop()
       this.categories = this.categoriesBackup
       this.categoriesBackup = []
+    },
+    getImage(file, url, index) {
+      if (!this.images[index]) {
+        this.images.push({
+          file,
+          url,
+        })
+      } else {
+        this.images.splice(index, 1)
+        this.images.push({
+          file,
+          url,
+        })
+      }
     },
     getState() {
       this.$store.dispatch('get', {
@@ -371,7 +420,24 @@ export default {
         this.search()
       }, 600)
     },
-    createAd() {},
+    createAd() {
+      const data = {
+        title: this.title,
+        description: this.description,
+        ad_type: this.selectedType.key,
+        category_ids: this.selectedCategories,
+        images: this.images.map((img) => img.file),
+        city_id: this.selectedCity._id,
+        price: this.price,
+        is_price_suggestion_enabled: this.isPriceSuggestionEnabled,
+      }
+      this.isLoading = true
+      this.$store.dispatch('post', { url: '/ads', data }).then(() => {
+        this.isLoading = false
+        this.$toast.success(this.$t('advertise.success'))
+        this.$router.push({ name: 'my-ads___' + this.$cookies.get('lang') })
+      })
+    },
   },
 }
 </script>
