@@ -178,7 +178,9 @@ export default {
             },
           },
         })
-        .then((resp) => (this.subCategories = resp.data.data))
+        .then((resp) => {
+          this.subCategories = resp.data.data
+        })
     },
     async getState() {
       await this.$store.dispatch('get', {
@@ -204,7 +206,8 @@ export default {
         !this.selectedCategory &&
         !this.selectedSubCategory &&
         !this.selectedCity &&
-        !this.value[0]
+        !this.value[0] &&
+        !this.value[1]
       ) {
         return
       }
@@ -223,8 +226,10 @@ export default {
       await this.$router.push({
         query: {
           city: this.selectedCity ? this.selectedCity._id : null,
-          category: this.selectedCategory.id || null,
-          subCategory: this.selectedSubCategory.id || null,
+          category: this.selectedCategory ? this.selectedCategory.id : null,
+          subCategory: this.selectedSubCategory
+            ? this.selectedSubCategory.id
+            : null,
           min: this.value[0] || null,
           max: this.value[1] || null,
         },
@@ -238,7 +243,9 @@ export default {
             params,
           },
         })
-        .then(() => (this.isLoading = false))
+        .then(() => {
+          this.isLoading = false
+        })
     },
     async resetFilters() {
       this.value[0] = null
