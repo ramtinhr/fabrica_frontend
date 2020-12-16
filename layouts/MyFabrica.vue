@@ -1,11 +1,11 @@
 <template>
   <div>
     <TheHeader class="hidden-xs" />
-    <TheBreadcrumb :navs="navs" />
     <MobileHeader
       v-if="this.$mq === 'xs' || this.$mq === 'sm'"
       class="hidden-lg hidden-md hidden-sm"
     />
+    <TheBreadcrumb :navs="navs" />
     <div class="my-fabrica">
       <div class="fabrica-container">
         <div class="row">

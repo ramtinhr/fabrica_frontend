@@ -165,7 +165,7 @@
                 v-slot="{ errors }"
                 name="category"
                 username="category"
-                rules="required"
+                :rules="`${!selectedCategory ? 'required' : ''}`"
                 class="form-group"
                 tag="div"
               >

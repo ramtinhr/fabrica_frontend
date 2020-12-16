@@ -5,13 +5,14 @@
     & label {
       display: block;
       margin-bottom: 8px;
+      text-align: right;
+      font-size: 14px;
     }
 
     & input {
       padding: 13px 10px;
       border-radius: 10px;
-      border: none;
-      box-shadow: 0 0 10px $lightGray;
+      border: 1px solid $lightGray;
       color: $dimLightGray;
       font-size: 14px;
     }
@@ -19,9 +20,8 @@
     & textarea {
       color: $dimLightGray;
       font-size: 14px;
-      border: none;
+      border: 1px solid $lightGray;
       border-radius: 10px;
-      box-shadow: 0 0 10px $lightGray;
     }
   }
 

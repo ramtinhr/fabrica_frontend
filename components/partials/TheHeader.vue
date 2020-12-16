@@ -11,7 +11,7 @@
             <img src="/images/logo.png" alt="logo" />
           </nuxt-link>
         </div>
-        <div class="col-md-6 col-sm-5">
+        <div class="col-md-6 col-sm-6">
           <nav class="header__navbar">
             <ul>
               <li class="font-size-16">
@@ -45,7 +45,7 @@
             </ul>
           </nav>
         </div>
-        <div class="col-md-5 col-sm-5 text-left">
+        <div class="col-md-5 col-sm-4 text-left">
           <div class="header__actions">
             <button
               class="btn btn-fabrica border-radius-30 font-size-14 p-v-sm-5 p-h-sm-10"

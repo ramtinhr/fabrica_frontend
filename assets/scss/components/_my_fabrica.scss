@@ -17,7 +17,7 @@
     &-navs {
       display: flex;
       & ul {
-        padding-right: 0;
+        padding: 0 25px;
         text-align: right;
         width: 100%;
         & li {
@@ -27,8 +27,18 @@
           padding: 10px 0;
           transition: all .3s;
           border-bottom: 1px solid $cleanGray;
+          & i {
+            &:before {
+              font-size: 18px;
+            }
+          }
           & a {
             transition: all .3s;
+            & i {
+              &:before {
+                font-size: 18px;
+              }
+            }
             &:hover {
               color: $primaryColor;
             }
@@ -45,6 +55,7 @@
     }
   }
   &__content-template {
+    min-height: 40vh;
     background-color: #fff;
     box-shadow: 0 0 10px hsla(0, 0%, 64.7%, .2);
     padding: 25px 20px;
@@ -56,7 +67,7 @@
       height: 100px;
       width: 100px;
       border-radius: 100%;
-      margin: 20px auto 10px auto;
+      margin: 20px auto;
       border: 2px solid $lightGray;
       & img {
         width: 100%;
@@ -64,6 +75,37 @@
         border-radius: 100%;
         object-fit: cover;
       }
+    }
+  }
+}
+
+
+@media only screen and (max-width: 1200px) {
+  .my-fabrica {
+    &__sidebar {
+      &-navs {
+        & ul {
+          padding: 0;
+          & li {
+            font-size: 12px;
+            & i {
+              &:before {
+                font-size: 16px;
+              }
+            }
+            & a {
+              & i {
+                &:before {
+                  font-size: 16px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    & .sidebar {
+      padding: 20px 15px;
     }
   }
 }

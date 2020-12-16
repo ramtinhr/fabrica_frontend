@@ -41,9 +41,8 @@
   }
 
   &__dropdown-toggle {
-    border: none;
     border-radius: 15px !important;
-    box-shadow: 0 0 10px $lightGray;
+    border: 1px solid $lightGray;
     background: #fff;
     padding: 10px;
   }

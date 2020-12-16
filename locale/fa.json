@@ -5,6 +5,7 @@
   "search": "جستجو",
   "number": "عدد",
   "seeMore": "مشاهده بیش تر",
+  "submit": "ثبت",
   "email": "ایمیل",
   "orderBy": "مرتب سازی بر اساس",
   "noResultFound": "نتیجه ای یافت نشد",
@@ -91,7 +92,10 @@
     "editProfile": "ویرایش مشخصات",
     "privateMessage": "پیام شخصی",
     "bookmarkedAdvertises": "آکهی های نشان شده",
-    "logout": "خروج"
+    "logout": "خروج",
+    "name": "نام",
+    "lastname": "نام خانوادگی",
+    "email": "ایمیل"
   },
   "list": {
     "selectState": "انتخاب استان",
