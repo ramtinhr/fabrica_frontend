@@ -11,7 +11,7 @@
       padding: 13px 10px;
       border-radius: 10px;
       border: none;
-      box-shadow: 0 0 10px hsla(0, 0%, 64.7%, .2);
+      box-shadow: 0 0 10px $lightGray;
       color: $dimLightGray;
       font-size: 14px;
     }
@@ -21,7 +21,7 @@
       font-size: 14px;
       border: none;
       border-radius: 10px;
-      box-shadow: 0 0 10px hsla(0, 0%, 64.7%, .2);
+      box-shadow: 0 0 10px $lightGray;
     }
   }
 

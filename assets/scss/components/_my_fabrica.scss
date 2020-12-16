@@ -2,8 +2,8 @@
   padding: 50px 0;
   &__sidebar {
     &-avatar {
-      height: 130px;
-      width: 130px;
+      height: 100px;
+      width: 100px;
       border-radius: 100%;
       margin: 20px auto 10px auto;
       border: 2px solid $lightGray;
@@ -49,5 +49,21 @@
     box-shadow: 0 0 10px hsla(0, 0%, 64.7%, .2);
     padding: 25px 20px;
     border-radius: 15px;
+  }
+  &__profile {
+    text-align: center;
+    &-avatar {
+      height: 100px;
+      width: 100px;
+      border-radius: 100%;
+      margin: 20px auto 10px auto;
+      border: 2px solid $lightGray;
+      & img {
+        width: 100%;
+        height: 100%;
+        border-radius: 100%;
+        object-fit: cover;
+      }
+    }
   }
 }

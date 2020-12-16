@@ -41,7 +41,7 @@
     position: relative;
 
     & input {
-      box-shadow: 0 0 10px hsla(0, 0%, 64.7%, .2);
+      box-shadow: 0 0 10px $lightGray;
       padding: 15px 25px 15px 130px;
       color: $dimLightGray;
       font-weight: 300;

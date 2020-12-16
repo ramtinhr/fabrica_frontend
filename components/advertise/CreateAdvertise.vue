@@ -11,6 +11,7 @@
                 username="title"
                 rules="required"
                 class="form-group"
+                tag="div"
               >
                 <label for="title">{{ $t('advertise.title') }}</label>
                 <input
@@ -52,7 +53,14 @@
               </ValidationProvider>
             </div>
             <div class="col-md-4">
-              <div class="form-group2">
+              <ValidationProvider
+                v-slot="{ errors }"
+                name="priority"
+                username="priority"
+                rules="required"
+                class="form-group2"
+                tag="div"
+              >
                 <label for="priority">{{ $t('advertise.priority') }}</label>
                 <v-select
                   id="priority"
@@ -64,10 +72,19 @@
                 >
                   <span slot="no-options"> {{ $t('noResultFound') }}</span>
                 </v-select>
-              </div>
+                <span class="text-danger font-size-12">
+                  {{ errors[0] }}
+                </span>
+              </ValidationProvider>
             </div>
             <div class="col-md-4">
-              <div class="form-group2">
+              <ValidationProvider
+                v-slot="{ errors }"
+                name="type"
+                username="type"
+                rules="required"
+                class="form-group2"
+              >
                 <label for="type">{{ $t('advertise.type') }}</label>
                 <v-select
                   id="type"
@@ -79,10 +96,20 @@
                 >
                   <span slot="no-options"> {{ $t('noResultFound') }}</span>
                 </v-select>
-              </div>
+                <span class="text-danger font-size-12">
+                  {{ errors[0] }}
+                </span>
+              </ValidationProvider>
             </div>
             <div class="col-md-4">
-              <div class="form-group2">
+              <ValidationProvider
+                v-slot="{ errors }"
+                name="state"
+                username="state"
+                rules="required"
+                class="form-group2"
+                tag="div"
+              >
                 <label for="state">{{ $t('list.selectState') }}</label>
                 <v-select
                   id="state"
@@ -97,10 +124,20 @@
                     {{ $t('noResultFound') }}
                   </span>
                 </v-select>
-              </div>
+                <span class="text-danger font-size-12">
+                  {{ errors[0] }}
+                </span>
+              </ValidationProvider>
             </div>
             <div class="col-md-4">
-              <div class="form-group2">
+              <ValidationProvider
+                v-slot="{ errors }"
+                name="city"
+                username="city"
+                rules="required"
+                class="form-group2"
+                tag="div"
+              >
                 <label for="city">{{ $t('home.selectCity') }}</label>
                 <v-select
                   id="city"
@@ -118,10 +155,20 @@
                     }}
                   </span>
                 </v-select>
-              </div>
+                <span class="text-danger font-size-12">
+                  {{ errors[0] }}
+                </span>
+              </ValidationProvider>
             </div>
             <div class="col-md-4">
-              <div class="form-group">
+              <ValidationProvider
+                v-slot="{ errors }"
+                name="category"
+                username="category"
+                rules="required"
+                class="form-group"
+                tag="div"
+              >
                 <label for="category">{{ $t('advertise.category') }}</label>
                 <input
                   id="category"
@@ -168,7 +215,10 @@
                     </ul>
                   </transition>
                 </div>
-              </div>
+                <span v-if="!selectedCategory" class="text-danger font-size-12">
+                  {{ errors[0] }}
+                </span>
+              </ValidationProvider>
             </div>
             <div class="col-md-4">
               <div class="form-group">

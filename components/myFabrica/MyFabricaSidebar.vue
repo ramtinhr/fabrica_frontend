@@ -21,12 +21,12 @@
                 active-class="active"
                 tag="a"
               >
-                <i class="o-icon o-single-01 m-l-5"></i>
+                <i class="o-icon o-circle-09 m-l-5"></i>
                 {{ $t('myFabrica.editProfile') }}
               </nuxt-link>
             </li>
             <li>
-              <i class="o-icon g-logo-messenger m-l-5"></i>
+              <i class="o-icon o-chat-33 m-l-5"></i>
               {{ $t('myFabrica.privateMessage') }}
             </li>
             <li>
