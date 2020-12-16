@@ -29,12 +29,14 @@
         filter: brightness(0.0) invert(1);
       }
     }
+
     .vs {
       &__dropdown-toggle {
         border: none;
         box-shadow: 0 0 10px $lightGray;
       }
     }
+
     &-categories {
       overflow: auto;
 

@@ -106,3 +106,20 @@
     }
   }
 }
+
+@media only screen and (max-width: 768px) {
+  .list {
+    &__search-box {
+      & input {
+        padding: 15px 25px 15px 0;
+      }
+
+      & button {
+        position: unset;
+        transform: unset;
+        width: 100%;
+        margin-top: 15px;
+      }
+    }
+  }
+}
