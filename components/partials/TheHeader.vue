@@ -49,7 +49,7 @@
           <div class="header__actions">
             <button
               class="btn btn-fabrica border-radius-30 font-size-14 p-v-sm-5 p-h-sm-10"
-              @click="isOpen = true"
+              @click="onClickHandler(false)"
             >
               <i class="o-icon o-single-01 m-l-5"></i>
               <span v-if="isAuthenticated || clientSideIsAuthenticated">
@@ -61,7 +61,7 @@
             </button>
             <button
               class="btn btn-outline-fabrica border-radius-30 font-size-14 p-v-sm-5 p-h-sm-10"
-              @click="onClickHandler"
+              @click="onClickHandler(true)"
             >
               {{ $t('header.advertisementRegistration') }}
             </button>
@@ -69,7 +69,11 @@
         </div>
       </div>
     </div>
-    <TheAuth :is-open="isOpen" @closeModal="isOpen = false" />
+    <TheAuth
+      :is-open="isOpen"
+      :is-create-button="isCreateButton"
+      @closeModal="isOpen = false"
+    />
   </header>
 </template>
 
@@ -80,6 +84,7 @@ export default {
   data() {
     return {
       isOpen: false,
+      isCreateButton: false,
     }
   },
   computed: {
@@ -89,11 +94,20 @@ export default {
     }),
   },
   methods: {
-    onClickHandler() {
-      if (!this.isAuthenticated && !this.clientSideIsAuthenticated) {
+    onClickHandler(createAdButton) {
+      if (createAdButton) {
+        if (!this.isAuthenticated && !this.clientSideIsAuthenticated) {
+          this.isCreateButton = true
+          this.isOpen = true
+        } else {
+          this.$router.push({
+            name: 'create-ad___' + this.$cookies.get('lang'),
+          })
+        }
+      } else if (!this.isAuthenticated && !this.clientSideIsAuthenticated) {
         this.isOpen = true
       } else {
-        this.$router.push({ name: 'create-ad___' + this.$cookies.get('lang') })
+        this.$router.push({ name: 'my-fabrica___' + this.$cookies.get('lang') })
       }
     },
   },

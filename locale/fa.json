@@ -87,6 +87,12 @@
     "resendCode": "ارسال مجدد کد",
     "changePhoneNumber": "تغییر شماره موبایل"
   },
+  "myFabrica": {
+    "editProfile": "ویرایش مشخصات",
+    "privateMessage": "پیام شخصی",
+    "bookmarkedAdvertises": "آکهی های نشان شده",
+    "logout": "خروج"
+  },
   "list": {
     "selectState": "انتخاب استان",
     "setFilters": "اعمال فیلتر ها",

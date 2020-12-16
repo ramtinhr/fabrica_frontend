@@ -2,7 +2,7 @@
   <div class="col-md-9 col-sm-8 col-xs-12 m-t-xs-10">
     <div class="advertise__single-detail">
       <div class="advertise__single-detail-head">
-        <div v-if="isAuthenticated">
+        <div v-if="isAuthenticated || clientSideIsAuthenticated">
           <h3>{{ advertise.title }}</h3>
           <font-awesome-icon
             v-if="advertise.is_favored || isFavorite"
@@ -12,6 +12,7 @@
           />
           <img v-else src="/icons/bookmark.svg" @click="toggleFavorite" />
         </div>
+        <h3 v-else>{{ advertise.title }}</h3>
         <div class="m-b-15">
           <span class="font-size-16 text-dimLightGray"
             >{{ $t('advertise.category') }}:</span
@@ -83,7 +84,7 @@ export default {
         spaceBetween: 10,
         loop: true,
         effect: 'slide',
-        loopedSlides: 1,
+        loopedSlides: 3,
         centeredSlides: true,
         pagination: {
           el: '.swiper-pagination',
@@ -96,7 +97,7 @@ export default {
         touchRatio: 0.2,
         centeredSlides: true,
         loop: true,
-        loopedSlides: 2,
+        loopedSlides: 3,
         breakpoints: {
           1200: {
             slidesPerView: 8,
@@ -115,7 +116,11 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['getResource', 'isAuthenticated']),
+    ...mapGetters([
+      'getResource',
+      'isAuthenticated',
+      'clientSideIsAuthenticated',
+    ]),
     advertise() {
       return this.getResource('advertise')
     },

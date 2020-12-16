@@ -51,6 +51,7 @@ export default {
   data() {
     return {
       isLoading: false,
+      id: null,
     }
   },
   computed: {
@@ -66,12 +67,12 @@ export default {
     this.getAdvertises()
   },
   methods: {
-    async getAdvertises() {
+    getAdvertises() {
       this.isLoading = true
-      const id = this.categories.find(
+      this.id = this.categories.find(
         (category) => category.title === 'موتور سیکلت'
       ).id
-      await this.$store
+      this.$store
         .dispatch('get', {
           url: '/ads/search',
           storeName: 'home',
@@ -79,7 +80,7 @@ export default {
           fillData: false,
           config: {
             params: {
-              category_ids: id,
+              category_ids: this.id,
               limit: 3,
             },
           },
@@ -87,10 +88,7 @@ export default {
         .then(() => (this.isLoading = false))
     },
     onClickHandler() {
-      const id = this.categories.find(
-        (category) => category.title === 'موتور سیکلت'
-      ).id
-      this.$emit('onClickHandler', id)
+      this.$emit('onClickHandler', this.id)
     },
   },
 }

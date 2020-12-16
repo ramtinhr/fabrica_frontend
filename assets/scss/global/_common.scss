@@ -156,6 +156,13 @@ button {
 
 }
 
+.active {
+  color: $primaryColor;
+}
+
+.exact-active {
+  color: $primaryColor;
+}
 
 .text-seaBlue {
   color: $seaBlue;

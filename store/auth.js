@@ -59,7 +59,9 @@ export const actions = {
   },
   fetchMe({ dispatch, commit }) {
     return new Promise((resolve, reject) => {
-      this.$axios.setToken(localStorage.getItem('access_token'), 'Bearer')
+      if (process.client) {
+        this.$axios.setToken(localStorage.getItem('access_token'), 'Bearer')
+      }
       this.$axios
         .get('/users/me')
         .then((response) => {
@@ -74,25 +76,10 @@ export const actions = {
         })
     })
   },
-  initAuth({ commit }) {
-    if (process.client) {
-      const accessToken = localStorage.getItem('access_token')
-      const jwt = Cookie.get('token')
-      if (accessToken) {
-        commit('SET_TOKEN', accessToken)
-      } else if (jwt) {
-        commit('SET_TOKEN', jwt)
-      }
-    }
-  },
-  logout({ commit }) {
-    commit('STORE_USER_INFO', [])
+  logout({ commit, state }) {
+    commit('SET_TOKEN', null)
     Cookie.remove('token')
     localStorage.removeItem('access_token')
-    if (process.client) {
-      localStorage.removeItem('token')
-      localStorage.removeItem('tokenExpiration')
-    }
   },
 }
 

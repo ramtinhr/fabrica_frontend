@@ -5,5 +5,6 @@
 <script>
 export default {
   name: 'CreateAd',
+  middleware: 'auth',
 }
 </script>

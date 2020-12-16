@@ -13,21 +13,24 @@
   >
     <div class="advertise__vertical">
       <div class="advertise__vertical-img-wrapper">
-        <transition name="fade">
+        <transition-group name="fade">
           <img
             v-if="advertise.featured_image"
             v-show="isLoaded"
+            :key="advertise.featured_image"
             :src="advertise.featured_image"
             alt="فابریکا"
             @load="onLoaded"
           />
           <img
+            v-else
             v-show="isLoaded"
+            :key="'placeholder'"
             src="/images/placeholder.png"
             alt="عکس جایگزین"
             @load="onLoaded"
           />
-        </transition>
+        </transition-group>
       </div>
       <div class="advertise__vertical-content">
         <div class="advertise-content-title">

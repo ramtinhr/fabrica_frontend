@@ -1,7 +1,7 @@
 <template>
   <div class="my-ads">
     <TheBreadcrumb :navs="navs" />
-    <div class="fabrica-container min-60-vh">
+    <div class="fabrica-container">
       <div v-if="isLoading" class="my-ads__loading">
         <TheLoading :color="'#707070'" :size="'60px'" />
       </div>
@@ -15,7 +15,11 @@
             </div>
             <div slot="body">
               <div class="my-ads__avatar">
-                <img v-if="user.avatar" :src="user.avatar" alt="آواتار" />
+                <img
+                  v-if="user && user.avatar"
+                  :src="user.avatar"
+                  alt="آواتار"
+                />
                 <img v-else src="/images/avatar.jpg" alt="آواتار" />
               </div>
               <span class="font-size-16">{{ user.full_name }}</span>
@@ -61,10 +65,13 @@ export default {
   methods: {
     getAdvertises() {
       this.isLoading = true
-      this.$store.dispatch('get', { url: '/ads/me' }).then((resp) => {
-        this.advertises = resp.data.data
-        this.getUserInfo()
-      })
+      this.$store
+        .dispatch('get', { url: '/ads/me' })
+        .then((resp) => {
+          this.advertises = resp.data.data
+          this.getUserInfo()
+        })
+        .catch(() => (this.isLoading = false))
     },
     getUserInfo() {
       this.$store.dispatch('get', { url: '/users/me' }).then((resp) => {

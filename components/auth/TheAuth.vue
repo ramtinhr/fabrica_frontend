@@ -1,5 +1,5 @@
 <template>
-  <TheModal :is-open="isOpen" @close="closeModal()">
+  <TheModal :is-open.sync="isOpen" @close="closeModal()">
     <div slot="body">
       <div class="auth">
         <div class="auth__mobile-img">
@@ -119,6 +119,10 @@ export default {
       type: Boolean,
       default: false,
     },
+    isCreateButton: {
+      type: Boolean,
+      default: false,
+    },
   },
   data() {
     return {
@@ -174,7 +178,16 @@ export default {
         })
         this.$message(response)
         if (response.data.message.status === 200) {
-          this.isOpen = false
+          if (this.isCreateButton) {
+            await this.$router.push({
+              name: 'create-ad___' + this.$cookies.get('lang'),
+            })
+          } else {
+            await this.$router.push({
+              name: 'my-fabrica___' + this.$cookies.get('lang'),
+            })
+            this.closeModal()
+          }
         }
       } catch (e) {
         /*

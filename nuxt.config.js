@@ -152,6 +152,10 @@ export default {
     transpile: ['vee-validate/dist/rules', 'vue-moment-jalaali'],
   },
   router: {
+    router: {
+      linkActiveClass: 'active',
+      linkExactActiveClass: 'exact-active',
+    },
     extendRoutes(routes) {
       routes.push({
         name: '404',

@@ -40,7 +40,7 @@
             <span class="font-size-14">{{ advertise.user.mobile_number }}</span>
           </div>
           <button
-            v-if="isAuthenticated"
+            v-if="isAuthenticated || clientSideIsAuthenticated"
             class="btn btn-fabrica"
             @click="isOpen = true"
           >
@@ -48,7 +48,7 @@
           </button>
           <div>
             <a
-              :href="`whatsapp://send?text=${url}`"
+              :href="`https://api.whatsapp.com/send?text=${url}`"
               data-action="share/whatsapp/share"
             >
               <i class="g-icon g-logo-whatsapp"></i>
@@ -94,7 +94,11 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['getResource', 'isAuthenticated']),
+    ...mapGetters([
+      'getResource',
+      'isAuthenticated',
+      'clientSideIsAuthenticated',
+    ]),
     advertise() {
       return this.getResource('advertise')
     },

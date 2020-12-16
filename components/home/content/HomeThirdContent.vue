@@ -1,7 +1,10 @@
 <template>
   <div class="home__third-content">
     <div class="home__third-content-img hidden-xs hidden-sm"></div>
-    <div class="fabrica-container">
+    <div v-if="isLoading" class="home__loading">
+      <TheLoading :color="'#707070'" :size="'60px'" />
+    </div>
+    <div v-else class="fabrica-container">
       <div class="home__info">
         <div class="m-b-xs-20">
           <div class="home__info-title">
@@ -45,6 +48,12 @@
 import { mapGetters } from 'vuex'
 export default {
   name: 'HomeThirdContent',
+  data() {
+    return {
+      isLoading: false,
+      id: null,
+    }
+  },
   computed: {
     ...mapGetters(['getResource']),
     categories() {
@@ -54,12 +63,32 @@ export default {
       return this.getResource('home', 'thirdAdvertises')
     },
   },
+  created() {
+    this.getAdvertises()
+  },
   methods: {
-    onClickHandler() {
-      const id = this.categories.find(
+    async getAdvertises() {
+      this.isLoading = true
+      this.id = this.categories.find(
         (category) => category.title === 'خودرو سنگین'
       ).id
-      this.$emit('onClickHandler', id)
+      await this.$store
+        .dispatch('get', {
+          url: '/ads/search',
+          storeName: 'home',
+          resourceName: 'thirdAdvertises',
+          fillData: false,
+          config: {
+            params: {
+              category_ids: this.id,
+              limit: 3,
+            },
+          },
+        })
+        .then(() => (this.isLoading = false))
+    },
+    onClickHandler() {
+      this.$emit('onClickHandler', this.id)
     },
   },
 }
