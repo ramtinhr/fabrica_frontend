@@ -3,7 +3,7 @@
     <div slot="body">
       <div class="auth">
         <div class="auth__mobile-img">
-          <img src="images/smartphone.png" alt="smartphone" />
+          <img src="/images/smartphone.png" alt="smartphone" />
         </div>
         <ValidationObserver
           v-show="step === 1"

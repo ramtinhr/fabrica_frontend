@@ -69,6 +69,13 @@
       border-radius: 15px;
       padding: 9px;
     }
+
+    .vs {
+      &__dropdown-toggle {
+        border: none;
+        box-shadow: 0 0 10px $lightGray;
+      }
+    }
   }
 
   &__loading {

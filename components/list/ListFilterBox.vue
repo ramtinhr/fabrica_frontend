@@ -160,16 +160,16 @@ export default {
     this.getState()
   },
   methods: {
-    async getCategories() {
-      await this.$store.dispatch('get', {
+    getCategories() {
+      this.$store.dispatch('get', {
         storeName: 'list',
         resourceName: 'categories',
         url: '/categories',
         config: { params: { section: 'home' } },
       })
     },
-    async getSubCategories(id) {
-      await this.$store
+    getSubCategories(id) {
+      this.$store
         .dispatch('get', {
           url: '/categories',
           config: {
@@ -182,15 +182,15 @@ export default {
           this.subCategories = resp.data.data
         })
     },
-    async getState() {
-      await this.$store.dispatch('get', {
+    getState() {
+      this.$store.dispatch('get', {
         url: '/cities/state',
         storeName: 'list',
         resourceName: 'states',
       })
     },
-    async getCities() {
-      await this.$store
+    getCities() {
+      this.$store
         .dispatch('get', {
           url: '/cities',
           config: {
@@ -201,7 +201,7 @@ export default {
         })
         .then((resp) => (this.cities = resp.data.data))
     },
-    async getFilteredData() {
+    getFilteredData() {
       if (
         !this.selectedCategory &&
         !this.selectedSubCategory &&
@@ -223,7 +223,7 @@ export default {
         price_min: this.value[0] || null,
         price_max: this.value[1] || null,
       }
-      await this.$router.push({
+      this.$router.push({
         query: {
           city: this.selectedCity ? this.selectedCity._id : null,
           category: this.selectedCategory ? this.selectedCategory.id : null,
@@ -234,7 +234,7 @@ export default {
           max: this.value[1] || null,
         },
       })
-      await this.$store
+      this.$store
         .dispatch('get', {
           url: '/ads/search',
           storeName: 'list',
@@ -247,7 +247,7 @@ export default {
           this.isLoading = false
         })
     },
-    async resetFilters() {
+    resetFilters() {
       this.value[0] = null
       this.value[1] = null
       this.selectedCity = null
@@ -255,7 +255,7 @@ export default {
       this.selectedSubCategory = null
       this.selectedState = null
       this.isLoading = true
-      await this.$store
+      this.$store
         .dispatch('get', {
           url: '/ads/search',
           storeName: 'list',

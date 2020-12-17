@@ -37,7 +37,15 @@
           </div>
           <div>
             <span class="font-size-14">{{ $t('advertise.mobileNumber') }}</span>
-            <span class="font-size-14">{{ advertise.user.mobile_number }}</span>
+            <span
+              v-if="isAuthenticated || clientSideIsAuthenticated"
+              class="font-size-14"
+            >
+              {{ advertise.user.mobile_number }}
+            </span>
+            <span v-else class="font-size-14"
+              >*****{{ advertise.user.mobile_number.slice(0, 5) }}</span
+            >
           </div>
           <button
             v-if="isAuthenticated || clientSideIsAuthenticated"
@@ -94,11 +102,11 @@ export default {
     }
   },
   computed: {
-    ...mapGetters([
-      'getResource',
-      'isAuthenticated',
-      'clientSideIsAuthenticated',
-    ]),
+    ...mapGetters({
+      isAuthenticated: 'isAuthenticated',
+      clientSideIsAuthenticated: 'auth/clientSideIsAuthenticated',
+      getResource: 'getResource',
+    }),
     advertise() {
       return this.getResource('advertise')
     },

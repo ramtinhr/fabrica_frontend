@@ -16,8 +16,8 @@
             <div slot="body">
               <div class="my-ads__avatar">
                 <img
-                  v-if="user && user.avatar"
-                  :src="user.avatar"
+                  v-if="user && user.avatar_url"
+                  :src="user.avatar_url"
                   alt="آواتار"
                 />
                 <img v-else src="/images/avatar.jpg" alt="آواتار" />

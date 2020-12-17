@@ -339,7 +339,11 @@
   &__create {
     margin: 50px auto;
     min-height: 50vh;
-
+    .upload {
+      & label {
+        height: 170px;
+      }
+    }
     & button {
       border-radius: 10px;
     }

@@ -17,6 +17,10 @@
     color: $dimGray;
   }
 
+  &__selected {
+    color: $dimLightGray;
+  }
+
   &__dropdown-option {
     font-weight: 500;
     transition: all .4s;

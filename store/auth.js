@@ -20,6 +20,12 @@ export const mutations = {
   SET_TOKEN(state, token) {
     state.token = token
   },
+  UPDATE_USER_INFO(state, data) {
+    // eslint-disable-next-line
+    _.each(data, (item, key) => {
+      state.resource[key] = item
+    })
+  },
 }
 
 export const actions = {

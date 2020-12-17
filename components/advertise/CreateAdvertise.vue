@@ -255,7 +255,7 @@
                   :image-url="
                     images[i] ? images[i].url : '/images/add_image.png'
                   "
-                  field="image"
+                  :field="`'image'-${img}`"
                   :index="i"
                   :name="'advertiseImage'"
                   @getFile="getImage"

@@ -92,9 +92,9 @@ export default {
     },
   },
   methods: {
-    async search() {
+    search() {
       const q = this.$route.query.q || null
-      await this.$store
+      this.$store
         .dispatch('get', {
           url: '/ads/search',
           storeName: 'list',

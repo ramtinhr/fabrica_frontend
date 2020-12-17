@@ -3,13 +3,13 @@
     <TheSidebar>
       <div slot="head">
         <h4 class="m-b-20">
-          {{ user.full_name }}
+          {{ fullName }}
         </h4>
       </div>
       <div slot="body">
         <div class="my-fabrica__sidebar">
           <div class="my-fabrica__sidebar-avatar">
-            <img v-if="user && user.avatar" :src="user.avatar" alt="آواتار" />
+            <img v-if="avatar" :src="avatar" alt="آواتار" />
             <img v-else src="/images/avatar.jpg" alt="آواتار" />
           </div>
         </div>
@@ -58,6 +58,16 @@ import { mapGetters } from 'vuex'
 
 export default {
   name: 'MyfabricaSidebar',
+  async fetch() {
+    this.fullName = await this.user.full_name
+    this.avatar = await this.user.avatar_url
+  },
+  data() {
+    return {
+      avatar: null,
+      fullName: null,
+    }
+  },
   computed: {
     ...mapGetters({ user: 'auth/user' }),
   },
