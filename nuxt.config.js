@@ -77,6 +77,7 @@ export default {
   plugins: [
     '~/plugins/helpers/number.js',
     '~/plugins/helpers/string.js',
+    '~/plugins/helpers/date.js',
     '~/plugins/helpers/api-message.js',
     '~/plugins/application.js',
     { src: '~plugins/vee-validate.js', mode: 'client' },

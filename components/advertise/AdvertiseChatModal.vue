@@ -26,7 +26,7 @@
                 ></textarea>
               </div>
               <div>
-                <span v-if="errors[0]" class="text-danger">{{
+                <span v-if="errors[0]" class="text-danger font-size-14">{{
                   errors[0]
                 }}</span>
               </div>

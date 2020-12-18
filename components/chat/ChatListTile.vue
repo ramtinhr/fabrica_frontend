@@ -1,5 +1,12 @@
 <template>
-  <div class="chat__list-tile">
+  <nuxt-link
+    :to="{
+      name: 'my-fabrica-chat-id___' + $cookies.get('lang'),
+      params: { id: chat._id },
+    }"
+    tag="div"
+    class="chat__list-tile"
+  >
     <div class="chat__list-tile-detail">
       <div class="chat__list-tile-detail-avatar">
         <img v-if="chat.avatar_url" :src="chat.avatar_url" alt="avatar" />
@@ -13,7 +20,7 @@
     <div v-if="chat.unread_count > 0" class="chat__list-tile-unread-count">
       {{ chat.unread_count }}
     </div>
-  </div>
+  </nuxt-link>
 </template>
 
 <script>
@@ -23,6 +30,13 @@ export default {
     chat: {
       type: Object,
       default: null,
+    },
+  },
+  methods: {
+    onClickHandler(id) {
+      this.$router.push({
+        name: 'my-fabrica-chat-id___' + this.$cookies.get('lang'),
+      })
     },
   },
 }

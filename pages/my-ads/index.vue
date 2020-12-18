@@ -6,7 +6,9 @@
         <TheLoading :color="'#707070'" :size="'60px'" />
       </div>
       <div
-        v-else-if="!isLoading && ($mq === 'xs' || $mq === 'sm')"
+        v-else-if="
+          !isLoading && ($mq === 'xs' || $mq === 'sm') && advertises.length > 0
+        "
         class="row p-t-60 p-b-45"
       >
         <div class="col-md-3 col-xs-4 col-xs-12">
@@ -36,7 +38,10 @@
           class="m-b-15"
         />
       </div>
-      <div v-else class="row p-t-60 p-b-45 hidden-xs">
+      <div
+        v-else-if="advertises.length > 0"
+        class="row p-t-60 p-b-45 hidden-xs"
+      >
         <div class="col-md-3 col-xs-4 col-xs-12">
           <TheSidebar>
             <div slot="head">
@@ -63,6 +68,9 @@
           :advertise="advertise"
           class="m-b-15"
         />
+      </div>
+      <div v-else class="row m-t-100">
+        <EmptyData />
       </div>
     </div>
   </div>

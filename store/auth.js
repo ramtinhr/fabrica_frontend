@@ -82,11 +82,11 @@ export const actions = {
       })
     }
   },
-  logout({ commit, state }) {
+  logout({ commit }) {
     commit('SET_TOKEN', null)
+    commit('STORE_USER_INFO', [])
     Cookie.remove('token')
     localStorage.removeItem('access_token')
-    commit('STORE_USER_INFO', [])
   },
 }
 

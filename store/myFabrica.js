@@ -15,3 +15,9 @@ export const state = () => ({
   },
   loading: false,
 })
+
+export const mutations = {
+  ADD_MESSAGE(state, data) {
+    state.resource.messages.data.push(data)
+  },
+}

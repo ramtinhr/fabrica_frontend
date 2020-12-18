@@ -93,12 +93,16 @@
                 id="city"
                 v-model="selectedCity"
                 :options="cities"
-                :placeholder="$t('list.selectState')"
+                :placeholder="$t('home.selectCity')"
                 label="title"
                 dir="rtl"
               >
                 <span slot="no-options">
-                  {{ $t('noResultFound') }}
+                  {{
+                    selectedState
+                      ? $t('noResultFound')
+                      : $t('home.selectStateFirst')
+                  }}
                 </span>
               </v-select>
               <span class="text-danger font-size-12">

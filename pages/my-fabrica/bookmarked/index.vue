@@ -2,7 +2,12 @@
   <div v-if="isLoading" class="my-fabrica__loading">
     <TheLoading :color="'#707070'" :size="'60px'" />
   </div>
-  <div v-else-if="!isLoading && ($mq === 'xs' || $mq === 'sm')" class="row">
+  <div
+    v-else-if="
+      !isLoading && ($mq === 'xs' || $mq === 'sm') && advertises.length > 0
+    "
+    class="row"
+  >
     <HorizontalAdvertise
       v-for="advertise in advertises"
       :key="advertise.id"
@@ -10,13 +15,16 @@
       :advertise="advertise"
     />
   </div>
-  <div v-else class="row hidden-xs">
+  <div v-else-if="advertises.length > 0" class="row hidden-xs">
     <VerticalAdvertise
       v-for="advertise in advertises"
       :key="advertise.id"
       :is-list="true"
       :advertise="advertise"
     />
+  </div>
+  <div v-else class="row">
+    <EmptyData />
   </div>
 </template>
 
