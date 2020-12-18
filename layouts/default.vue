@@ -2,7 +2,7 @@
   <div>
     <TheHeader class="hidden-xs" />
     <MobileHeader
-      v-if="this.$mq === 'xs' || this.$mq === 'sm'"
+      v-if="$mq === 'xs' || $mq === 'sm'"
       class="hidden-lg hidden-md hidden-sm"
     />
     <Nuxt />

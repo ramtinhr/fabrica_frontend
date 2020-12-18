@@ -55,30 +55,56 @@
             </ValidationProvider>
           </div>
           <div class="col-md-6 col-sm-6 col-xs-12">
-            <v-select
-              v-model="selectedState"
-              :options="states"
-              :placeholder="$t('list.selectState')"
-              label="title"
-              dir="rtl"
+            <ValidationProvider
+              v-slot="{ errors }"
+              name="state"
+              username="city"
+              rules="required"
+              class="form-group2"
+              tag="div"
             >
-              <span slot="no-options">
-                {{ $t('noResultFound') }}
+              <v-select
+                id="state"
+                v-model="selectedState"
+                :options="states"
+                :placeholder="$t('list.selectState')"
+                label="title"
+                dir="rtl"
+              >
+                <span slot="no-options">
+                  {{ $t('noResultFound') }}
+                </span>
+              </v-select>
+              <span class="text-danger font-size-12">
+                {{ errors[0] }}
               </span>
-            </v-select>
+            </ValidationProvider>
           </div>
           <div class="col-md-6 col-sm-6 col-xs-12">
-            <v-select
-              v-model="selectedCity"
-              :options="cities"
-              :placeholder="$t('list.selectState')"
-              label="title"
-              dir="rtl"
+            <ValidationProvider
+              v-slot="{ errors }"
+              name="city"
+              username="city"
+              rules="required"
+              class="form-group2"
+              tag="div"
             >
-              <span slot="no-options">
-                {{ $t('noResultFound') }}
+              <v-select
+                id="city"
+                v-model="selectedCity"
+                :options="cities"
+                :placeholder="$t('list.selectState')"
+                label="title"
+                dir="rtl"
+              >
+                <span slot="no-options">
+                  {{ $t('noResultFound') }}
+                </span>
+              </v-select>
+              <span class="text-danger font-size-12">
+                {{ errors[0] }}
               </span>
-            </v-select>
+            </ValidationProvider>
           </div>
           <div class="col-xs-12">
             <div class="text-left m-t-15">
@@ -103,8 +129,12 @@ export default {
     this.firstname = await this.user.first_name
     this.lastname = await this.user.last_name
     this.selectedState = await this.user.city.state
-    this.selectedCity = await this.user.city.title
-    this.avatarUrl = await this.user.city.avatar_url
+    this.selectedCity = {
+      _id: await this.user.city._id,
+      title: await this.user.city.title,
+    }
+    this.avatarUrl = await this.user.avatar_url
+    this.avatar = await this.user.avatar
   },
   data() {
     return {
@@ -158,8 +188,32 @@ export default {
         })
         .then((resp) => (this.cities = resp.data.data))
     },
-
-    editProfile() {},
+    editProfile() {
+      const data = {
+        first_name: this.firstname,
+        last_name: this.lastname,
+        client: 'desktop',
+        city_id: this.selectedCity._id,
+        avatar: this.avatar,
+      }
+      this.isLoading = true
+      this.$store.dispatch('put', { url: '/users', data }).then((resp) => {
+        this.isLoading = false
+        this.$store.commit('auth/UPDATE_USER_INFO', {
+          first_name: this.firstname,
+          last_name: this.lastname,
+          full_name: `${this.firstname} ${this.lastname}`,
+          avatar: this.avatar,
+          avatar_url: this.avatarUrl,
+          city: {
+            _id: this.selectedState._id,
+            state: this.selectedState,
+            title: this.selectedCity.title,
+          },
+        })
+        this.$message(resp)
+      })
+    },
   },
 }
 </script>

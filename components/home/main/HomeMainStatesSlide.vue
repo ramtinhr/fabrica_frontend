@@ -1,7 +1,12 @@
 <template>
   <div class="home__main-states-slide">
     <client-only>
-      <swiper :options="swiperOption">
+      <swiper
+        :options="swiperOption"
+        :auto-destroy="false"
+        :delete-instance-on-destroy="false"
+        :cleanup-styles-on-destroy="false"
+      >
         <swiper-slide v-for="(state, index) in states" :key="index">
           <div
             class="home__main-states-slide-back"

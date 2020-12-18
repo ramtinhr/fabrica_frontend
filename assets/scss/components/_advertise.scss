@@ -1,6 +1,6 @@
 .advertise {
   &__horizontal {
-    box-shadow: 0 0 10px hsla(0, 0%, 64.7%, .2);
+    box-shadow: 0 0 10px $lightGray;
     border-radius: 15px;
     height: 100%;
     transition: all .4s ease;
@@ -9,7 +9,7 @@
     display: flex;
 
     &:hover {
-      box-shadow: 0 10px 40px hsla(0, 0%, 64.7%, .2);
+      box-shadow: 0 10px 40px  hsla(0, 0%, 64.7%, .3);
     }
 
     &-img {
@@ -62,7 +62,7 @@
   }
 
   &__vertical {
-    box-shadow: 0 0 10px hsla(0, 0%, 64.7%, .2);
+    box-shadow: 0 0 10px $lightGray;
     border-radius: 15px;
     height: 290px;
     transition: all .4s ease;
@@ -70,7 +70,7 @@
     position: relative;
 
     &:hover {
-      box-shadow: 0 10px 40px hsla(0, 0%, 64.7%, .2);
+      box-shadow: 0 10px 40px hsla(0, 0%, 64.7%, .3);
 
       .advertise__vertical {
         &-img {
@@ -300,6 +300,7 @@
 
           & img {
             width: 90px;
+            height: 90px;
             border-radius: 15px;
           }
         }
@@ -345,7 +346,7 @@
       }
     }
     & button {
-      border-radius: 10px;
+      border-radius: 15px;
     }
   }
 }

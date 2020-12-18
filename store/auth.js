@@ -1,6 +1,6 @@
 import Cookie from 'js-cookie'
 export const state = () => ({
-  resource: [],
+  resource: null,
   permissions: [],
   alerts: [],
   role: null,
@@ -63,29 +63,30 @@ export const actions = {
         })
     })
   },
-  fetchMe({ dispatch, commit }) {
-    return new Promise((resolve, reject) => {
-      if (process.client) {
-        this.$axios.setToken(localStorage.getItem('access_token'), 'Bearer')
-      }
-      this.$axios
-        .get('/users/me')
-        .then((response) => {
-          const data = response.data.data
-          commit('STORE_USER_INFO', data)
-          resolve(response)
-          commit('STORE_ROLE', data.role)
-          window.localStorage.setItem('role', JSON.stringify(data.role))
-        })
-        .catch((err) => {
-          reject(err)
-        })
-    })
+  fetchMe({ dispatch, commit, state }) {
+    if (!state.resource) {
+      return new Promise((resolve, reject) => {
+        if (process.client) {
+          this.$axios.setToken(localStorage.getItem('access_token'), 'Bearer')
+        }
+        this.$axios
+          .get('/users/me')
+          .then((response) => {
+            const data = response.data.data
+            commit('STORE_USER_INFO', data)
+            resolve(response)
+          })
+          .catch((err) => {
+            reject(err)
+          })
+      })
+    }
   },
   logout({ commit, state }) {
     commit('SET_TOKEN', null)
     Cookie.remove('token')
     localStorage.removeItem('access_token')
+    commit('STORE_USER_INFO', [])
   },
 }
 

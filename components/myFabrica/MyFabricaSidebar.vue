@@ -3,14 +3,14 @@
     <TheSidebar>
       <div slot="head">
         <h4 class="m-b-20">
-          {{ fullName }}
+          {{ user.full_name }}
         </h4>
       </div>
       <div slot="body">
         <div class="my-fabrica__sidebar">
           <div class="my-fabrica__sidebar-avatar">
-            <img v-if="avatar" :src="avatar" alt="آواتار" />
-            <img v-else src="/images/avatar.jpg" alt="آواتار" />
+            <img v-if="user.avatar_url" :src="user.avatar_url" />
+            <img v-else src="/images/avatar.jpg" />
           </div>
         </div>
         <div class="my-fabrica__sidebar-navs">
@@ -18,7 +18,7 @@
             <li>
               <nuxt-link
                 :to="{ name: 'my-fabrica___' + $cookies.get('lang') }"
-                active-class="active"
+                exact-active-class="active"
                 tag="a"
               >
                 <i class="o-icon o-circle-09 m-l-5"></i>
@@ -26,20 +26,27 @@
               </nuxt-link>
             </li>
             <li>
-              <i class="o-icon o-chat-33 m-l-5"></i>
-              {{ $t('myFabrica.privateMessage') }}
-            </li>
-            <li>
-              <i class="o-icon o-bookmark-2 m-l-5"></i>
-              {{ $t('myFabrica.bookmarkedAdvertises') }}
+              <nuxt-link
+                :to="{
+                  name: 'my-fabrica-chat___' + $cookies.get('lang'),
+                }"
+                exact-active-class="active"
+                tag="a"
+              >
+                <i class="o-icon o-chat-33 m-l-5"></i>
+                {{ $t('myFabrica.privateMessage') }}
+              </nuxt-link>
             </li>
             <li>
               <nuxt-link
-                :to="{ name: 'my-ads___' + $cookies.get('lang') }"
+                :to="{
+                  name: 'my-fabrica-bookmarked___' + $cookies.get('lang'),
+                }"
+                exact-active-class="active"
                 tag="a"
               >
-                <i class="o-icon o-paper-2 m-l-5"></i>
-                {{ $t('header.myAdvertises') }}
+                <i class="o-icon o-bookmark-2 m-l-5"></i>
+                {{ $t('myFabrica.bookmarkedAdvertises') }}
               </nuxt-link>
             </li>
             <li @click="logout">
@@ -58,10 +65,6 @@ import { mapGetters } from 'vuex'
 
 export default {
   name: 'MyfabricaSidebar',
-  async fetch() {
-    this.fullName = await this.user.full_name
-    this.avatar = await this.user.avatar_url
-  },
   data() {
     return {
       avatar: null,
@@ -75,7 +78,6 @@ export default {
     async logout() {
       await this.$router.push({ name: 'index___' + this.$cookies.get('lang') })
       await this.$store.dispatch('auth/logout')
-      await this.$store.commit('STORE_USER_INFO', [])
     },
   },
 }

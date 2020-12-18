@@ -21,7 +21,7 @@
       color: $dimLightGray;
       font-size: 14px;
       border: 1px solid $lightGray;
-      border-radius: 10px;
+      border-radius: 15px;
     }
   }
 
@@ -35,16 +35,6 @@
 
     & input {
       color: $dimLightGray;
-    }
-
-    .vs {
-      &__dropdown-toggle {
-        border-radius: 10px !important;
-      }
-
-      &__dropdown-menu {
-        border-radius: 10px;
-      }
     }
   }
 }

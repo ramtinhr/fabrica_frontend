@@ -1,12 +1,7 @@
 <template>
   <div class="upload">
     <label v-if="!uploadStatus" :for="field">
-      <img
-        class="upload__img"
-        :src.sync="imageUrl"
-        alt="image"
-        @load="onLoaded"
-      />
+      <img class="upload__img" :src.sync="imageUrl" @load="onLoaded" />
     </label>
     <div v-else class="upload__loading">
       <TheLoading :color="'#707070'" :size="'40px'" />

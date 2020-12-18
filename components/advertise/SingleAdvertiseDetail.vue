@@ -50,7 +50,13 @@
         class="advertise__single-detail-slider-thumbs"
       >
         <client-only>
-          <swiper ref="swiperThumbs" :options="swiperOptionThumbs">
+          <swiper
+            ref="swiperThumbs"
+            :options="swiperOptionThumbs"
+            :auto-destroy="false"
+            :delete-instance-on-destroy="false"
+            :cleanup-styles-on-destroy="false"
+          >
             <swiper-slide
               v-for="(img, index) in advertise.image_urls"
               :key="index"

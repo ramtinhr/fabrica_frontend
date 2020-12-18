@@ -65,4 +65,9 @@
   &__open-indicator {
     display: none;
   }
+  &--open {
+    & .vs__dropdown-toggle {
+      border-bottom: 1px solid $lightGray;
+    }
+  }
 }

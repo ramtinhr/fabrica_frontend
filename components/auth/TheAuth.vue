@@ -20,14 +20,14 @@
             </span>
             <ValidationProvider
               v-slot="{ errors }"
-              name="mobile"
-              username="mobile"
+              name="mobileNumber"
+              username="mobileNumber"
               rules="required|max:10"
             >
               <div class="auth__phone-number-box">
                 <InputNumber
                   v-model="mobileNumber"
-                  :name="'mobile'"
+                  :name="'mobileNumber'"
                   :max-lenght="10"
                   :number-format="false"
                   :placeholder="'9128333410'"
@@ -36,7 +36,7 @@
                 <label>98+</label>
               </div>
               <div>
-                <span v-if="errors[0]" class="text-danger">
+                <span v-if="errors[0]" class="text-danger font-size-14">
                   {{ errors[0] }}
                 </span>
               </div>
@@ -85,7 +85,7 @@
                   @on-complete="onCompleteHandler"
                 />
                 <div>
-                  <span v-if="errors[0]" class="text-danger">
+                  <span v-if="errors[0]" class="text-danger font-size-14">
                     {{ errors[0] }}
                   </span>
                 </div>

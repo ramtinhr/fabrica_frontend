@@ -22,20 +22,8 @@
         ></i>
       </div>
     </div>
-    <div v-if="!isHorizontalView" class="row p-v-15 hidden-xs">
-      <div v-if="isLoading('list')" class="list__loading">
-        <TheLoading :color="'#707070'" :size="'60px'" />
-      </div>
-      <VerticalAdvertise
-        v-for="advertise in advertises.data"
-        v-else
-        :key="advertise.id"
-        :is-list-page="true"
-        :advertise="advertise"
-      />
-    </div>
     <div
-      v-if="this.$mq === 'xs' || this.$mq === 'sm' || isHorizontalView"
+      v-if="$mq === 'xs' || $mq === 'sm' || isHorizontalView"
       class="row p-v-15"
     >
       <div v-if="isLoading('list')" class="list__loading">
@@ -45,7 +33,19 @@
         v-for="advertise in advertises.data"
         v-else
         :key="advertise.id"
-        :is-list-page="true"
+        :is-list="true"
+        :advertise="advertise"
+      />
+    </div>
+    <div v-else class="row p-v-15 hidden-xs">
+      <div v-if="isLoading('list')" class="list__loading">
+        <TheLoading :color="'#707070'" :size="'60px'" />
+      </div>
+      <VerticalAdvertise
+        v-for="advertise in advertises.data"
+        v-else
+        :key="advertise.id"
+        :is-list="true"
         :advertise="advertise"
       />
     </div>

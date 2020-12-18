@@ -16,8 +16,8 @@
 @import "./global/button";
 @import "./global/form";
 @import "./global/vue_select";
+@import "global/backgrounds";
 // partials
-@import "./partials/backgrounds";
 @import "./partials/modal";
 @import "./partials/spinner";
 @import "partials/header";
@@ -33,3 +33,4 @@
 @import "components/breadcrumb";
 @import "components/my_ads";
 @import "components/my_fabrica";
+@import "components/chat";

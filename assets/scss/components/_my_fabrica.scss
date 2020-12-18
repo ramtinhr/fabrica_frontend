@@ -1,5 +1,6 @@
 .my-fabrica {
   padding: 50px 0;
+  min-height: 49vh;
 
   &__sidebar {
     &-avatar {
@@ -65,9 +66,15 @@
       }
     }
   }
-
+  &__loading {
+    min-height: 30vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
   &__content-template {
-    min-height: 40vh;
+    min-height: 30vh;
     background-color: #fff;
     box-shadow: 0 0 10px hsla(0, 0%, 64.7%, .2);
     padding: 25px 20px;
@@ -89,6 +96,14 @@
         border-radius: 100%;
         object-fit: cover;
       }
+      .upload {
+        & label {
+          height: 100%;
+        }
+      }
+    }
+    & button {
+      border-radius: 15px;
     }
   }
 }

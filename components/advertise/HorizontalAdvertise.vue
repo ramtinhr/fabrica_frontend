@@ -6,7 +6,7 @@
       params: { id: advertise.id },
     }"
     :class="
-      isListPage
+      isList
         ? 'col-xs-12 p-h-10 m-t-15 m-b-15 m-b-xs-30'
         : 'col-md-3 col-sm-4 col-xs-12 p-h-10 m-b-xs-30'
     "
@@ -70,7 +70,7 @@
 export default {
   name: 'HorizontalAdvertise',
   props: {
-    isListPage: {
+    isList: {
       type: Boolean,
       default: false,
     },

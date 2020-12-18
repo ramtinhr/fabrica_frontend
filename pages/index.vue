@@ -25,17 +25,21 @@
 export default {
   name: 'HomePage',
   async asyncData({ store }) {
-    await store.dispatch('get', {
-      storeName: 'home',
-      resourceName: 'categories',
-      url: '/categories',
-      config: { params: { section: 'home' } },
-    })
-    await store.dispatch('get', {
-      url: '/cities/state',
-      storeName: 'home',
-      resourceName: 'states',
-    })
+    if (store.getters.getResource('home', 'categories').length === 0) {
+      await store.dispatch('get', {
+        storeName: 'home',
+        resourceName: 'categories',
+        url: '/categories',
+        config: { params: { section: 'home' } },
+      })
+    }
+    if (store.getters.getResource('home', 'states').length === 0) {
+      await store.dispatch('get', {
+        url: '/cities/state',
+        storeName: 'home',
+        resourceName: 'states',
+      })
+    }
     const categories = store.getters.getResource('home', 'categories')
     const firstId = categories.find(
       (category) => category.title === 'خودرو سبک'

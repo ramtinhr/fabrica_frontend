@@ -1,3 +1,5 @@
+const webpack = require('webpack')
+
 export default {
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
@@ -76,13 +78,13 @@ export default {
     '~/plugins/helpers/number.js',
     '~/plugins/helpers/string.js',
     '~/plugins/helpers/api-message.js',
+    '~/plugins/application.js',
     { src: '~plugins/vee-validate.js', mode: 'client' },
     { src: '~/plugins/vue-awesome-swiper.js', mode: 'client' },
     { src: '~/plugins/font-awesome.js', ssr: false },
     { src: '~/plugins/upload.js', ssr: false },
     { src: '~plugins/vue-slider.js', ssr: false },
     { src: '~plugins/vue-select.js', ssr: true },
-    { src: '~plugins/application.js', ssr: false },
   ],
   // Auto import components (https://go.nuxtjs.dev/config-components)
   components: true,
@@ -150,6 +152,12 @@ export default {
   build: {
     publicPath: '/assets/',
     transpile: ['vee-validate/dist/rules', 'vue-moment-jalaali'],
+    plugins: [
+      new webpack.ProvidePlugin({
+        // global modules
+        _: 'lodash',
+      }),
+    ],
   },
   router: {
     router: {

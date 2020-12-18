@@ -4,7 +4,6 @@ export const state = () => ({
   loading: true,
   sidebar: [],
   lang: 'fa',
-  currency: 'TOMAN' // App Default currency
 })
 
 export const getters = {
