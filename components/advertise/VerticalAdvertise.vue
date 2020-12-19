@@ -1,17 +1,10 @@
 <template>
-  <nuxt-link
-    v-if="advertise"
-    :to="{
-      name: 'single-id___' + $cookies.get('lang'),
-      params: { id: advertise.id },
-    }"
-    :class="
-      isList
-        ? 'col-md-4 col-sm-6 col-xs-12 p-h-10 m-t-15 m-b-15 m-b-xs-30'
-        : 'col-md-3 col-sm-4 col-xs-12 p-h-10 m-b-xs-30'
-    "
-  >
-    <div class="advertise__vertical">
+  <div v-if="advertise">
+    <div v-if="isUserAd" class="advertise__vertical-action-box">
+      <i class="o-icon o-simple-remove" @click="openDeleteAdModal"></i>
+      <i class="o-icon o-edit-71"></i>
+    </div>
+    <div class="advertise__vertical" @click="onClickHandler">
       <div class="advertise__vertical-img-wrapper">
         <transition-group name="fade">
           <img
@@ -76,7 +69,7 @@
         </div>
       </div>
     </div>
-  </nuxt-link>
+  </div>
 </template>
 
 <script>
@@ -91,6 +84,10 @@ export default {
       type: Object,
       default: null,
     },
+    isUserAd: {
+      type: Boolean,
+      default: false,
+    },
   },
   data() {
     return {
@@ -100,6 +97,16 @@ export default {
   methods: {
     onLoaded() {
       this.isLoaded = true
+    },
+    openDeleteAdModal() {
+      const isOpen = true
+      this.$emit('openDeleteAdModal', isOpen)
+    },
+    onClickHandler() {
+      this.$router.push({
+        name: 'single-id___' + this.$cookies.get('lang'),
+        params: { id: this.advertise.id },
+      })
     },
   },
 }

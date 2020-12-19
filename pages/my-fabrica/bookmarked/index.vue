@@ -8,20 +8,22 @@
     "
     class="row"
   >
-    <HorizontalAdvertise
+    <div
       v-for="advertise in advertises"
       :key="advertise.id"
-      :is-list="true"
-      :advertise="advertise"
-    />
+      class="col-xs-12 p-h-10 m-t-15 m-b-15 m-b-xs-30"
+    >
+      <HorizontalAdvertise :advertise="advertise" />
+    </div>
   </div>
   <div v-else-if="advertises.length > 0" class="row hidden-xs">
-    <VerticalAdvertise
+    <div
       v-for="advertise in advertises"
       :key="advertise.id"
-      :is-list="true"
-      :advertise="advertise"
-    />
+      class="col-md-4 col-sm-6 col-xs-12 p-h-10 m-t-15 m-b-15 m-b-xs-30"
+    >
+      <VerticalAdvertise :advertise="advertise" />
+    </div>
   </div>
   <div v-else class="row">
     <EmptyData />

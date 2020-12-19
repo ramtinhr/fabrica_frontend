@@ -31,12 +31,13 @@
             </div>
           </TheSidebar>
         </div>
-        <HorizontalAdvertise
+        <div
           v-for="advertise in advertises"
-          :key="advertise._id"
-          :advertise="advertise"
-          class="m-b-15"
-        />
+          :key="advertise.id"
+          class="col-md-3 col-sm-4 col-xs-12 p-h-10 m-b-xs-30 m-b-15"
+        >
+          <HorizontalAdvertise :advertise="advertise" />
+        </div>
       </div>
       <div
         v-else-if="advertises.length > 0"
@@ -62,12 +63,24 @@
             </div>
           </TheSidebar>
         </div>
-        <VerticalAdvertise
+        <div
           v-for="advertise in advertises"
-          :key="advertise._id"
-          :advertise="advertise"
-          class="m-b-15"
-        />
+          :key="advertise.id"
+          class="col-md-3 col-sm-4 col-xs-12 p-h-10 m-b-xs-30 m-b-15 position-relative"
+        >
+          <VerticalAdvertise
+            :advertise="advertise"
+            :is-user-ad="true"
+            @openDeleteAdModal="openDeleteAdModal"
+          />
+          <AdvertiseDeleteModal
+            :id="advertise.id"
+            :is-open="isOpen"
+            :is-loading="deleteModalIsLoading"
+            @closeModal="isOpen = false"
+            @deleteAd="deleteAdvertise(advertise.id)"
+          />
+        </div>
       </div>
       <div v-else class="row m-t-100">
         <EmptyData />
@@ -77,13 +90,15 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
   name: 'MyAdvertises',
   data() {
     return {
       user: null,
-      advertises: [],
       isLoading: false,
+      deleteModalIsLoading: false,
+      isOpen: false,
       navs: [
         {
           title: this.$t('header.mainPage'),
@@ -97,20 +112,41 @@ export default {
       ],
     }
   },
+  computed: {
+    ...mapGetters(['getResource']),
+    advertises() {
+      return this.getResource('myAds')
+    },
+  },
   created() {
     this.getAdvertises()
-    this.getUserInfo()
+  },
+  updated() {
+    if (this.advertises.length === 0) {
+      document.body.style.paddingRight = '0'
+    }
   },
   methods: {
     getAdvertises() {
       this.isLoading = true
       this.$store
-        .dispatch('get', { url: '/ads/me' })
-        .then((resp) => {
-          this.advertises = resp.data.data
+        .dispatch('get', { url: '/ads/me', storeName: 'myAds' })
+        .then(() => {
           this.getUserInfo()
         })
         .catch(() => (this.isLoading = false))
+    },
+    deleteAdvertise(id) {
+      this.deleteModalIsLoading = true
+      this.$store.dispatch('delete', { url: `/ads/${id}` }).then(() => {
+        this.deleteModalIsLoading = false
+        this.isOpen = false
+        this.$store.commit('myAds/REMOVE_ADD', { id })
+        this.$toast.success('آگهی با موفقیت حذف شد')
+      })
+    },
+    openDeleteAdModal(isOpen) {
+      this.isOpen = isOpen
     },
     getUserInfo() {
       this.$store.dispatch('get', { url: '/users/me' }).then((resp) => {

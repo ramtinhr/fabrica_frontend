@@ -25,6 +25,7 @@
     @include button($accentColor, $white, $accentColor);
     border: 2px solid $accentColor !important;
     transition: all .3s;
+
     &:hover {
       background-color: transparent !important;
       color: $accentColor !important;
@@ -71,7 +72,6 @@
     transition: all .4s;
     font-weight: 500;
     font-size: 14px;
-    font-weight: bold;
     border: 2px solid $primaryColor !important;
 
     &:hover {
@@ -90,11 +90,18 @@
   }
 
   &-danger {
-    @include button($tomato, $white, $tomato)
-  }
+    @include button($tomato, $white, $tomato);
+    border: 2px solid $tomato;
+    transition: all .4s;
 
-  &-danger:hover {
-    background-color: $red !important;
+    &:hover {
+      background-color: transparent !important;
+      color: $tomato !important;
+
+      .v-spinner .v-clip {
+        border-color: $tomato $tomato transparent !important;
+      }
+    }
   }
 
   &-orangeYellow {

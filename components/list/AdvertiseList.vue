@@ -29,25 +29,27 @@
       <div v-if="isLoading('list')" class="list__loading">
         <TheLoading :color="'#707070'" :size="'60px'" />
       </div>
-      <HorizontalAdvertise
+      <div
         v-for="advertise in advertises.data"
         v-else
         :key="advertise.id"
-        :is-list="true"
-        :advertise="advertise"
-      />
+        class="col-xs-12 p-h-10 m-t-15 m-b-15 m-b-xs-30"
+      >
+        <HorizontalAdvertise :advertise="advertise" />
+      </div>
     </div>
     <div v-else class="row p-v-15 hidden-xs">
       <div v-if="isLoading('list')" class="list__loading">
         <TheLoading :color="'#707070'" :size="'60px'" />
       </div>
-      <VerticalAdvertise
+      <div
         v-for="advertise in advertises.data"
         v-else
         :key="advertise.id"
-        :is-list="true"
-        :advertise="advertise"
-      />
+        class="col-md-4 col-sm-6 col-xs-12 p-h-10 m-t-15 m-b-15 m-b-xs-30"
+      >
+        <VerticalAdvertise :advertise="advertise" />
+      </div>
     </div>
     <div v-if="isLoading2" class="list__lazyload">
       <TheLoading :color="'#707070'" :size="'40px'" />

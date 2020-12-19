@@ -26,18 +26,22 @@
         </button>
       </div>
       <div v-if="this.$mq === 'xs' || this.$mq === 'sm'" class="row">
-        <HorizontalAdvertise
+        <div
           v-for="advertise in advertises.data"
           :key="advertise.id"
-          :advertise="advertise"
-        />
+          class="col-md-3 col-sm-4 col-xs-12 p-h-10 m-b-xs-30"
+        >
+          <HorizontalAdvertise :advertise="advertise" />
+        </div>
       </div>
       <div class="row justify-content-flex-end hidden-xs">
-        <VerticalAdvertise
+        <div
           v-for="advertise in advertises.data"
           :key="advertise.id"
-          :advertise="advertise"
-        />
+          class="col-md-3 col-sm-4 col-xs-12 p-h-10 m-b-xs-30"
+        >
+          <VerticalAdvertise :advertise="advertise" />
+        </div>
       </div>
     </div>
   </div>

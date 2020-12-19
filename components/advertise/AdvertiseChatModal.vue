@@ -1,9 +1,7 @@
 <template>
-  <TheModal :is-open="isOpen" @close="closeModal()">
+  <TheModal :is-open.sync="isOpen" @close="closeModal()">
     <div slot="head">
-      <div class="p-20">
-        <span>{{ $t('advertise.sendMessage') }}</span>
-      </div>
+      <span class="font-size-16">{{ $t('advertise.sendMessage') }}</span>
     </div>
     <div slot="body">
       <div class="advertise__chat">
@@ -77,7 +75,7 @@ export default {
         })
         .then(() => {
           this.isLoading = false
-          this.isOpen = false
+          this.closeModal()
           this.$toast.success('پیام با موفقیت ارسال شد')
         })
     },

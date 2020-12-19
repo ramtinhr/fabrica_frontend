@@ -20,6 +20,8 @@
   "price": "فیمت",
   "description": "توضیحات",
   "lastStep": "مرحله قبل",
+  "yes": "بله",
+  "no": "خیر",
   "header": {
     "mainPage": "صفحه اصلی",
     "latestAdvertises": "آخرین آگهی ها",
@@ -76,7 +78,8 @@
     "abilityToSuggest": "قابلیت پیشنهاد دادن",
     "warning": "آگهی های دارای عکس ۵ برابر بیش تر از آگهی های بدون عکس مشاهده می شوند. عکس های خود را در این قسمت آپلود کنید",
     "success": "آگهی با موفقیت ایجاد شد",
-    "status": "وضعیت"
+    "status": "وضعیت",
+    "AreSureYouWannaDeleteThisAdvertise": "آیا از حذف این آگهی اطمینان دارید؟"
   },
   "auth": {
     "enterYourMobileNumber": "شماره موبایل خود را وارد کنید",
