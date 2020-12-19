@@ -25,11 +25,14 @@
     @include button($accentColor, $white, $accentColor);
     border: 2px solid $accentColor !important;
     transition: all .3s;
-  }
+    &:hover {
+      background-color: transparent !important;
+      color: $accentColor !important;
 
-  &-secondary:hover {
-    background-color: transparent !important;
-    color: $accentColor !important;
+      .v-spinner .v-clip {
+        border-color: $accentColor $accentColor transparent !important;
+      }
+    }
   }
 
   &-success {

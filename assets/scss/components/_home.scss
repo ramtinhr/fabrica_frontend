@@ -132,9 +132,15 @@
         outline: none;
         cursor: pointer;
         color: $lightGray;
-        @media (max-width: (1199px)) {
-          color: $dimGray;
-          right: -20px;
+        &:after {
+          font-size: 30px;
+        }
+        @media (max-width: (768px)) {
+          color: $dimLightGray;
+          right: -10px;
+          &:after {
+            font-size: 24px;
+          }
         }
       }
 
@@ -152,10 +158,16 @@
         transform: translateY(-50%);
         outline: none;
         cursor: pointer;
+        &:after {
+          font-size: 30px;
+        }
         color: $lightGray;
-        @media (max-width: (1199px)) {
-          color: $dimGray;
-          left: -20px;
+        @media (max-width: (768px)) {
+          color: $dimLightGray;
+          left: -10px;
+          &:after {
+            font-size: 24px;
+          }
         }
       }
     }
@@ -327,7 +339,7 @@
   .home {
     &__main {
       &-content {
-        padding: 30px 15px 0 15px;
+        padding: 30px 15px 30px 15px;
       }
 
       &-search-box {

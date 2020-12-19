@@ -14,8 +14,19 @@
             <span class="font-size-14">{{ $t('advertise.type') }}</span>
             <span
               class="font-size-14 bg-orange text-white p-v-5 p-h-10 border-radius-10"
-              >{{ $t('normal') }}</span
             >
+              {{ $t('normal') }}
+            </span>
+          </div>
+          <div>
+            <span class="font-size-14">{{ $t('advertise.price') }}</span>
+            <span v-if="advertise.price > 0" class="font-size-14">
+              {{ $numberFormat($decimalNumber(advertise.price)) }}
+              {{ $t('toman') }}
+            </span>
+            <span v-else class="font-size-14">
+              {{ $t('advertise.call') }}
+            </span>
           </div>
           <div>
             <span class="font-size-14">{{ $t('advertise.advertiser') }}</span>
@@ -23,9 +34,9 @@
           </div>
           <div>
             <span class="font-size-14">{{ $t('advertise.created') }}</span>
-            <span class="font-size-14">{{
-              advertise.created_at_jalali_date
-            }}</span>
+            <span class="font-size-14">
+              {{ advertise.created_at_jalali_date }}
+            </span>
           </div>
           <div>
             <span class="font-size-14">{{ $t('advertise.state') }}</span>
@@ -93,6 +104,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
+
 export default {
   name: 'SingleAdvertiseSidebar',
   data() {

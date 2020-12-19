@@ -59,6 +59,7 @@
               class="text-dimLightGray font-size-12"
             >
               {{ $numberFormat($decimalNumber(advertise.price)) }}
+              {{ $t('toman') }}
             </span>
             <span v-else class="text-dimLightGray font-size-12">
               {{ $t('advertise.call') }}

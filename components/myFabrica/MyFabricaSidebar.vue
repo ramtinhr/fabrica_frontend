@@ -78,6 +78,7 @@ export default {
     async logout() {
       await this.$router.push({ name: 'index___' + this.$cookies.get('lang') })
       await this.$store.dispatch('auth/logout')
+      this.$store.commit('SET_TOKEN', null)
     },
   },
 }

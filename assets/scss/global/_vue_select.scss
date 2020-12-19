@@ -19,6 +19,9 @@
 
   &__selected {
     color: $dimLightGray;
+    &-options {
+      flex-wrap: unset;
+    }
   }
 
   &__dropdown-option {

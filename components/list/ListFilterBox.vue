@@ -6,7 +6,7 @@
           <v-select
             v-model="selectedCategory"
             :options="categories"
-            :placeholder="$t('home.selectSubCategory')"
+            :placeholder="$t('list.selectCategory')"
             label="title"
             dir="rtl"
           >
@@ -82,7 +82,7 @@
             </button>
             <button class="btn btn-secondary" @click="resetFilters">
               {{ $t('list.cancelFilters') }}
-              <TheLoading v-if="isLoading" :color="'#fff'" :size="'22px'" />
+              <TheLoading v-if="isLoading2" :color="'#fff'" :size="'22px'" />
             </button>
           </div>
         </div>
@@ -106,6 +106,7 @@ export default {
       subCategories: [],
       value: [null, null],
       isLoading: false,
+      isLoading2: false,
       options: {
         eventType: 'auto',
         width: 'auto',
@@ -155,18 +156,28 @@ export default {
       }
     },
   },
-  created() {
-    this.getCategories()
+  async created() {
+    await this.getCategories()
     this.getState()
   },
   methods: {
+    checkForQuery() {
+      const category = this.$route.query.category
+      if (category && this.categories.length > 0) {
+        this.selectedCategory = this.categories.find(
+          (cat) => cat.id === category
+        )
+      }
+    },
     getCategories() {
-      this.$store.dispatch('get', {
-        storeName: 'list',
-        resourceName: 'categories',
-        url: '/categories',
-        config: { params: { section: 'home' } },
-      })
+      this.$store
+        .dispatch('get', {
+          storeName: 'list',
+          resourceName: 'categories',
+          url: '/categories',
+          config: { params: { section: 'home' } },
+        })
+        .then(() => this.checkForQuery())
     },
     getSubCategories(id) {
       this.$store
@@ -180,6 +191,12 @@ export default {
         })
         .then((resp) => {
           this.subCategories = resp.data.data
+          if (this.$route.query.subCategory) {
+            this.selectedSubCategory =
+              this.subCategories.find(
+                (category) => category.id === this.$route.query.subCategory
+              ) || null
+          }
         })
     },
     getState() {
@@ -254,7 +271,7 @@ export default {
       this.selectedCategory = null
       this.selectedSubCategory = null
       this.selectedState = null
-      this.isLoading = true
+      this.isLoading2 = true
       this.$store
         .dispatch('get', {
           url: '/ads/search',
@@ -266,7 +283,7 @@ export default {
             },
           },
         })
-        .then(() => (this.isLoading = false))
+        .then(() => (this.isLoading2 = false))
     },
   },
 }

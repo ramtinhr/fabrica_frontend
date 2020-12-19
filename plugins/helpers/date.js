@@ -11,7 +11,7 @@ Vue.prototype.$dateFromNow = (date) => {
 // ۱۳۹۹/۱/۴ ۱۳:۵۸
 Vue.prototype.$jalaliDateTime = (date) => {
   const moment = require('moment-jalaali')
-  return moment(date).format('jYYYY/jM/jD HH:mm')
+  return moment(date).format('jYYYY/jM/jD hh:mm')
 }
 
 // ۱۳۹۹-۱-۴

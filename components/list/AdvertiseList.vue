@@ -9,7 +9,7 @@
           >{{ advertises.count }} {{ $t('item') }}</span
         >
       </div>
-      <div class="list__change-view">
+      <div class="list__change-view hidden-xs">
         <i
           :class="{ 'list__change-view-active': isHorizontalView }"
           class="o-icon o-menu-to-close-2"

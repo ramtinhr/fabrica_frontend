@@ -4,7 +4,7 @@
       <ValidationObserver ref="CreateAdForm" v-slot="{ passes }" tag="div">
         <form class="advertise__create-form" @submit.prevent="passes(createAd)">
           <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-4 col-sm-6 col-xs-12">
               <ValidationProvider
                 v-slot="{ errors }"
                 name="title"
@@ -26,7 +26,7 @@
                 </span>
               </ValidationProvider>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-4 col-sm-6 col-xs-12">
               <ValidationProvider
                 v-slot="{ errors }"
                 name="price"
@@ -52,7 +52,7 @@
                 </span>
               </ValidationProvider>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-4 col-sm-6 col-xs-12">
               <ValidationProvider
                 v-slot="{ errors }"
                 name="priority"
@@ -77,7 +77,7 @@
                 </span>
               </ValidationProvider>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-4 col-sm-6 col-xs-12">
               <ValidationProvider
                 v-slot="{ errors }"
                 name="type"
@@ -101,7 +101,7 @@
                 </span>
               </ValidationProvider>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-4 col-sm-6 col-xs-12">
               <ValidationProvider
                 v-slot="{ errors }"
                 name="state"
@@ -129,7 +129,7 @@
                 </span>
               </ValidationProvider>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-4 col-sm-6 col-xs-12">
               <ValidationProvider
                 v-slot="{ errors }"
                 name="city"
@@ -160,7 +160,7 @@
                 </span>
               </ValidationProvider>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-4 col-sm-6 col-xs-12">
               <ValidationProvider
                 v-slot="{ errors }"
                 name="category"
@@ -177,7 +177,7 @@
                   :placeholder="
                     selectedCategory
                       ? selectedCategory.title
-                      : $t('advertise.category')
+                      : $t('list.selectCategory')
                   "
                   type="text"
                   @keypress="onKeypressHandler($event)"
@@ -187,14 +187,16 @@
                 <div class="position-relative">
                   <transition name="fade">
                     <ul v-show="isOpen" class="category-dropdown">
-                      <li
-                        v-if="categoriesBackup.length"
-                        class="category-options"
-                        @click="prevCat"
-                      >
-                        {{ $t('lastStep') }}
-                        <i class="o-icon o-minimal-right"></i>
-                      </li>
+                      <transition name="slide">
+                        <li
+                          v-show="categoriesBackup.length > 0"
+                          class="category-options"
+                          @click="prevCat"
+                        >
+                          {{ $t('lastStep') }}
+                          <i class="o-icon o-minimal-right"></i>
+                        </li>
+                      </transition>
                       <li
                         v-for="(category, index) in categories"
                         :key="category.id"
@@ -208,8 +210,8 @@
                         ></i>
                         <TheLoading
                           v-if="category.isLoading"
-                          :color="'#ccc'"
-                          :size="'14px'"
+                          :color="'#f2c200'"
+                          :size="'18px'"
                         />
                       </li>
                     </ul>
@@ -220,7 +222,7 @@
                 </span>
               </ValidationProvider>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-4 col-sm-6 col-xs-12">
               <div class="form-group">
                 <label>{{ $t('advertise.abilityToSuggest') }}</label>
                 <div class="switch-button">
@@ -250,12 +252,17 @@
                   }}</span>
                 </div>
               </div>
-              <div v-for="(img, i) in 5" :key="i" class="col-md-2">
+              <div
+                v-for="(img, i) in 5"
+                :key="i"
+                class="col-md-2 col-sm-3 col-xs-4 m-b-sm-15 m-b-xs-15"
+              >
                 <TheUpload
                   :image-url="
                     images[i] ? images[i].url : '/images/add_image.png'
                   "
                   :field="`'image'-${img}`"
+                  :object-fit="!!images[i]"
                   :index="i"
                   :name="'advertiseImage'"
                   @getFile="getImage"
@@ -388,7 +395,7 @@ export default {
       this.isOpen = true
     },
     async selectCat(category, index) {
-      this.categoriesBackup = this.categories
+      this.categoriesBackup.push(this.categories)
       if (!category.is_leaf) {
         this.categories[index].isLoading = true
         this.selectedCategories.push(category.id)
@@ -402,8 +409,8 @@ export default {
     },
     prevCat() {
       this.selectedCategories.pop()
-      this.categories = this.categoriesBackup
-      this.categoriesBackup = []
+      this.categories = this.categoriesBackup[this.categoriesBackup.length - 1]
+      this.categoriesBackup.pop()
     },
     getImage(file, url, index) {
       if (!this.images[index]) {

@@ -71,7 +71,7 @@ export default {
           url: `/chats/${this.$route.params.id}/messages`,
         })
         .then((resp) => {
-          this.$store.dispatch('add', {
+          this.$store.dispatch('fill', {
             storeName: 'myFabrica',
             resourceName: 'messages',
             data: resp.data.data.reverse(),

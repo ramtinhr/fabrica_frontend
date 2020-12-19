@@ -101,6 +101,7 @@
   "list": {
     "selectState": "انتخاب استان",
     "setFilters": "اعمال فیلتر ها",
-    "cancelFilters": "حذف فیلتر ها"
+    "cancelFilters": "حذف فیلتر ها",
+    "selectCategory": "انتخاب دسته بندی"
   }
 }
