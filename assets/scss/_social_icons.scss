@@ -1,0 +1,458 @@
+/*--------------------------------
+
+Social_Glyph Web Font - built using nucleoapp.com
+License - nucleoapp.com/license/
+
+-------------------------------- */
+@font-face {
+  font-family: 'Social_Glyph';
+  font-style: normal;
+  src: url('../fonts/icons/Social_Glyph.eot');
+  src: url('../fonts/icons/Social_Glyph.eot?#iefix') format('embedded-opentype'), /* IE6-8 */
+  url('../fonts/icons/Social_Glyph.woff2') format('woff2'), /* FF39+,Chrome36+, Opera24+*/
+  url('../fonts/icons/Social_Glyph.woff') format('woff'), /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+  url('../fonts/icons/Social_Glyph.ttf') format('truetype');
+}
+
+/*------------------------
+	base class definition
+-------------------------*/
+.o-icon {
+  display: inline-block;
+  font: normal normal normal 14px/1 'Social_Glyph';
+  font-size: inherit;
+  speak: none;
+  text-transform: none;
+  /* Better Font Rendering */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  vertical-align: middle;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: "Social_Glyph";
+    src: url("../fonts/icons/Social_Glyph.svg") format("svg");
+  }
+}
+
+[class^="g-"]:before, [class*=" g-"]:before,
+[class^="g-"]:after, [class*=" g-"]:after {
+  font-family: Social_Glyph;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+}
+
+/* --------------------------------
+
+icons
+
+-------------------------------- */
+.g-icon {
+  display: inline-block;
+  font: normal normal normal 32px/1 'Social_Glyph';
+  speak: none;
+  text-transform: none;
+  /* Better Font Rendering */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/*------------------------
+  spinning icons
+-------------------------*/
+.g-icon.spin {
+  -webkit-animation: g-icon-spin 2s infinite linear;
+  -moz-animation: g-icon-spin 2s infinite linear;
+  animation: g-icon-spin 2s infinite linear;
+}
+@-webkit-keyframes g-icon-spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+@-moz-keyframes g-icon-spin {
+  0% {
+    -moz-transform: rotate(0deg);
+  }
+  100% {
+    -moz-transform: rotate(360deg);
+  }
+}
+@keyframes g-icon-spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+/*------------------------
+  font icons
+-------------------------*/
+
+.g-logo-wikipedia::before {
+  content: "\ea02";
+}
+
+.g-logo-weibo::before {
+  content: "\ea03";
+}
+
+.g-logo-wechat::before {
+  content: "\ea04";
+}
+
+.g-logo-vk::before {
+  content: "\ea05";
+}
+
+.g-logo-qq::before {
+  content: "\ea06";
+}
+
+.g-logo-messenger::before {
+  content: "\ea07";
+}
+
+.g-logo-medium::before {
+  content: "\ea08";
+}
+
+.g-shared::before {
+  content: "\ea09";
+}
+
+.g-share::before {
+  content: "\ea0a";
+}
+
+.g-share-right::before {
+  content: "\ea0b";
+}
+
+.g-share-left::before {
+  content: "\ea0c";
+}
+
+.g-share-bold::before {
+  content: "\ea0d";
+}
+
+.g-share-92::before {
+  content: "\ea0e";
+}
+
+.g-share-91::before {
+  content: "\ea0f";
+}
+
+.g-share-66::before {
+  content: "\ea10";
+}
+
+.g-share-2::before {
+  content: "\ea11";
+}
+
+.g-rss::before {
+  content: "\ea12";
+}
+
+.g-pin-share::before {
+  content: "\ea13";
+}
+
+.g-p-share::before {
+  content: "\ea14";
+}
+
+.g-node::before {
+  content: "\ea15";
+}
+
+.g-network::before {
+  content: "\ea16";
+}
+
+.g-m-share::before {
+  content: "\ea17";
+}
+
+.g-logo-youtube::before {
+  content: "\ea18";
+}
+
+.g-logo-yelp::before {
+  content: "\ea19";
+}
+
+.g-logo-wordpress::before {
+  content: "\ea1a";
+}
+
+.g-logo-whatsapp::before {
+  content: "\ea1b";
+}
+
+.g-logo-vine::before {
+  content: "\ea1c";
+}
+
+.g-logo-vimeo::before {
+  content: "\ea1d";
+}
+
+.g-logo-twitter::before {
+  content: "\ea1e";
+}
+
+.g-logo-tumblr::before {
+  content: "\ea1f";
+}
+
+.g-logo-trello::before {
+  content: "\ea20";
+}
+
+.g-logo-spotify::before {
+  content: "\ea21";
+}
+
+.g-logo-soundcloud::before {
+  content: "\ea22";
+}
+
+.g-logo-slack::before {
+  content: "\ea23";
+}
+
+.g-logo-skype::before {
+  content: "\ea24";
+}
+
+.g-logo-shopify::before {
+  content: "\ea25";
+}
+
+.g-logo-rss::before {
+  content: "\ea26";
+}
+
+.g-logo-reddit::before {
+  content: "\ea27";
+}
+
+.g-logo-product-hunt::before {
+  content: "\ea28";
+}
+
+.g-logo-pinterest::before {
+  content: "\ea29";
+}
+
+.g-logo-paypal::before {
+  content: "\ea2a";
+}
+
+.g-logo-myspace::before {
+  content: "\ea2b";
+}
+
+.g-logo-meetup::before {
+  content: "\ea2c";
+}
+
+.g-logo-linkedin::before {
+  content: "\ea2d";
+}
+
+.g-logo-lastfm::before {
+  content: "\ea2e";
+}
+
+.g-logo-instagram::before {
+  content: "\ea2f";
+}
+
+.g-logo-google-plus::before {
+  content: "\ea30";
+}
+
+.g-logo-github::before {
+  content: "\ea31";
+}
+
+.g-logo-flickr::before {
+  content: "\ea32";
+}
+
+.g-logo-feedly::before {
+  content: "\ea33";
+}
+
+.g-logo-fb-simple::before {
+  content: "\ea34";
+}
+
+.g-logo-facebook::before {
+  content: "\ea35";
+}
+
+.g-logo-evernote::before {
+  content: "\ea36";
+}
+
+.g-logo-envato::before {
+  content: "\ea37";
+}
+
+.g-logo-dropbox::before {
+  content: "\ea38";
+}
+
+.g-logo-dribbble::before {
+  content: "\ea39";
+}
+
+.g-logo-deviantart::before {
+  content: "\ea3a";
+}
+
+.g-logo-crunchbase::before {
+  content: "\ea3b";
+}
+
+.g-logo-creative-market::before {
+  content: "\ea3c";
+}
+
+.g-logo-codepen::before {
+  content: "\ea3d";
+}
+
+.g-logo-buysellads::before {
+  content: "\ea3e";
+}
+
+.g-logo-buffer::before {
+  content: "\ea3f";
+}
+
+.g-logo-blogger::before {
+  content: "\ea40";
+}
+
+.g-logo-behance::before {
+  content: "\ea41";
+}
+
+.g-logo-angellist::before {
+  content: "\ea42";
+}
+
+.g-logo-500px::before {
+  content: "\ea43";
+}
+
+.g-launch-47::before {
+  content: "\ea44";
+}
+
+.g-launch-11::before {
+  content: "\ea45";
+}
+
+.g-folder-shared::before {
+  content: "\ea46";
+}
+
+.g-export::before {
+  content: "\ea47";
+}
+
+.g-curved-previous::before {
+  content: "\ea48";
+}
+
+.g-curved-next::before {
+  content: "\ea49";
+}
+
+.g-curve-split::before {
+  content: "\ea4a";
+}
+
+.g-curve-directions::before {
+  content: "\ea4b";
+}
+
+.g-browser-safari::before {
+  content: "\ea4c";
+}
+
+.g-browser-opera::before {
+  content: "\ea4d";
+}
+
+.g-browser-ie::before {
+  content: "\ea4e";
+}
+
+.g-browser-firefox::before {
+  content: "\ea4f";
+}
+
+.g-browser-edge::before {
+  content: "\ea50";
+}
+
+.g-browser-chrome::before {
+  content: "\ea51";
+}
+
+.g-basket-share::before {
+  content: "\ea52";
+}
+
+.g-a-share::before {
+  content: "\ea53";
+}
+
+.g-discord::before {
+  content: "\ea54";
+}
+
+.g-spa::before {
+  content: "\ea55";
+}
+
+.g-flame::before {
+  content: "\ea56";
+}
+
+.g-chicken-2::before {
+  content: "\ea57";
+}
+
+.g-factory::before {
+  content: "\ea58";
+}
+
+.g-send::before {
+  content: "\ea59";
+}
+

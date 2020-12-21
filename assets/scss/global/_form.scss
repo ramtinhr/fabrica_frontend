@@ -1,3 +1,44 @@
+.form {
+  &-group {
+    margin-bottom: 15px;
+    text-align: right;
+
+    & label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 14px;
+    }
+
+    & input {
+      padding: 13px 10px;
+      border-radius: 15px;
+      border: 1px solid $lightGray;
+      color: $dimLightGray;
+      font-size: 14px;
+    }
+
+    & textarea {
+      color: $dimLightGray;
+      font-size: 14px;
+      border: 1px solid $lightGray;
+      border-radius: 15px;
+    }
+  }
+
+  &-group2 {
+    margin-bottom: 15px;
+
+    & label {
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    & input {
+      color: $dimLightGray;
+    }
+  }
+}
+
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
@@ -10,291 +51,7 @@ input[type=number] {
   -moz-appearance: textfield;
 }
 
-.radio-button {
-    display: block;
-    position: relative;
-    padding-left: 35px;
-    margin-bottom: 12px;
-    cursor: pointer;
-    font-size: 22px;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-
-  input {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-  }
-
-
-  &:hover input ~ .checkmark {
-    background-color: #ccc;
-  }
-
-  input:checked ~ .checkmark {
-    background-color:$blue;
-  }
-
-  .checkmark:after {
-    content: "";
-    position: absolute;
-    display: none;
-  }
-
-  input:checked ~ .checkmark:after {
-    display: block;
-  }
-
-  .checkmark:after {
-    top: 9px;
-    left: 9px;
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: white;
-  }
-
-  &-success {
-    input:checked ~ .checkmark {
-      background-color:$green !important;
-    }
-  }
-
-  &-danger {
-    input:checked ~ .checkmark {
-      background-color:$red !important;
-    }
-  }
-}
-
-.checkbox {
-  position: relative;
-  cursor: pointer;
-  font-size: 18px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-
-  &Label {
-    position: relative;
-    right: 45px;
-  }
-
-  input {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-    height: 0;
-    width: 0;
-  }
-
-  .checkmark {
-    position: absolute;
-    top: 5px;
-    left: 100%;
-    right: -26px;
-    height: 20px;
-    width: 20px;
-    background-color: $white;
-    border-radius: 2px;
-    border: 1px solid $themeColor;
-  }
-
-  &:hover input ~ .checkmark {
-    background-color: #ccc;
-  }
-
-  &:disabled input ~ .checkmark {
-    background-color: #ccc;
-  }
-
-  input:checked ~ .checkmark {
-    background-color: $themeColor;
-  }
-
-  .checkmark:after {
-    content: "";
-    position: absolute;
-    display: none;
-  }
-
-  input:checked ~ .checkmark:after {
-    display: block;
-  }
-
-  .checkmark:after {
-    left: 7px;
-    top: 0px;
-    width: 5px;
-    height: 15px;
-    border: solid white;
-    border-width: 0 3px 3px 0;
-    -webkit-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    transform: rotate(45deg);
-  }
-
-  &-success {
-    input:checked ~ .checkmark {
-      background-color:$green !important;
-    }
-  }
-  &-danger {
-    input:checked ~ .checkmark {
-      background-color:$red !important;
-    }
-  }
-   &-default {
-    input:checked ~ .checkmark {
-      background-color:  #282f42 !important;
-    }
-  }
-
-}
-
-.switch {
-  position: relative;
-  display: inline-block;
-  width: 60px;
-  height: 34px;
-
- input {
-  opacity: 0;
-  width: 0;
-  height: 0;
- }
-  .slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc;
-    -webkit-transition: .4s;
-    transition: .4s;
-  }
-
- .slider:before {
-  position: absolute;
-  content: "";
-  height: 24px;
-  width: 24px;
-  left: 4px;
-  bottom: 4px;
-  background-color: white;
-  -webkit-transition: .4s;
-  transition: .4s;
-  }
-  input:checked + .slider {
-    background-color: #2196F3;
-  }
-  input:focus + .slider {
-    box-shadow: 0 0 1px #2196F3;
-  }
-  input:checked + .slider:before {
-    -webkit-transform: translateX(26px);
-    -ms-transform: translateX(26px);
-    transform: translateX(26px);
-  }
-  .round {
-    border-radius: 34px;
-  }
-
-  .round:before {
-    border-radius: 50%;
-  }
-}
-
-.switch {
-  position: relative;
-  display: inline-block;
-  width: 60px;
-  height: 34px;
-
- input {
-  opacity: 0;
-  width: 0;
-  height: 0;
- }
-
-  // switch small
-  .slider-small {
-    position: absolute;
-    cursor: pointer;
-    top: 0px;
-    left: 4px;
-    right: 4px;
-    bottom: 8px;
-    background-color: #ccc;
-    transition: .4s;
-  }
- .slider-small:before {
-  position: absolute;
-  content: "";
-  height: 18px;
-  width: 18px;
-  left: 4px;
-  bottom: 4px;
-  background-color: white;
-  transition: .4s;
- }
-
-  input:checked + .slider-small {
-    background-color: #2196F3;
-  }
-  input:focus + .slider-small {
-    box-shadow: 0 0 1px #2196F3;
-  }
-  input:checked +.slider-small:before {
-    -webkit-transform: translateX(26px);
-    -ms-transform: translateX(26px);
-    transform: translateX(26px);
-  }
-  .round {
-    border-radius: 34px;
-  }
-
-  .round:before {
-    border-radius: 50%;
-  }
-}
-
-.otp-input {
-  text-align: center;
-  letter-spacing: 22px;
-  direction: ltr;
-  font-size: 27px !important;
-  background-color: #ffffff;
-  width: 100%;
-  border-radius: 4px;
-  border: solid 1px #d0dbe7;
-  font-family: IRANSansMedium;
-  &:focus {
-    border: solid 1px #3f4156;
-  }
-}
-.input-bordered {
-  border-radius: 4px;
-  border: 1px solid #d2dde9;
-  width: 100%;
-  line-height: 30px;
-  font-size: 15px;
-
-  &-lg {
-  @extend .input-bordered;
-  height: 100px;
-  }
-}
-
-.label {
-  color: $themeDetailColor;
-}
-
-input, select,textarea {
+input, select, textarea {
   background-color: #ffffff;
   width: 100%;
   border-radius: 4px;
@@ -302,9 +59,10 @@ input, select,textarea {
   line-height: normal;
   padding: 8px 5px;
   box-sizing: border-box;
-  font-family: IRANSansLightPersian;
+  font-family: IRANSans;
   font-size: 16px;
   text-indent: 5px;
+
   &-warning {
     border: solid 1px $tomato !important;
     animation: fadein 1s both;
@@ -316,340 +74,22 @@ input, select,textarea {
 }
 
 
-label {
-  color: $themeColor !important;
-}
-
-@mixin inputGroupBankLogo() {
-  content: "";
-  background-size: contain;
-  width: 30px;
-  background-repeat: no-repeat;
-  margin-top: 4px;
-}
-
-.pan-input-group, .iban-input-group {
-  position: relative;
-  display: flex;
-  width: 100%;
-  border-radius: 4px;
-  border: solid 1px #d0dbe7;
-  input {
-    border: none !important;
-  }
-}
-
-
-.pan-input-group {
-  border: solid 1px #d0dbe7;
-
-  input {
-    border: none !important;
-  }
-
-  &-zarincard {
-    &::after {
-      @include inputGroupBankLogo();
-      background-image: url(https://cdn.arzypto.com/images/banks/Zarincard.png);
-    }
-  }
-
-  &-eghtesadnovin {
-    &::after {
-      @include inputGroupBankLogo();
-      background-image: url(https://cdn.arzypto.com/images/banks/EghtesadNovin.png);
-    }
-  }
-
-  &-parsian {
-    &::after {
-      @include inputGroupBankLogo();
-      background-image: url(https://cdn.arzypto.com/images/banks/Parsian.png);
-    }
-  }
-
-  &-karafarin {
-    &::after {
-      @include inputGroupBankLogo();
-      background-image: url(https://cdn.arzypto.com/images/banks/Karafarin.png);
-    }
-  }
-
-  &-saman {
-    &::after {
-      @include inputGroupBankLogo();
-      background-image: url(https://cdn.arzypto.com/images/banks/Saman.png);
-    }
-  }
-
-  &-pasargad {
-    &::after {
-      @include inputGroupBankLogo();
-      background-image: url(https://cdn.arzypto.com/images/banks/Pasargad.png);
-    }
-  }
-
-  &-sina {
-    &::after {
-      @include inputGroupBankLogo();
-      background-image: url(https://cdn.arzypto.com/images/banks/Sina.png);
-    }
-  }
-
-  &-sarmayeh {
-    &::after {
-      @include inputGroupBankLogo();
-      background-image: url(https://cdn.arzypto.com/images/banks/Sarmayeh.png);
-    }
-  }
-
-  &-citybank {
-    &::after {
-      @include inputGroupBankLogo();
-      background-image: url(https://cdn.arzypto.com/images/banks/Citybank.png);
-    }
-  }
-
-  &-ansar {
-    &::after {
-      @include inputGroupBankLogo();
-      background-image: url(https://cdn.arzypto.com/images/banks/Ansar.png);
-    }
-  }
-
-  &-tejarat {
-    &::after {
-      @include inputGroupBankLogo();
-      background-image: url(https://cdn.arzypto.com/images/banks/Tejarat.png);
-    }
-  }
-
-  &-refah {
-    &::after {
-      @include inputGroupBankLogo();
-      background-image: url(https://cdn.arzypto.com/images/banks/Refah.png);
-    }
-  }
-
-  &-saderat {
-    &::after {
-      @include inputGroupBankLogo();
-      background-image: url(https://cdn.arzypto.com/images/banks/Saderat.png);
-    }
-  }
-
-  &-mellat {
-    &::after {
-      @include inputGroupBankLogo();
-      background-image: url(https://cdn.arzypto.com/images/banks/Mellat.png);
-    }
-  }
-
-  &-hekmat {
-    &::after {
-      @include inputGroupBankLogo();
-      background-image: url(https://cdn.arzypto.com/images/banks/Hekmat.png);
-    }
-  }
-
-  &-gardeshgari {
-    &::after {
-      @include inputGroupBankLogo();
-      background-image: url(https://cdn.arzypto.com/images/banks/Gardeshgari.png);
-    }
-  }
-
-  &-ghavamin {
-    &::after {
-      @include inputGroupBankLogo();
-      background-image: url(https://cdn.arzypto.com/images/banks/Ghavamin.png);
-    }
-  }
-
-  &-ayandeh {
-    &::after {
-      @include inputGroupBankLogo();
-      background-image: url(https://cdn.arzypto.com/images/banks/Ayandeh.png);
-    }
-  }
-
-  &-tosesaderat {
-    &::after {
-      @include inputGroupBankLogo();
-      background-image: url(https://cdn.arzypto.com/images/banks/Tosesaderat.png);
-    }
-  }
-
-  &-sanatmadan {
-    &::after {
-      @include inputGroupBankLogo();
-      background-image: url(https://cdn.arzypto.com/images/banks/Sanatmadan.png);
-    }
-  }
-
-  &-agriculture {
-    &::after {
-      @include inputGroupBankLogo();
-      background-image: url(https://cdn.arzypto.com/images/banks/Agriculture.png);
-    }
-  }
-
-  &-maskan {
-    &::after {
-      @include inputGroupBankLogo();
-      background-image: url(https://cdn.arzypto.com/images/banks/Maskan.png);
-    }
-  }
-
-  &-tosetavon {
-    &::after {
-      @include inputGroupBankLogo();
-      background-image: url(https://cdn.arzypto.com/images/banks/Tosetavon.png);
-    }
-  }
-
-  &-postbank {
-    &::after {
-      @include inputGroupBankLogo();
-      background-image: url(https://cdn.arzypto.com/images/banks/Postbank.png);
-    }
-  }
-
-  &-mehr {
-    &::after {
-      @include inputGroupBankLogo();
-      background-image: url(https://cdn.arzypto.com/images/banks/Mehr.png);
-    }
-  }
-
-  &-resalat {
-    &::after {
-      @include inputGroupBankLogo();
-      background-image: url(https://cdn.arzypto.com/images/banks/Resalat.png);
-    }
-  }
-
-  &-melli {
-    &::after {
-      @include inputGroupBankLogo();
-      background-image: url(https://cdn.arzypto.com/images/banks/Melli.png);
-    }
-  }
-}
-
-.iban-input-group {
-  border-radius: 4px!important;
-}
-
-.iban-input-group::after {
-  padding: 5px 12px 2px 12px;
-  border-radius: 4px 0 0 4px;
-  content: "IR";
-  border: solid 1px #d0dbe7;
-  background-color: #d8d8d8;
-}
-
-.vpd-input-group {
-  display: table;
-  width: 100%;
-  position: relative;
-  padding: 1px;
-  input {
-    border: none !important;
-    padding: 3px 7px !important;
-  }
-
-}
-
-.vpd-main {
-  padding: 0;
-}
-.option-image img{
-  height: 20px;
-  width: 20px;
-  position: relative;
-  top: 5px;
-}
-.select-box {
-
-  &:focus{
-    border: 1px solid $themeGreen;
-  }
-  &-border {
-    border-radius: 4px;
-    border: solid 1px #d0dbe7;
-    background-color: $white;
-    width: 100%;
-    left: 0;
-  }
-
-  &-drop-down {
-    position: absolute;
-    width: 100%;
-    border: solid 1px #d0dbe7;
-    background-color: $white;
-    max-height: 250px;
-    overflow: auto;
-  }
-
+.otp {
   &-input {
-    width: 75%;
-    border: none;
-    margin: 0 0 7px 2%;
-    position: relative;
-    top: 5px;
-  }
+    box-sizing: border-box;
+    height: 48px;
+    width: 45px;
+    border: 1px solid #80868a;
+    border-radius: 5px;
+    background-color: #fff;
+    margin: auto 5px;
+    padding: 5px;
+    font-size: 20px;
+    text-align: center;
 
-  &-input:focus {
-    border-radius: 4px;
-    border: 1px solid $blue;
-    margin: 0 0 6px 2%;
-    position: relative;
-    top: 3px;
-  }
-
-  &-selected-option {
-    width: 90%;
-    padding: 7px 0 7px 5%;
-    margin: 3px 0 3px 5%;
-    background-color: $white;
-  }
-
-  &-option {
-    width: inherit;
-    border-bottom: 1px solid #d0dbe7;
-    padding: 7px 15px;
-    direction: initial;
-    &:last-child{
-      border-bottom: none;
+    &-box {
+      display: flex;
+      flex-direction: row-reverse;
     }
-  }
-
-  &-option:hover {
-    cursor: pointer;
-    background-color: #d0dbe7;
-    transition: 400ms;
-  }
-}
-.close-selectbox {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  top: 0px;
-  left: 0px;
-}
-
-// date picker
-.vpd {
-  &-addon-list-item {
-    width: 30.33333% !important;
-  }
-
-  &-month-label {
-    font-size: 16px;
-  }
-
-  &-actions button {
-    font-family: IRANSansMedium;
   }
 }

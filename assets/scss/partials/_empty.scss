@@ -1,0 +1,15 @@
+.empty {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  & i {
+    color: $dimLightGray;
+    &:before {
+      font-size: 40px;
+      font-weight: 400;
+    }
+  }
+}

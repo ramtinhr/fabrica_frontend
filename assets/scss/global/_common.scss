@@ -1,6 +1,6 @@
 body {
-  background-color: #F2F4F4;
-  font-family: IRANSansLightPersian, sans-serif;
+  background-color: #f5f5f7;
+  font-family: IRANSans, sans-serif;
   padding: 0;
   direction: rtl;
   margin: 0; //TODO: if scroll in vertical maybe for this
@@ -53,7 +53,7 @@ a {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-weight: 500;
+  font-weight: 400;
 }
 
 input, textarea {
@@ -95,18 +95,74 @@ button {
   }
 }
 
-.gray-out {
-  background: #F2F4F4;
+.category {
+  &-dropdown {
+    padding-right: 0;
+    position: absolute;
+    right: 0;
+    left: 0;
+    top: 8px;
+    border: none;
+    border-radius: 15px;
+    background: #fff;
+    height: 200px;
+    z-index: 2;
+    overflow-y: scroll
+  }
+
+  &-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 500;
+    transition: all .4s;
+    padding: 10px;
+    font-size: 12px;
+    color: $dimGray;
+    border-bottom: 1px solid $cleanGray;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $lightGray;
+      color: #fff;
+    }
+
+    &:focus {
+      background-color: $lightGray;
+      color: #fff;
+    }
+
+    &:active {
+      background-color: $lightGray;
+      color: #fff;
+    }
+
+    & i {
+      color: $dimLightGray;
+      &:before {
+        font-size: 14px;
+      }
+    }
+  }
+
+  i {
+    vertical-align: middle
+  }
+
+  .cats:hover {
+    background-color: #80bdff;
+    color: white
+  }
+
 }
 
-.min-h-70-vh {
-  min-height: 70vh;
+.active {
+  color: $primaryColor;
 }
 
-.min-h-80-vh {
-  min-height: 80vh;
+.exact-active {
+  color: $primaryColor;
 }
-
 
 .text-seaBlue {
   color: $seaBlue;
@@ -124,23 +180,13 @@ button {
   color: $blueNavy;
 }
 
-.empty-data {
-  width: 40px;
-  height: 40px;
-}
-
-.vpd-actions {
-  text-align: center !important;
-}
-
-.submit {
-  input {
-    width: initial;
-  }
-}
 
 .opacity-half {
   opacity: .5;
+}
+
+.object-fit-cover {
+  object-fit: cover;
 }
 
 .border-left-white {
@@ -151,19 +197,6 @@ button {
   border-left: 1px solid $vermillion;
 }
 
-.font-sans-medium {
-  font-family: IRANSansMedium;
-}
-
-.font-sans-bold {
-  font-family: IRANSansBold;
-}
-
-.font-sans-persian {
-  font-weight: 500;
-  font-family: IRANSansLightPersian !important;
-}
-
 .bottom-unset {
   bottom: unset !important;
 }
@@ -172,28 +205,12 @@ button {
   align-items: center;
 }
 
-.translate-y-0 {
-  transform: translateY(0%) !important;
-}
-
 .display-xs-block {
   @media only screen and (max-width: 690px) {
     display: block !important;
   }
 }
 
-.opacity-1 {
-  opacity: 1 !important;
-  transition: opacity .2s .3s;
-}
-
-.z-index-1 {
-  z-index: 1 !important;
-}
-
-.h-100-vh {
-  height: 100vh;
-}
 
 .custom-hidden-scroll {
   &::-webkit-scrollbar {
@@ -333,8 +350,8 @@ button {
   outline: none !important;
 }
 
-.text-dimlightGray {
-  color: $dimlightGray;
+.text-dimLightGray {
+  color: $dimLightGray;
 }
 
 .border-bottom-lightGreen {
@@ -788,10 +805,14 @@ input:invalid {
   border: none !important;
 }
 
-.avatar {
-  height: 35px;
-  width: 35px;
-  border-radius: 50px;
+.toasted.toasted-primary.error {
+  padding: 15px 30px;
+  border-radius: 15px;
+}
+
+.toasted.toasted-primary.success {
+  padding: 15px 30px;
+  border-radius: 15px;
 }
 
 //height in precent
@@ -913,11 +934,15 @@ input:invalid {
 
 //TODO change this
 .text-warning {
-  color: $themeOrange !important;
+  color: $warning !important;
 }
 
 .text-white {
-  color: $white;
+  color: $white !important;
+}
+
+.text-yellow {
+  color: $primaryColor;
 }
 
 .text-green {
@@ -929,7 +954,7 @@ input:invalid {
 }
 
 .text-lightgray {
-  color: $lightGray;
+  color: $lightGray !important;
 }
 
 .text-blue {
@@ -1012,7 +1037,7 @@ input:invalid {
 }
 
 .text-redOrange {
-  color: $redOrange;
+  color: $redOrange !important;
 }
 
 .text-landing-grey {
@@ -1160,6 +1185,10 @@ input:invalid {
   .line-height-em-#{$j} {
     line-height: (0px + $j) * 2 !important;
   }
+}
+
+.line-height-1 {
+  line-height: 1;
 }
 
 .m-h-auto {

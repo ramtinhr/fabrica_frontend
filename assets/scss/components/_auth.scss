@@ -1,0 +1,39 @@
+.auth {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 0 40px 40px 40px;
+
+  &__steps {
+    animation: fade 1s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  &__phone-number-box {
+    margin: 30px auto 10px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    & span {
+      margin-right: 10px;
+    }
+
+    & input {
+      direction: ltr;
+      border-top: none;
+      border-left: none;
+      border-right: none;
+      border-bottom: 1px solid $lightGray;
+      border-radius: 0;
+    }
+  }
+
+  & button {
+    border-radius: 30px;
+  }
+}

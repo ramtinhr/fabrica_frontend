@@ -1,3 +1,5 @@
+const webpack = require('webpack')
+
 export default {
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
@@ -5,7 +7,8 @@ export default {
       lang: 'fa-IR',
       dir: 'rtl',
     },
-    title: 'فابریکا',
+    title:
+      'فابریکا  - نیازمندی‌ های رایگان، آگهی‌های خرید، فروش  نو و دست دوم و کارکرده',
     meta: [
       { charset: 'utf-8' },
       // { name: 'enamad', content: '382221' },
@@ -55,13 +58,35 @@ export default {
       { name: 'msapplication-TileColor', content: '#ffc40d' },
       { name: 'theme-color', content: '#f1c446' },
     ],
+    link: [
+      {
+        rel: 'icon',
+        type: 'image/png',
+        sizes: '16x16',
+        href: '/images/logo.png',
+      },
+    ],
   },
+
+  loading: false,
 
   // Global CSS (https://go.nuxtjs.dev/config-css)
   css: ['@/assets/scss/app.scss'],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
-
+  plugins: [
+    '~/plugins/helpers/number.js',
+    '~/plugins/helpers/string.js',
+    '~/plugins/helpers/date.js',
+    '~/plugins/helpers/api-message.js',
+    '~/plugins/application.js',
+    { src: '~plugins/vee-validate.js', mode: 'client' },
+    { src: '~/plugins/vue-awesome-swiper.js', mode: 'client' },
+    { src: '~/plugins/font-awesome.js', ssr: false },
+    { src: '~/plugins/upload.js', ssr: false },
+    { src: '~plugins/vue-slider.js', ssr: false },
+    { src: '~plugins/vue-select.js', ssr: true },
+  ],
   // Auto import components (https://go.nuxtjs.dev/config-components)
   components: true,
 
@@ -81,11 +106,26 @@ export default {
         strategy: 'prefix_except_default',
       },
     ],
+    'cookie-universal-nuxt',
+    [
+      'nuxt-mq',
+      {
+        // Default breakpoint for SSR
+        defaultBreakpoint: 'default',
+        breakpoints: {
+          xs: 576,
+          sm: 768,
+          md: 992,
+          lg: 1200,
+          xl: Infinity,
+        },
+      },
+    ],
   ],
 
   toast: {
     position: 'bottom-center',
-    duration: 8000,
+    duration: 6000,
   },
   i18n: {
     locale: 'fa',
@@ -104,7 +144,7 @@ export default {
     retry: {
       retries: 0,
     },
-    baseURL: 'https://api.fabrica.ir/ads/search',
+    baseURL: 'https://api.fabrica.ir',
     headers: {
       Accept: 'application/json',
     },
@@ -113,8 +153,18 @@ export default {
   build: {
     publicPath: '/assets/',
     transpile: ['vee-validate/dist/rules', 'vue-moment-jalaali'],
+    plugins: [
+      new webpack.ProvidePlugin({
+        // global modules
+        _: 'lodash',
+      }),
+    ],
   },
   router: {
+    router: {
+      linkActiveClass: 'active',
+      linkExactActiveClass: 'exact-active',
+    },
     extendRoutes(routes) {
       routes.push({
         name: '404',
@@ -122,5 +172,17 @@ export default {
         redirect: '/404',
       })
     },
+  },
+
+  messages: {
+    server_error: 'مشکل سیستم',
+    nuxtjs: ' ',
+    back_to_home: 'داشبورد',
+    server_error_details: 'مشکلی به وجود آمده است',
+  },
+
+  env: {
+    BASE_URl: 'https://siglive.ir/api',
+    IS_APPLICATION: false,
   },
 }
