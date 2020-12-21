@@ -2,7 +2,14 @@
   <div v-if="advertise">
     <div v-if="isUserAd" class="advertise__vertical-action-box">
       <i class="o-icon o-simple-remove" @click="openDeleteAdModal"></i>
-      <i class="o-icon o-edit-71"></i>
+      <nuxt-link
+        :to="{
+          name: 'edit-ad-id___' + this.$cookies.get('lang'),
+          params: { id: advertise.id },
+        }"
+        tag="i"
+        class="o-icon o-edit-71"
+      ></nuxt-link>
     </div>
     <div class="advertise__vertical" @click="onClickHandler">
       <div class="advertise__vertical-img-wrapper">
