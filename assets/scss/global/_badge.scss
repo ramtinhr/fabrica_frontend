@@ -1,0 +1,193 @@
+@mixin badge($bgcolor, $color, $bordercolor) {
+  background-color: $bgcolor;
+  color: $color;
+  border-color: $bordercolor;
+}
+
+.badge {
+  font-family: IRANSansMedium;
+  border: 1px solid;
+  border-radius: 4px;
+  cursor: default;
+
+  &-light {
+    @include badge ($dimGray, $white, $dimGray)
+  }
+  &-lighter {
+    @include badge ($lightCyan, $darkGray, $lightCyan)
+  }
+  &-dark {
+    @include badge ($darkGray, $white, $darkGray)
+  }
+  &-primary {
+    @include badge ($blue, $white, $blue)
+  }
+  &-secondary {
+    @include badge ($navy, $white, $navy)
+  }
+  &-success {
+    @include badge ($springGreen, $white, $springGreen)
+  }
+  &-warning {
+    @include badge ($gold, $white, $gold)
+  }
+  &-danger {
+    @include badge ($tomato, $white, $tomato)
+  }
+  &-dim-light {
+    @include badge($silverWhite, $darkGray, $whiteSmoke)
+  }
+  &-alt-light {
+    @include badge ($lightCyan, $darkGray, $lightCyan)
+  }
+  &-alt-lighter {
+    @include badge ($paleTurquoise, $dimGray, $paleTurquoise)
+  }
+  &-alt-dark {
+    @include badge ($lightSteelBlue, $darkGray, $lightSteelBlue)
+  }
+  &-alt-primary {
+    @include badge ($skyBlue, $blue, $skyBlue)
+  }
+  &-alt-secondary {
+    @include badge ($cornflowerBlue, $midnightBlue, $cornflowerBlue)
+  }
+  &-alt-success {
+    @include badge ($honeydew, $grassy, $honeydew)
+  }
+  &-alt-warning {
+    @include badge ($lemonChiffon, $darkOrange, $lemonChiffon)
+  }
+  &-alt-danger {
+    @include badge ($peachPuff, $tomato, $peachPuff)
+  }
+  &-dim-lighter {
+    @include badge ($lightCyan, $darkGray, $aliceBlue)
+  }
+  &-dim-dark {
+    @include badge ($lightSteelBlue, $darkGray, $dimgrayWhite)
+  }
+  &-dim-primary {
+    @include badge($skyBlue, $darkGray, $mediumAquamarine)
+  }
+  &-dim-secondary {
+    @include badge ($lavender, $darkGray, $linen)
+  }
+  &-dim-success {
+    @include badge ($chartreuse, $darkGray, $paleGreen)
+  }
+  &-dim-warning {
+    @include badge ($lemonChiffon, $darkGray, $gold)
+  }
+  &-dim-danger {
+    @include badge ($lightPink, $darkGray, $lightSalmon)
+  }
+  &-outline-light {
+    @include badge($white, $darkGray, $dimGray)
+  }
+  &-outline-lighter {
+    @include badge ($white, $darkGray, $lightCyan)
+  }
+  &-outline-dark {
+    @include badge ($white, $darkGray, $darkGray);
+  }
+  &-outline-primary {
+    @include badge ($white, $darkGray, $blue)
+  }
+  &-outline-secondary {
+    @include badge ($white, $darkGray, $midnightBlue)
+  }
+  &-outline-success {
+    @include badge ($white, $darkGray, $themeGreen)
+  }
+  &-outline-warning {
+    @include badge ($white, $darkGray, $gold)
+  }
+  &-outline-danger {
+    @include badge ($white, $darkGray, $lightSalmon)
+  }
+
+  &-xl {
+    padding: 9px 15px;
+    font-size: 13px;
+    min-width: 120px;
+  }
+
+  &-lg {
+    padding: 6px 15px;
+    font-size: 13px;
+    min-width: 120px;
+  }
+
+  &-md {
+    padding: 6px 12px;
+    font-size: 12px;
+    min-width: 90px;
+  }
+
+  &-sm {
+    padding: 4px 12px;
+    font-size: 12px;
+    min-width: 90px;
+  }
+
+  &-xs {
+    padding: 2px 10px;
+    font-size: 11px;
+    min-width: 55px;
+  }
+}
+
+@media (max-width: 767px) {
+  .badge {
+    &-xs {
+      padding: 5px 2px;
+      font-size: 8px;
+      min-width: 55px;
+      display: inline-block;
+      text-align: center;
+    }
+  }
+}
+
+// Small devices (landscape phones, 991px and up)
+@media (min-width: 768px)  and (max-width: 991px){
+  .badge {
+    &-sm {
+      padding: 6px 2px;
+      font-size: 10px;
+      min-width: 90px;
+      display: inline-block;
+      text-align: center;
+    }
+  }
+}
+
+// Medium devices (tablets, 1199px and up)
+@media (min-width: 992px)  and (max-width: 1199px){
+  .badge {
+    &-md {
+      padding: 7px 2px;
+      font-size: 10px;
+      min-width: 90px;
+      display: inline-block;
+      text-align: center;
+    }
+  }
+}
+
+// Large devices (desktops, 1200px and up)
+@media (min-width: 1200px) {
+  .badge {
+    &-lg {
+      padding: 6px 15px;
+      font-size: 13px;
+      min-width: 120px;
+      display: inline-block;
+      text-align: center;
+    }
+  }
+}
+
+
+

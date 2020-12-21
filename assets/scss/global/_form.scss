@@ -1,0 +1,95 @@
+.form {
+  &-group {
+    margin-bottom: 15px;
+    text-align: right;
+
+    & label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 14px;
+    }
+
+    & input {
+      padding: 13px 10px;
+      border-radius: 15px;
+      border: 1px solid $lightGray;
+      color: $dimLightGray;
+      font-size: 14px;
+    }
+
+    & textarea {
+      color: $dimLightGray;
+      font-size: 14px;
+      border: 1px solid $lightGray;
+      border-radius: 15px;
+    }
+  }
+
+  &-group2 {
+    margin-bottom: 15px;
+
+    & label {
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    & input {
+      color: $dimLightGray;
+    }
+  }
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+input, select, textarea {
+  background-color: #ffffff;
+  width: 100%;
+  border-radius: 4px;
+  border: solid 1px #d0dbe7;
+  line-height: normal;
+  padding: 8px 5px;
+  box-sizing: border-box;
+  font-family: IRANSans;
+  font-size: 16px;
+  text-indent: 5px;
+
+  &-warning {
+    border: solid 1px $tomato !important;
+    animation: fadein 1s both;
+  }
+
+  ::placeholder {
+    color: $whiteSmoke;
+  }
+}
+
+
+.otp {
+  &-input {
+    box-sizing: border-box;
+    height: 48px;
+    width: 45px;
+    border: 1px solid #80868a;
+    border-radius: 5px;
+    background-color: #fff;
+    margin: auto 5px;
+    padding: 5px;
+    font-size: 20px;
+    text-align: center;
+
+    &-box {
+      display: flex;
+      flex-direction: row-reverse;
+    }
+  }
+}

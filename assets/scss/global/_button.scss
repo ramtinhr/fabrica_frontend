@@ -1,0 +1,269 @@
+@mixin button($bgcolor, $color, $bordercolor) {
+  background-color: $bgcolor !important;
+  color: $color !important;
+  border: 1px solid $bordercolor;
+}
+
+.btn {
+  font-weight: 400;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  padding: 8px 20px;
+  font-size: 13px;
+
+
+  &-primary {
+    @include button($blue, $white, $blue)
+  }
+
+  &-primary:hover {
+    background-color: $royalBlue !important;
+  }
+
+  &-secondary {
+    @include button($accentColor, $white, $accentColor);
+    border: 2px solid $accentColor !important;
+    transition: all .3s;
+
+    &:hover {
+      background-color: transparent !important;
+      color: $accentColor !important;
+
+      .v-spinner .v-clip {
+        border-color: $accentColor $accentColor transparent !important;
+      }
+    }
+  }
+
+  &-success {
+    @include button($themeGreen, $white, $violet);
+
+    &:hover {
+      background-color: $dimLightGray !important;
+    }
+  }
+
+  &-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &-fabrica {
+    @include button($primaryColor, white, $primaryColor);
+    transition: all .4s;
+    font-width: 500;
+    font-size: 14px;
+    border: 2px solid $primaryColor !important;
+
+    &:hover {
+      background-color: transparent !important;
+      color: $primaryColor !important;
+
+      .v-spinner .v-clip {
+        border-color: $primaryColor $primaryColor transparent !important;
+      }
+    }
+  }
+
+  &-outline-fabrica {
+    @include button(transparent, $primaryColor, $primaryColor);
+    transition: all .4s;
+    font-weight: 500;
+    font-size: 14px;
+    border: 2px solid $primaryColor !important;
+
+    &:hover {
+      background-color: $primaryColor !important;
+      color: white !important;
+    }
+  }
+
+
+  &-warning {
+    @include button($warning, $white, $warning)
+  }
+
+  &-warning:hover {
+    background-color: $darkOrange !important;
+  }
+
+  &-danger {
+    @include button($tomato, $white, $tomato);
+    border: 2px solid $tomato;
+    transition: all .4s;
+
+    &:hover {
+      background-color: transparent !important;
+      color: $tomato !important;
+
+      .v-spinner .v-clip {
+        border-color: $tomato $tomato transparent !important;
+      }
+    }
+  }
+
+  &-orangeYellow {
+    @include button($orangeYellow, $darkBlack, $orangeYellow);
+    border: none;
+    background-image: linear-gradient(180deg, #FFE251 0%, #EDC423 100%);
+  }
+
+  &-alt-primary {
+    @include button($skyBlue, $blue, $skyBlue)
+  }
+
+  &-alt-primary:hover {
+    background-color: $blue !important;
+    color: $white !important;
+  }
+
+  &-alt-secondary {
+    @include button($cornflowerBlue, $midnightBlue, $cornflowerBlue)
+  }
+
+  &-alt-secondary:hover {
+    background-color: $navy !important;
+    color: $white !important;
+  }
+
+  &-alt-success {
+    @include button($honeydew, $grassy, $honeydew)
+  }
+
+  &-alt-success:hover {
+    background-color: $springGreen !important;
+    color: $white !important;
+  }
+
+  &-alt-warning {
+    @include button($lemonChiffon, $darkOrange, $lemonChiffon)
+  }
+
+  &-alt-warning:hover {
+    background-color: $gold !important;
+    color: $white !important;
+  }
+
+  &-alt-danger {
+    @include button($peachPuff, $tomato, $peachPuff)
+  }
+
+  &-alt-danger:hover {
+    background-color: $tomato !important;
+    color: $white !important;
+  }
+
+  &-outline-light {
+    @include button($white, $dimGray, $dimgrayWhite);
+    border: 1px solid;
+  }
+
+  &-outline-light:hover {
+    border-color: $dimgrayWhite !important;
+  }
+
+  &-outline-lighter {
+    @include button($white, $darkGray, $dimgrayWhite);
+    border: 1px solid;
+  }
+
+  &-outline-lighter:hover {
+    border-color: $linen !important;
+  }
+
+  &-outline-orangeYellow {
+    @include button($white, $orangeYellow, $orangeYellow);
+    border: 1px solid;
+  }
+
+  &-outline-orangeYellow:hover {
+    border-color: $darkBlack !important;
+    color: $darkBlack !important;
+  }
+
+  &-outline-dark {
+    @include button($white, $darkGray, $whiteSmoke);
+    border: 1px solid;
+  }
+
+  &-outline-dark:hover {
+    border-color: $dimgrayWhite !important;
+  }
+
+  &-outline-primary {
+    @include button($white, $blue, $blue);
+    border: 1px solid;
+  }
+
+  &-outline-primary:hover {
+    border-color: $royalBlue !important;
+    color: $royalBlue !important;
+  }
+
+  &-outline-secondary {
+    @include button($white, $navy, $navy);
+    border: 1px solid;
+  }
+
+  &-outline-secondary:hover {
+    border-color: $lightBlack !important;
+    color: $lightBlack !important;
+  }
+
+  &-outline-success {
+    @include button($white, $springGreen, $springGreen);
+    border: 1px solid;
+  }
+
+  &-outline-success:hover {
+    border-color: $mediumseaGreen !important;
+    color: $mediumseaGreen !important;
+  }
+
+  &-outline-warning {
+    @include button($white, $gold, $gold);
+    border: 1px solid;
+  }
+
+  &-outline-warning:hover {
+    border-color: $darkOrange !important;
+    color: $darkOrange !important;
+  }
+
+  &-outline-danger {
+    @include button($white, $tomato, $tomato);
+    border: 1px solid;
+  }
+
+  &-outline-danger:hover {
+    border-color: $red !important;
+    color: $red !important;
+  }
+
+  &-xl {
+    padding: 18px 30px;
+    font-size: 14px;
+  }
+
+  &-lg {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+
+  &-lg {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+
+  &-sm {
+    padding: 7px 18px;
+    font-size: 14px;
+  }
+
+  &-xs {
+    padding: 3px 12px;
+    font-size: 11px;
+  }
+}

@@ -1,0 +1,147 @@
+.modal-component {
+  .modal {
+    position: fixed;
+    z-index: 1050;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding-right: 12px;
+    .close {
+      position: absolute;
+      left: 25px;
+      top: 25px;
+    }
+    &-dialog {
+      max-width: 500px;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+      overflow-y: initial !important;
+      &-centered {
+        min-height: calc(100% - 3.5rem);
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+      }
+    }
+    &-backdrop {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 100;
+      backdrop-filter: blur(6px);
+      background-color: rgba(0, 0, 0, 0.55);
+    }
+    &-container {
+      position: relative;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+      flex-direction: column;
+      width: 100%;
+      pointer-events: auto;
+      background-color: #fff;
+      background-clip: padding-box;
+      border-radius: 10px;
+      overflow-y: auto;
+      outline: 0;
+      .btn-close {
+        &:hover {
+          background-color: #d8d8d8;
+          transition: .5s;
+        }
+        font-size: 18px;
+        padding: 6px 9px;
+        border-radius: 100px;
+        cursor: pointer;
+        color: $themeDetailColor;
+      }
+    }
+
+    &-head {
+      padding: 20px;
+      font-weight: bold;
+    }
+
+    &-xs {
+      max-width: 600px;
+    }
+
+    &-sm {
+      max-width: 800px;
+    }
+
+    &-md {
+      max-width: 1000px;
+    }
+  }
+  .bounce-enter-active {
+    animation: bounce-in .1s;
+  }
+
+  .bounce-leave-active {
+    animation: bounce-in .2s reverse;
+  }
+
+  .fade-in-enter-active {
+    animation: fade-in .3s;
+  }
+
+  .fade-in-leave-active {
+    animation: fade-in .2s reverse;
+  }
+
+  .fade-enter-active {
+    animation: fade 1s;
+  }
+  .fade-leave-active {
+    animation: fade .2s reverse;
+  }
+
+  .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */
+  {
+    opacity: 0;
+  }
+}
+
+
+@supports (backdrop-filter: none) {
+  .modal-component {
+    .modal-backdrop {
+      backdrop-filter: blur(6px);
+    }
+  }
+}
+
+// Extra small, Small devices (landscape phones, 768px and up)
+@media (max-width: 991px) {
+  .modal-component {
+    .modal {
+      overflow: unset;
+      &-container {
+        padding: 15px 20px;
+        top: 0;
+        margin-bottom: 0;
+        height: 100%;
+      }
+    }
+  }
+}
+@media (max-width: 768px) {
+  .modal-component {
+    .modal {
+      &-container {
+       overflow-y: auto;
+        overflow-x: hidden;
+      }
+    }
+  }
+}

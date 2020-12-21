@@ -1,63 +1,86 @@
 <template>
-  <div class="container">
-    <div>
-      <Logo />
-      <h1 class="title">fabrica</h1>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--grey"
-        >
-          GitHub
-        </a>
-      </div>
-    </div>
+  <div class="home">
+    <section id="main">
+      <HomeMain />
+    </section>
+    <section id="first-content">
+      <HomeFirstContent @onClickHandler="onClickHandler" />
+    </section>
+    <section id="second-content">
+      <HomeSecondContent @onClickHandler="onClickHandler" />
+    </section>
+    <section id="third-content">
+      <HomeThirdContent @onClickHandler="onClickHandler" />
+    </section>
+    <section id="fourth-content">
+      <HomeFourthContent @onClickHandler="onClickHandler" />
+    </section>
+    <section id="fifth-content">
+      <HomeFifthContent @onClickHandler="onClickHandler" />
+    </section>
   </div>
 </template>
 
 <script>
-export default {}
+export default {
+  name: 'HomePage',
+  async asyncData({ store }) {
+    if (store.getters.getResource('home', 'categories').length === 0) {
+      await store.dispatch('get', {
+        storeName: 'home',
+        resourceName: 'categories',
+        url: '/categories',
+        config: { params: { section: 'home' } },
+      })
+    }
+    if (store.getters.getResource('home', 'states').length === 0) {
+      await store.dispatch('get', {
+        url: '/cities/state',
+        storeName: 'home',
+        resourceName: 'states',
+      })
+    }
+    const categories = store.getters.getResource('home', 'categories')
+    const firstId = categories.find(
+      (category) => category.title === 'خودرو سبک'
+    ).id
+    const secondId = categories.find(
+      (category) => category.title === 'راه سازی'
+    ).id
+    await store.dispatch('get', {
+      url: '/ads/search',
+      storeName: 'home',
+      resourceName: 'firstAdvertises',
+      fillData: false,
+      config: {
+        params: {
+          category_ids: firstId,
+          limit: 3,
+        },
+      },
+    })
+    await store.dispatch('get', {
+      url: '/ads/search',
+      storeName: 'home',
+      resourceName: 'secondAdvertises',
+      fillData: false,
+      config: {
+        params: {
+          category_ids: secondId,
+          limit: 3,
+        },
+      },
+    })
+  },
+  methods: {
+    onClickHandler(id) {
+      this.$router.push({
+        name: 'list___' + this.$cookies.get('lang'),
+        query: {
+          category: id,
+        },
+      })
+    },
+  },
+}
 </script>
-
-<style>
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
-}
-</style>

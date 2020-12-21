@@ -2,6 +2,8 @@
   "name": "fabrica",
   "version": "1.0.0",
   "private": true,
+  "description": "fabrica awesome website",
+  "author": "ramtin heydarrezaei",
   "scripts": {
     "dev": "nuxt",
     "build": "nuxt build",
@@ -12,9 +14,31 @@
     "test": "jest"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.27",
+    "@fortawesome/free-solid-svg-icons": "^5.12.1",
+    "@fortawesome/vue-fontawesome": "^2.0.0",
     "@nuxtjs/axios": "^5.12.2",
+    "@nuxtjs/toast": "^3.3.0",
+    "cookie-universal-nuxt": "^2.1.4",
+    "cookieparser": "^0.1.0",
     "core-js": "^3.6.5",
-    "nuxt": "^2.14.6"
+    "flexboxgrid-sass": "^8.0.5",
+    "js-cookie": "^2.2.1",
+    "lodash": "^4.17.20",
+    "moment": "^2.24.0",
+    "moment-jalaali": "^0.9.2",
+    "node-sass": "^4.14.1",
+    "nuxt": "^2.14.6",
+    "nuxt-i18n": "^6.5.0",
+    "nuxt-mq": "^2.0.1",
+    "qs": "^6.9.4",
+    "sass-loader": "^8.0.2",
+    "swiper": "5.x",
+    "vee-validate": "^3.2.5",
+    "vue-awesome-swiper": "^4.1.1",
+    "vue-select": "^3.10.8",
+    "vue-slider-component": "^3.2.11",
+    "vuex": "latest"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^3.1.0",

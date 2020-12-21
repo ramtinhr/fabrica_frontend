@@ -1,0 +1,210 @@
+<template>
+  <TheModal :is-open.sync="isOpen" @close="closeModal()">
+    <div slot="body">
+      <div class="auth">
+        <div class="auth__mobile-img">
+          <img src="/images/smartphone.png" alt="smartphone" />
+        </div>
+        <ValidationObserver
+          v-show="step === 1"
+          ref="mobileNumberForm"
+          v-slot="{ passes }"
+          tag="div"
+        >
+          <form class="auth__steps" @submit.prevent="passes(loginInit)">
+            <span class="font-size-18 text-medium">
+              {{ $t('auth.enterYourMobileNumber') }}
+            </span>
+            <span class="text-dimLightGray text-center font-size-14">
+              {{ $t('auth.text') }}
+            </span>
+            <ValidationProvider
+              v-slot="{ errors }"
+              name="mobileNumber"
+              username="mobileNumber"
+              rules="required|max:10"
+            >
+              <div class="auth__phone-number-box">
+                <InputNumber
+                  v-model="mobileNumber"
+                  :name="'mobileNumber'"
+                  :max-lenght="10"
+                  :number-format="false"
+                  :placeholder="'9128333410'"
+                  :type="'tel'"
+                />
+                <label>98+</label>
+              </div>
+              <div>
+                <span v-if="errors[0]" class="text-danger font-size-14">
+                  {{ errors[0] }}
+                </span>
+              </div>
+            </ValidationProvider>
+            <button :disabled="isLoading" class="btn btn-fabrica m-t-30">
+              {{ $t('auth.sendCode') }}
+              <TheLoading v-if="isLoading" :color="'#fff'" :size="'22px'" />
+            </button>
+          </form>
+        </ValidationObserver>
+        <ValidationObserver
+          v-show="step === 2"
+          ref="otpForm"
+          v-slot="{ passes }"
+          tag="div"
+        >
+          <form class="auth__steps" @submit.prevent="passes(authenticate)">
+            <span class="font-size-18 text-medium">
+              {{ $t('auth.InitialRegistration') }}
+            </span>
+            <span class="text-dimLightGray text-center font-size-14">
+              {{ $t('auth.registerText') }}
+            </span>
+            <p
+              class="font-size-14 text-medium text-center text-yellow cursor-pointer"
+              @click="changeNumber"
+            >
+              {{ $t('auth.changePhoneNumber') }}
+            </p>
+            <div class="m-t-30">
+              <ValidationProvider
+                v-slot="{ errors }"
+                name="code"
+                username="code"
+                rules="required|max:4"
+              >
+                <OtpInput
+                  id="code"
+                  ref="otpInput"
+                  name="code"
+                  input-classes="otp-input"
+                  separator=""
+                  :num-inputs="4"
+                  :should-auto-focus="true"
+                  :is-input-num="true"
+                  @on-complete="onCompleteHandler"
+                />
+                <div>
+                  <span v-if="errors[0]" class="text-danger font-size-14">
+                    {{ errors[0] }}
+                  </span>
+                </div>
+              </ValidationProvider>
+            </div>
+            <div class="font-size-14 m-t-10 m-b-30">
+              <span>{{ $t('auth.dontReceiveCode') }}</span>
+              <span
+                class="text-dimLightGray font-size-12 cursor-pointer"
+                @click="loginInit"
+              >
+                {{ $t('auth.resendCode') }}
+              </span>
+            </div>
+            <button :disabled="isLoading" class="btn btn-fabrica p-h-45">
+              {{ $t('auth.login') }}
+              <TheLoading v-if="isLoading" :color="'#fff'" :size="'22px'" />
+            </button>
+          </form>
+        </ValidationObserver>
+      </div>
+    </div>
+  </TheModal>
+</template>
+
+<script>
+export default {
+  name: 'Auth',
+  props: {
+    isOpen: {
+      type: Boolean,
+      default: false,
+    },
+    isCreateButton: {
+      type: Boolean,
+      default: false,
+    },
+  },
+  data() {
+    return {
+      step: 1,
+      mobileNumber: null,
+      smsCode: null,
+      isLoading: false,
+      id: null,
+    }
+  },
+  watch: {
+    isOpen(val) {
+      if (!val) {
+        this.step = 1
+      }
+    },
+    smsCode(val) {
+      if (val && val.length === 4) {
+        this.authenticate()
+      }
+    },
+  },
+  methods: {
+    onCompleteHandler(value) {
+      this.smsCode = value
+    },
+    async loginInit() {
+      try {
+        this.isLoading = true
+        const response = await this.$store.dispatch('auth/loginInit', {
+          mobileNumber: `0${this.mobileNumber}`,
+        })
+        if (response.data.message.status === 200) {
+          this.id = response.data.data._id
+          this.step = 2
+        }
+        this.$message(response)
+      } catch (e) {
+        /*
+          because of unlikely api and 200 status code for requests
+          error handling will be fail and give a user bad UX
+         */
+      } finally {
+        this.isLoading = false
+      }
+    },
+    async authenticate() {
+      try {
+        this.isLoading = true
+        const response = await this.$store.dispatch('auth/authenticate', {
+          code: this.smsCode,
+          id: this.id,
+        })
+        this.$message(response)
+        if (response.data.message.status === 200) {
+          if (this.isCreateButton) {
+            await this.$router.push({
+              name: 'create-ad___' + this.$cookies.get('lang'),
+            })
+          } else {
+            await this.$router.push({
+              name: 'my-fabrica___' + this.$cookies.get('lang'),
+            })
+            this.closeModal()
+          }
+        }
+      } catch (e) {
+        /*
+         because of unlikely api and 200 status code for requests
+         error handling will be fail and give a user bad UX
+        */
+      } finally {
+        this.isLoading = false
+      }
+    },
+    changeNumber() {
+      this.step = 1
+      this.smsCode = null
+    },
+    closeModal() {
+      this.$emit('closeModal')
+    },
+  },
+}
+</script>
