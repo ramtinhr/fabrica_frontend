@@ -18,13 +18,7 @@
         </button>
       </div>
     </div>
-    <transition name="dropdown-sid-animation">
-      <AppDrawer
-        v-if="isOpen"
-        class="drop-down-sid"
-        @closeMenu="sidebarToggle"
-      />
-    </transition>
+    <BurgerMenu :is-open.sync="isOpen" @close="isOpen = false" />
   </header>
 </template>
 

@@ -86,3 +86,15 @@
 {
   opacity: 0;
 }
+
+.burger-slide-enter-active, .burger-slide-leave-active {
+  transition: transform .4s, opacity .45s;
+  transform: translateX(0);
+}
+
+.burger-slide-enter, .burger-slide-leave-to {
+  opacity: 0;
+  transform: translateX(50px);
+}
+
+

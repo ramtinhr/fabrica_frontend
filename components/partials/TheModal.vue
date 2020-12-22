@@ -58,10 +58,9 @@ export default {
     },
   },
   mounted() {
-    const vm = this
     window.addEventListener('keyup', (ev) => {
       if (ev.key === 'Escape') {
-        vm.close()
+        this.close()
       }
     })
     this.checkAndClose()

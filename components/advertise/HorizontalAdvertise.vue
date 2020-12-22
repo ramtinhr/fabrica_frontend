@@ -5,11 +5,6 @@
       name: 'single-id___' + $cookies.get('lang'),
       params: { id: advertise.id },
     }"
-    :class="
-      isList
-        ? 'col-xs-12 p-h-10 m-t-15 m-b-15 m-b-xs-30'
-        : 'col-md-3 col-sm-4 col-xs-12 p-h-10 m-b-xs-30'
-    "
     tag="div"
   >
     <div class="advertise__horizontal">
