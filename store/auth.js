@@ -57,6 +57,7 @@ export const actions = {
           localStorage.setItem('access_token', token)
           Cookie.set('token', token)
           commit('SET_TOKEN', token)
+          dispatch('fetchMe')
         })
         .catch((error) => {
           reject(error)
@@ -77,6 +78,9 @@ export const actions = {
           .then((response) => {
             const data = response.data.data
             commit('STORE_USER_INFO', data)
+            if (process.client) {
+              localStorage.setItem('id', data.id)
+            }
             resolve(response)
           })
           .catch((err) => {
