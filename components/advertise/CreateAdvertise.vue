@@ -189,7 +189,7 @@
                     <ul v-show="isOpen" class="category-dropdown">
                       <transition name="slide">
                         <li
-                          v-show="categoriesBackup.length > 0"
+                          v-show="categoriesBackup.length"
                           class="category-options"
                           @click="prevCat"
                         >
@@ -395,11 +395,10 @@ export default {
       this.isOpen = true
     },
     async selectCat(category, index) {
-      this.categoriesBackup.push(this.categories)
       if (!category.is_leaf) {
         this.categories[index].isLoading = true
         this.selectedCategories.push(category.id)
-        await this.getCategories(category.id)
+        await this.getCategories(category.id, null, true)
         this.categories[index].isLoading = false
       } else {
         this.selectedCategories.push(category.id)
@@ -433,7 +432,7 @@ export default {
         resourceName: 'states',
       })
     },
-    getCategories(id = null, q = null) {
+    getCategories(id = null, q = null, isBackup = false) {
       this.$store
         .dispatch('get', {
           url: '/categories',
@@ -446,6 +445,9 @@ export default {
           },
         })
         .then((resp) => {
+          if (isBackup) {
+            this.categoriesBackup.push(this.categories)
+          }
           this.categories = resp.data.data
         })
     },

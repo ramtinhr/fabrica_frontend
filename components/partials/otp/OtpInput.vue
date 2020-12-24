@@ -124,7 +124,7 @@ export default {
       this.focusNextInput()
     },
     clearInput() {
-      if (this.otp.length > 0) {
+      if (this.otp.length) {
         this.$emit('on-change', '')
       }
       this.otp = []

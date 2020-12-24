@@ -4,7 +4,7 @@
   </div>
   <div
     v-else-if="
-      !isLoading && ($mq === 'xs' || $mq === 'sm') && advertises.length > 0
+      !isLoading && ($mq === 'xs' || $mq === 'sm') && advertises.length
     "
     class="row"
   >
@@ -16,7 +16,7 @@
       <HorizontalAdvertise :advertise="advertise" />
     </div>
   </div>
-  <div v-else-if="advertises.length > 0" class="row hidden-xs">
+  <div v-else-if="advertises.length" class="row hidden-xs">
     <div
       v-for="advertise in advertises"
       :key="advertise.id"
@@ -42,6 +42,9 @@ export default {
   data() {
     return {
       isLoading: false,
+      page: 1,
+      limit: 20,
+      isDataLoading: false,
     }
   },
   computed: {
@@ -51,18 +54,50 @@ export default {
     },
   },
   created() {
-    this.getAdvertises()
+    this.getAdvertises(true)
+  },
+  mounted() {
+    this.lazyLoad()
   },
   methods: {
-    getAdvertises() {
-      this.isLoading = true
+    lazyLoad() {
+      const list = document.getElementById('my-fabrica__content')
+      if (list) {
+        window.onscroll = () => {
+          if (window.innerHeight + window.scrollY + 200 >= list.scrollHeight) {
+            if (this.advertises.length >= this.limit * this.page) {
+              this.page++
+              this.getAdvertises()
+            }
+          }
+        }
+      }
+    },
+    getAdvertises(isLoading) {
+      if (isLoading) {
+        this.isLoading = true
+      } else {
+        this.isDataLoading = true
+      }
       this.$store
         .dispatch('get', {
           url: '/ads/favorite',
+          config: {
+            params: {
+              limit: this.limit,
+              page: this.page,
+            },
+          },
           storeName: 'myFabrica',
           resourceName: 'bookmarked',
         })
-        .then(() => (this.isLoading = false))
+        .then(() => {
+          if (isLoading) {
+            this.isLoading = false
+          } else {
+            this.isDataLoading = false
+          }
+        })
     },
   },
 }

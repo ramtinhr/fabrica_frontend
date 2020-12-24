@@ -58,10 +58,12 @@
     font-size: 14px;
     color: $dimLightGray;
     line-height: 1;
+    margin-top: 0;
 
     &:focus {
       font-size: 14px;
       line-height: 1;
+      margin-top: 0;
     }
   }
 

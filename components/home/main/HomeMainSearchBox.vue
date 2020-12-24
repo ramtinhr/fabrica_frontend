@@ -34,7 +34,7 @@ export default {
     ...mapGetters([
       'getSelectedState',
       'getSelectedCategory',
-      'getSelectedSubCategory',
+      'getSelectedSubCategories',
       'getSelectedCity',
       'getSelectedOrder',
     ]),
@@ -53,7 +53,10 @@ export default {
           category: this.getSelectedCategory || null,
           city: this.getSelectedCity || null,
           order: this.getSelectedOrder || null,
-          subCategory: this.getSelectedSubCategory || null,
+          subCategories:
+            this.getSelectedSubCategories.length > 1
+              ? this.getSelectedSubCategories.join(',')
+              : this.getSelectedSubCategories[0],
           q: this.searchString,
         },
       })

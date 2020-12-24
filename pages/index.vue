@@ -25,7 +25,7 @@
 export default {
   name: 'HomePage',
   async asyncData({ store }) {
-    if (store.getters.getResource('home', 'categories').length === 0) {
+    if (!store.getters.getResource('home', 'categories').length) {
       await store.dispatch('get', {
         storeName: 'home',
         resourceName: 'categories',
@@ -33,7 +33,7 @@ export default {
         config: { params: { section: 'home' } },
       })
     }
-    if (store.getters.getResource('home', 'states').length === 0) {
+    if (!store.getters.getResource('home', 'states').length) {
       await store.dispatch('get', {
         url: '/cities/state',
         storeName: 'home',

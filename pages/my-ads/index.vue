@@ -7,7 +7,7 @@
       </div>
       <div
         v-else-if="
-          !isLoading && ($mq === 'xs' || $mq === 'sm') && advertises.length > 0
+          !isLoading && ($mq === 'xs' || $mq === 'sm') && advertises.length
         "
         class="row p-t-60 p-b-45"
       >
@@ -39,10 +39,7 @@
           <HorizontalAdvertise :advertise="advertise" />
         </div>
       </div>
-      <div
-        v-else-if="advertises.length > 0"
-        class="row p-t-60 p-b-45 hidden-xs"
-      >
+      <div v-else-if="advertises.length" class="row p-t-60 p-b-45 hidden-xs">
         <div class="col-md-3 col-xs-4 col-xs-12">
           <TheSidebar>
             <div slot="head">
@@ -93,6 +90,7 @@
 import { mapGetters } from 'vuex'
 export default {
   name: 'MyAdvertises',
+  middleware: 'auth',
   data() {
     return {
       user: null,
@@ -122,7 +120,7 @@ export default {
     this.getAdvertises()
   },
   updated() {
-    if (this.advertises.length === 0) {
+    if (!this.advertises.length) {
       document.body.style.paddingRight = '0'
     }
   },

@@ -1,10 +1,7 @@
 <template>
   <div>
     <TheHeader class="hidden-xs" />
-    <MobileHeader
-      v-if="$mq === 'xs' || $mq === 'sm'"
-      class="hidden-lg hidden-md hidden-sm"
-    />
+    <MobileHeader v-if="$mq === 'xs' || $mq === 'sm'" />
     <Nuxt />
     <TheFooter />
   </div>

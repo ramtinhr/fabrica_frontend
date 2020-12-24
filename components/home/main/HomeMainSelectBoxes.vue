@@ -2,21 +2,14 @@
   <div class="home__main-select-boxes">
     <div class="row">
       <div class="col-md-3 col-sm-6 col-xs-12 m-b-xs-15 m-b-sm-15">
-        <v-select
-          v-model="selectedSubCategory"
-          :options="categories"
-          :placeholder="$t('home.selectSubCategory')"
-          label="title"
-          dir="rtl"
-        >
-          <span slot="no-options">
-            {{
-              selectedCategory
-                ? $t('noResultFound')
-                : $t('home.selectMainCategoryFirst')
-            }}
-          </span>
-        </v-select>
+        <CategoriesSelectBox
+          :categories="categories"
+          :selected-categories="selectedCategories"
+          :categories-backup="categoriesBackup"
+          @search="search"
+          @selectCat="selectCat"
+          @prevCat="prevCat"
+        />
       </div>
       <div class="col-md-3 col-sm-6 col-xs-12 m-b-xs-15 m-b-sm-15">
         <v-select
@@ -59,13 +52,16 @@
 </template>
 <script>
 import { mapGetters } from 'vuex'
+
 export default {
   name: 'HomeMainSelectBoxes',
   data() {
     return {
-      selectedSubCategory: null,
       selectedOrder: null,
       selectedCity: null,
+      searchString: null,
+      categoriesBackup: [],
+      selectedCategories: [],
       orderBy: [
         {
           title: 'صعودی قیمت',
@@ -120,11 +116,6 @@ export default {
     },
   },
   watch: {
-    selectedSubCategory(val) {
-      if (val) {
-        this.$store.commit('SELECT_SUBCATEGORY', { subCategory: val.id })
-      }
-    },
     selectedCity(val) {
       if (val) {
         this.$store.commit('SELECT_CITY', { city: val._id })
@@ -145,6 +136,62 @@ export default {
       storeName: 'home',
       resourceName: 'cities',
     })
+  },
+  methods: {
+    search() {
+      this.getCategories(null, this.searchString)
+    },
+    async selectCat(category, index) {
+      if (!category.is_leaf) {
+        this.categories[index].isLoading = true
+        this.selectedCategories.push(category.id)
+        await this.getCategories(category.id, null, true)
+        this.categories[index].isLoading = false
+      } else {
+        if (
+          this.selectedCategories.length ===
+          this.categoriesBackup.length + 1
+        ) {
+          this.selectedCategories.pop()
+        }
+        this.selectedCategories.push(category.id)
+      }
+      this.$store.commit('SELECT_SUBCATEGORY', {
+        subCategory: this.selectedCategories,
+      })
+    },
+    getCategories(id = null, q = null, isBackup = false) {
+      this.$store
+        .dispatch('get', {
+          url: '/categories',
+          config: {
+            params: {
+              parent_id: id || null,
+              section: id ? null : 'home',
+              q: q || null,
+            },
+          },
+        })
+        .then((resp) => {
+          if (isBackup) {
+            this.categoriesBackup.push(this.categories)
+          }
+          this.$store.dispatch('fill', {
+            storeName: 'home',
+            resourceName: 'subCategories',
+            data: resp.data.data,
+          })
+        })
+    },
+    prevCat() {
+      this.selectedCategories.pop()
+      this.$store.dispatch('fill', {
+        storeName: 'home',
+        resourceName: 'subCategories',
+        data: this.categoriesBackup[this.categoriesBackup.length - 1],
+      })
+      this.categoriesBackup.pop()
+    },
   },
 }
 </script>

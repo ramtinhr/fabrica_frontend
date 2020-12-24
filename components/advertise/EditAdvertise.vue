@@ -189,7 +189,7 @@
                     <ul v-show="isOpen" class="category-dropdown">
                       <transition name="slide">
                         <li
-                          v-show="categoriesBackup.length > 0"
+                          v-show="categoriesBackup.length"
                           class="category-options"
                           @click="prevCat"
                         >
@@ -415,7 +415,7 @@ export default {
         this.selectedCategory = this.advertise.categories[
           this.advertise.categories.length - 1
         ]
-        if (this.advertise.images.length > 0) {
+        if (this.advertise.images.length) {
           this.advertise.images.forEach((img, i) => {
             this.images.push({
               url: this.advertise.image_urls[i],
@@ -509,7 +509,7 @@ export default {
       }, 600)
     },
     editAd() {
-      if (this.selectedCategories.length === 0) {
+      if (!this.selectedCategories.length) {
         this.advertise.categories.forEach((category) => {
           this.selectedCategories.push(category.id)
         })

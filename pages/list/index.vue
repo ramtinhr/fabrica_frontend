@@ -22,7 +22,7 @@ export default {
       ids.push(query.category)
     }
     if (query.subCategory) {
-      ids.push(query.subCategory)
+      ids.push(query.subCategories)
     }
     const params = {
       limit: store.getters.getLimit('list'),

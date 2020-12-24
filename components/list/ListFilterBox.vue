@@ -163,7 +163,7 @@ export default {
   methods: {
     checkForQuery() {
       const category = this.$route.query.category
-      if (category && this.categories.length > 0) {
+      if (category && this.categories.length) {
         this.selectedCategory = this.categories.find(
           (cat) => cat.id === category
         )
@@ -194,7 +194,8 @@ export default {
           if (this.$route.query.subCategory) {
             this.selectedSubCategory =
               this.subCategories.find(
-                (category) => category.id === this.$route.query.subCategory
+                (category) =>
+                  category.id === this.$route.query.subCategories.split(',')[0]
               ) || null
           }
         })

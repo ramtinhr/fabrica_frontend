@@ -23,7 +23,7 @@
               {{ $t('header.latestAdvertises') }}
             </nuxt-link>
           </li>
-          <li>
+          <li v-if="isAuthenticated || clientSideIsAuthenticated">
             <nuxt-link :to="{ name: 'my-ads___' + $cookies.get('lang') }">
               <i class="o-icon o-folder-user m-l-5"></i>
               {{ $t('header.myAdvertises') }}

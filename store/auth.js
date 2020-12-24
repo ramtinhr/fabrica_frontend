@@ -64,7 +64,10 @@ export const actions = {
     })
   },
   fetchMe({ commit, state }) {
-    if (!state.resource || state.resource.length === 0) {
+    if (
+      !state.resource ||
+      (Array.isArray(state.resource) && !state.resource.length)
+    ) {
       return new Promise((resolve, reject) => {
         if (process.client) {
           this.$axios.setToken(localStorage.getItem('access_token'), 'Bearer')

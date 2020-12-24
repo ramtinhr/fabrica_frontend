@@ -2,7 +2,7 @@
   <div v-if="isLoading" class="my-fabrica__loading">
     <TheLoading :color="'#707070'" :size="'60px'" />
   </div>
-  <div v-else-if="chats.length > 0" class="chat">
+  <div v-else-if="chats.length" class="chat">
     <ChatListTile v-for="chat in chats" :key="chat._id" :chat="chat" />
   </div>
   <div v-else class="row">

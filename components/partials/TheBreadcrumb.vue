@@ -20,7 +20,11 @@
               :class="nav.color ? `text-${nav.color}` : ''"
               tag="a"
             >
-              {{ $strLimit(nav.title, 12) }}
+              {{
+                index === navs.length - 1
+                  ? $strLimit(nav.title, 12)
+                  : $strLimit(nav.title, 18)
+              }}
             </nuxt-link>
           </mq-layout>
         </li>
