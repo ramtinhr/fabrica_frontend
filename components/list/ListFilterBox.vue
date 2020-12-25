@@ -191,7 +191,7 @@ export default {
         })
         .then((resp) => {
           this.subCategories = resp.data.data
-          if (this.$route.query.subCategory) {
+          if (this.$route.query.subCategories) {
             this.selectedSubCategory =
               this.subCategories.find(
                 (category) =>

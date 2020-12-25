@@ -2,7 +2,7 @@
   <div class="terms">
     <div class="top-bg">
       <div class="fabrica-container">
-        <h2 class="text-dimGray">{{ $t('termsAndConditions') }}</h2>
+        <h2 class="text-white">{{ $t('termsAndConditions') }}</h2>
       </div>
     </div>
     <div class="fabrica-container">

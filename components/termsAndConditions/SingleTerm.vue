@@ -6,10 +6,12 @@
       </span>
       <i class="o-icon" :class="isOpen ? 'o-minimal-up' : 'o-minimal-down'"></i>
     </div>
-    <transition name="fade">
+    <transition name="slide">
       <div v-show="isOpen" class="term-rule-desc">
         <div class="divider" />
-        <p class="text-medium font-size-16" v-html="ruleDesc" />
+        <transition name="fade">
+          <p class="text-medium font-size-16" v-html="ruleDesc" />
+        </transition>
       </div>
     </transition>
   </div>

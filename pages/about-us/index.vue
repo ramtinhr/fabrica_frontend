@@ -2,7 +2,7 @@
   <div class="about-us">
     <div class="top-bg">
       <div class="fabrica-container">
-        <h2 class="text-dimGray">{{ $t('aboutUs') }}</h2>
+        <h2 class="text-white">{{ $t('aboutUs') }}</h2>
       </div>
     </div>
     <div class="fabrica-container">
