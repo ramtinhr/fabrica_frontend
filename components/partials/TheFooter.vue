@@ -90,6 +90,14 @@
                 />
                 <i class="o-icon o-email-83 footer__top-email-btn"></i>
               </div>
+              <div class="footer__top-app">
+                <a href="https://cafebazaar.ir/app/com.fabrika">
+                  <img class="m-l-5" src="/images/cafebazaar.svg" alt="بازار" />
+                </a>
+                <a href="https://sibapp.com/applications/fabrica">
+                  <img class="m-r-5" src="/images/sibapp.svg" alt="سیب اپ" />
+                </a>
+              </div>
             </div>
           </div>
         </div>
