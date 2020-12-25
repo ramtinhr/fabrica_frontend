@@ -9,8 +9,21 @@
                 {{ $t('footer.quickAccess') }}
               </span>
               <ul class="footer__top-quick-access">
-                <li>{{ $t('aboutUs') }}</li>
-                <li>{{ $t('termsAndConditions') }}</li>
+                <li>
+                  <nuxt-link
+                    :to="{ name: 'about-us___' + $cookies.get('lang') }"
+                    tag="a"
+                    >{{ $t('aboutUs') }}
+                  </nuxt-link>
+                </li>
+                <li>
+                  <nuxt-link
+                    :to="{ name: 'terms___' + $cookies.get('lang') }"
+                    tag="a"
+                  >
+                    {{ $t('termsAndConditions') }}
+                  </nuxt-link>
+                </li>
               </ul>
             </div>
           </div>

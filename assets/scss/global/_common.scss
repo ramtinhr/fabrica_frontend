@@ -516,6 +516,12 @@ select:-webkit-autofill:focus {
   align-items: center;
 }
 
+.about-us {
+  & p {
+    line-height: 2.5;
+  }
+}
+
 .disable {
   * {
     opacity: 0.8;

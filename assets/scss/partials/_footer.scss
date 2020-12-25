@@ -8,6 +8,12 @@
         display: flex;
         margin-bottom: 15px;
         color: #fff;
+        & a {
+          color: #fff;
+          &:hover {
+            color: $primaryColor;
+          }
+        }
         &:hover {
           color: $primaryColor;
         }

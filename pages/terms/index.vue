@@ -1,10 +1,8 @@
 <template>
-  <div>
+  <div class="terms">
     <div class="top-bg">
       <div class="fabrica-container">
-        <div class="p-r-30">
-          <h2 class="text-dimGray">{{ $t('termsAndConditions') }}</h2>
-        </div>
+        <h2 class="text-dimGray">{{ $t('termsAndConditions') }}</h2>
       </div>
     </div>
     <div class="fabrica-container">
