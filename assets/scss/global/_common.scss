@@ -390,8 +390,8 @@ button {
   color: $lightOrangeYellow !important;
 }
 
-.text-darkBlack {
-  color: $darkBlack !important;
+.text-black {
+  color: $black !important;
 }
 
 .border-left-black {
@@ -507,6 +507,14 @@ select:-webkit-autofill:focus {
   padding: 0;
 }
 
+.top-bg {
+  background: url("/images/background.jpg") no-repeat;
+  background-size: cover;
+  min-height: 250px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
 
 .disable {
   * {
@@ -999,7 +1007,7 @@ input:invalid {
 }
 
 .btn-darkBlack {
-  background: $darkBlack;
+  background: $black;
   color: white;
 }
 

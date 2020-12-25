@@ -105,7 +105,7 @@
   }
 
   &-orangeYellow {
-    @include button($orangeYellow, $darkBlack, $orangeYellow);
+    @include button($orangeYellow, $black, $orangeYellow);
     border: none;
     background-image: linear-gradient(180deg, #FFE251 0%, #EDC423 100%);
   }
@@ -179,8 +179,8 @@
   }
 
   &-outline-orangeYellow:hover {
-    border-color: $darkBlack !important;
-    color: $darkBlack !important;
+    border-color: $black !important;
+    color: $black !important;
   }
 
   &-outline-dark {

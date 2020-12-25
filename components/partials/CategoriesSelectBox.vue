@@ -4,6 +4,11 @@
       id="category"
       v-model="searchString"
       class="category-input"
+      :class="
+        selectedCategory && selectedCategory.title
+          ? 'text-black'
+          : 'text-dimLightGray'
+      "
       :placeholder="
         selectedCategory ? selectedCategory.title : $t('list.selectCategory')
       "
@@ -23,12 +28,18 @@
             {{ $t('lastStep') }}
             <i class="o-icon o-minimal-right"></i>
           </li>
-          <li v-if="!categories.length" class="category-options">
+          <li v-if="!categories.length && !isLoading" class="category-options">
             {{ $t('home.selectMainCategoryFirst') }}
           </li>
           <li
+            v-if="isLoading"
+            class="display-flex justify-content-center align-center"
+          >
+            <TheLoading :color="'#f2c200'" :size="'36px'" />
+          </li>
+          <li
             v-for="(category, index) in categories"
-            v-else
+            v-else-if="!isLoading"
             :key="category.id"
             class="category-options"
             @click="selectCat(category, index)"
@@ -38,11 +49,6 @@
               v-if="!category.is_leaf && !category.isLoading"
               class="o-icon o-minimal-left"
             ></i>
-            <TheLoading
-              v-if="category.isLoading"
-              :color="'#f2c200'"
-              :size="'18px'"
-            />
           </li>
         </ul>
       </transition>
@@ -61,6 +67,10 @@ export default {
     selectedCategories: {
       type: Array,
       default: null,
+    },
+    isLoading: {
+      type: Boolean,
+      default: false,
     },
     categoriesBackup: {
       type: Array,

@@ -6,6 +6,7 @@
           :categories="categories"
           :selected-categories="selectedCategories"
           :categories-backup="categoriesBackup"
+          :is-loading="isLoading"
           @search="search"
           @selectCat="selectCat"
           @prevCat="prevCat"
@@ -62,6 +63,7 @@ export default {
       searchString: null,
       categoriesBackup: [],
       selectedCategories: [],
+      isLoading: false,
       orderBy: [
         {
           title: 'صعودی قیمت',
@@ -143,10 +145,8 @@ export default {
     },
     async selectCat(category, index) {
       if (!category.is_leaf) {
-        this.categories[index].isLoading = true
         this.selectedCategories.push(category.id)
         await this.getCategories(category.id, null, true)
-        this.categories[index].isLoading = false
       } else {
         if (
           this.selectedCategories.length ===
@@ -161,6 +161,7 @@ export default {
       })
     },
     getCategories(id = null, q = null, isBackup = false) {
+      this.isLoading = true
       this.$store
         .dispatch('get', {
           url: '/categories',
@@ -181,6 +182,7 @@ export default {
             resourceName: 'subCategories',
             data: resp.data.data,
           })
+          this.isLoading = false
         })
     },
     prevCat() {

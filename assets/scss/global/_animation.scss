@@ -51,10 +51,10 @@
   -webkit-transition-duration: 0.3s;
   -o-transition-duration: 0.3s;
   transition-duration: 0.3s;
-  -moz-transition-timing-function: ease-in;
-  -webkit-transition-timing-function: ease-in;
-  -o-transition-timing-function: ease-in;
-  transition-timing-function: ease-in;
+  -moz-transition-timing-function: ease;
+  -webkit-transition-timing-function: ease;
+  -o-transition-timing-function: ease;
+  transition-timing-function: ease;
 }
 
 .slide-leave-active {
@@ -62,10 +62,10 @@
   -webkit-transition-duration: 0.3s;
   -o-transition-duration: 0.3s;
   transition-duration: 0.3s;
-  -moz-transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
-  -webkit-transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
-  -o-transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
-  transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+  -moz-transition-timing-function: ease;
+  -webkit-transition-timing-function: ease;
+  -o-transition-timing-function: ease;
+  transition-timing-function: ease;
 }
 
 .slide-enter-to, .slide-leave {

@@ -65,7 +65,7 @@
           >
             {{ $t('advertise.sendMessage') }}
           </button>
-          <div v-else class="display-flex m-b-0">
+          <div v-else-if="is_user_ad" class="display-flex m-b-0">
             <button
               class="btn btn-danger m-l-5"
               @click="isOpenDeleteModal = true"
