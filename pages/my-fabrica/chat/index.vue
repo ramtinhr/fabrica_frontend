@@ -48,7 +48,7 @@ export default {
       if (list) {
         window.onscroll = () => {
           if (window.innerHeight + window.scrollY + 200 >= list.scrollHeight) {
-            if (this.advertises.length >= this.limit * this.page) {
+            if (this.chats.length >= this.limit * this.page) {
               this.page++
               this.isDataLoading = true
               this.$store

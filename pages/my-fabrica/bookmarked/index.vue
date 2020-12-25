@@ -68,7 +68,7 @@ export default {
   methods: {
     lazyLoad() {
       const list = document.getElementById('my-fabrica-content')
-      if (list) {
+      if (list && this.advertises) {
         window.onscroll = () => {
           if (window.innerHeight + window.scrollY + 200 >= list.scrollHeight) {
             if (this.advertises.length >= this.limit * this.page) {
