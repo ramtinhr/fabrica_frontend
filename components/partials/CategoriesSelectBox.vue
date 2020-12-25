@@ -33,7 +33,7 @@
           </li>
           <li
             v-if="isLoading"
-            class="display-flex justify-content-center align-center"
+            class="display-flex justify-content-center align-center p-v-20"
           >
             <TheLoading :color="'#f2c200'" :size="'36px'" />
           </li>
