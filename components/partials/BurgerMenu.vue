@@ -29,7 +29,7 @@
               {{ $t('header.myAdvertises') }}
             </nuxt-link>
           </li>
-          <li @click="onClickHandler">
+          <li class="cursor-pointer" @click="onClickHandler">
             <i class="o-icon o-single-01 m-l-5"></i>
             <span v-if="isAuthenticated || clientSideIsAuthenticated">
               {{ $t('header.myFabrica') }}
@@ -41,11 +41,6 @@
         </ul>
       </div>
     </transition>
-    <TheAuth
-      :is-open.sync="isOpenModal"
-      :is-create-button="false"
-      @closeModal="isOpenModal = false"
-    />
   </div>
 </template>
 
@@ -86,6 +81,12 @@ export default {
     },
   },
   mounted() {
+    const modal = document.getElementById('modal')
+    window.onclick = (e) => {
+      if (e.target === modal) {
+        this.close()
+      }
+    }
     this.checkAndClose()
   },
   updated() {
@@ -103,6 +104,7 @@ export default {
     onClickHandler() {
       if (!this.isAuthenticated && !this.clientSideIsAuthenticated) {
         this.isOpenModal = true
+        this.$emit('openAuthModal', this.isOpenModal)
       } else {
         this.$router.push({ name: 'my-fabrica___' + this.$cookies.get('lang') })
       }

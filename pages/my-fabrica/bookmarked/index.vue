@@ -6,6 +6,7 @@
     v-else-if="
       !isLoading && ($mq === 'xs' || $mq === 'sm') && advertises.length
     "
+    id="MobileList"
     class="row"
   >
     <div
@@ -16,13 +17,18 @@
       <HorizontalAdvertise :advertise="advertise" />
     </div>
   </div>
-  <div v-else-if="advertises.length" class="row hidden-xs">
+  <div v-else-if="advertises.length" id="list" class="row hidden-xs">
     <div
       v-for="advertise in advertises"
       :key="advertise.id"
       class="col-md-4 col-sm-6 col-xs-12 p-h-10 m-t-15 m-b-15 m-b-xs-30"
     >
       <VerticalAdvertise :advertise="advertise" />
+    </div>
+    <div class="col-xs-12">
+      <div v-if="isDataLoading" class="text-center">
+        <TheLoading :color="'#707070'" :size="'40px'" />
+      </div>
     </div>
   </div>
   <div v-else class="row">
@@ -53,32 +59,46 @@ export default {
       return this.getResource('myFabrica', 'bookmarked')
     },
   },
-  created() {
-    this.getAdvertises(true)
+  async created() {
+    await this.getAdvertises()
   },
-  mounted() {
+  updated() {
     this.lazyLoad()
   },
   methods: {
     lazyLoad() {
-      const list = document.getElementById('my-fabrica__content')
+      const list = document.getElementById('my-fabrica-content')
       if (list) {
         window.onscroll = () => {
           if (window.innerHeight + window.scrollY + 200 >= list.scrollHeight) {
             if (this.advertises.length >= this.limit * this.page) {
               this.page++
-              this.getAdvertises()
+              this.isDataLoading = true
+              this.$store
+                .dispatch('get', {
+                  url: '/ads/favorite',
+                  config: {
+                    params: {
+                      limit: this.limit,
+                      page: this.page,
+                    },
+                  },
+                })
+                .then((resp) => {
+                  this.$store.dispatch('add', {
+                    storeName: 'myFabrica',
+                    resourceName: 'bookmarked',
+                    data: resp.data.data,
+                  })
+                  this.isDataLoading = false
+                })
             }
           }
         }
       }
     },
-    getAdvertises(isLoading) {
-      if (isLoading) {
-        this.isLoading = true
-      } else {
-        this.isDataLoading = true
-      }
+    getAdvertises() {
+      this.isLoading = true
       this.$store
         .dispatch('get', {
           url: '/ads/favorite',
@@ -92,11 +112,7 @@ export default {
           resourceName: 'bookmarked',
         })
         .then(() => {
-          if (isLoading) {
-            this.isLoading = false
-          } else {
-            this.isDataLoading = false
-          }
+          this.isLoading = false
         })
     },
   },

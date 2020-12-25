@@ -13,12 +13,22 @@
         </div>
         <button
           class="btn btn-outline-fabrica border-radius-30 font-size-14 p-v-5 p-h-10"
+          @click="onClickHandler"
         >
           {{ $t('header.advertisementRegistration') }}
         </button>
       </div>
     </div>
-    <BurgerMenu :is-open.sync="isOpen" @close="isOpen = false" />
+    <BurgerMenu
+      :is-open.sync="isOpen"
+      @close="isOpen = false"
+      @openAuthModal="burgerMenuClickHandler"
+    />
+    <TheAuth
+      :is-open.sync="isOpenAuthModal"
+      :is-create-button="false"
+      @closeModal="isOpenAuthModal = false"
+    />
   </header>
 </template>
 
@@ -28,9 +38,24 @@ export default {
   data() {
     return {
       isOpen: false,
+      isCreateButton: false,
+      isOpenAuthModal: false,
     }
   },
   methods: {
+    burgerMenuClickHandler(isOpen) {
+      this.isOpenAuthModal = isOpen
+    },
+    onClickHandler() {
+      if (!this.isAuthenticated && !this.clientSideIsAuthenticated) {
+        this.isCreateButton = true
+        this.isOpenAuthModal = true
+      } else {
+        this.$router.push({
+          name: 'create-ad___' + this.$cookies.get('lang'),
+        })
+      }
+    },
     sidebarToggle() {
       this.isOpen = !this.isOpen
     },

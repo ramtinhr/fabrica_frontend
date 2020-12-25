@@ -68,14 +68,10 @@
           <VerticalAdvertise
             :advertise="advertise"
             :is-user-ad="true"
-            @openDeleteAdModal="openDeleteAdModal"
-          />
-          <AdvertiseDeleteModal
-            :id="advertise.id"
-            :is-open="isOpen"
-            :is-loading="deleteModalIsLoading"
-            @closeModal="isOpen = false"
-            @deleteAd="deleteAdvertise(advertise.id)"
+            :is-open.sync="isOpen"
+            :delete-modal-is-loading="deleteModalIsLoading"
+            @openDeleteAdModal="isOpen = !isOpen"
+            @deleteAd="deleteAdvertise"
           />
         </div>
       </div>
@@ -96,7 +92,6 @@ export default {
       user: null,
       isLoading: false,
       deleteModalIsLoading: false,
-      isOpen: false,
       navs: [
         {
           title: this.$t('header.mainPage'),
@@ -119,11 +114,6 @@ export default {
   created() {
     this.getAdvertises()
   },
-  updated() {
-    if (!this.advertises.length) {
-      document.body.style.paddingRight = '0'
-    }
-  },
   methods: {
     getAdvertises() {
       this.isLoading = true
@@ -142,9 +132,6 @@ export default {
         this.$store.commit('myAds/REMOVE_ADD', { id })
         this.$toast.success('آگهی با موفقیت حذف شد')
       })
-    },
-    openDeleteAdModal(isOpen) {
-      this.isOpen = isOpen
     },
     getUserInfo() {
       this.$store.dispatch('get', { url: '/users/me' }).then((resp) => {

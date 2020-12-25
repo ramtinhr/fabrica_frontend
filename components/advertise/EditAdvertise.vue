@@ -44,7 +44,6 @@
                   :max-lenght="18"
                   :placeholder="$t('advertise.price')"
                   :name="'price'"
-                  :type="'number'"
                   :number-format="false"
                 />
                 <span class="text-danger font-size-12">
@@ -176,6 +175,7 @@
                   :selected-categories="selectedCategories"
                   :categories-backup="categoriesBackup"
                   :is-loading="isCategoriesLoading"
+                  :selected-cat="selectedCategory"
                   @search="search"
                   @selectCat="selectCat"
                   @prevCat="prevCat"
@@ -193,7 +193,7 @@
                     <input
                       type="checkbox"
                       :checked="advertise.is_price_suggestion_enabled"
-                      @click="
+                      @change="
                         advertise.is_price_suggestion_enabled = !advertise.is_price_suggestion_enabled
                       "
                     />
@@ -380,7 +380,14 @@ export default {
         this.selectedCategories.push(category.id)
         await this.getCategories(category.id, null, true)
       } else {
+        if (
+          this.selectedCategories.length ===
+          this.categoriesBackup.length + 1
+        ) {
+          this.selectedCategories.pop()
+        }
         this.selectedCategories.push(category.id)
+        this.selectedCategory = category
         this.isOpen = false
       }
     },
@@ -464,6 +471,7 @@ export default {
         city_id: this.selectedCity._id,
         is_price_suggestion_enabled: this.advertise.is_price_suggestion_enabled,
       }
+      console.log(data)
       this.isLoading = true
       this.$store
         .dispatch('put', { url: `/ads/${this.$route.params.id}`, data })

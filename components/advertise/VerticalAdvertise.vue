@@ -1,7 +1,7 @@
 <template>
   <div v-if="advertise">
     <div v-if="isUserAd" class="advertise__vertical-action-box">
-      <i class="o-icon o-simple-remove" @click="openDeleteAdModal"></i>
+      <i class="o-icon o-simple-remove" @click="isOpen = !isOpen"></i>
       <nuxt-link
         :to="{
           name: 'edit-ad-id___' + this.$cookies.get('lang'),
@@ -76,6 +76,13 @@
         </div>
       </div>
     </div>
+    <AdvertiseDeleteModal
+      :id="advertise.id"
+      :is-open.sync="isOpen"
+      :is-loading="deleteModalIsLoading"
+      @closeModal="isOpen = false"
+      @deleteAd="deleteAd(advertise.id)"
+    />
   </div>
 </template>
 
@@ -83,6 +90,14 @@
 export default {
   name: 'VerticalAdvertise',
   props: {
+    deleteModalIsLoading: {
+      type: Boolean,
+      default: false,
+    },
+    isOpen: {
+      type: Boolean,
+      default: false,
+    },
     isList: {
       type: Boolean,
       default: false,
@@ -105,9 +120,8 @@ export default {
     onLoaded() {
       this.isLoaded = true
     },
-    openDeleteAdModal() {
-      const isOpen = true
-      this.$emit('openDeleteAdModal', isOpen)
+    deleteAd(id) {
+      this.$emit('deleteAd', id)
     },
     onClickHandler() {
       this.$router.push({

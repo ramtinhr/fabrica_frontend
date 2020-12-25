@@ -10,7 +10,11 @@
           : 'text-dimLightGray'
       "
       :placeholder="
-        selectedCategory ? selectedCategory.title : $t('list.selectCategory')
+        selectedCategory
+          ? selectedCategory.title
+          : selectedCat && !selectedCategory
+          ? selectedCat.title
+          : $t('list.selectCategory')
       "
       type="text"
       @keypress="onKeypressHandler($event)"
@@ -62,6 +66,10 @@ export default {
   props: {
     categories: {
       type: Array,
+      default: null,
+    },
+    selectedCat: {
+      type: Object,
       default: null,
     },
     selectedCategories: {

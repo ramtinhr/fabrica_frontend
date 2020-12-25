@@ -9,13 +9,6 @@
           <div class="modal-container">
             <div class="modal-head">
               <slot name="head" class="pull-right display-inline-block" />
-              <span class="close">
-                <!--                <font-awesome-icon-->
-                <!--                  :icon="['fas', 'times']"-->
-                <!--                  class="btn-close"-->
-                <!--                  @click="close"-->
-                <!--                />-->
-              </span>
             </div>
             <div class="body">
               <slot name="body" />
@@ -43,12 +36,18 @@ export default {
         document.body.style.overflow = 'hidden'
         if (navigator.userAgent.toLowerCase().includes('firefox')) {
           document.body.style.paddingRight = '12px'
+          document.body.classList.add('p-r-xs-0')
         } else {
-          document.body.style.paddingRight = '15px'
+          document.body.classList.add('p-r-15', 'p-r-xs-0')
         }
       } else {
         document.body.style.overflow = 'auto'
-        document.body.style.paddingRight = '0'
+        if (navigator.userAgent.toLowerCase().includes('firefox')) {
+          document.body.style.paddingRight = '0'
+          document.body.classList.remove('p-r-xs-0')
+        } else {
+          document.body.classList.remove('p-r-15', 'p-r-xs-0')
+        }
       }
     },
     $route() {
@@ -69,6 +68,12 @@ export default {
     this.checkAndClose()
   },
   beforeDestroy() {
+    if (navigator.userAgent.toLowerCase().includes('firefox')) {
+      document.body.style.paddingRight = '0'
+      document.body.classList.remove('p-r-xs-0')
+    } else {
+      document.body.classList.remove('p-r-15', 'p-r-xs-0')
+    }
     document.body.style.overflow = 'auto'
   },
   methods: {
