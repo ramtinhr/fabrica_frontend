@@ -27,14 +27,7 @@
               </ValidationProvider>
             </div>
             <div class="col-md-4 col-sm-6 col-xs-12">
-              <ValidationProvider
-                v-slot="{ errors }"
-                name="price"
-                username="price"
-                rules="required"
-                tag="div"
-                class="form-group"
-              >
+              <div class="form-group">
                 <label for="price"
                   >{{ $t('advertise.price') }} ({{ $t('toman') }})
                 </label>
@@ -44,12 +37,9 @@
                   :max-lenght="18"
                   :placeholder="$t('advertise.price')"
                   :name="'price'"
-                  :number-format="false"
+                  :number-format="true"
                 />
-                <span class="text-danger font-size-12">
-                  {{ errors[0] }}
-                </span>
-              </ValidationProvider>
+              </div>
             </div>
             <div class="col-md-4 col-sm-6 col-xs-12">
               <ValidationProvider
