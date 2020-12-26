@@ -70,7 +70,7 @@
       </div>
     </div>
     <TheAuth
-      :is-open="isOpen"
+      :is-open.sync="isOpen"
       :is-create-button="isCreateButton"
       @closeModal="isOpen = false"
     />

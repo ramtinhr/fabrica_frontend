@@ -1,7 +1,10 @@
 <template>
   <div class="home__second-content">
     <div class="home__second-content-img hidden-xs hidden-sm"></div>
-    <div class="fabrica-container">
+    <div v-if="isLoading" class="home__loading">
+      <TheLoading :color="'#707070'" :size="'60px'" />
+    </div>
+    <div v-else class="fabrica-container">
       <div class="home__info">
         <div class="m-b-xs-20">
           <div class="home__info-title">
@@ -51,6 +54,12 @@
 import { mapGetters } from 'vuex'
 export default {
   name: 'HomeSecondContent',
+  data() {
+    return {
+      isLoading: false,
+      id: null,
+    }
+  },
   computed: {
     ...mapGetters(['getResource']),
     categories() {
@@ -60,12 +69,32 @@ export default {
       return this.getResource('home', 'secondAdvertises')
     },
   },
+  created() {
+    this.getCategories()
+  },
   methods: {
-    onClickHandler() {
-      const id = this.categories.find(
+    getCategories() {
+      this.isLoading = true
+      this.id = this.categories.find(
         (category) => category.title === 'راه سازی'
       ).id
-      this.$emit('onClickHandler', id)
+      this.$store
+        .dispatch('get', {
+          url: '/ads/search',
+          storeName: 'home',
+          resourceName: 'secondAdvertises',
+          fillData: false,
+          config: {
+            params: {
+              category_ids: this.id,
+              limit: 3,
+            },
+          },
+        })
+        .then(() => (this.isLoading = false))
+    },
+    onClickHandler() {
+      this.$emit('onClickHandler', this.id)
     },
   },
 }

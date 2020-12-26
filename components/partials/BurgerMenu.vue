@@ -29,15 +29,6 @@
               {{ $t('header.myAdvertises') }}
             </nuxt-link>
           </li>
-          <li class="cursor-pointer" @click="onClickHandler">
-            <i class="o-icon o-single-01 m-l-5"></i>
-            <span v-if="isAuthenticated || clientSideIsAuthenticated">
-              {{ $t('header.myFabrica') }}
-            </span>
-            <span v-else>
-              {{ $t('header.login') }} / {{ $t('header.register') }}
-            </span>
-          </li>
         </ul>
       </div>
     </transition>
@@ -54,11 +45,6 @@ export default {
       type: Boolean,
       default: false,
     },
-  },
-  data() {
-    return {
-      isOpenModal: false,
-    }
   },
   computed: {
     ...mapGetters({
@@ -103,8 +89,6 @@ export default {
     },
     onClickHandler() {
       if (!this.isAuthenticated && !this.clientSideIsAuthenticated) {
-        this.isOpenModal = true
-        this.$emit('openAuthModal', this.isOpenModal)
       } else {
         this.$router.push({ name: 'my-fabrica___' + this.$cookies.get('lang') })
       }

@@ -212,11 +212,11 @@
   }
 
   &__loading {
-    min-height: 250px;
-    padding-bottom: 40px;
+    min-height: 432px;
     display: flex;
     justify-content: center;
-    align-items: flex-end;
+    align-items: center;
+    padding-top: 80px;
   }
 
   &__info {
@@ -347,6 +347,9 @@
 
 @media only screen and (max-width: 768px) {
   .home {
+    &__loading {
+      min-height: 740px;
+    }
     &__main {
       &-content {
         padding: 30px 15px 30px 15px;
