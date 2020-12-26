@@ -2,7 +2,7 @@
   "name": "fabrica",
   "version": "1.0.0",
   "private": true,
-  "description": "fabrica awesome website with nuxt.js",
+  "description": "fabrica awesome website",
   "author": "ramtin heydarrezaei",
   "scripts": {
     "dev": "nuxt",
