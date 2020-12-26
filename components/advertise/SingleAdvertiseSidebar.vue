@@ -59,12 +59,30 @@
             >
           </div>
           <button
-            v-if="isAuthenticated || clientSideIsAuthenticated"
+            v-if="(isAuthenticated || clientSideIsAuthenticated) && !is_user_ad"
             class="btn btn-fabrica"
             @click="isOpen = true"
           >
             {{ $t('advertise.sendMessage') }}
           </button>
+          <div v-else-if="is_user_ad" class="display-flex m-b-0">
+            <button
+              class="btn btn-danger m-l-5"
+              @click="isOpenDeleteModal = true"
+            >
+              {{ $t('delete') }}
+            </button>
+            <nuxt-link
+              :to="{
+                name: 'edit-ad-id___' + this.$cookies.get('lang'),
+                params: { id: advertise.id },
+              }"
+              class="btn btn-secondary m-r-5"
+              tag="button"
+            >
+              {{ $t('edit') }}
+            </nuxt-link>
+          </div>
           <div>
             <a
               :href="`https://api.whatsapp.com/send?text=${url}`"
@@ -94,6 +112,13 @@
         </div>
       </div>
     </TheSidebar>
+    <AdvertiseDeleteModal
+      :id="advertise.id"
+      :is-open="isOpenDeleteModal"
+      :is-loading="isLoading"
+      @closeModal="isOpenDeleteModal = false"
+      @deleteAd="deleteAdvertise(advertise.id)"
+    />
     <AdvertiseChatModal
       :id="advertise._id"
       :is-open="isOpen"
@@ -111,6 +136,9 @@ export default {
     return {
       url: '',
       isOpen: false,
+      isOpenDeleteModal: false,
+      is_user_ad: false,
+      isLoading: false,
     }
   },
   computed: {
@@ -123,10 +151,31 @@ export default {
       return this.getResource('advertise')
     },
   },
+  created() {
+    this.checkIsUserAd()
+  },
   mounted() {
     if (process.browser) {
       this.url = window.location.href
     }
+  },
+  methods: {
+    deleteAdvertise(id) {
+      this.isLoading = true
+      this.$store.dispatch('delete', { url: `/ads/${id}` }).then(() => {
+        this.isLoading = false
+        this.isOpenDeleteModal = false
+        this.$toast.success('آگهی با موفقیت حذف شد')
+        this.$router.push({ name: 'my-ads___' + this.$cookies.get('lang') })
+      })
+    },
+    checkIsUserAd() {
+      if (process.client) {
+        if (this.advertise.user.id === window.localStorage.getItem('id')) {
+          this.is_user_ad = true
+        }
+      }
+    },
   },
 }
 </script>

@@ -25,7 +25,7 @@
 export default {
   name: 'HomePage',
   async asyncData({ store }) {
-    if (store.getters.getResource('home', 'categories').length === 0) {
+    if (!store.getters.getResource('home', 'categories').length) {
       await store.dispatch('get', {
         storeName: 'home',
         resourceName: 'categories',
@@ -33,7 +33,7 @@ export default {
         config: { params: { section: 'home' } },
       })
     }
-    if (store.getters.getResource('home', 'states').length === 0) {
+    if (!store.getters.getResource('home', 'states').length) {
       await store.dispatch('get', {
         url: '/cities/state',
         storeName: 'home',
@@ -44,9 +44,6 @@ export default {
     const firstId = categories.find(
       (category) => category.title === 'خودرو سبک'
     ).id
-    const secondId = categories.find(
-      (category) => category.title === 'راه سازی'
-    ).id
     await store.dispatch('get', {
       url: '/ads/search',
       storeName: 'home',
@@ -55,18 +52,6 @@ export default {
       config: {
         params: {
           category_ids: firstId,
-          limit: 3,
-        },
-      },
-    })
-    await store.dispatch('get', {
-      url: '/ads/search',
-      storeName: 'home',
-      resourceName: 'secondAdvertises',
-      fillData: false,
-      config: {
-        params: {
-          category_ids: secondId,
           limit: 3,
         },
       },

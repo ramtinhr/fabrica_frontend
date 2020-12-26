@@ -44,7 +44,6 @@
                   :max-lenght="18"
                   :placeholder="$t('advertise.price')"
                   :name="'price'"
-                  :type="'number'"
                   :number-format="false"
                 />
                 <span class="text-danger font-size-12">
@@ -170,53 +169,16 @@
                 tag="div"
               >
                 <label for="category">{{ $t('advertise.category') }}</label>
-                <input
+                <CategoriesSelectBox
                   id="category"
-                  v-model="searchString"
-                  class="category-input"
-                  :placeholder="
-                    selectedCategory
-                      ? selectedCategory.title
-                      : $t('list.selectCategory')
-                  "
-                  type="text"
-                  @keypress="onKeypressHandler($event)"
-                  @keyup="autoSearch"
-                  @click="openDropdown"
+                  :categories="categories"
+                  :selected-categories="selectedCategories"
+                  :categories-backup="categoriesBackup"
+                  :is-loading="isCategoriesLoading"
+                  @search="search"
+                  @selectCat="selectCat"
+                  @prevCat="prevCat"
                 />
-                <div class="position-relative">
-                  <transition name="fade">
-                    <ul v-show="isOpen" class="category-dropdown">
-                      <transition name="slide">
-                        <li
-                          v-show="categoriesBackup.length > 0"
-                          class="category-options"
-                          @click="prevCat"
-                        >
-                          {{ $t('lastStep') }}
-                          <i class="o-icon o-minimal-right"></i>
-                        </li>
-                      </transition>
-                      <li
-                        v-for="(category, index) in categories"
-                        :key="category.id"
-                        class="category-options"
-                        @click="selectCat(category, index)"
-                      >
-                        {{ category.title }}
-                        <i
-                          v-if="!category.is_leaf && !category.isLoading"
-                          class="o-icon o-minimal-left"
-                        ></i>
-                        <TheLoading
-                          v-if="category.isLoading"
-                          :color="'#f2c200'"
-                          :size="'18px'"
-                        />
-                      </li>
-                    </ul>
-                  </transition>
-                </div>
                 <span v-if="!selectedCategory" class="text-danger font-size-12">
                   {{ errors[0] }}
                 </span>
@@ -229,7 +191,7 @@
                   <label class="switch">
                     <input
                       type="checkbox"
-                      @click="
+                      @change="
                         isPriceSuggestionEnabled = !isPriceSuggestionEnabled
                       "
                     />
@@ -301,7 +263,6 @@
 
 <script>
 import { mapGetters } from 'vuex'
-
 export default {
   name: 'CreateAdvertise',
   data() {
@@ -323,6 +284,7 @@ export default {
       categories: [],
       categoriesBackup: [],
       isLoading: false,
+      isCategoriesLoading: false,
       priority: [
         {
           title: 'عادی',
@@ -376,32 +338,21 @@ export default {
     this.getState()
     this.getCategories()
   },
-  mounted() {
-    window.addEventListener('click', (e) => {
-      const target = e.target.classList
-      if (
-        !target.contains('category-options') &&
-        !target.contains('category-dropdown') &&
-        !target.contains('category-input') &&
-        !target.contains('o-minimal-left') &&
-        !target.contains('o-minimal-right')
-      ) {
-        this.isOpen = false
-      }
-    })
-  },
   methods: {
     openDropdown() {
       this.isOpen = true
     },
-    async selectCat(category, index) {
-      this.categoriesBackup.push(this.categories)
+    async selectCat(category) {
       if (!category.is_leaf) {
-        this.categories[index].isLoading = true
         this.selectedCategories.push(category.id)
-        await this.getCategories(category.id)
-        this.categories[index].isLoading = false
+        await this.getCategories(category.id, null, true)
       } else {
+        if (
+          this.selectedCategories.length ===
+          this.categoriesBackup.length + 1
+        ) {
+          this.selectedCategories.pop()
+        }
         this.selectedCategories.push(category.id)
         this.selectedCategory = category
         this.isOpen = false
@@ -433,7 +384,8 @@ export default {
         resourceName: 'states',
       })
     },
-    getCategories(id = null, q = null) {
+    getCategories(id = null, q = null, isBackup = false) {
+      this.isCategoriesLoading = true
       this.$store
         .dispatch('get', {
           url: '/categories',
@@ -446,7 +398,11 @@ export default {
           },
         })
         .then((resp) => {
+          if (isBackup) {
+            this.categoriesBackup.push(this.categories)
+          }
           this.categories = resp.data.data
+          this.isCategoriesLoading = false
         })
     },
     getCities() {
@@ -463,19 +419,8 @@ export default {
           this.cities = resp.data.data
         })
     },
-    onKeypressHandler(event) {
-      if (event.key === 'Enter') {
-        this.search()
-      }
-    },
     search() {
       this.getCategories(null, this.searchString)
-    },
-    autoSearch() {
-      clearTimeout(this.timer)
-      this.timer = setTimeout(() => {
-        this.search()
-      }, 600)
     },
     createAd() {
       const data = {

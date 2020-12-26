@@ -57,6 +57,7 @@ export const actions = {
           localStorage.setItem('access_token', token)
           Cookie.set('token', token)
           commit('SET_TOKEN', token)
+          dispatch('fetchMe')
         })
         .catch((error) => {
           reject(error)
@@ -64,7 +65,10 @@ export const actions = {
     })
   },
   fetchMe({ commit, state }) {
-    if (!state.resource || state.resource.length === 0) {
+    if (
+      !state.resource ||
+      (Array.isArray(state.resource) && !state.resource.length)
+    ) {
       return new Promise((resolve, reject) => {
         if (process.client) {
           this.$axios.setToken(localStorage.getItem('access_token'), 'Bearer')
@@ -74,6 +78,9 @@ export const actions = {
           .then((response) => {
             const data = response.data.data
             commit('STORE_USER_INFO', data)
+            if (process.client) {
+              localStorage.setItem('id', data.id)
+            }
             resolve(response)
           })
           .catch((err) => {

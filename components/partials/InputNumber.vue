@@ -74,7 +74,7 @@ export default {
     },
     defaultValue() {
       if (this.defaultValue) {
-        if (String(this.defaultValue).length > 0) {
+        if (String(this.defaultValue).length) {
           this.data = this.defaultValue
         }
       }

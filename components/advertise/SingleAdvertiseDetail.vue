@@ -122,11 +122,11 @@ export default {
     }
   },
   computed: {
-    ...mapGetters([
-      'getResource',
-      'isAuthenticated',
-      'clientSideIsAuthenticated',
-    ]),
+    ...mapGetters({
+      getResource: 'getResource',
+      isAuthenticated: 'isAuthenticated',
+      clientSideIsAuthenticated: 'auth/clientSideIsAuthenticated',
+    }),
     advertise() {
       return this.getResource('advertise')
     },

@@ -105,9 +105,9 @@ button {
     border: none;
     border-radius: 15px;
     background: #fff;
-    height: 200px;
+    max-height: 200px;
     z-index: 2;
-    overflow-y: scroll
+    overflow-y: auto;
   }
 
   &-options {
@@ -390,8 +390,8 @@ button {
   color: $lightOrangeYellow !important;
 }
 
-.text-darkBlack {
-  color: $darkBlack !important;
+.text-black {
+  color: $black !important;
 }
 
 .border-left-black {
@@ -507,6 +507,20 @@ select:-webkit-autofill:focus {
   padding: 0;
 }
 
+.top-bg {
+  background: url("/images/back.jpg") no-repeat;
+  background-size: cover;
+  min-height: 250px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.about-us {
+  & p {
+    line-height: 2.5;
+  }
+}
 
 .disable {
   * {
@@ -999,7 +1013,7 @@ input:invalid {
 }
 
 .btn-darkBlack {
-  background: $darkBlack;
+  background: $black;
   color: white;
 }
 

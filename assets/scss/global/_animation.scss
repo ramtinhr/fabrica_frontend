@@ -62,14 +62,14 @@
   -webkit-transition-duration: 0.3s;
   -o-transition-duration: 0.3s;
   transition-duration: 0.3s;
-  -moz-transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
-  -webkit-transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
-  -o-transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
-  transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+  -moz-transition-timing-function: ease;
+  -webkit-transition-timing-function: ease;
+  -o-transition-timing-function: ease;
+  transition-timing-function: ease;
 }
 
 .slide-enter-to, .slide-leave {
-  max-height: 100px;
+  max-height: 500px;
   overflow: hidden;
 }
 
@@ -79,10 +79,22 @@
 }
 
 .fade-enter-active, .fade-leave-active {
-  transition: opacity .5s;
+  transition: opacity .3s;
 }
 
 .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */
 {
   opacity: 0;
 }
+
+.burger-slide-enter-active, .burger-slide-leave-active {
+  transition: transform .4s, opacity .45s;
+  transform: translateX(0);
+}
+
+.burger-slide-enter, .burger-slide-leave-to {
+  opacity: 0;
+  transform: translateX(50px);
+}
+
+

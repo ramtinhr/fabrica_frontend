@@ -7,7 +7,7 @@
       </div>
       <div
         v-else-if="
-          !isLoading && ($mq === 'xs' || $mq === 'sm') && advertises.length > 0
+          !isLoading && ($mq === 'xs' || $mq === 'sm') && advertises.length
         "
         class="row p-t-60 p-b-45"
       >
@@ -39,10 +39,7 @@
           <HorizontalAdvertise :advertise="advertise" />
         </div>
       </div>
-      <div
-        v-else-if="advertises.length > 0"
-        class="row p-t-60 p-b-45 hidden-xs"
-      >
+      <div v-else-if="advertises.length" class="row p-t-60 p-b-45 hidden-xs">
         <div class="col-md-3 col-xs-4 col-xs-12">
           <TheSidebar>
             <div slot="head">
@@ -71,14 +68,10 @@
           <VerticalAdvertise
             :advertise="advertise"
             :is-user-ad="true"
-            @openDeleteAdModal="openDeleteAdModal"
-          />
-          <AdvertiseDeleteModal
-            :id="advertise.id"
-            :is-open="isOpen"
-            :is-loading="deleteModalIsLoading"
-            @closeModal="isOpen = false"
-            @deleteAd="deleteAdvertise(advertise.id)"
+            :is-open.sync="isOpen"
+            :delete-modal-is-loading="deleteModalIsLoading"
+            @openDeleteAdModal="isOpen = !isOpen"
+            @deleteAd="deleteAdvertise"
           />
         </div>
       </div>
@@ -93,12 +86,12 @@
 import { mapGetters } from 'vuex'
 export default {
   name: 'MyAdvertises',
+  middleware: 'auth',
   data() {
     return {
       user: null,
       isLoading: false,
       deleteModalIsLoading: false,
-      isOpen: false,
       navs: [
         {
           title: this.$t('header.mainPage'),
@@ -121,11 +114,6 @@ export default {
   created() {
     this.getAdvertises()
   },
-  updated() {
-    if (this.advertises.length === 0) {
-      document.body.style.paddingRight = '0'
-    }
-  },
   methods: {
     getAdvertises() {
       this.isLoading = true
@@ -144,9 +132,6 @@ export default {
         this.$store.commit('myAds/REMOVE_ADD', { id })
         this.$toast.success('آگهی با موفقیت حذف شد')
       })
-    },
-    openDeleteAdModal(isOpen) {
-      this.isOpen = isOpen
     },
     getUserInfo() {
       this.$store.dispatch('get', { url: '/users/me' }).then((resp) => {

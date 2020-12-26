@@ -37,6 +37,16 @@
       }
     }
 
+    .category {
+      &-input {
+        border: none;
+        box-shadow: 0 0 10px $lightGray;
+        border-radius: 15px;
+        font-size: 14px;
+        padding: 11px 20px;
+      }
+    }
+
     &-categories {
       overflow: auto;
 
@@ -188,7 +198,7 @@
 
       & button {
         position: absolute;
-        left: 5px;
+        left: 4px;
         top: 50%;
         transform: translateY(-50%);
         border-radius: 15px;
@@ -202,11 +212,11 @@
   }
 
   &__loading {
-    min-height: 250px;
-    padding-bottom: 40px;
+    min-height: 432px;
     display: flex;
     justify-content: center;
-    align-items: flex-end;
+    align-items: center;
+    padding-top: 80px;
   }
 
   &__info {
@@ -337,6 +347,9 @@
 
 @media only screen and (max-width: 768px) {
   .home {
+    &__loading {
+      min-height: 740px;
+    }
     &__main {
       &-content {
         padding: 30px 15px 30px 15px;

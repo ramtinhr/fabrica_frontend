@@ -9,8 +9,21 @@
                 {{ $t('footer.quickAccess') }}
               </span>
               <ul class="footer__top-quick-access">
-                <li>{{ $t('aboutUs') }}</li>
-                <li>{{ $t('termsAndConditions') }}</li>
+                <li>
+                  <nuxt-link
+                    :to="{ name: 'about-us___' + $cookies.get('lang') }"
+                    tag="a"
+                    >{{ $t('aboutUs') }}
+                  </nuxt-link>
+                </li>
+                <li>
+                  <nuxt-link
+                    :to="{ name: 'terms___' + $cookies.get('lang') }"
+                    tag="a"
+                  >
+                    {{ $t('termsAndConditions') }}
+                  </nuxt-link>
+                </li>
               </ul>
             </div>
           </div>
@@ -76,6 +89,14 @@
                   :placeholder="$t('email')"
                 />
                 <i class="o-icon o-email-83 footer__top-email-btn"></i>
+              </div>
+              <div class="footer__top-app">
+                <a href="https://cafebazaar.ir/app/com.fabrika">
+                  <img class="m-l-5" src="/images/cafebazaar.svg" alt="بازار" />
+                </a>
+                <a href="https://sibapp.com/applications/fabrica">
+                  <img class="m-r-5" src="/images/sibapp.svg" alt="سیب اپ" />
+                </a>
               </div>
             </div>
           </div>
