@@ -9,7 +9,4 @@ RUN yarn install
 ADD . /src
 RUN yarn build
 
-EXPOSE 3000
-
-# start command
 CMD [ "yarn", "start" ]
