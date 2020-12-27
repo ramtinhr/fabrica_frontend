@@ -8,6 +8,8 @@ ADD ./yarn.lock /src
 RUN yarn install
 ADD . /src
 RUN yarn build
-RUN yarn start
-# RUN mkdir my
-# RUN mv assets/ my/
+
+EXPOSE 3000
+
+# start command
+CMD [ "yarn", "start" ]
