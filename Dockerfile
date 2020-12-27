@@ -9,7 +9,11 @@ RUN yarn install
 ADD . /src
 RUN yarn build
 
-EXPOSE 3000
+FROM nginx:1.17-alpine AS app
+WORKDIR /var/www/html
 
-# start command
+ADD ./docker/nginx/default.conf /etc/nginx/conf.d/default.conf
+
+COPY --from=builder /src/dist /var/www/html
+
 CMD [ "yarn", "start" ]
