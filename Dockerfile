@@ -7,7 +7,7 @@ ADD ./yarn.lock /src
 
 RUN yarn install
 ADD . /src
-RUN yarn build
+RUN yarn build --spa
 
 FROM nginx:1.17-alpine AS app
 WORKDIR /var/www/html
