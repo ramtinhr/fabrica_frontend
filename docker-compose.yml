@@ -7,4 +7,4 @@ services:
       - "3000:3000"
     volumes:
       - ./:/src
-    command: bash -c "yarn install && yarn build && yarn start"
+    command: bash -c "yarn install && yarn dev"
