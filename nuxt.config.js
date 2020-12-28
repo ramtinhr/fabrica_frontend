@@ -173,9 +173,6 @@ export default {
       })
     },
   },
-  server: {
-    port: 8080,
-  },
   messages: {
     server_error: 'مشکل سیستم',
     nuxtjs: ' ',
