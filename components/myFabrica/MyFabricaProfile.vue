@@ -11,7 +11,6 @@
               <TheUpload
                 :image-url="avatarUrl ? avatarUrl : '/images/avatar.jpg'"
                 field="image"
-                :index="i"
                 :name="'advertiseImage'"
                 @getFile="getImage"
               />

@@ -36,7 +36,7 @@
                 <i class="o-icon o-phone-2 footer__top-icon"></i>
                 <div class="display-flex flex-direction-column">
                   <span class="font-size-18 text-white line-height-1"
-                    >۰۲۱۶۶۹۳۲۲۷۶</span
+                    >۰۲۱۷۷۹۸۵۱۸۸</span
                   >
                   <span class="font-size-18 text-white line-height-1"
                     >۰۹۱۲۲۴۶۸۹۲۰</span
@@ -48,7 +48,7 @@
                   <i class="o-icon o-pin-3 footer__top-icon"></i>
                 </div>
                 <span class="font-size-18 text-white">
-                  میدان توحید نصرت غربی بن بست حسنی پلاک۲
+                  تهران پیروزی خ مقداد ک رنجبران پ ۱۳,واحد۸
                 </span>
               </div>
               <div class="display-flex m-b-xs-25">

@@ -308,7 +308,7 @@ export default {
           key: 'sale',
         },
         {
-          title: 'درخواستی',
+          title: 'خریدار',
           key: 'ask',
         },
         {

@@ -16,7 +16,7 @@
         <div class="display-flex align-center">
           <button
             class="btn btn-fabrica border-radius-30 font-size-14 p-v-5 p-h-15 m-l-5"
-            @click="onClickHandler"
+            @click="onClickHandler(false)"
           >
             <i class="o-icon o-single-01"></i>
           </button>
@@ -39,6 +39,8 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
   name: 'MobileHeader',
   data() {
@@ -47,6 +49,12 @@ export default {
       isCreateButton: false,
       isOpenAuthModal: false,
     }
+  },
+  computed: {
+    ...mapGetters({
+      isAuthenticated: 'isAuthenticated',
+      clientSideIsAuthenticated: 'auth/clientSideIsAuthenticated',
+    }),
   },
   methods: {
     onClickHandler(createAdButton) {
