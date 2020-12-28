@@ -5,9 +5,6 @@ WORKDIR /src
 ADD ./package.json /src
 ADD ./yarn.lock /src
 
-RUN apk update && apk upgrade
-RUN apk add git
-
 RUN yarn install
 ADD . /src
 RUN yarn build
