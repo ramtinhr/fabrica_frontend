@@ -11,7 +11,6 @@ export default {
       'فابریکا  - نیازمندی‌ های رایگان، آگهی‌های خرید، فروش  نو و دست دوم و کارکرده',
     meta: [
       { charset: 'utf-8' },
-      // { name: 'enamad', content: '382221' },
       {
         name: 'viewport',
         content:
