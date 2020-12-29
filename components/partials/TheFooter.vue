@@ -68,24 +68,26 @@
               <span class="text-white font-size-20 text-bold m-b-30">
                 {{ $t('footer.symbols') }}
               </span>
-              <img
-                id="jxlzesgtrgvjsizpfukzfukzesgt"
-                width="100px"
-                style="cursor: pointer"
-                onclick='window.open("https://logo.samandehi.ir/Verify.aspx?id=1039660&p=rfthobpdxlaopfvlgvkagvkaobpd", "Popup","toolbar=no, scrollbars=no, location=no, statusbar=no, menubar=no, resizable=0, width=450, top=30")'
-                alt="logo-samandehi"
-                src="https://logo.samandehi.ir/logo.aspx?id=1039660&p=nbpdlymaqftibsiywlbqwlbqlyma"
-              />
-              <a
-                target="_blank"
-                href="https://trustseal.enamad.ir/?id=134605&amp;Code=HMeUouABK5240wioebqd"
-                ><img
-                  id="HMeUouABK5240wioebqd"
+              <div class="display-flex">
+                <img
+                  id="jxlzesgtrgvjsizpfukzfukzesgt"
                   width="100px"
-                  src="https://Trustseal.eNamad.ir/logo.aspx?id=134605&amp;Code=HMeUouABK5240wioebqd"
-                  alt=""
                   style="cursor: pointer"
-              /></a>
+                  onclick='window.open("https://logo.samandehi.ir/Verify.aspx?id=1039660&p=rfthobpdxlaopfvlgvkagvkaobpd", "Popup","toolbar=no, scrollbars=no, location=no, statusbar=no, menubar=no, resizable=0, width=450, top=30")'
+                  alt="logo-samandehi"
+                  src="https://logo.samandehi.ir/logo.aspx?id=1039660&p=nbpdlymaqftibsiywlbqwlbqlyma"
+                />
+                <a
+                  target="_blank"
+                  href="https://trustseal.enamad.ir/?id=134605&amp;Code=HMeUouABK5240wioebqd"
+                  ><img
+                    id="HMeUouABK5240wioebqd"
+                    width="100px"
+                    src="https://Trustseal.eNamad.ir/logo.aspx?id=134605&amp;Code=HMeUouABK5240wioebqd"
+                    alt=""
+                    style="cursor: pointer"
+                /></a>
+              </div>
             </div>
           </div>
           <div class="col-md-3 col-sm-3 col-xs-12">
