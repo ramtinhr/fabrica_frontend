@@ -1,6 +1,6 @@
 {
   "name": "fabrica",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "description": "fabrica awesome website",
   "author": "ramtin heydarrezaei",
@@ -31,7 +31,6 @@
     "nuxt": "^2.13.0",
     "nuxt-i18n": "^6.5.0",
     "nuxt-mq": "^2.0.1",
-    "qs": "^6.9.4",
     "sass-loader": "^8.0.2",
     "swiper": "5.x",
     "vee-validate": "^3.2.5",
