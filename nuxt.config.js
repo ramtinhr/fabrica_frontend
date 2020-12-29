@@ -1,6 +1,7 @@
 const webpack = require('webpack')
 
 export default {
+  mode: 'universal',
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
     htmlAttrs: {
@@ -174,13 +175,11 @@ export default {
   },
   messages: {
     server_error: 'مشکل سیستم',
-    nuxtjs: ' ',
     back_to_home: 'داشبورد',
     server_error_details: 'مشکلی به وجود آمده است',
   },
 
   env: {
-    BASE_URl: 'https://siglive.ir/api',
-    IS_APPLICATION: false,
+    BASE_URl: 'https://api.fabrica.ir',
   },
 }
