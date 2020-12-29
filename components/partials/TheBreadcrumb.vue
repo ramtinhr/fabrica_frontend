@@ -22,7 +22,7 @@
             >
               {{
                 index === navs.length - 1 && navs.length > 2
-                  ? $strLimit(nav.title, 12)
+                  ? $strLimit(nav.title, 10)
                   : $strLimit(nav.title, 18)
               }}
             </nuxt-link>
