@@ -68,7 +68,7 @@
               <span class="text-white font-size-20 text-bold m-b-30">
                 {{ $t('footer.symbols') }}
               </span>
-              <div class="display-flex">
+              <div class="display-flex align-center">
                 <img
                   id="jxlzesgtrgvjsizpfukzfukzesgt"
                   width="100px"
