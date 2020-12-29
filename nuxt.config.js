@@ -1,7 +1,7 @@
+// eslint-disable-next-line nuxt/no-cjs-in-config
 const webpack = require('webpack')
 
 export default {
-  mode: 'universal',
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
     htmlAttrs: {
