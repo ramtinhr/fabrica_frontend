@@ -160,9 +160,14 @@ export const mutations = {
 
 export const actions = {
   nuxtServerInit({ commit }, { req }) {
-    const cookies = CookieParser.parse(req.headers.cookie)
-    const token = cookies.token
-    commit('SET_TOKEN', token)
+    if (
+      req.headers.cookie &&
+      req.headers.cookie.type === 'String'
+    ) {
+      const cookies = CookieParser.parse(req.headers.cookie)
+      const token = cookies.token
+      commit('SET_TOKEN', token)
+    }
   },
   fill({ commit }, { storeName, resourceName, data, pagination }) {
     commit('FILL', { storeName, resourceName, data, pagination })
