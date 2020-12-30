@@ -78,7 +78,7 @@
                     id="jxlzesgtrgvjsizpfukzfukzesgt"
                     src="https://logo.samandehi.ir/logo.aspx?id=1039660&p=nbpdlymaqftibsiywlbqwlbqlyma"
                     alt=""
-                    style="cursor: pointer"
+                    style="cursor: pointer; width: 100px"
                   />
                 </a>
                 <a
