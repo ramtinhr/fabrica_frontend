@@ -3,7 +3,7 @@
     <div v-if="isLoading" class="my-fabrica__loading">
       <TheLoading :color="'#707070'" :size="'60px'" />
     </div>
-    <MyFabricaProfile />
+    <MyFabricaProfile v-else />
   </div>
 </template>
 
