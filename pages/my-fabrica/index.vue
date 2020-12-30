@@ -1,5 +1,5 @@
 <template>
-    <MyFabricaProfile />
+  <MyFabricaProfile />
 </template>
 
 <script>
