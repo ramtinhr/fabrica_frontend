@@ -161,8 +161,7 @@ export const mutations = {
 export const actions = {
   nuxtServerInit({ commit }, { req }) {
     if (
-      req.headers.cookie &&
-      req.headers.cookie.type === 'String'
+      req.headers.cookie
     ) {
       const cookies = CookieParser.parse(req.headers.cookie)
       const token = cookies.token
