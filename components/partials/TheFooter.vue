@@ -69,14 +69,18 @@
                 {{ $t('footer.symbols') }}
               </span>
               <div class="display-flex align-center">
-                <img
-                  id="jxlzesgtrgvjsizpfukzfukzesgt"
-                  width="100px"
-                  style="cursor: pointer"
-                  onclick='window.open("https://logo.samandehi.ir/Verify.aspx?id=1039660&p=rfthobpdxlaopfvlgvkagvkaobpd", "Popup","toolbar=no, scrollbars=no, location=no, statusbar=no, menubar=no, resizable=0, width=450, top=30")'
-                  alt="logo-samandehi"
-                  src="https://logo.samandehi.ir/logo.aspx?id=1039660&p=nbpdlymaqftibsiywlbqwlbqlyma"
-                />
+                <a
+                  target="_blank"
+                  rel="origin"
+                  href="https://logo.samandehi.ir/Verify.aspx?id=1039660&p=rfthobpdxlaopfvlgvkagvkaobpd"
+                >
+                  <img
+                    id="jxlzesgtrgvjsizpfukzfukzesgt"
+                    src="https://logo.samandehi.ir/logo.aspx?id=1039660&p=nbpdlymaqftibsiywlbqwlbqlyma"
+                    alt=""
+                    style="cursor: pointer"
+                  />
+                </a>
                 <a
                   target="_blank"
                   href="https://trustseal.enamad.ir/?id=134605&amp;Code=HMeUouABK5240wioebqd"
